@@ -18,7 +18,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~>2.10'
   gem 'capybara', '~>1.1'
-  gem 'rb-fsevent', '~>0.9', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'rb-fsevent', '~>0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec', '~>0.7'
   gem 'spork', '~>0.9'
   gem 'factory_girl_rails', '~>3.3'
