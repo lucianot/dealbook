@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'jquery-rails'
+gem 'devise', '~> 1.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,12 +17,12 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~>2.10'
-  gem 'capybara', '~>1.1'
-  gem 'rb-fsevent', '~>0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-rspec', '~>0.7'
-  gem 'spork', '~>0.9'
-  gem 'factory_girl_rails', '~>3.3'
+  gem 'rspec-rails', '~> 2.10'
+  gem 'capybara', '~> 1.1'
+  gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec', '~> 0.7'
+  gem 'spork', '~> 0.9'
+  gem 'factory_girl_rails', '~> 3.3'
 end 
 
 # To use ActiveModel has_secure_password
