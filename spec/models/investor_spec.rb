@@ -9,30 +9,30 @@ describe Investor do
     it { should be_valid }
   end
  
-  # # Invalid name
-  # context 'when :name is' do
+  # Invalid name
+  context 'when :name is' do
 
-  #   context 'not present' do
-  #     before { @company.name = nil }
-  #     it { should_not be_valid }
-  #   end 
+    context 'not present' do
+      before { @investor.name = nil }
+      it { should_not be_valid }
+    end 
 
-  #   context 'too short' do
-  #     before { @company.name = 'a' }
-  #     it { should_not be_valid }
-  #   end 
+    context 'too short' do
+      before { @investor.name = 'a' }
+      it { should_not be_valid }
+    end 
 
-  #   context 'too long' do
-  #     before { @company.name = 'a'*101 }
-  #     it { should_not be_valid }
-  #   end 
+    context 'too long' do
+      before { @investor.name = 'a'*101 }
+      it { should_not be_valid }
+    end 
 
-  #   context 'not unique' do
-  #     before { Company.make!(:name => @company.name) }
-  #     it { should_not be_valid }
-  #   end
+    context 'not unique' do
+      before { Investor.make!(:name => @investor.name) }
+      it { should_not be_valid }
+    end
 
-  # end
+  end
 
   # # Invalid description
   # context 'when :description is too long' do 

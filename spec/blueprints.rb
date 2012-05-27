@@ -12,19 +12,19 @@ Company.blueprint do
   # investors
 end
 
-# Investor.blueprint do
-#   name          { Faker::Company.name }
-#   description   { Faker::Company.catch_phrase }
-#   website       { 'http://' + Faker::Internet.domain_name }
-#   linkedin_url  { 'http://www.linkedin.com/company/' + rand(100_000).to_s }
-#   status        { 'active' }
-#   category      { 'VC' }
-#   stages        { ['seed', 'series A', 'late'] }   # serialize on Investor model
-#   locations
-#   markets
-#   deals
-#   companies
-# end
+Investor.blueprint do
+  name          { Faker::Company.name }
+  description   { Faker::Company.catch_phrase }
+  website       { 'http://' + Faker::Internet.domain_name }
+  linkedin      { 'http://www.linkedin.com/company/' + rand(100_000).to_s }
+  status        { 'active' }
+  category      { 'VC' }
+  stages        { ['seed', 'series A', 'late'] }   # serialize on Investor model
+  # locations
+  # markets
+  # deals
+  # companies
+end
 
 # Market.blueprint do
 #   name       { 'mobile' }
