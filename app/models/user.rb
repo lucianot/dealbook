@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  # TODO: Use roles with CanCan gem
   ROLES = %w[admin moderator normal banned]
 end

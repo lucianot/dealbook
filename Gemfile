@@ -24,6 +24,8 @@ group :development, :test do
   gem 'guard-rspec', '~> 0.7'
   gem 'spork', '~> 0.9'
   gem 'factory_girl_rails', '~> 3.3'
+  gem 'machinist', '~> 2.0'
+  gem 'faker', '~> 1.0'
 end 
 
 # To use ActiveModel has_secure_password
