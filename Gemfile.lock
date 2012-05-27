@@ -169,10 +169,10 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise (~> 1.5)
   factory_girl_rails (~> 3.3)
-  faker
+  faker (~> 1.0)
   guard-rspec (~> 0.7)
   jquery-rails
-  machinist (~> 2.0.0)
+  machinist (~> 2.0)
   rails (= 3.2.3)
   rb-fsevent (~> 0.9)
   rspec-rails (~> 2.10)
