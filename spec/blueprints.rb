@@ -26,11 +26,11 @@ Investor.blueprint do
   # companies
 end
 
-# Market.blueprint do
-#   name       { 'mobile' }
-#   companies
-#   investors
-# end
+Market.blueprint do
+  name       { 'mobile' }
+  # companies
+  # investors
+end
 
 # Location.blueprint do
 #   country     { 'United States' }

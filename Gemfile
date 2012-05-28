@@ -23,7 +23,7 @@ group :development, :test do
   gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec', '~> 0.7'
   gem 'spork', '~> 0.9'
-  gem 'factory_girl_rails', '~> 3.3'
+  # gem 'factory_girl_rails', '~> 3.3'
   gem 'machinist', '~> 2.0'
   gem 'faker', '~> 1.0'
 end 

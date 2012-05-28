@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'active_model'
 
 describe Investor do
   before(:each) { @investor = Investor.make }

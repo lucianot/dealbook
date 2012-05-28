@@ -1,5 +1,4 @@
 class Investor < ActiveRecord::Base
-  include ActiveModel::Validations
 
   # Associations
   has_and_belongs_to_many :locations
