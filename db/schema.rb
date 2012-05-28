@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120528141021) do
+ActiveRecord::Schema.define(:version => 20120528184828) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(:version => 20120528141021) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "companies_locations", :id => false, :force => true do |t|
+    t.integer "company_id"
+    t.integer "location_id"
+  end
+
+  add_index "companies_locations", ["company_id", "location_id"], :name => "index_companies_locations_on_company_id_and_location_id"
+  add_index "companies_locations", ["location_id", "company_id"], :name => "index_companies_locations_on_location_id_and_company_id"
 
   create_table "companies_markets", :id => false, :force => true do |t|
     t.integer "company_id"
@@ -42,6 +50,22 @@ ActiveRecord::Schema.define(:version => 20120528141021) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "investors_locations", :id => false, :force => true do |t|
+    t.integer "investor_id"
+    t.integer "location_id"
+  end
+
+  add_index "investors_locations", ["investor_id", "location_id"], :name => "index_investors_locations_on_investor_id_and_location_id"
+  add_index "investors_locations", ["location_id", "investor_id"], :name => "index_investors_locations_on_location_id_and_investor_id"
+
+  create_table "investors_markets", :id => false, :force => true do |t|
+    t.integer "investor_id"
+    t.integer "market_id"
+  end
+
+  add_index "investors_markets", ["investor_id", "market_id"], :name => "index_investors_markets_on_investor_id_and_market_id"
+  add_index "investors_markets", ["market_id", "investor_id"], :name => "index_investors_markets_on_market_id_and_investor_id"
 
   create_table "locations", :force => true do |t|
     t.string   "country",    :null => false

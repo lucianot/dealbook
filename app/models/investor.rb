@@ -3,8 +3,8 @@ class Investor < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
-  has_many :deals, :dependent => :destroy
-  has_many :companies, :through => :deals
+  # has_many :deals, :dependent => :destroy
+  # has_many :companies, :through => :deals
 
   #Validations
   url_regex = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
@@ -34,6 +34,7 @@ class Investor < ActiveRecord::Base
       end
     end
   end
+  
 end
 
 

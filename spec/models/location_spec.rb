@@ -26,11 +26,7 @@ describe Location do
       before { @location.country = 'a'*101 }
       it { should_not be_valid }
     end 
-
-    context 'not unique' do
-      before { Location.make!(:country => @location.country) }
-      it { should_not be_valid }
-    end
+    
   end
 
   # Invalid region

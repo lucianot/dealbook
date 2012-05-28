@@ -83,7 +83,7 @@ describe Investor do
   end
 
   #Invalid stage
-  context 'when :stage is'do
+  context 'when :stage is' do
     context 'nil' do
       before { @investor.stage = nil }
       it { should be_valid }
@@ -94,6 +94,37 @@ describe Investor do
       it { should_not be_valid }
     end
   end
+
+    # Has many markets
+  context 'when it has many markets' do
+    before { @complete_investor = Investor.make!(:complete) }
+
+    it 'should return array of markets' do
+      @complete_investor.markets.count.should == 3
+    end
+
+    it 'should be included in each market' do
+      @complete_investor.markets.each do |market|
+        market.investors.include?(@complete_investor).should be_true
+      end
+    end
+  end
+
+  # Has many locations
+  context 'when it has many locations' do
+    before { @complete_investor = Investor.make!(:complete) }
+
+    it 'should return array of locations' do
+      @complete_investor.locations.count.should == 3
+    end
+    
+    it 'should be included in each market' do
+      @complete_investor.locations.each do |location|
+        location.investors.include?(@complete_investor).should be_true
+      end
+    end
+  end
+
 end
 
 

@@ -1,7 +1,7 @@
 class Market < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :companies
-  # has_and_belongs_to_many :investors
+  has_and_belongs_to_many :investors
 
   #Validations
   validates :name, :presence => true,

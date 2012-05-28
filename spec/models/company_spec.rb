@@ -71,17 +71,33 @@ describe Company do
 
   # Has many markets
   context 'when it has many markets' do
-    before { @company_with_markets = Company.make!(:with_markets) }
+    before { @complete_company = Company.make!(:complete) }
+
     it 'should return array of markets' do
-      @company_with_markets.markets.count.should == 2
+      @complete_company.markets.count.should == 2
     end
+
     it 'should be included in each market' do
-      @company_with_markets.markets.each do |market|
-        market.companies.include?(@company_with_markets).should be_true
+      @complete_company.markets.each do |market|
+        market.companies.include?(@complete_company).should be_true
       end
     end
   end
 
+  # Has many locations
+  context 'when it has many locations' do
+    before { @complete_company = Company.make!(:complete) }
+
+    it 'should return array of locations' do
+      @complete_company.locations.count.should == 2
+    end
+    
+    it 'should be included in each market' do
+      @complete_company.locations.each do |location|
+        location.companies.include?(@complete_company).should be_true
+      end
+    end
+  end
 end
 
 

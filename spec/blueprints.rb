@@ -8,8 +8,9 @@ Company.blueprint do
   status        { 'acquired' }
 end
 
-Company.blueprint(:with_markets) do
+Company.blueprint(:complete) do
   markets 2
+  locations 2
 end
 
 Investor.blueprint do
@@ -20,20 +21,20 @@ Investor.blueprint do
   status        { 'active' }
   category      { 'VC' }
   stage         { [ 'Seed', 'Series A' ] }   # serialize on Investor model
-  # locations
-  # markets
-  # deals
-  # companies
+end
+
+Investor.blueprint(:complete) do
+  markets 3
+  locations 3
 end
 
 Market.blueprint do
   name          { Faker::Company.bs }
 end
 
-Market.blueprint(:full) do
-  companies 2
-  locations 2
-end
+# Market.blueprint(:complete) do
+#   companies 2
+# end
 
 Location.blueprint do
   country     { 'United States' }
@@ -41,9 +42,9 @@ Location.blueprint do
   city        { Faker::Address.city }
 end
 
-Location.blueprint(:has_companies) do
-  companies 2
-end
+# Location.blueprint(:complete) do
+#   companies 2
+# end
 
 # Deal.blueprint do
 #   date            { (1..500).to_a.rand.days.ago }
