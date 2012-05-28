@@ -60,4 +60,34 @@ describe Location do
     end 
   end
 
+  # Has many companies
+  context 'when it has many companies' do
+    before { @complete_location = Location.make!(:complete) }
+
+    it 'should return array of companies' do
+      @complete_location.companies.count.should == 3
+    end
+
+    it 'should be included in each company' do
+      @complete_location.companies.each do |company|
+        company.locations.include?(@complete_location).should be_true
+      end
+    end
+  end
+
+  # Has many investors
+  context 'when it has many investors' do
+    before { @complete_location = Location.make!(:complete) }
+
+    it 'should return array of investors' do
+      @complete_location.investors.count.should == 2
+    end
+    
+    it 'should be included in each investor' do
+      @complete_location.investors.each do |investor|
+        investor.locations.include?(@complete_location).should be_true
+      end
+    end
+  end
+
 end

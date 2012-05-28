@@ -92,7 +92,7 @@ describe Company do
       @complete_company.locations.count.should == 2
     end
     
-    it 'should be included in each market' do
+    it 'should be included in each location' do
       @complete_company.locations.each do |location|
         location.companies.include?(@complete_company).should be_true
       end

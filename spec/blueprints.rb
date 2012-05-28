@@ -32,9 +32,10 @@ Market.blueprint do
   name          { Faker::Company.bs }
 end
 
-# Market.blueprint(:complete) do
-#   companies 2
-# end
+Market.blueprint(:complete) do
+  companies 2
+  investors 3
+end
 
 Location.blueprint do
   country     { 'United States' }
@@ -42,9 +43,10 @@ Location.blueprint do
   city        { Faker::Address.city }
 end
 
-# Location.blueprint(:complete) do
-#   companies 2
-# end
+Location.blueprint(:complete) do
+  companies 3
+  investors 2
+end
 
 # Deal.blueprint do
 #   date            { (1..500).to_a.rand.days.ago }

@@ -31,6 +31,39 @@ describe Market do
       before { Market.make!(:name => @market.name) }
       it { should_not be_valid }
     end
-
   end
+
+  # Has many companies
+  context 'when it has many companies' do
+    before { @complete_market = Market.make!(:complete) }
+
+    it 'should return array of companies' do
+      @complete_market.companies.count.should == 2
+    end
+
+    it 'should be included in each company' do
+      @complete_market.companies.each do |company|
+        company.markets.include?(@complete_market).should be_true
+      end
+    end
+  end
+
+  # Has many investors
+  context 'when it has many investors' do
+    before { @complete_market = Market.make!(:complete) }
+
+    it 'should return array of investors' do
+      @complete_market.investors.count.should == 3
+    end
+    
+    it 'should be included in each investor' do
+      @complete_market.investors.each do |investor|
+        investor.markets.include?(@complete_market).should be_true
+      end
+    end
+  end
+
 end
+
+
+
