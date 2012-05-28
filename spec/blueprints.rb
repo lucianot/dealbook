@@ -32,13 +32,13 @@ Market.blueprint do
   # investors
 end
 
-# Location.blueprint do
-#   country     { 'United States' }
-#   region      { Faker::Address.us_state_abbr }
-#   city        { Faker::Address.city }
-#   companies
-#   investors
-# end
+Location.blueprint do
+  country     { 'United States' }
+  region      { Faker::Address.us_state_abbr }
+  city        { Faker::Address.city }
+  # companies
+  # investors
+end
 
 # Deal.blueprint do
 #   date            { (1..500).to_a.rand.days.ago }
