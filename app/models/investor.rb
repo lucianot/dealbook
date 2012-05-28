@@ -19,8 +19,8 @@ class Investor < ActiveRecord::Base
   validates :description, :length => { :maximum => 600 }
   validates :website, :format => { :with => url_regex } 
   validates :linkedin, :format => { :with => linkedin_regex }
-  validates :status, :inclusion => { :in => STATUSES }
-  validates :category, :inclusion => { :in => CATEGORIES }
+  validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
+  validates :category, :inclusion => { :in => CATEGORIES, :allow_nil => true }
   validate :all_stages_must_be_included_in_list
 
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
@@ -28,8 +28,10 @@ class Investor < ActiveRecord::Base
 
   private
   def all_stages_must_be_included_in_list
-    self.stage.each do |s|
-      errors.add(:stage, "is not included in the list") unless STAGES.include?(s)
+    if stage
+      self.stage.each do |s|
+        errors.add(:stage, "is not included in the list") unless STAGES.include?(s)
+      end
     end
   end
 end

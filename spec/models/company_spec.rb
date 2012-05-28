@@ -56,11 +56,25 @@ describe Company do
     it { should_not be_valid }
   end
 
-  #Invalid status
-  context 'when :status is not included in list' do
-    before { @company.status = 'invalid_status' }
-    it { should_not be_valid }
+  # Invalid status
+  context 'when :status is' do
+    context 'nil' do
+      before { @company.status = nil }
+      it { should be_valid }
+    end
+
+    context 'not included in list' do
+      before { @company.status = 'invalid_status' }
+      it { should_not be_valid }
+    end
   end
+
+  # Has many markets
+  # context 'when it has many markets' do
+  #   before { @company = Company.make(:has_markets) }
+  #   markets = @company.markets.count
+  #   it { markets.should == 2 }
+  # end
 
 end
 

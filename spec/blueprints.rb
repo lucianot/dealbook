@@ -6,10 +6,11 @@ Company.blueprint do
   website       { 'http://' + Faker::Internet.domain_name }
   linkedin      { 'http://www.linkedin.com/company/' + rand(100_000).to_s } 
   status        { 'acquired' }
-  # locations     
-  # markets       
-  # deals
-  # investors
+end
+
+Company.blueprint(:has_markets) do
+  name          { Faker::Company.name }
+  markets 2
 end
 
 Investor.blueprint do
@@ -27,9 +28,12 @@ Investor.blueprint do
 end
 
 Market.blueprint do
-  name       { 'mobile' }
-  # companies
-  # investors
+  name          { Faker::Company.bs }
+end
+
+Market.blueprint(:has_companies) do
+  name          { Faker::Company.bs }
+  companies 2
 end
 
 Location.blueprint do

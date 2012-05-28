@@ -11,6 +11,5 @@ class Location < ActiveRecord::Base
   validates :city,    :presence => true,
                       :length => { :in => 2..100 } 
 
-
   attr_accessible :city, :country, :region
 end

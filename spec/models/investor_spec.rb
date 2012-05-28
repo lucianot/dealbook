@@ -57,20 +57,46 @@ describe Investor do
   end
 
   #Invalid status
-  context 'when :status is not included in list' do
-    before { @investor.status = 'invalid status' }
-    it { should_not be_valid }
+  context 'when :status is' do
+    context 'nil' do
+      before { @investor.status = nil }
+      it { should be_valid }
+    end
+
+    context 'not included in list' do
+      before { @investor.status = 'invalid status' }
+      it { should_not be_valid }
+    end
   end
 
   #Invalid category
-  context 'when :category is not included in list' do
-    before { @investor.category = 'invalid category' }
-    it { should_not be_valid }
+  context 'when :category is' do
+    context 'nil' do
+      before { @investor.category = nil }
+      it { should be_valid }
+    end
+
+    context 'not included in list' do
+      before { @investor.category = 'invalid category' }
+      it { should_not be_valid }
+    end
   end
 
   #Invalid stage
-  context 'when :stage is not included in list' do
-    before { @investor.stage = [ 'invalid stage', 'another invalid stage' ] }
-    it { should_not be_valid }
+  context 'when :stage is'do
+    context 'nil' do
+      before { @investor.stage = nil }
+      it { should be_valid }
+    end
+  
+    context 'not included in list' do
+      before { @investor.stage = [ 'invalid stage', 'another invalid stage' ] }
+      it { should_not be_valid }
+    end
   end
 end
+
+
+
+
+
