@@ -1,4 +1,6 @@
 class Investor < ActiveRecord::Base
+  include ActiveModel::Validations
+
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
@@ -10,7 +12,7 @@ class Investor < ActiveRecord::Base
   linkedin_regex = /(^$)|(^(http|https):\/\/[a-z0-9]+\.linkedin\.com\/(company\/)?[0-9]+.*$)/ix
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[angel VC accelerator incubator corporate]
-  STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
+  
 
   validates :name, :presence => true,
                    :length => { :in => 2..100 },
@@ -20,16 +22,23 @@ class Investor < ActiveRecord::Base
   validates :linkedin, :format => { :with => linkedin_regex }
   validates :status, :inclusion => { :in => STATUSES }
   validates :category, :inclusion => { :in => CATEGORIES }
-  validate :all_stages_must_be_included_in_list
+  validates :stage, :stages_included => true
+  # validate :all_stages_must_be_included_in_list
 
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
   serialize :stage
 
-  private
-  def all_stages_must_be_included_in_list
-    self.stage.each do |s|
-      errors.add(:stage, "is not included in the list") unless STAGES.include?(s)
-    end
-  end
-
+  # private
+  # def all_stages_must_be_included_in_list
+  #   self.stage.each do |s|
+  #     errors.add(:stage, "is not included in the list") unless STAGES.include?(s)
+  #   end
+  # end
 end
+
+
+
+
+
+
+
