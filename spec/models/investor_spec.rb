@@ -34,32 +34,43 @@ describe Investor do
 
   end
 
-  # # Invalid description
-  # context 'when :description is too long' do 
-  #   before { @company.description = 'a'*601 }
-  #   it { should_not be_valid }
-  # end
+  # Invalid description
+  context 'when :description is too long' do 
+    before { @investor.description = 'a'*601 }
+    it { should_not be_valid }
+  end
 
-  # # Invalid website
-  # # TODO: insert other test case (with Valid Attributes?)
-  # # TODO: store http?
-  # context 'when :url has wrong format' do
-  #   before { @company.website = 'invalid_url'}
-  #   it { should_not be_valid }
-  # end
+  # Invalid website
+  # TODO: insert other test case (with Valid Attributes?)
+  # TODO: store http?
+  context 'when :url has wrong format' do
+    before { @investor.website = 'invalid url'}
+    it { should_not be_valid }
+  end
 
-  # # Invalid linkedin
-  # # TODO: insert other test case (with Valid Attributes?)
-  # # TODO: store http?
-  # context 'when :linkedin has wrong format' do
-  #   before { @company.linkedin = 'invalid_linkedin' }
-  #   it { should_not be_valid }
-  # end
+  # Invalid linkedin
+  # TODO: insert other test case (with Valid Attributes?)
+  # TODO: store http?
+  context 'when :linkedin has wrong format' do
+    before { @investor.linkedin = 'invalid linkedin' }
+    it { should_not be_valid }
+  end
 
-  # #Invalid status
-  # context 'when :status is not included in list' do
-  #   before { @company.status = 'invalid_status' }
-  #   it { should_not be_valid }
-  # end
+  #Invalid status
+  context 'when :status is not included in list' do
+    before { @investor.status = 'invalid status' }
+    it { should_not be_valid }
+  end
 
+  #Invalid category
+  context 'when :category is not included in list' do
+    before { @investor.category = 'invalid category' }
+    it { should_not be_valid }
+  end
+
+  #Invalid stage
+  context 'when :stage is not included in list' do
+    before { @investor.stage = [ 'invalid stage', 'another invalid stage' ] }
+    it { should_not be_valid }
+  end
 end

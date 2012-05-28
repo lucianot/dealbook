@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20120527214058) do
     t.string   "linkedin"
     t.string   "status"
     t.string   "category"
-    t.string   "stages"
+    t.string   "stage"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

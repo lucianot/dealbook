@@ -7,7 +7,7 @@ class CreateInvestors < ActiveRecord::Migration
       t.string :linkedin
       t.string :status
       t.string :category
-      t.string :stages
+      t.string :stage
 
       t.timestamps
     end

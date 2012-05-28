@@ -19,7 +19,7 @@ Investor.blueprint do
   linkedin      { 'http://www.linkedin.com/company/' + rand(100_000).to_s }
   status        { 'active' }
   category      { 'VC' }
-  stages        { ['seed', 'series A', 'late'] }   # serialize on Investor model
+  stage         { [ 'Seed', 'Series A' ] }   # serialize on Investor model
   # locations
   # markets
   # deals
