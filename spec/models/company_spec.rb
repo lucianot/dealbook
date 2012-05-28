@@ -70,11 +70,17 @@ describe Company do
   end
 
   # Has many markets
-  # context 'when it has many markets' do
-  #   before { @company = Company.make(:has_markets) }
-  #   markets = @company.markets.count
-  #   it { markets.should == 2 }
-  # end
+  context 'when it has many markets' do
+    before { @company_with_markets = Company.make!(:with_markets) }
+    it 'should return array of markets' do
+      @company_with_markets.markets.count.should == 2
+    end
+    it 'should be included in each market' do
+      @company_with_markets.markets.each do |market|
+        market.companies.include?(@company_with_markets).should be_true
+      end
+    end
+  end
 
 end
 

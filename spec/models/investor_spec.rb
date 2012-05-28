@@ -88,14 +88,13 @@ describe Investor do
       before { @investor.stage = nil }
       it { should be_valid }
     end
-  
+
     context 'not included in list' do
       before { @investor.stage = [ 'invalid stage', 'another invalid stage' ] }
       it { should_not be_valid }
     end
   end
 end
-
 
 
 

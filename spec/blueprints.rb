@@ -8,8 +8,7 @@ Company.blueprint do
   status        { 'acquired' }
 end
 
-Company.blueprint(:has_markets) do
-  name          { Faker::Company.name }
+Company.blueprint(:with_markets) do
   markets 2
 end
 
@@ -31,17 +30,19 @@ Market.blueprint do
   name          { Faker::Company.bs }
 end
 
-Market.blueprint(:has_companies) do
-  name          { Faker::Company.bs }
+Market.blueprint(:full) do
   companies 2
+  locations 2
 end
 
 Location.blueprint do
   country     { 'United States' }
   region      { Faker::Address.us_state_abbr }
   city        { Faker::Address.city }
-  # companies
-  # investors
+end
+
+Location.blueprint(:has_companies) do
+  companies 2
 end
 
 # Deal.blueprint do
