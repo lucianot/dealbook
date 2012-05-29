@@ -95,7 +95,7 @@ describe Investor do
     end
   end
 
-    # Has many markets
+  # Has many markets
   context 'when it has many markets' do
     before { @complete_investor = Investor.make!(:complete) }
 

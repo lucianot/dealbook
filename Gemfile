@@ -4,7 +4,8 @@ gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise', '~> 1.5'
-gem 'cancan'
+# gem 'cancan'
+# gem 'chronic'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +27,7 @@ group :development, :test do
   # gem 'factory_girl_rails', '~> 3.3'
   gem 'machinist', '~> 2.0'
   gem 'faker', '~> 1.0'
+  gem 'shoulda-matchers'
 end 
 
 # To use ActiveModel has_secure_password

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120528184828) do
+ActiveRecord::Schema.define(:version => 20120529161207) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(:version => 20120528184828) do
 
   add_index "companies_markets", ["company_id", "market_id"], :name => "index_companies_markets_on_company_id_and_market_id"
   add_index "companies_markets", ["market_id", "company_id"], :name => "index_companies_markets_on_market_id_and_company_id"
+
+  create_table "deals", :force => true do |t|
+    t.date     "deal_date"
+    t.string   "category"
+    t.string   "round"
+    t.integer  "amount"
+    t.integer  "pre_valuation"
+    t.string   "source_url"
+    t.integer  "company_id"
+    t.integer  "investor_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "deals", ["company_id"], :name => "index_deals_on_company_id"
+  add_index "deals", ["investor_id"], :name => "index_deals_on_investor_id"
 
   create_table "investors", :force => true do |t|
     t.string   "name",        :null => false
