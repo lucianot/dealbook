@@ -28,6 +28,7 @@ group :development, :test do
   gem 'machinist', '~> 2.0'
   gem 'faker', '~> 1.0'
   gem 'shoulda-matchers'
+  gem 'valid_attribute'
 end 
 
 # To use ActiveModel has_secure_password

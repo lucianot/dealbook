@@ -55,8 +55,8 @@ Deal.blueprint do
   amount          { (10_000_000..10_001_000).to_a.sample } 
   pre_valuation   { (100_000_000..100_001_000).to_a.sample } 
   source_url      { 'http://' + Faker::Internet.domain_name }
-  company
-  investor
+  # company
+  # investor
 end
 
 
