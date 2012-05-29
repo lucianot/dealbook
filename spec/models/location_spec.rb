@@ -64,6 +64,22 @@ describe Location do
     end 
   end
 
+  # Uniqueness of country + region + city
+  context 'when location attributes are' do
+    context 'not unique (only two)' do
+      before { Location.make!( :country => @location.country,
+                               :city => @location.city ) }
+      it { should be_valid }
+    end
+
+    context 'not unique (all three)' do
+      before { Location.make!( :country => @location.country,
+                               :region => @location.region,
+                               :city => @location.city ) }
+      it { should_not be_valid }
+    end
+  end
+
   # Has many companies
   context 'when it has many companies' do
     before { @complete_location = Location.make!(:complete) }

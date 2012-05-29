@@ -6,8 +6,8 @@ class Location < ActiveRecord::Base
   #Validations
   validates :country, :length => { :in => 2..100 }
   validates :region,  :length => { :in => 2..100 }
-  validates :city,    :length => { :in => 2..100 } 
-  # TODO: uniqueness of country+city
+  validates :city,    :length => { :in => 2..100 },
+                      :uniqueness => { :scope => [ :country, :region ] } 
 
   attr_accessible :city, :country, :region
 end
