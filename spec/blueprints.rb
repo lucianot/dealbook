@@ -39,7 +39,7 @@ end
 
 Location.blueprint do
   country     { 'United States' }
-  region      { Faker::Address.us_state_abbr }
+  region      { Faker::Address.state_abbr }
   city        { Faker::Address.city }
 end
 

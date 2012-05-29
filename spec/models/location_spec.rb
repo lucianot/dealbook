@@ -11,7 +11,6 @@ describe Location do
 
   # Invalid country
   context 'when :country is' do
-
     context 'not present' do
       before { @location.country = nil }
       it { should_not be_valid }
@@ -31,6 +30,11 @@ describe Location do
 
   # Invalid region
   context 'when :region is' do
+    context 'not present' do
+      before { @location.region = nil }
+      it { should_not be_valid }
+    end 
+
     context 'too short' do
       before { @location.region = 'a' }
       it { should_not be_valid }
@@ -91,3 +95,10 @@ describe Location do
   end
 
 end
+
+
+
+
+
+
+
