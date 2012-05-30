@@ -40,7 +40,8 @@ describe Investor do
   context 'associations' do
     it { should have_and_belong_to_many(:markets) }
     it { should have_and_belong_to_many(:locations) }
-    it { should have_many(:deals) }    
+    it { should have_many(:deals) }   
+    it { should have_many(:companies).through(:deals) } 
   end 
 
 
