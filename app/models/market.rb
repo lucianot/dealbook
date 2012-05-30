@@ -4,9 +4,8 @@ class Market < ActiveRecord::Base
   has_and_belongs_to_many :investors
 
   #Validations
-  validates :name, :presence => true,
-                 :length => { :in => 2..100 },
-                 :uniqueness => true
+  validates :name, :length => { :in => 2..100 },
+                   :uniqueness => true
 
   attr_accessible :name
 end

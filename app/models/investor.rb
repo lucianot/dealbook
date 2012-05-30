@@ -13,8 +13,7 @@ class Investor < ActiveRecord::Base
   CATEGORIES = %w[angel VC accelerator incubator corporate]
   STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
 
-  validates :name, :presence => true,
-                   :length => { :in => 2..100 },
+  validates :name, :length => { :in => 2..100 },
                    :uniqueness => true
   validates :description, :length => { :maximum => 600 }
   validates :website, :format => { :with => url_regex } 
