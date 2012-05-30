@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Deal do
-  before(:each) { @deal = Deal.make }
+  before(:each) { @deal = Deal.make! }
   subject { @deal }
 
   # Valid
@@ -28,12 +28,14 @@ describe Deal do
 
     it { should have_valid(:source_url).when('http://techcrunch.com', nil) }
     it { should_not have_valid(:source_url).when('http://invalid') }
+
+    # it { should_not have_valid(:company_id).when(nil) }    
   end
 
   # Associations
   context 'associations' do
     it { should belong_to(:company) }
-    it { should belong_to(:investor) }
+    it { should have_and_belong_to_many(:investors) }
   end
 
 

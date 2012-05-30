@@ -3,7 +3,7 @@ class Investor < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
-  has_many :deals, :dependent => :destroy
+  has_and_belongs_to_many :deals
   has_many :companies, :through => :deals
 
   #Validations
@@ -21,7 +21,7 @@ class Investor < ActiveRecord::Base
   validates :linkedin, :format => { :with => linkedin_regex }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
   validates :category, :inclusion => { :in => CATEGORIES, :allow_nil => true }
-  validate :all_stages_must_be_included_in_list
+  validate  :all_stages_must_be_included_in_list
 
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
   serialize :stage
