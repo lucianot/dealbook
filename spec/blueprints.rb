@@ -59,6 +59,25 @@ Deal.blueprint do
   investors 2
 end
 
+User.blueprint do
+  email                   { Faker::Internet.email }
+  password                { 'password' }
+  password_confirmation   { password }  
+  full_name                    { Faker::Name.name }
+end
+
+User.blueprint(:admin) do
+  roles   { [ Role.make(:admin), Role.make ] }
+end
+
+Role.blueprint do
+  name    { 'Regular' }
+end
+
+Role.blueprint(:admin) do 
+  name    { 'Admin' }
+end
+
 
 
 

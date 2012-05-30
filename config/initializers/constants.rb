@@ -5,6 +5,7 @@
   INVESTOR_STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']  
   DEAL_CATEGORIES = ['financing round', 'acquisition', 'merger']
   DEAL_ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
+  USER_ROLES = %w[Admin Moderator Regular Banned]
 
   # Regex
   URL_REGEX = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
