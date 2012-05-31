@@ -3,9 +3,13 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'jquery-rails'
+
+# users and roles
 gem 'devise', '~> 1.5'
-gem 'cancan'
-# gem 'chronic'
+gem 'cancan', '~> 1.6'
+
+# versions
+gem 'paper_trail', '~> 2.6'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,15 +25,17 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.10'
   gem 'capybara', '~> 1.1'
-  gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-rspec', '~> 0.7'
-  gem 'spork', '~> 0.9'
   # gem 'factory_girl_rails', '~> 3.3'
   gem 'machinist', '~> 2.0'
   gem 'faker', '~> 1.0'
-  gem 'shoulda-matchers'
-  gem 'valid_attribute'
+  gem 'shoulda-matchers', '~> 1.1'
+  gem 'valid_attribute', '~> 1.1'
+  gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec', '~> 0.7'
+  gem 'spork', '~> 0.9'
 end 
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

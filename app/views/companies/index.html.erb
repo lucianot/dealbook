@@ -1,0 +1,27 @@
+<h1>Listing companies</h1>
+
+<% if @companies.empty? %>
+  No companies yet.
+<% else %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @companies.each do |company| %>
+    <tr>
+      <td><%= company.name %></td>      
+      <td><%= link_to 'Show', company %></td>
+      <td><%= link_to 'Edit', edit_company_path(company) %></td>
+      <td><%= link_to 'Destroy', company, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+  <br>
+
+<%= link_to 'New Company', new_company_path %>

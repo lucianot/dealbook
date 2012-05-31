@@ -10,4 +10,5 @@ class Location < ActiveRecord::Base
                       :uniqueness => { :scope => [ :country, :region ] } 
 
   attr_accessible :city, :country, :region
+  has_paper_trail
 end

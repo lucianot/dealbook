@@ -14,6 +14,7 @@ class Deal < ActiveRecord::Base
   # validates :company_id, :presence => true 
 
   attr_accessible :amount, :category, :deal_date, :pre_valuation, :round, :source_url
+  has_paper_trail
 
   private 
   def deal_date_must_be_in_date_format

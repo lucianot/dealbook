@@ -18,6 +18,7 @@ class Investor < ActiveRecord::Base
 
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
   serialize :stage
+  has_paper_trail
 
   private
   def all_stages_must_be_included_in_list

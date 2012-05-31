@@ -8,4 +8,5 @@ class Market < ActiveRecord::Base
                    :uniqueness => true
 
   attr_accessible :name
+  has_paper_trail
 end

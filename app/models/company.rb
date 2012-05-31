@@ -14,4 +14,5 @@ class Company < ActiveRecord::Base
   validates :status, :inclusion => { :in => COMPANY_STATUSES, :allow_nil => true }
 
   attr_accessible :description, :linkedin, :name, :status, :website
+  has_paper_trail
 end
