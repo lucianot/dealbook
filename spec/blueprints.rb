@@ -60,22 +60,22 @@ Deal.blueprint do
 end
 
 User.blueprint do
-  email                   { Faker::Internet.email }
+  email                   { 'user@example.com' }
   password                { 'password' }
   password_confirmation   { password }  
-  full_name               { Faker::Name.name }
+  full_name               { 'Faker::Name.name' }
 end
 
-User.blueprint(:admin) do
-  roles   { [ Role.make(:admin), Role.make ] }
+User.blueprint(:admin) do 
+  roles       { [ Role.make(:admin) ] }
 end
 
 Role.blueprint do
-  name    { 'Regular' }
+  name        { 'Regular' }
 end
 
 Role.blueprint(:admin) do 
-  name    { 'Admin' }
+  name        { 'Admin' }
 end
 
 
