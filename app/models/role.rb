@@ -1,9 +1,4 @@
 class Role < ActiveRecord::Base
-  # Validations
-  validates :name, :inclusion => { :in => USER_ROLES }
-
-  # Associations
-  has_and_belongs_to_many :users
-
-  attr_accessible :name
+  has_and_belongs_to_many :users, :join_table => :users_roles
+  belongs_to :resource, :polymorphic => true
 end
