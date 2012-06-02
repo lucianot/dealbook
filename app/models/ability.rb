@@ -7,12 +7,12 @@ class Ability
         can :manage, :all
       # elsif user.has_role? :moderator
       #   can :manage, [ Company, Investor, Deal, Market, Location ]
-      # elsif user.has_role? :regular
-      #   can [:create, :update], [ Company, Investor, Deal ]
+      elsif user.has_role? :normal
+        can :manage, Company
       # elsif user.has_role? :banned
       #   cannot :manage, :all
-      # else
-      #   can :read, [ Company, Investor, Deal ]
+      else
+        can :read, Company
       end
   end
 

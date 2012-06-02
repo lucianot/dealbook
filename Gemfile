@@ -27,7 +27,6 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.10'
   gem 'capybara', '~> 1.1'
-  # gem 'factory_girl_rails', '~> 3.3'
   gem 'machinist', '~> 2.0'
   gem 'faker', '~> 1.0'
   gem 'shoulda-matchers', '~> 1.1'

@@ -22,15 +22,19 @@ describe User do
 
 
   # # Class methods
-  # context '#has_role?' do
+  # context '#top_role' do
   #   before do 
-  #     roles = []
-  #     roles << Role.make(:admin)
-  #     @admin = User.make!(:roles => roles)
+  #     @admin = User.make!
   #   end
 
-  #   it 'should return true if user has role' do
-  #     @admin.has_role?('admin').should be_true
+  #   it 'should return top role if has role' do
+  #     @admin.add_role :admin
+  #     @admin.add_role :normal
+  #     @admin.top_role.should == "Admin"
   #   end
+
+  #   it 'should return top role if has no role' do
+  #     @admin.top_role.should be_nil
+  #   end    
   # end
 end

@@ -4,8 +4,8 @@ require 'capybara/rspec'
 # Put your acceptance spec helpers inside /spec/acceptance/support
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-RSpec.configure do |config|
-end
+# RSpec.configure do |config|
+# end
 
 def sign_up_new_user
   user = User.make
@@ -25,5 +25,13 @@ def login(user)
   fill_in 'Password', :with => user.password
   click_button 'Sign in'
 end
+
+def login_normal
+  normal = User.make!
+  normal.add_role :normal
+  login(normal)
+end
+
+
 
 

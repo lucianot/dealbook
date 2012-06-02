@@ -21,3 +21,4 @@ user2 = User.create! :full_name => 'Normal User',
 puts 'New user created: ' << user2.full_name
 
 user.add_role :admin
+user2.add_role :normal 

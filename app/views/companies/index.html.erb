@@ -1,7 +1,7 @@
-<h1>Listing companies</h1>
+<h3>Companies#index</h3>
 
 <% if @companies.empty? %>
-  No companies yet.
+  No companies yet.<br>
 <% else %>
   <table>
     <tr>
@@ -14,9 +14,9 @@
   <% @companies.each do |company| %>
     <tr>
       <td><%= company.name %></td>      
-      <td><%= link_to 'Show', company %></td>
-      <td><%= link_to 'Edit', edit_company_path(company) %></td>
-      <td><%= link_to 'Destroy', company, confirm: 'Are you sure?', method: :delete %></td>
+      <td><%= link_to('Show', company) if can? :show, Company %></td>
+      <td><%= link_to('Edit', edit_company_path(company)) if can? :edit, Company %></td>
+      <td><%= link_to('Destroy', company, confirm: 'Are you sure?', method: :delete) if can? :destroy, Company %></td>
     </tr>
   <% end %>
   </table>
@@ -24,4 +24,6 @@
 
   <br>
 
-<%= link_to 'New Company', new_company_path %>
+<% if can? :create, Company %>
+  <%= link_to 'New Company', new_company_path %>
+<% end %>

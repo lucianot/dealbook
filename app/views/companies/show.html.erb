@@ -1,5 +1,28 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+<h3>Companies#show</h3>
 
+<p>
+  <b>Company:</b>
+  <%= @company.name %>  
+</p>
+<p>
+  <b>Description:</b>
+  <%= @company.description %>
+</p>
+<p>
+  <b>Website:</b>
+  <%= @company.website %>
+</p>
+<p>
+  <b>Linkedin:</b>
+  <%= @company.linkedin %>
+</p>
+<p>
+  <b>Status:</b>
+  <%= @company.status %>
+</p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
+<% if can? :edit, Company %> 
+  <%= link_to('Edit', edit_company_path(@company)) %> |
+<% end %>
 <%= link_to 'Back', companies_path %>
