@@ -21,20 +21,20 @@ describe User do
   end
 
 
-  # # Class methods
-  # context '#top_role' do
-  #   before do 
-  #     @admin = User.make!
-  #   end
+  # Class methods
+  context '#top_role' do
+    before do 
+      @admin = User.make!
+    end
 
-  #   it 'should return top role if has role' do
-  #     @admin.add_role :admin
-  #     @admin.add_role :normal
-  #     @admin.top_role.should == "Admin"
-  #   end
+    it 'should return top role if has role' do
+      @admin.add_role :admin
+      @admin.add_role :normal
+      @admin.top_role.should == "Admin"
+    end
 
-  #   it 'should return top role if has no role' do
-  #     @admin.top_role.should be_nil
-  #   end    
-  # end
+    it 'should return top role if has no role' do
+      @admin.top_role.should be_nil
+    end    
+  end
 end

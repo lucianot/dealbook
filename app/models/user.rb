@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me
   # attr_accessible :username, :title, :body
 
+  # Class methods
+  def top_role
+    roles = self.roles
+    roles.first.name.titleize unless roles.empty?
+  end
 end
