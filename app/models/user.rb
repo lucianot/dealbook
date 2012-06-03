@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
   validates :full_name, :length => { :in => (2..100) }
   validates :role, :inclusion => { :in => ROLES }
 
+  # Callbacks
+  after_initialize :init
+
+  def init
+    self.role ||= 'normal'
+  end
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, :role
   # attr_accessible :username, :title, :body
