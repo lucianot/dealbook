@@ -7,7 +7,7 @@ gem 'jquery-rails'
 # users and roles
 gem 'devise', '~> 1.5'
 gem 'cancan', '~> 1.6'
-gem 'rolify', '~> 3.1'
+# gem 'rolify', '~> 3.1'
 
 # versions
 gem 'paper_trail', '~> 2.6'

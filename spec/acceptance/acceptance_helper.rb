@@ -28,10 +28,14 @@ end
 
 def login_normal
   normal = User.make!
-  normal.add_role :normal
   login(normal)
+  normal
 end
 
-
+def login_admin
+  admin = User.make!(:admin)
+  login(admin)
+  admin
+end
 
 

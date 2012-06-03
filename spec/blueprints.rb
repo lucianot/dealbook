@@ -64,19 +64,14 @@ User.blueprint do
   password                { 'password' }
   password_confirmation   { password }  
   full_name               { 'Faker::Name.name' }
+  role                    { 'normal' }
 end
 
 User.blueprint(:admin) do 
-  roles       { [ Role.make(:admin) ] }
+  role            { 'admin' }
 end
 
-Role.blueprint do
-  name        { 'Regular' }
-end
 
-Role.blueprint(:admin) do 
-  name        { 'Admin' }
-end
 
 
 

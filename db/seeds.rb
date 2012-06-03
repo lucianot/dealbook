@@ -8,17 +8,16 @@
 
 
 puts 'SETTING UP DEFAULT USER LOGIN'
-user = User.create! :full_name => 'The Admin', 
-                    :email => 'admin@example.com', 
-                    :password => 'please', 
-                    :password_confirmation => 'please'
-puts 'New user created: ' << user.full_name
-
-user2 = User.create! :full_name => 'Normal User', 
-                     :email => 'normal@example.com', 
+admin = User.create! :full_name => 'The Admin', 
+                     :email => 'admin@example.com', 
                      :password => 'please', 
-                     :password_confirmation => 'please'
-puts 'New user created: ' << user2.full_name
+                     :password_confirmation => 'please',
+                     :role => 'admin'
+puts 'New user created: ' << admin.full_name
 
-user.add_role :admin
-user2.add_role :normal 
+user = User.create! :full_name => 'Normal User', 
+                    :email => 'normal@example.com', 
+                    :password => 'please', 
+                    :password_confirmation => 'please',
+                    :role => 'normal'
+puts 'New user created: ' << user.full_name

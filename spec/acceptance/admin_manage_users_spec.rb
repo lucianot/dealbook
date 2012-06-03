@@ -4,35 +4,17 @@ feature 'admin manage users' do
   
   context 'login' do
     scenario 'valid' do
-      admin = User.make!
-      admin.add_role :admin
-      login(admin)
-      admin.has_role?(:admin).should be_true
+      admin = login_admin
+      admin.role.should == 'admin'
       page.should have_link 'Admin'
     end
 
     scenario 'invalid' do
-      user = User.make!
-      login(user)
-      user.has_role?(:admin).should be_false
+      user = login_normal
+      user.role.should_not == 'admin'
       page.should_not have_link 'Admin'
     end
-  end
 
-  context 'login' do
-    scenario 'valid' do
-      admin = User.make!
-      admin.add_role :admin
-      login(admin)
-      admin.has_role?(:admin).should be_true
-      page.should have_link 'Admin'
-    end
+  end # context
 
-    scenario 'invalid' do
-      user = User.make!
-      login(user)
-      user.has_role?(:admin).should be_false
-      page.should_not have_link 'Admin'
-    end
-  end
-end
+end # feature

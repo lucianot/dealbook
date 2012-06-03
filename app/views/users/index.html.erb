@@ -11,7 +11,7 @@
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.full_name, user %></td>
-      <td><%= user.top_role %></td>
+      <td><%= user.role %></td>
       <td><%= user.created_at.to_date %></td>
       <td><%= link_to('Edit', edit_user_path(user)) if can? :edit, User %></td>
     </tr>

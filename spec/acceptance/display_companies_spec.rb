@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'display companies' do
   
-  context 'any user' do
+  context 'unauthenticated user' do
 
     scenario 'no companies' do
       visit '/'
