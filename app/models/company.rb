@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+  STATUSES = %w[active inactive acquired merged]  
+
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
@@ -11,7 +13,7 @@ class Company < ActiveRecord::Base
   validates :description, :length => { :maximum => 600 }
   validates :website, :format => { :with => URL_REGEX, :allow_nil => true } 
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true }
-  validates :status, :inclusion => { :in => COMPANY_STATUSES, :allow_nil => true }
+  validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
 
   attr_accessible :description, :linkedin, :name, :status, :website
   has_paper_trail

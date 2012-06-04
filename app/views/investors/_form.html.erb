@@ -18,11 +18,11 @@
   </div>
     <div class="field">
     <%= f.label :category %><br />
-    <%= f.select(:category, options_for_select(INVESTOR_CATEGORIES) ) %>
+    <%= f.select(:category, options_for_select(Investor::CATEGORIES) ) %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select(:status, options_for_select(INVESTOR_STATUSES) ) %>
+    <%= f.select(:status, options_for_select(Investor::STATUSES) ) %>
   </div>
   <div class="actions">
     <%= f.submit 'Submit' %>

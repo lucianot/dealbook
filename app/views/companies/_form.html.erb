@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select(:status, options_for_select(COMPANY_STATUSES) ) %>
+    <%= f.select(:status, options_for_select(Company::STATUSES) ) %>
   </div>
   <div class="actions">
     <%= f.submit 'Submit' %>

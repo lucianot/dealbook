@@ -1,4 +1,7 @@
 class Deal < ActiveRecord::Base
+  CATEGORIES = ['financing round', 'acquisition', 'merger']
+  ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
+
   # Associations
   belongs_to :company
   has_and_belongs_to_many :investors
@@ -6,8 +9,8 @@ class Deal < ActiveRecord::Base
   #Validations
   validates :deal_date, :presence => true
   validate  :deal_date_must_be_in_date_format
-  validates :category, :inclusion => { :in => DEAL_CATEGORIES }
-  validates :round, :inclusion => { :in => DEAL_ROUNDS }
+  validates :category, :inclusion => { :in => CATEGORIES }
+  validates :round, :inclusion => { :in => ROUNDS }
   validates :amount, :numericality => { :only_integer => true, :allow_nil => true }
   validates :pre_valuation, :numericality => { :only_integer => true, :allow_nil => true }
   validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true }
