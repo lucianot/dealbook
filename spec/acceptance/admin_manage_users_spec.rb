@@ -11,11 +11,10 @@ feature 'manage users' do
       click_link 'Edit'
       page.should have_content 'Users#edit'
       page.should have_field 'Full name', :with => user.full_name
-      page.should have_field 'Role', :with => 'normal'
       select 'Moderator', :from => 'Role'
-      page.should have_field 'Role', :with => 'moderator'
-      expect {click_button 'Submit'}.to change {user.role}.to('moderator')
+      click_button 'Submit'
       page.should have_content 'User was successfully updated.'      
+      page.should have_content 'Role: moderator'
     end
   end
 
