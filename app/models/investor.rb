@@ -10,8 +10,8 @@ class Investor < ActiveRecord::Base
   validates :name, :length => { :in => 2..100 },
                    :uniqueness => true
   validates :description, :length => { :maximum => 600 }
-  validates :website, :format => { :with => URL_REGEX } 
-  validates :linkedin, :format => { :with => LINKEDIN_REGEX }
+  validates :website, :format => { :with => URL_REGEX, :allow_nil => true } 
+  validates :linkedin, :format => { :with => LINKEDIN_REGEX, :allow_nil => true }
   validates :status, :inclusion => { :in => INVESTOR_STATUSES, :allow_nil => true }
   validates :category, :inclusion => { :in => INVESTOR_CATEGORIES, :allow_nil => true }
   validate  :all_stages_must_be_included_in_list

@@ -1,0 +1,13 @@
+<h3>Investors#show</h3>
+
+<p>Investor: <%= @investor.name %></p>
+<p>Description: <%= @investor.description %></p>
+<p>Website: <%= @investor.website %></p>
+<p>Linkedin: <%= @investor.linkedin %></p>
+<p>Category: <%= @investor.category %></p>
+<p>Status: <%= @investor.status %></p>
+
+<% if can? :edit, Investor %> 
+  <%= link_to('Edit', edit_investor_path(@investor)) %> |
+<% end %>
+<%= link_to 'Back', investors_path %>

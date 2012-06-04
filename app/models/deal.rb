@@ -10,7 +10,7 @@ class Deal < ActiveRecord::Base
   validates :round, :inclusion => { :in => DEAL_ROUNDS }
   validates :amount, :numericality => { :only_integer => true, :allow_nil => true }
   validates :pre_valuation, :numericality => { :only_integer => true, :allow_nil => true }
-  validates :source_url, :format => { :with => URL_REGEX }
+  validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true }
   # validates :company_id, :presence => true 
 
   attr_accessible :amount, :category, :deal_date, :pre_valuation, :round, :source_url

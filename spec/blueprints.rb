@@ -17,7 +17,7 @@ Investor.blueprint do
   name          { Faker::Company.name }
   description   { Faker::Company.catch_phrase }
   website       { 'http://' + Faker::Internet.domain_name }
-  linkedin      { 'http://www.linkedin.com/company/' + rand(100_000).to_s }
+  linkedin      { 'http://www.linkedin.com/profile/view?id=' + rand(100_000).to_s }
   status        { 'active' }
   category      { 'VC' }
   stage         { [ 'Seed', 'Series A' ] } 

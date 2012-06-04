@@ -35,7 +35,7 @@ feature 'manage companies' do
 
     scenario 'can edit companies' do
       company = Company.make!
-      new_name = "#{company.name} Reloaded"
+      new_name = "#{company.name} Clone"
       login_normal
       click_link 'Companies'
       click_link 'Edit'

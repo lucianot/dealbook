@@ -1,0 +1,29 @@
+<h3>Investors#index</h3>
+
+<% if @investors.empty? %>
+  No investors yet.<br>
+<% else %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @investors.each do |investor| %>
+    <tr>
+      <td><%= investor.name %></td>      
+      <td><%= link_to('Show', investor) if can? :show, Investor %></td>
+      <td><%= link_to('Edit', edit_investor_path(investor)) if can? :edit, Investor %></td>
+      <td><%= link_to('Destroy', investor, confirm: 'Are you sure?', method: :delete) if can? :destroy, Investor %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+  <br>
+
+<% if can? :create, Investor %>
+  <%= link_to 'New Investor', new_investor_path %>
+<% end %>

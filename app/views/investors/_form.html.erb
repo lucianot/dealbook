@@ -1,4 +1,4 @@
-<%= form_for(@company) do |f| %>
+<%= form_for(@investor) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br />
@@ -16,15 +16,16 @@
     <%= f.label :linkedin %><br />
     <%= f.text_field :linkedin %>
   </div>
+    <div class="field">
+    <%= f.label :category %><br />
+    <%= f.select(:category, options_for_select(INVESTOR_CATEGORIES) ) %>
+  </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select(:status, options_for_select(COMPANY_STATUSES) ) %>
+    <%= f.select(:status, options_for_select(INVESTOR_STATUSES) ) %>
   </div>
   <div class="actions">
     <%= f.submit 'Submit' %>
   </div>
 <% end %>
-
-
-
 

@@ -9,8 +9,8 @@ class Company < ActiveRecord::Base
   validates :name, :length => { :in => 2..100 },
                    :uniqueness => true
   validates :description, :length => { :maximum => 600 }
-  validates :website, :format => { :with => URL_REGEX } 
-  validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX }
+  validates :website, :format => { :with => URL_REGEX, :allow_nil => true } 
+  validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true }
   validates :status, :inclusion => { :in => COMPANY_STATUSES, :allow_nil => true }
 
   attr_accessible :description, :linkedin, :name, :status, :website

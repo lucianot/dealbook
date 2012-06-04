@@ -2,6 +2,7 @@ Dealbook::Application.routes.draw do
   devise_for :users
   resources :users, :only => [ :show, :index, :edit, :update ]
   resources :companies
+  resources :investors  
 
   get "home/index"
 
