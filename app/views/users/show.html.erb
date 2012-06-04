@@ -2,6 +2,6 @@
 
 <p>User: <%= @user.full_name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
-<p>Role: <%= @user.top_role if @user.email %></p>
+<p>Role: <%= @user.role if @user.email %></p>
 
 <%= link_to 'Back', users_path %>

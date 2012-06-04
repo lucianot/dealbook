@@ -24,7 +24,8 @@ describe Location do
     context 'when location attributes are' do
       context 'not unique (only two)' do
         before { Location.make!( :country => @location.country,
-                                 :city => @location.city ) }
+                                 :region => 'unique region',
+                                 :city => @location.city, ) }
         it { should be_valid }
       end
 

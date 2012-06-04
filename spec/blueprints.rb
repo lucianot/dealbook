@@ -60,7 +60,7 @@ Deal.blueprint do
 end
 
 User.blueprint do
-  email                   { 'user@example.com' }
+  email                   { "user#{sn}@example.com" }
   password                { 'password' }
   password_confirmation   { password }  
   full_name               { 'Faker::Name.name' }
@@ -68,7 +68,7 @@ User.blueprint do
 end
 
 User.blueprint(:admin) do 
-  role            { 'admin' }
+  role                    { 'admin' }
 end
 
 

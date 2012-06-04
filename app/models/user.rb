@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Callbacks
   after_initialize :init
-
+  
   def init
     self.role ||= 'normal'
   end
@@ -20,5 +20,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, :role
   # attr_accessible :username, :title, :body
+
+  # Class methods
+  def is?(role)
+    self.role == role.to_s.downcase
+  end
 
 end

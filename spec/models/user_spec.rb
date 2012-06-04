@@ -18,22 +18,21 @@ describe User do
     it { should_not have_valid(:role).when('invalid', '', nil) }
   end
 
-  # Associations
+  # Class methods
+  context '#is?' do
+    before do 
+      @admin = User.make!(:admin)
+    end
 
-  # # Class methods
-  # context '#top_role' do
-  #   before do 
-  #     @admin = User.make!
-  #   end
+    it 'should be true if admin' do
+      @admin.is?(:admin).should be_true
+    end
 
-  #   it 'should return top role if has role' do
-  #     @admin.add_role :admin
-  #     @admin.add_role :normal
-  #     @admin.top_role.should == "Admin"
-  #   end
+    it 'should be false if admin' do
+      @admin.is?(:normal).should be_false
+    end
+  end
 
-  #   it 'should return top role if has no role' do
-  #     @admin.top_role.should be_nil
-  #   end    
-  # end
 end
+
+
