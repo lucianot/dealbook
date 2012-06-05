@@ -22,9 +22,13 @@ feature 'display companies' do
       company = Company.make!
       visit '/'
       click_link 'Companies'
-      click_link 'Show'             # TODO: change link to company name
+      click_link company.name             # TODO: change link to company name
       page.should have_content company.name
       page.should have_content company.description
+      page.should have_content company.website
+      page.should have_content company.linkedin
+      page.should have_content company.status          
+      #TODO: include markets, locations
       page.should_not have_link 'Edit'
       page.should have_link 'Back'
     end
