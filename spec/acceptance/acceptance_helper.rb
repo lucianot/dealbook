@@ -38,4 +38,10 @@ def login_admin
   admin
 end
 
+def login_mod
+  mod = User.make!(:mod)
+  login(mod)
+  mod
+end
+
 

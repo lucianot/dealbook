@@ -15,6 +15,13 @@ admin = User.create! :full_name => 'The Admin',
                      :role => 'admin'
 puts 'New user created: ' << admin.full_name
 
+mod = User.create!  :full_name => 'The Moderator', 
+                    :email => 'mod@example.com', 
+                    :password => 'please', 
+                    :password_confirmation => 'please',
+                    :role => 'moderator'
+puts 'New user created: ' << user.full_name
+
 user = User.create! :full_name => 'Normal User', 
                     :email => 'normal@example.com', 
                     :password => 'please', 

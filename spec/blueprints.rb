@@ -71,6 +71,10 @@ User.blueprint(:admin) do
   role                    { 'admin' }
 end
 
+User.blueprint(:mod) do 
+  role                    { 'moderator' }
+end
+
 
 
 

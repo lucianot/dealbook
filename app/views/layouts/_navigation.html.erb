@@ -5,10 +5,13 @@
   
 <% if user_signed_in? %>
 
+  <% if can? :manage, Market %>
+    <li><%= link_to 'Markets', markets_path %></li>
+  <% end %>
   <li><%= link_to('Logout', destroy_user_session_path, :method=>'delete') %></li>
   <li><%= link_to('Edit account', edit_user_registration_path) %></li>  
-  <% if can? :manage, User %>
-    <li><%= link_to('Admin', users_path) %></li>
+  <% if can? :manage, User %>  
+    <li><%= link_to 'Admin', users_path %></li>
   <% end %>
 
 <% else %>

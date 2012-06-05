@@ -22,6 +22,4 @@
 
   <br>
 
-<% if can? :create, Investor %>
-  <%= link_to 'New Investor', new_investor_path %>
-<% end %>
+<%= link_to('New Investor', new_investor_path) if can? :create, Investor %>

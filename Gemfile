@@ -33,7 +33,7 @@ group :development, :test do
   gem 'valid_attribute', '~> 1.1'
   gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec', '~> 0.7'
-  gem 'spork', '~> 0.9'
+  # gem 'spork', '~> 0.9'
   gem 'spin', '~> 0.4.6'
   gem 'guard-spin'
 end 

@@ -7,7 +7,7 @@ class Ability
         can :manage, [ Company, Investor, Deal, Market, Location ]
         can :manage, User, :role => User::ROLES-['admin']
       elsif user.role == 'moderator'
-        can :manage, [ Company, Investor ]
+        can :manage, [ Company, Investor, Market ]
       elsif user.role == 'normal'
         can :manage, [ Company, Investor ]
       # elsif user.role == 'banned'
