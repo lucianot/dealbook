@@ -4,6 +4,7 @@ Dealbook::Application.routes.draw do
   resources :companies
   resources :investors 
   resources :markets, :except => :show
+  resources :locations, :except => :show
 
   get "home/index"
 

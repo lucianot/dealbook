@@ -11,4 +11,10 @@ class Location < ActiveRecord::Base
 
   attr_accessible :city, :country, :region
   has_paper_trail
+
+  # Methods
+  def full
+    "#{self.city}, #{self.region}, #{self.country}"
+  end
+  
 end

@@ -12,7 +12,6 @@ feature 'display markets' do
   context 'normal user' do
     scenario 'cannot access markets' do
       normal = login_normal
-      normal.role.should == 'normal'
       page.should_not have_link 'Markets'
     end    
   end

@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
-feature 'manage marekts' do
+feature 'manage markets' do
   
   context 'moderator' do
 

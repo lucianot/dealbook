@@ -8,6 +8,9 @@
   <% if can? :manage, Market %>
     <li><%= link_to 'Markets', markets_path %></li>
   <% end %>
+  <% if can? :manage, Location %>
+    <li><%= link_to 'Locations', locations_path %></li>
+  <% end %>  
   <li><%= link_to('Logout', destroy_user_session_path, :method=>'delete') %></li>
   <li><%= link_to('Edit account', edit_user_registration_path) %></li>  
   <% if can? :manage, User %>  

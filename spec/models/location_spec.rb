@@ -44,6 +44,11 @@ describe Location do
     it { should have_and_belong_to_many(:investors) }        
   end 
 
+  # Methods
+  context '#full' do
+    it { @location.full.should == "#{@location.city}, #{@location.region}, #{@location.country}"}
+  end
+
 
   # # Invalid country
   # context 'when :country is' do
