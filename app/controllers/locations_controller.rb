@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all  # TODO: sort alpha, by to_s
+    @locations = Location.order(:country).order(:region).order(:city).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
