@@ -18,20 +18,22 @@ feature 'manage investors' do
 
     scenario 'can create new investor' do
       investor = Investor.make
+      investor.stage = nil
       login_normal
       click_link 'Investors'
       click_link 'New Investor'
       fill_in 'Name', :with => investor.name
-      fill_in 'Description', :with => investor.description
-      fill_in 'Website', :with => investor.website
-      fill_in 'Linkedin', :with => investor.linkedin 
       select 'VC', :from => 'Category'      
       select 'active', :from => 'Status'
+      check 'stages_2'
+      check 'stages_3'
       expect do
         click_button 'Submit'
       end.to change {Investor.count}.by(1)
       page.should have_content 'Investor was successfully created.'
       page.should have_content investor.name
+      click_link investor.name
+      page.should have_content 'Series Seed, Series A'
     end
 
     scenario 'can edit investors' do
