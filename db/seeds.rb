@@ -1,12 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'json'
 
-
+# set users
 puts 'SETTING UP DEFAULT USER LOGIN'
 admin = User.create! :full_name => 'The Admin', 
                      :email => 'admin@example.com', 
@@ -20,7 +14,7 @@ mod = User.create!  :full_name => 'The Moderator',
                     :password => 'please', 
                     :password_confirmation => 'please',
                     :role => 'moderator'
-puts 'New user created: ' << user.full_name
+puts 'New user created: ' << mod.full_name
 
 user = User.create! :full_name => 'Normal User', 
                     :email => 'normal@example.com', 
@@ -28,3 +22,25 @@ user = User.create! :full_name => 'Normal User',
                     :password_confirmation => 'please',
                     :role => 'normal'
 puts 'New user created: ' << user.full_name
+
+# parse json
+filename = "#{Rails.root}/db/brazil_locations.json"
+data = File.read(filename)
+parsed_data = JSON.parse(data)
+
+# store in hash
+states = {}
+parsed_data['estados'].each do |state|
+  states[state['sigla']] = state['cidades']
+end
+
+# populate DB
+states.each do |state, cities|
+  cities.each do |city|
+    Location.create!(country: "Brazil",
+                     region: state,
+                     city: city)
+  end
+end
+
+

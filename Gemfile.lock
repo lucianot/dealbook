@@ -176,6 +176,7 @@ DEPENDENCIES
   guard-rspec (~> 0.7)
   guard-spin
   jquery-rails
+  json
   machinist (~> 2.0)
   paper_trail (~> 2.6)
   rails (= 3.2.3)
