@@ -43,11 +43,15 @@ feature 'manage investors' do
       click_link 'Investors'
       click_link 'Edit'
       fill_in 'Name', :with => new_name
+      check 'stages_2'      
+      uncheck 'stages_3'
       expect do
         click_button 'Submit'
       end.to change {Investor.count}.by(0)
       page.should have_content 'Investor was successfully updated.'
       page.should have_content new_name
+      page.should have_content 'Seed, Series Seed'
+      page.should_not have_content 'Series A'
     end
 
     scenario 'can delete investors' do
