@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin moderator normal banned guest]
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, :role
+  # attr_accessible :username, :title, :body  
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable, :omniauthable 
@@ -16,10 +19,6 @@ class User < ActiveRecord::Base
   def init
     self.role ||= 'normal'
   end
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, :role
-  # attr_accessible :username, :title, :body
 
   # Class methods
   def is?(role)

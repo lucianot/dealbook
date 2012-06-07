@@ -20,6 +20,10 @@
     <%= f.label :status %><br />
     <%= f.select(:status, options_for_select(Company::STATUSES) ) %>
   </div>
+  <div class="field">
+    <%= f.label :market_ids, 'Markets' %><br />
+    <%= f.collection_select :market_ids, Market.order(:name), :id, :name, {}, {multiple: true} %>
+  </div>  
   <div class="actions">
     <%= f.submit 'Submit' %>
   </div>

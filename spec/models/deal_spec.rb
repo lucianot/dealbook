@@ -15,18 +15,18 @@ describe Deal do
     it { should_not have_valid(:deal_date).when('a', nil) }
 
     it { should have_valid(:category).when('financing round') }
-    it { should_not have_valid(:category).when('invalid', nil) } 
+    it { should_not have_valid(:category).when('invalid', '', nil) } 
 
     it { should have_valid(:round).when('Series A') }
-    it { should_not have_valid(:round).when('invalid', nil) }
+    it { should_not have_valid(:round).when('invalid', '', nil) }
 
     it { should have_valid(:amount).when(1_000_000, nil) }
-    it { should_not have_valid(:amount).when(42.0) }
+    it { should_not have_valid(:amount).when(-1, 42.0) }  # TODO: test blank
 
     it { should have_valid(:pre_valuation).when(10_000_000, nil) }
-    it { should_not have_valid(:pre_valuation).when(42.0) }
+    it { should_not have_valid(:pre_valuation).when(-1, 42.0) }  # TODO: test blank
 
-    it { should have_valid(:source_url).when('http://techcrunch.com', nil) }
+    it { should have_valid(:source_url).when('http://techcrunch.com', '', nil) }
     it { should_not have_valid(:source_url).when('http://invalid') }
 
     # it { should_not have_valid(:company_id).when(nil) }    

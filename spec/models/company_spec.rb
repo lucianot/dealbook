@@ -16,13 +16,13 @@ describe Company do
     it { should_not have_valid(:name).when('a', 'a'*101, nil) }
     it { should validate_uniqueness_of(:name) }
 
-    it { should have_valid(:description).when('some_description', nil) }
+    it { should have_valid(:description).when('some_description', '', nil) }
     it { should_not have_valid(:description).when('a'*601) }
 
-    it { should have_valid(:website).when('http://techcrunch.com', nil) }
+    it { should have_valid(:website).when('http://techcrunch.com', '', nil) }
     it { should_not have_valid(:website).when('http://invalid') }
 
-    it { should have_valid(:linkedin).when('http://www.linkedin.com/company/' + rand(100_000).to_s, nil) }
+    it { should have_valid(:linkedin).when('http://www.linkedin.com/company/' + rand(100_000).to_s, '', nil) }
     it { should_not have_valid(:linkedin).when('http://invalid') }
 
     it { should have_valid(:status).when('acquired', 'active', nil) }

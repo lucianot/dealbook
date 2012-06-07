@@ -65,9 +65,9 @@ GEM
       thor (>= 0.14.6)
     guard-rspec (0.7.3)
       guard (>= 0.10.0)
-    guard-spin (0.1.4)
-      guard
-      spin
+    guard-spork (1.0.0)
+      guard (>= 1.0.0)
+      spork (>= 0.8.4)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -143,7 +143,7 @@ GEM
       rubyzip
     shoulda-matchers (1.1.0)
       activesupport (>= 3.0.0)
-    spin (0.4.6)
+    spork (1.0.0rc3)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -175,7 +175,7 @@ DEPENDENCIES
   devise (~> 1.5)
   faker (~> 1.0)
   guard-rspec (~> 0.7)
-  guard-spin
+  guard-spork
   jquery-rails
   json
   machinist (~> 2.0)
@@ -185,7 +185,7 @@ DEPENDENCIES
   rspec-rails (~> 2.10)
   sass-rails (~> 3.2.3)
   shoulda-matchers (~> 1.1)
-  spin (~> 0.4.6)
+  spork (~> 1.0rc)
   sqlite3
   uglifier (>= 1.0.3)
   valid_attribute (~> 1.1)

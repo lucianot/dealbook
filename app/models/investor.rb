@@ -1,7 +1,10 @@
 class Investor < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[angel VC accelerator incubator corporate]
-  STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']        
+  STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']     
+  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
+  serialize :stage
+  has_paper_trail   
 
   # Associations
   has_and_belongs_to_many :locations
@@ -18,10 +21,6 @@ class Investor < ActiveRecord::Base
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
   validates :category, :inclusion => { :in => CATEGORIES, :allow_nil => true }
   validate  :all_stages_must_be_included_in_list
-
-  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
-  serialize :stage
-  has_paper_trail
 
   private
   def all_stages_must_be_included_in_list
