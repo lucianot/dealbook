@@ -1,5 +1,6 @@
 class Market < ActiveRecord::Base
   attr_accessible :name
+  # delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail  
 
   # Associations

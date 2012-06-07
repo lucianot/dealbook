@@ -5,6 +5,7 @@
 <p>Website: <%= @company.website %></p>
 <p>Linkedin: <%= @company.linkedin %></p>
 <p>Status: <%= @company.status %></p>
+<p>Markets: <%= @company.market_name %></p>
 
 <% if can? :edit, Company %> 
   <%= link_to('Edit', edit_company_path(@company)) %> |

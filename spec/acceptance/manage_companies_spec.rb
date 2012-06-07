@@ -18,6 +18,7 @@ feature 'manage companies' do
 
     scenario 'can create new company' do
       company = Company.make
+      market = Market.make!
       login_normal
       click_link 'Companies'
       click_link 'New Company'
@@ -26,11 +27,14 @@ feature 'manage companies' do
       fill_in 'Website', :with => company.website
       fill_in 'Linkedin', :with => company.linkedin 
       select 'active', :from => 'Status'
+      select market.name, :from => 'Markets'
       expect do
         click_button 'Submit'
       end.to change {Company.count}.by(1)
       page.should have_content 'Company was successfully created.'
       page.should have_content company.name
+      click_link company.name
+      page.should have_content "Markets: #{market.name}"
     end
 
     scenario 'can edit companies' do
