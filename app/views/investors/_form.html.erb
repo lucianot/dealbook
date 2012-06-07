@@ -35,7 +35,11 @@
       <% end %>
     <% end %> 
   </div>
-
+  <div class="field">
+    <%= f.label :market_ids, 'Markets' %><br />
+    <%= f.collection_select :market_ids, Market.order(:name), :id, :name, {}, {multiple: true} %>
+  </div>  
+  
   <div class="actions">
     <%= f.submit 'Submit' %>
   </div>

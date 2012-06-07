@@ -17,6 +17,7 @@ class Company < ActiveRecord::Base
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true, :allow_blank => true }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
 
+  # Methods
   def market_name
     markets.collect {|market| market.name}.join(', ')
   end
