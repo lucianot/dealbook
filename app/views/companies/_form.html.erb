@@ -22,8 +22,15 @@
   </div>
   <div class="field">
     <%= f.label :market_ids, 'Markets' %><br />
-    <%= f.collection_select :market_ids, Market.order(:name), :id, :name, {}, {multiple: true} %>
+    <%= f.collection_select :market_ids, Market.order(:name), :id, :name, {}, 
+      {multiple: true, :class => "chzn-select", "data-placeholder" => "Select one or more markets"} %>
   </div>  
+  <div class="field">
+    <%= f.label :location_ids, 'Locations' %><br />
+    <%= f.collection_select :location_ids, Location.order(:city), :id, :full, {}, 
+      {multiple: true, :class => "chzn-select", "data-placeholder" => "Select one or more cities"} %>
+  </div>  
+    
   <div class="actions">
     <%= f.submit 'Submit' %>
   </div>
