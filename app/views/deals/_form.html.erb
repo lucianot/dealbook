@@ -1,0 +1,12 @@
+<%= form_for(@deal) do |f| %>
+
+  <div class="field">
+    <%= f.label :deal_date, 'Close date' %><br />
+    <%= f.datepicker :deal_date %>
+  </div>
+    
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>
+

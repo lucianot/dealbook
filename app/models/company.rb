@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]  
   attr_accessible :description, :linkedin, :name, :status, :website, :market_ids, :location_ids
+  
   has_paper_trail
 
   # Associations

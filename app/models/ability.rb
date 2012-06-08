@@ -7,17 +7,14 @@ class Ability
         can :manage, [ Company, Investor, Deal, Market, Location ]
         can :manage, User, :role => User::ROLES-['admin']
       elsif user.role == 'moderator'
-        can :manage, [ Company, Investor, Market, Location ]
+        can :manage, [ Company, Investor, Deal, Market, Location ]
       elsif user.role == 'normal'
-        can :manage, [ Company, Investor ]
+        can :manage, [ Company, Investor, Deal ]
       # elsif user.role == 'banned'
       #   cannot :manage, :all
       else
-        can :read, [ Company, Investor ]
+        can :read, [ Company, Investor, Deal ]
       end
   end
-
-  # 1. include condition
-  # 2. create scope, include scope
 
 end

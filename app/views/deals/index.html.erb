@@ -1,0 +1,29 @@
+<h3>Deals#index</h3>
+
+<% if @deals.empty? %>
+  No deals yet.<br>
+<% else %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Company</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @deals.each do |deal| %>
+    <tr>
+      <td><%= link_to(deal.deal_date, deal) if can? :show, Deal %></td>
+      <td><%= link_to(deal.summary, deal) if can? :show, Deal %></td>       
+      <td><%= link_to('Edit', edit_deal_path(deal)) if can? :edit, Deal %></td>
+      <td><%= link_to('Destroy', deal, confirm: 'Are you sure?', method: :delete) if can? :destroy, Deal %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+  <br>
+
+<% if can? :create, Deal %>
+  <%= link_to 'New deal', new_deal_path %>
+<% end %>

@@ -28,6 +28,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem 'chosen-rails'
+  gem 'jquery_datepicker'
 end
 
 group :development, :test do
