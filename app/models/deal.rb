@@ -1,7 +1,8 @@
 class Deal < ActiveRecord::Base
   CATEGORIES = ['financing round', 'acquisition', 'merger']
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
-  attr_accessible :amount, :category, :deal_date, :pre_valuation, :round, :source_url
+  attr_accessible :amount, :category, :deal_date, :pre_valuation, :round, :source_url, 
+                  :company_id, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
 
@@ -26,7 +27,7 @@ class Deal < ActiveRecord::Base
   def summary
     result = "#{company_name} raised"
     result += " USD #{amount}" if amount
-    result += " from #{investor_name}."
+    result += " from #{investor_name}"
   end
 
   private 

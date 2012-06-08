@@ -1,0 +1,15 @@
+<h3>Deals#show</h3>
+
+<p>Close date: <%= @deal.deal_date %></p>
+<p>Company: <%= @deal.company_name %></p>
+<p>Investors: <%= @deal.investor_name %></p>
+<p>Deal type: <%= @deal.category %></p>
+<p>Round: <%= @deal.round %></p>
+<p>Amount: <%= @deal.amount %></p>
+<p>Pre-money valution: <%= @deal.pre_valuation %></p>
+<p>Source: <%= @deal.source_url %></p>
+
+<% if can? :edit, Deal %> 
+  <%= link_to('Edit', edit_deal_path(@deal)) %> |
+<% end %>
+<%= link_to 'Back', deals_path %>

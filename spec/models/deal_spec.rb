@@ -40,7 +40,7 @@ describe Deal do
 
   # Methods
   context '#summary' do
-    it { @deal.summary.should == "#{@deal.company_name} raised USD #{@deal.amount} from #{@deal.investor_name}." }
+    it { @deal.summary.should == "#{@deal.company_name} raised USD #{@deal.amount} from #{@deal.investor_name}" }
   end
 
 end

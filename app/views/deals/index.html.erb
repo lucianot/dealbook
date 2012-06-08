@@ -6,14 +6,14 @@
   <table>
     <tr>
       <th>Date</th>
-      <th>Company</th>
+      <th>Deal Summary</th>
       <th></th>
       <th></th>
     </tr>
 
   <% @deals.each do |deal| %>
     <tr>
-      <td><%= link_to(deal.deal_date, deal) if can? :show, Deal %></td>
+      <td><%= deal.deal_date if can? :show, Deal %></td>
       <td><%= link_to(deal.summary, deal) if can? :show, Deal %></td>       
       <td><%= link_to('Edit', edit_deal_path(deal)) if can? :edit, Deal %></td>
       <td><%= link_to('Destroy', deal, confirm: 'Are you sure?', method: :delete) if can? :destroy, Deal %></td>
