@@ -19,6 +19,7 @@ feature 'manage companies' do
     scenario 'can create new company' do
       company = Company.make
       market = Market.make!
+      location = Location.make!
       login_normal
       click_link 'Companies'
       click_link 'New Company'
@@ -28,6 +29,7 @@ feature 'manage companies' do
       fill_in 'Linkedin', :with => company.linkedin 
       select 'active', :from => 'Status'
       select market.name, :from => 'Markets'
+      select location.full, :from => 'Locations'
       expect do
         click_button 'Submit'
       end.to change {Company.count}.by(1)
@@ -35,6 +37,7 @@ feature 'manage companies' do
       page.should have_content company.name
       click_link company.name
       page.should have_content "Markets: #{market.name}"
+      page.should have_content "Locations: #{location.full}"
     end
 
     scenario 'can edit companies' do

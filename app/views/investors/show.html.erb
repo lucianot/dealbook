@@ -8,6 +8,7 @@
 <p>Status: <%= @investor.status %></p>
 <p>Stages: <%= @investor.stage.join(', ') unless @investor.stage.nil? %></p>
 <p>Markets: <%= @investor.market_name %></p>
+<p>Locations: <%= @investor.location_name %></p>
 
 <% if can? :edit, Investor %> 
   <%= link_to('Edit', edit_investor_path(@investor)) %> |

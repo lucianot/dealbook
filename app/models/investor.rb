@@ -2,7 +2,7 @@ class Investor < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[angel VC accelerator incubator corporate]
   STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']     
-  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website, :market_ids
+  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website, :market_ids, :location_ids
   serialize :stage
   has_paper_trail   
 
@@ -26,6 +26,10 @@ class Investor < ActiveRecord::Base
   def market_name
     markets.collect {|market| market.name}.join(', ')
   end  
+
+  def location_name
+    locations.collect {|location| location.full}.join(', ')
+  end
   
   private
   def all_stages_must_be_included_in_list

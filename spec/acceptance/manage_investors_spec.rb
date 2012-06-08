@@ -18,7 +18,8 @@ feature 'manage investors' do
 
     scenario 'can create new investor' do
       investor = Investor.make
-      market = Market.make!      
+      market = Market.make!
+      location = Location.make!      
       investor.stage = nil
       login_normal
       click_link 'Investors'
@@ -28,7 +29,8 @@ feature 'manage investors' do
       select 'active', :from => 'Status'     
       check 'stages_2'
       check 'stages_3'
-      select market.name, :from => 'Markets' 
+      select market.name, :from => 'Markets'
+      select location.full, :from => 'Locations' 
       expect do
         click_button 'Submit'
       end.to change {Investor.count}.by(1)
@@ -37,6 +39,7 @@ feature 'manage investors' do
       click_link investor.name
       page.should have_content 'Series Seed, Series A'
       page.should have_content "Markets: #{market.name}"
+      page.should have_content "Locations: #{location.full}"
     end
 
     scenario 'can edit investors' do

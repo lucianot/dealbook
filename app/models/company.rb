@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]  
-  attr_accessible :description, :linkedin, :name, :status, :website, :market_ids
+  attr_accessible :description, :linkedin, :name, :status, :website, :market_ids, :location_ids
   has_paper_trail
 
   # Associations
@@ -20,5 +20,9 @@ class Company < ActiveRecord::Base
   # Methods
   def market_name
     markets.collect {|market| market.name}.join(', ')
+  end
+
+  def location_name
+    locations.collect {|location| location.full}.join(', ')
   end
 end
