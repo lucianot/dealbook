@@ -63,6 +63,8 @@ GEM
     faker (1.0.1)
       i18n (~> 0.4)
     ffi (1.0.11)
+    foreigner (1.1.6)
+      activerecord (>= 3.0.0)
     guard (1.0.3)
       ffi (>= 0.5.0)
       thor (>= 0.14.6)
@@ -175,15 +177,16 @@ PLATFORMS
 DEPENDENCIES
   cancan (~> 1.6)
   capybara (~> 1.1)
-  chosen-rails
+  chosen-rails (~> 0.9)
   coffee-rails (~> 3.2.1)
   devise (~> 1.5)
   faker (~> 1.0)
+  foreigner (~> 1.1)
   guard-rspec (~> 0.7)
-  guard-spin
+  guard-spin (~> 0.1)
   jquery-rails
-  jquery_datepicker
-  json
+  jquery_datepicker (~> 0.3)
+  json (~> 1.7)
   machinist (~> 2.0)
   paper_trail (~> 2.6)
   rails (= 3.2.3)
@@ -191,7 +194,7 @@ DEPENDENCIES
   rspec-rails (~> 2.10)
   sass-rails (~> 3.2.3)
   shoulda-matchers (~> 1.1)
-  spin (~> 0.4.6)
+  spin (~> 0.4)
   sqlite3
   uglifier (>= 1.0.3)
   valid_attribute (~> 1.1)

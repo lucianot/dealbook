@@ -1,7 +1,8 @@
 class Deal < ActiveRecord::Base
-  CATEGORIES = ['financing round', 'acquisition', 'merger']
+  CATEGORIES = ['financing round'] # 'acquisition', 'merger'
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
-  attr_accessible :amount, :category, :deal_date, :pre_valuation, :round, :source_url, 
+  CURRENCIES = ['USD', 'BRL']
+  attr_accessible :amount, :category, :close_date, :pre_valuation, :round, :source_url, 
                   :company_id, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
@@ -11,8 +12,8 @@ class Deal < ActiveRecord::Base
   has_and_belongs_to_many :investors
 
   #Validations
-  validates :deal_date, :presence => true
-  validate  :deal_date_must_be_in_date_format
+  validates :close_date, :presence => true
+  validate  :close_date_must_be_in_date_format
   validates :category, :inclusion => { :in => CATEGORIES }
   validates :round, :inclusion => { :in => ROUNDS }
   validates :amount, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
@@ -31,9 +32,9 @@ class Deal < ActiveRecord::Base
   end
 
   private 
-  def deal_date_must_be_in_date_format
-    unless deal_date.is_a?(Date)
-      errors.add(:deal_date, "is missing or invalid")
+  def close_date_must_be_in_date_format
+    unless close_date.is_a?(Date)
+      errors.add(:close_date, "is missing or invalid")
     end
   end
 end

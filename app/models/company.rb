@@ -7,7 +7,7 @@ class Company < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
-  has_many :deals #, :dependent => :destroy
+  has_many :deals #, :dependent => :delete_all
   has_many :investors, :through => :deals
 
   #Validations

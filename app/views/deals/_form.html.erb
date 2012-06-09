@@ -1,29 +1,30 @@
 <%= form_for(@deal) do |f| %>
 
   <div class="field">
-    <%= f.label :deal_date, 'Close date' %><br />
-    <%= f.datepicker :deal_date %>
+    <%= f.label :close_date, 'Close date' %><br />
+    <%= f.datepicker :close_date %>
   </div>
   <div class="field">
     <%= f.label :company_id, 'Company' %><br />
     <%= f.collection_select :company_id, Company.order(:name), :id, :name, {}, 
       {:class => "chzn-select", "data-placeholder" => "Choose a company"} %>
-  </div>  
-  <div class="field">
-    <%= f.label :investor_ids, 'Investors' %><br />
-    <%= f.collection_select :investor_ids, Investor.order(:name), :id, :name, {}, 
-      {multiple: true, :class => "chzn-select", "data-placeholder" => "Choose one or more investors"} %>
   </div>
   <div class="field">
     <%= f.label :category %><br />
     <%= f.select :category, Deal::CATEGORIES %>
-  </div>        
+  </div>  
   <div class="field">
     <%= f.label :round %><br />
     <%= f.select :round, Deal::ROUNDS %>
-  </div>  
+  </div>     
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label :investor_ids, 'Investors' %><br />
+    <%= f.collection_select :investor_ids, Investor.order(:name), :id, :name, {}, 
+      {multiple: true, :class => "chzn-select", "data-placeholder" => "Choose one or more investors"} %>
+  </div> 
+
+  <div class="field">
+    <%= f.label :amount, 'Total Amount (USD)' %><br />
     <%= f.text_field :amount %>
   </div>
   <div class="field">

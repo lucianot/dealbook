@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(:version => 20120602223848) do
   add_index "companies_markets", ["market_id", "company_id"], :name => "index_companies_markets_on_market_id_and_company_id"
 
   create_table "deals", :force => true do |t|
-    t.date     "deal_date"
+    t.date     "close_date",    :null => false
     t.string   "category"
     t.string   "round"
+    t.string   "currency"
     t.integer  "amount"
     t.integer  "pre_valuation"
     t.string   "source_url"
@@ -91,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20120602223848) do
 
   create_table "locations", :force => true do |t|
     t.string   "country",    :null => false
-    t.string   "region"
+    t.string   "region",     :null => false
     t.string   "city",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -114,7 +115,7 @@ ActiveRecord::Schema.define(:version => 20120602223848) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "full_name"
+    t.string   "full_name",                                             :null => false
     t.datetime "created_at",                                            :null => false
     t.datetime "updated_at",                                            :null => false
     t.string   "role"

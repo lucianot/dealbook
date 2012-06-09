@@ -3,12 +3,14 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'jquery-rails'
-gem 'json'
+gem 'json', '~> 1.7'
+
+# db
+gem 'foreigner', '~> 1.1'
 
 # users and roles
 gem 'devise', '~> 1.5'
 gem 'cancan', '~> 1.6'
-# gem 'rolify', '~> 3.1'
 
 # versions
 gem 'paper_trail', '~> 2.6'
@@ -27,8 +29,8 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
   gem 'uglifier', '>= 1.0.3'
 
-  gem 'chosen-rails'
-  gem 'jquery_datepicker'
+  gem 'chosen-rails', '~> 0.9'
+  gem 'jquery_datepicker', '~> 0.3'
 end
 
 group :development, :test do
@@ -40,10 +42,8 @@ group :development, :test do
   gem 'valid_attribute', '~> 1.1'
   gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec', '~> 0.7'
-  # gem 'spork', '~> 1.0rc'
-  # gem 'guard-spork'
-  gem 'spin', '~> 0.4.6'
-  gem 'guard-spin'
+  gem 'spin', '~> 0.4'
+  gem 'guard-spin', '~> 0.1'
 end 
 
 

@@ -49,7 +49,7 @@ Location.blueprint(:complete) do
 end
 
 Deal.blueprint do
-  deal_date       { (1..500).to_a.sample.days.ago.to_date }
+  close_date       { (1..500).to_a.sample.days.ago.to_date }
   category        { 'financing round' } 
   round           { 'Series B' } 
   amount          { (10_000_000..10_001_000).to_a.sample } 

@@ -23,7 +23,7 @@ feature 'manage deals' do
       login_normal
       click_link 'Deals'
       click_link 'New deal'
-      fill_in 'Close date', :with => deal.deal_date
+      fill_in 'Close date', :with => deal.close_date
       select company.name, :from => 'Company'
       select investor.name, :from => 'Investors'
       select deal.category, :from => 'Category'
@@ -43,7 +43,7 @@ feature 'manage deals' do
 
     scenario 'can edit deals' do
       deal = Deal.make!(:full)
-      new_date = deal.deal_date+1
+      new_date = deal.close_date+1
       login_normal
       click_link 'Deals'
       click_link 'Edit'

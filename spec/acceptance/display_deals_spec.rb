@@ -14,7 +14,7 @@ feature 'display deals' do
       deal = Deal.make!(:full)
       visit '/'
       click_link 'Deals'
-      page.should have_content deal.deal_date
+      page.should have_content deal.close_date
       page.should have_content deal.summary
       page.should_not have_content 'No deals yet'
     end
@@ -24,7 +24,7 @@ feature 'display deals' do
       visit '/'
       click_link 'Deals'
       click_link deal.summary
-      page.should have_content deal.deal_date
+      page.should have_content deal.close_date
       page.should have_content deal.company_name
       page.should have_content deal.investor_name
       page.should have_content deal.category
