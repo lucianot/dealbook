@@ -27,8 +27,8 @@ feature 'manage investors' do
       fill_in 'Name', :with => investor.name
       select 'VC', :from => 'Category'      
       select 'active', :from => 'Status'     
-      check 'stages_2'
-      check 'stages_3'
+      select 'Series Seed', :from => 'Stages' 
+      select 'Series A', :from => 'Stages'
       select market.name, :from => 'Markets'
       select location.full, :from => 'Locations' 
       expect do
@@ -49,8 +49,8 @@ feature 'manage investors' do
       click_link 'Investors'
       click_link 'Edit'
       fill_in 'Name', :with => new_name
-      check 'stages_2'      
-      uncheck 'stages_3'
+      select 'Series Seed', :from => 'Stages' 
+      unselect 'Series A', :from => 'Stages'     
       expect do
         click_button 'Submit'
       end.to change {Investor.count}.by(0)

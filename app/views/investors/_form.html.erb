@@ -18,23 +18,17 @@
   </div>
     <div class="field">
     <%= f.label :category %><br />
-    <%= f.select(:category, options_for_select(Investor::CATEGORIES) ) %>
+    <%= f.select :category, Investor::CATEGORIES %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.select(:status, options_for_select(Investor::STATUSES) ) %>
+    <%= f.select :status, Investor::STATUSES %>
   </div>
   <div class="field">
-    <%= f.label :stage, 'Stages (check all that apply)' %><br />    
-    <%= f.fields_for :stage do |s| %>
-      <% Investor::STAGES.each_with_index do |stage, index| %>
-        <%= check_box_tag 'investor[stage][]', stage, 
-          (@investor.stage.include?(stage) unless @investor.stage.nil?), 
-          {:id => "stages_#{index+1}"} %>
-        <%= label_tag 'investor[stage][]', stage %><br>
-      <% end %>
-    <% end %> 
-  </div>
+    <%= f.label :stage, 'Stages' %><br />
+    <%= f.select :stage, Investor::STAGES, {},
+      {multiple: true, selected: @investor.stage, :class => "chzn-select", "data-placeholder" => "Select one or more stages"} %>
+  </div>    
   <div class="field">
     <%= f.label :market_ids, 'Markets' %><br />
     <%= f.collection_select :market_ids, Market.order(:name), :id, :name, {}, 

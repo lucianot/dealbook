@@ -22,6 +22,11 @@ class Investor < ActiveRecord::Base
   validates :category, :inclusion => { :in => CATEGORIES, :allow_nil => true }
   validate  :all_stages_must_be_included_in_list
 
+  # Callbacks
+  before_validation do
+    stage.reject!(&:blank?) if stage  # remove hidden field
+  end
+
   # Methods
   def market_name
     markets.collect {|market| market.name}.join(', ')

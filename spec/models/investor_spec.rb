@@ -31,8 +31,8 @@ describe Investor do
     it { should have_valid(:category).when('VC', nil) }
     it { should_not have_valid(:category).when('invalid', '') }
 
-    it { should have_valid(:stage).when(['Series A'], nil) }
-    it { should_not have_valid(:stage).when(['invalid'], ['']) }
+    it { should have_valid(:stage).when(['Series A'], [''], nil) }
+    it { should_not have_valid(:stage).when(['invalid']) }
 
   end
 
