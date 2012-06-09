@@ -9,11 +9,11 @@ feature 'manage locations' do
       login_mod
       click_link 'Locations'
       click_link 'New Location'
-      fill_in 'Country', :with => location.country
+      select location.country, :from => 'Country'
       fill_in 'Region', :with => location.region
       fill_in 'City', :with => location.city        
       expect do
-        click_button 'Submit'
+        click_button 'Create Location'
       end.to change {Location.count}.by(1)
       page.should have_content 'Location was successfully created.'
       page.should have_content location.country
@@ -27,10 +27,10 @@ feature 'manage locations' do
       login_mod
       click_link 'Locations'
       click_link 'Edit'
-      fill_in 'Country', :with => other_location.country
+      select location.country, :from => 'Country'
       fill_in 'Region', :with => other_location.region
       fill_in 'City', :with => other_location.city           
-      click_button 'Submit'
+      click_button 'Update Location'
       page.should have_content 'Location was successfully updated.'  
       page.should have_content other_location.country
       page.should have_content other_location.region     
@@ -57,11 +57,11 @@ feature 'manage locations' do
       login_admin
       click_link 'Locations'
       click_link 'New Location'
-      fill_in 'Country', :with => location.country
+      select location.country, :from => 'Country'
       fill_in 'Region', :with => location.region
       fill_in 'City', :with => location.city        
       expect do
-        click_button 'Submit'
+        click_button 'Create Location'
       end.to change {Location.count}.by(1)
       page.should have_content 'Location was successfully created.'
       page.should have_content location.country
@@ -75,10 +75,10 @@ feature 'manage locations' do
       login_admin
       click_link 'Locations'
       click_link 'Edit'
-      fill_in 'Country', :with => other_location.country
+      select location.country, :from => 'Country'
       fill_in 'Region', :with => other_location.region
       fill_in 'City', :with => other_location.city           
-      click_button 'Submit'
+      click_button 'Update Location'
       page.should have_content 'Location was successfully updated.'  
       page.should have_content other_location.country
       page.should have_content other_location.region     

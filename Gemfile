@@ -15,7 +15,9 @@ gem 'cancan', '~> 1.6'
 # versions
 gem 'paper_trail', '~> 2.6'
 
-# pagination
+# views
+gem 'simple_form'
+gem 'country_select'
 gem 'will_paginate', '~> 3.0'
 
 

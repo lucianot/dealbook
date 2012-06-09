@@ -1,6 +1,6 @@
 class Investor < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
-  CATEGORIES = %w[angel VC accelerator incubator corporate]
+  CATEGORIES = %w[Angel VC Accelerator Incubator Corporate]
   STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']     
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website, :market_ids, :location_ids
   serialize :stage

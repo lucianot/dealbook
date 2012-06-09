@@ -1,3 +1,20 @@
+<%= simple_form_for @deal do |f| %>
+  <%= f.input :close_date, :label => 'Close date', :required => false %>
+  <%= f.association :company, :input_html => {:class => "chzn-select", 
+    "data-placeholder" => "Select a company"} %>   
+  <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %> 
+  <%= f.input :round, :collection => Deal::ROUNDS, :selected => :first %>   
+  <%= f.association :investors, :input_html => {multiple: true, :class => "chzn-select", 
+    "data-placeholder" => "Select one or more investors"} %>
+  <%= f.input :currency, :collection => Deal::CURRENCIES, :selected => :first %>       
+  <%= f.input :amount, :label => 'Total Amount' %>  
+  <%= f.input :pre_valuation, :label => 'Pre-money Valuation' %>
+  <%= f.input :source_url, :label => 'Source' %>  
+  <br>   
+  <%= f.button :submit %>  
+<% end %>
+<!-- 
+
 <%= form_for(@deal) do |f| %>
 
   <div class="field">
@@ -22,9 +39,12 @@
     <%= f.collection_select :investor_ids, Investor.order(:name), :id, :name, {}, 
       {multiple: true, :class => "chzn-select", "data-placeholder" => "Choose one or more investors"} %>
   </div> 
-
   <div class="field">
-    <%= f.label :amount, 'Total Amount (USD)' %><br />
+    <%= f.label :currency %><br />
+    <%= f.select :currency, Deal::CURRENCIES %>
+  </div>    
+  <div class="field">
+    <%= f.label :amount, 'Total Amount' %><br />
     <%= f.text_field :amount %>
   </div>
   <div class="field">
@@ -41,3 +61,4 @@
   </div>
 <% end %>
 
+ -->

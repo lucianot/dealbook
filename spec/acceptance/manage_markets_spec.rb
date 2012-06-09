@@ -11,7 +11,7 @@ feature 'manage markets' do
       click_link 'New Market'
       fill_in 'Name', :with => market.name
       expect do
-        click_button 'Submit'
+        click_button 'Create Market'
       end.to change {Market.count}.by(1)
       page.should have_content 'Market was successfully created.'
       page.should have_content market.name
@@ -23,7 +23,7 @@ feature 'manage markets' do
       click_link 'Markets'
       click_link 'Edit'
       fill_in 'Name', :with => 'mobile'
-      click_button 'Submit'
+      click_button 'Update Market'
       page.should have_content 'Market was successfully updated.'  
       page.should have_content 'mobile'      
     end
@@ -50,7 +50,7 @@ feature 'manage markets' do
       click_link 'New Market'
       fill_in 'Name', :with => market.name
       expect do
-        click_button 'Submit'
+        click_button 'Create Market'
       end.to change {Market.count}.by(1)
       page.should have_content 'Market was successfully created.'
       page.should have_content market.name
@@ -62,7 +62,7 @@ feature 'manage markets' do
       click_link 'Markets'
       click_link 'Edit'
       fill_in 'Name', :with => 'mobile'
-      click_button 'Submit'
+      click_button 'Update Market'
       page.should have_content 'Market was successfully updated.'  
       page.should have_content 'mobile'      
     end

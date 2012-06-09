@@ -31,7 +31,7 @@ feature 'manage companies' do
       select market.name, :from => 'Markets'
       select location.full, :from => 'Locations'
       expect do
-        click_button 'Submit'
+        click_button 'Create Company'
       end.to change {Company.count}.by(1)
       page.should have_content 'Company was successfully created.'
       page.should have_content company.name
@@ -48,7 +48,7 @@ feature 'manage companies' do
       click_link 'Edit'
       fill_in 'Name', :with => new_name
       expect do
-        click_button 'Submit'
+        click_button 'Update Company'
       end.to change {Company.count}.by(0)
       page.should have_content 'Company was successfully updated.'
       page.should have_content new_name

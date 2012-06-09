@@ -1,18 +1,7 @@
-<%= form_for(@location) do |f| %>
-
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :region %><br />
-    <%= f.text_field :region %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>    
-  <div class="actions">
-    <%= f.submit 'Submit' %>
-  </div>
+<%= simple_form_for @location do |f| %>
+  <%= f.input :country %>
+  <%= f.input :region %>
+  <%= f.input :city %>
+  <br>
+  <%= f.button :submit %>
 <% end %>

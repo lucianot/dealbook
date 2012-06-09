@@ -1,47 +1,15 @@
-<%= form_for(@investor) do |f| %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :linkedin %><br />
-    <%= f.text_field :linkedin %>
-  </div>
-    <div class="field">
-    <%= f.label :category %><br />
-    <%= f.select :category, Investor::CATEGORIES %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.select :status, Investor::STATUSES %>
-  </div>
-  <div class="field">
-    <%= f.label :stage, 'Stages' %><br />
-    <%= f.select :stage, Investor::STAGES, {},
-      {multiple: true, selected: @investor.stage, :class => "chzn-select", "data-placeholder" => "Select one or more stages"} %>
-  </div>    
-  <div class="field">
-    <%= f.label :market_ids, 'Markets' %><br />
-    <%= f.collection_select :market_ids, Market.order(:name), :id, :name, {}, 
-      {multiple: true, :class => "chzn-select", "data-placeholder" => "Select one or more markets"} %>
-  </div>  
-  <div class="field">
-    <%= f.label :location_ids, 'Locations' %><br />
-    <%= f.collection_select :location_ids, Location.order(:city), :id, :full, {}, 
-      {multiple: true, :class => "chzn-select", "data-placeholder" => "Select one or more cities"} %>
-  </div>  
-  
-  <div class="actions">
-    <%= f.submit 'Submit' %>
-  </div>
+<%= simple_form_for @investor do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :website %>
+  <%= f.input :linkedin %>
+  <%= f.input :category, :collection => Investor::CATEGORIES, :selected => :first %>    
+  <%= f.input :status, :collection => Investor::STATUSES, :selected => :first %>
+  <%= f.input :stage, :label => 'Stages', :collection => Investor::STAGES, :input_html => {multiple: true, 
+    :class => "chzn-select", "data-placeholder" => "Select one or more stages"} %>
+  <%= f.association :markets, :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more markets"} %>     
+  <%= f.association :locations, :placeholder => "Select one or more locations", :label_method => :full,
+    :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more cities"} %> 
+  <br>   
+  <%= f.button :submit %>  
 <% end %>
-

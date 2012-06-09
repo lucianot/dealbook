@@ -20,6 +20,9 @@ describe Deal do
     it { should have_valid(:round).when('Series A') }
     it { should_not have_valid(:round).when('invalid', '', nil) }
 
+    it { should have_valid(:currency).when('USD', 'BRL') }
+    it { should_not have_valid(:currency).when('invalid', '', nil) }
+
     it { should have_valid(:amount).when(1_000_000, nil) }
     it { should_not have_valid(:amount).when(-1, 42.0) }  # TODO: test blank
 
@@ -40,7 +43,16 @@ describe Deal do
 
   # Methods
   context '#summary' do
-    it { @deal.summary.should == "#{@deal.company_name} raised USD #{@deal.amount} from #{@deal.investor_name}" }
+    it { @deal.summary.should == "#{@deal.company_name} raised a #{@deal.round} round"\
+      " of #{@deal.full_amount} from #{@deal.investor_name}" }
+  end
+
+  context '#full_amount' do
+    before do
+      @deal.currency = 'BRL'
+      @deal.amount = 1_000_000
+    end
+    it { @deal.full_amount.should == "BRL 1,000,000" }
   end
 
 end

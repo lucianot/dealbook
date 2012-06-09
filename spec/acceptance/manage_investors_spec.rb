@@ -32,7 +32,7 @@ feature 'manage investors' do
       select market.name, :from => 'Markets'
       select location.full, :from => 'Locations' 
       expect do
-        click_button 'Submit'
+        click_button 'Create Investor'
       end.to change {Investor.count}.by(1)
       page.should have_content 'Investor was successfully created.'
       page.should have_content investor.name
@@ -52,7 +52,7 @@ feature 'manage investors' do
       select 'Series Seed', :from => 'Stages' 
       unselect 'Series A', :from => 'Stages'     
       expect do
-        click_button 'Submit'
+        click_button 'Update Investor'
       end.to change {Investor.count}.by(0)
       page.should have_content 'Investor was successfully updated.'
       page.should have_content new_name

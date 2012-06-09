@@ -1,8 +1,10 @@
 class Deal < ActiveRecord::Base
+include ActionView::Helpers::NumberHelper
+
   CATEGORIES = ['financing round'] # 'acquisition', 'merger'
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   CURRENCIES = ['USD', 'BRL']
-  attr_accessible :amount, :category, :close_date, :pre_valuation, :round, :source_url, 
+  attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, :source_url, 
                   :company_id, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
@@ -16,6 +18,7 @@ class Deal < ActiveRecord::Base
   validate  :close_date_must_be_in_date_format
   validates :category, :inclusion => { :in => CATEGORIES }
   validates :round, :inclusion => { :in => ROUNDS }
+  validates :currency, :inclusion => { :in => CURRENCIES }
   validates :amount, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
   validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
   validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
@@ -26,9 +29,13 @@ class Deal < ActiveRecord::Base
   end  
 
   def summary
-    result = "#{company_name} raised"
-    result += " USD #{amount}" if amount
+    result = "#{company_name} raised a #{round} round"
+    result += " of #{full_amount}" if amount
     result += " from #{investor_name}"
+  end
+
+  def full_amount
+    "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
   end
 
   private 

@@ -23,16 +23,19 @@ feature 'manage deals' do
       login_normal
       click_link 'Deals'
       click_link 'New deal'
-      fill_in 'Close date', :with => deal.close_date
+      select '2012', :from => 'Close date'
+      select '12', :from => 'Close date'
+      select '20', :from => 'Close date'            
       select company.name, :from => 'Company'
-      select investor.name, :from => 'Investors'
       select deal.category, :from => 'Category'
-      select deal.round, :from => 'Round'      
+      select deal.round, :from => 'Round'   
+      select investor.name, :from => 'Investors'      
+      select deal.currency, :from => 'Currency'   
       fill_in 'Amount', :with => deal.amount
       fill_in 'Pre-money Valuation', :with => deal.pre_valuation
       fill_in 'Source', :with => deal.source_url 
       expect do
-        click_button 'Submit'
+        click_button 'Create Deal'
       end.to change {Deal.count}.by(1)
       page.should have_content 'Deal was successfully created.'
       page.should have_content deal.summary
@@ -43,16 +46,16 @@ feature 'manage deals' do
 
     scenario 'can edit deals' do
       deal = Deal.make!(:full)
-      new_date = deal.close_date+1
+      new_round = 'Series A'
       login_normal
       click_link 'Deals'
       click_link 'Edit'
-      fill_in 'Close date', :with => new_date
+      select new_round, :from => 'Round' 
       expect do
-        click_button 'Submit'
+        click_button 'Update Deal'
       end.to change {Deal.count}.by(0)
       page.should have_content 'Deal was successfully updated.'
-      page.should have_content new_date
+      page.should have_content new_round
     end
 
     scenario 'can delete deals' do
