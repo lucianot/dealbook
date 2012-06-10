@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602223848) do
+ActiveRecord::Schema.define(:version => 20120609233658) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120602223848) do
     t.integer  "company_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "verified"
   end
 
   add_index "deals", ["company_id"], :name => "index_deals_on_company_id"

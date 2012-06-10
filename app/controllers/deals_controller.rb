@@ -59,6 +59,7 @@ class DealsController < ApplicationController
   # PUT /deals/1.json
   def update
     @deal = Deal.find(params[:id])
+    @deal.verified = false
 
     respond_to do |format|
       if @deal.update_attributes(params[:deal])
@@ -82,4 +83,37 @@ class DealsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def verify
+    @deal = Deal.find(params[:id])
+    @deal.verified = true
+
+    respond_to do |format|
+      if @deal.update_attributes(params[:deal])
+        format.html { redirect_to @deal, notice: 'Deal was marked as verified.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @deal.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def unverify
+    @deal = Deal.find(params[:id])
+    @deal.verified = false
+
+    respond_to do |format|
+      if @deal.update_attributes(params[:deal])
+        format.html { redirect_to @deal, notice: 'Deal was marked as unverified.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @deal.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end
+
+
+

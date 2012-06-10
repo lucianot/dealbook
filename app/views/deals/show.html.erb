@@ -7,7 +7,16 @@
 <p>Round: <%= @deal.round %></p>
 <p>Amount: <%= @deal.full_amount %></p>
 <p>Pre-money valution: <%= @deal.pre_valuation %></p>
-<p>Source: <%= @deal.source_url %></p>
+<p>Source: <%= @deal.source_url %>
+<p><%= "#{@deal.verified ? 'Verified!' : 'Not verified yet!'}" %>
+
+<% if @deal.source_url && (can? :manage, Deal) %>
+  <% if @deal.verified %>
+    <%= link_to 'Mark as unverified?', unverify_deal_path, :method => :put, :id => 'deal_unverify' %>
+  <% else %>
+    <%= link_to 'Mark as verified?', verify_deal_path, :method => :put, :id => 'deal_verify' %>
+  <% end %>
+<% end %></p>
 
 <% if can? :edit, Deal %> 
   <%= link_to('Edit', edit_deal_path(@deal)) %> |

@@ -1,7 +1,10 @@
 Dealbook::Application.routes.draw do
   devise_for :users
   resources :users, :only => [ :show, :index, :edit, :update ]
-  resources :deals
+  resources :deals do
+      put :verify, :on => :member
+      put :unverify, :on => :member
+  end
   resources :companies
   resources :investors 
   resources :markets, :except => :show

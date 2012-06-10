@@ -4,8 +4,8 @@ include ActionView::Helpers::NumberHelper
   CATEGORIES = ['financing round'] # 'acquisition', 'merger'
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   CURRENCIES = ['USD', 'BRL']
-  attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, :source_url, 
-                  :company_id, :investor_ids
+  attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, 
+                  :source_url, :verified, :company_id, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
 
@@ -22,6 +22,13 @@ include ActionView::Helpers::NumberHelper
   validates :amount, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
   validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
   validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
+  
+  # Callbacks
+  after_initialize :init
+  
+  def init
+    self.verified ||= false
+  end
 
   # Methods
   def investor_name
