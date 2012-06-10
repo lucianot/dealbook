@@ -27,7 +27,7 @@ include ActionView::Helpers::NumberHelper
   after_initialize :init
   
   def init
-    self.verified ||= false
+    self.verified = false if self.verified.nil?
   end
 
   # Methods
