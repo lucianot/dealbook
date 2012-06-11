@@ -16,9 +16,12 @@ gem 'cancan', '~> 1.6'
 gem 'paper_trail', '~> 2.6'
 
 # views
-gem 'simple_form'
-gem 'country_select'
+gem 'simple_form', '~> 2.0'
+gem 'country_select', '~> 1.0'
 gem 'will_paginate', '~> 3.0'
+
+# search
+gem 'sunspot', '~> 1.3'
 
 
 # Gems used only for assets and not required
