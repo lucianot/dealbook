@@ -1,37 +1,26 @@
 class DealsController < ApplicationController
   load_and_authorize_resource
+  respond_to :html, :json
 
   # GET /deals
   # GET /deals.json
   def index
     @deals = Deal.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @deals }
-    end
+    respond_with(@deals)
   end
 
   # GET /deals/1
   # GET /deals/1.json
   def show
     @deal = Deal.find(params[:id])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @deal }
-    end
+    respond_with(@deal)
   end
 
   # GET /deals/new
   # GET /deals/new.json
   def new
     @deal = Deal.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @deal }
-    end
+    respond_with(@deal)
   end
 
   # GET /deals/1/edit
@@ -43,16 +32,10 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(params[:deal])
-
-    respond_to do |format|
-      if @deal.save
-        format.html { redirect_to deals_path, notice: 'Deal was successfully created.' }
-        format.json { render json: @deal, status: :created, location: @deal }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
-      end
+    if @deal.save
+      flash[:notice] = 'Deal was successfully created.'
     end
+    respond_with(@deal, :location => deals_url)
   end
 
   # PUT /deals/1
@@ -61,15 +44,10 @@ class DealsController < ApplicationController
     @deal = Deal.find(params[:id])
     @deal.verified = false
 
-    respond_to do |format|
-      if @deal.update_attributes(params[:deal])
-        format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
-      end
+    if @deal.update_attributes(params[:deal])
+      flash[:notice] = 'Deal was successfully updated.'
     end
+    respond_with(@deal)
   end
 
   # DELETE /deals/1
@@ -77,41 +55,28 @@ class DealsController < ApplicationController
   def destroy
     @deal = Deal.find(params[:id])
     @deal.destroy
-
-    respond_to do |format|
-      format.html { redirect_to deals_url, notice: 'Deal was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = 'Deal was successfully deleted.'
+    respond_with(@deal)
   end
 
   def verify
     @deal = Deal.find(params[:id])
     @deal.verified = true
 
-    respond_to do |format|
-      if @deal.update_attributes(params[:deal])
-        format.html { redirect_to @deal, notice: 'Deal was marked as verified.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
-      end
+    if @deal.update_attributes(params[:deal])
+      flash[:notice] = 'Deal was marked as verified.'
     end
+    respond_with(@deal)
   end
 
   def unverify
     @deal = Deal.find(params[:id])
     @deal.verified = false
 
-    respond_to do |format|
-      if @deal.update_attributes(params[:deal])
-        format.html { redirect_to @deal, notice: 'Deal was marked as unverified.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
-      end
+    if @deal.update_attributes(params[:deal])
+      flash[:notice] = 'Deal was marked as unverified.'
     end
+    respond_with(@deal)
   end
 end
 
