@@ -3,6 +3,17 @@ class Company < ActiveRecord::Base
   attr_accessible :description, :linkedin, :name, :status, :website, :market_ids, :location_ids
   has_paper_trail
 
+  searchable do
+    text :name, :boost => 3.0
+    text :description
+    text :market_names do
+      markets.map(&:name)
+    end
+    text :location_names do
+      locations.map(&:full)
+    end  
+  end
+
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets

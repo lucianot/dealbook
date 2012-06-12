@@ -9,8 +9,7 @@ Dealbook::Application.routes.draw do
   resources :investors 
   resources :markets, :except => :show
   resources :locations, :except => :show
-
-  get "home/index"
+  resources :home, :only => :index
 
   authenticated :user do
     root :to => 'home#index'

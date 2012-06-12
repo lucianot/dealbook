@@ -21,7 +21,8 @@ gem 'country_select', '~> 1.0'
 gem 'will_paginate', '~> 3.0'
 
 # search
-gem 'sunspot', '~> 1.3'
+gem 'sunspot_rails', '~> 1.3'
+gem 'sunspot_solr', '~> 1.3'
 
 
 # Gems used only for assets and not required
