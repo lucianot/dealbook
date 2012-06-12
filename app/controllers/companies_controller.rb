@@ -1,37 +1,26 @@
 class CompaniesController < ApplicationController
   load_and_authorize_resource
+  respond_to :html, :json
 
   # GET /companies
   # GET /companies.json
   def index
     @companies = Company.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @companies }
-    end
+    respond_with(@companies)
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @company }
-    end
+    respond_with(@company)
   end
 
   # GET /companies/new
   # GET /companies/new.json
   def new
     @company = Company.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @company }
-    end
+    respond_with(@company)
   end
 
   # GET /companies/1/edit
@@ -43,32 +32,20 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(params[:company])
-
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to companies_path, notice: 'Company was successfully created.' }
-        format.json { render json: @company, status: :created, location: @company }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.save
+      flash[:notice] = 'Company was successfully created.'
     end
+    respond_with(@company, :location => companies_url)
   end
 
   # PUT /companies/1
   # PUT /companies/1.json
   def update
     @company = Company.find(params[:id])
-
-    respond_to do |format|
-      if @company.update_attributes(params[:company])
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.update_attributes(params[:company])
+      flash[:notice] = 'Company was successfully updated.'
     end
+    respond_with(@company)
   end
 
   # DELETE /companies/1
@@ -76,11 +53,8 @@ class CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
-
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Company was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = 'Company was successfully deleted.'
+    respond_with(@company)
   end
 end
 

@@ -11,8 +11,8 @@ describe Deal do
 
   # Validations
   context 'validations' do
-    it { should have_valid(:close_date).when(Date.today) }
-    it { should_not have_valid(:close_date).when('a', nil) }
+    it { should have_valid(:close_date).when(Date.today, Date.today-1) }
+    it { should_not have_valid(:close_date).when('a', nil, Date.today+1) }
 
     it { should have_valid(:category).when('financing round') }
     it { should_not have_valid(:category).when('invalid', '', nil) } 

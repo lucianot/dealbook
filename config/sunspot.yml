@@ -1,14 +1,19 @@
 production:
   solr:
-    hostname: localhost
-    port: 8983
+    hostname: solrserver
+    port: 8080 #tomcat defaults to port 8080
+    path: '/solr-example'
     log_level: WARNING
+    pid_dir: '/var/run'
 
 development:
   solr:
     hostname: localhost
     port: 8982
     log_level: INFO
+    # pid_dir: defaults to 'app/solr/pids/development'
+    # bind_address: defaults to '0.0.0.0' which binds to every interface
+    disabled: false # note that this is not indented within `solr`
 
 test:
   solr:

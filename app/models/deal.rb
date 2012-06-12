@@ -15,6 +15,7 @@ include ActionView::Helpers::NumberHelper
 
   #Validations
   validates :close_date, :presence => true
+  validate  :close_date_must_be_today_or_before
   validate  :close_date_must_be_in_date_format
   validates :category, :inclusion => { :in => CATEGORIES }
   validates :round, :inclusion => { :in => ROUNDS }
@@ -49,6 +50,12 @@ include ActionView::Helpers::NumberHelper
   def close_date_must_be_in_date_format
     unless close_date.is_a?(Date)
       errors.add(:close_date, "is missing or invalid")
+    end
+  end
+
+  def close_date_must_be_today_or_before
+    if close_date && close_date > Date.today
+      errors.add(:close_date, "must be today or before")
     end
   end
 end
