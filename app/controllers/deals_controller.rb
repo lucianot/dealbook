@@ -59,6 +59,7 @@ class DealsController < ApplicationController
     respond_with(@deal)
   end
 
+  # TODO: check if RESTful. Can refactor into update?
   def verify
     @deal = Deal.find(params[:id])
     @deal.verified = true

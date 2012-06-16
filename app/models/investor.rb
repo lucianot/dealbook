@@ -2,10 +2,12 @@ class Investor < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[Angel VC Accelerator Incubator Corporate]
   STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']     
-  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website, :market_ids, :location_ids
+  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website, 
+    :market_ids, :location_ids
   serialize :stage
   has_paper_trail   
 
+  # Sunspot/Solr
   searchable do
     text :name, :boost => 3.0
     text :description
@@ -20,7 +22,8 @@ class Investor < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
-  has_and_belongs_to_many :deals
+  has_many :dealings, :as => :buyer
+  has_many :deals, :through => :dealings
   has_many :companies, :through => :deals
 
   #Validations

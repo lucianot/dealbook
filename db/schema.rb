@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609233658) do
+ActiveRecord::Schema.define(:version => 20120616182949) do
 
   create_table "companies", :force => true do |t|
     t.string   "name",        :null => false
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(:version => 20120609233658) do
 
   add_index "companies_markets", ["company_id", "market_id"], :name => "index_companies_markets_on_company_id_and_market_id"
   add_index "companies_markets", ["market_id", "company_id"], :name => "index_companies_markets_on_market_id_and_company_id"
+
+  create_table "dealings", :force => true do |t|
+    t.integer  "deal_id"
+    t.integer  "buyer_id"
+    t.string   "buyer_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "dealings", ["buyer_id", "buyer_type"], :name => "index_dealings_on_buyer_id_and_buyer_type"
+  add_index "dealings", ["deal_id", "buyer_id", "buyer_type"], :name => "index_dealings_on_deal_id_and_buyer_id_and_buyer_type", :unique => true
+  add_index "dealings", ["deal_id"], :name => "index_dealings_on_deal_id"
 
   create_table "deals", :force => true do |t|
     t.date     "close_date",    :null => false

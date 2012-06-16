@@ -5,13 +5,16 @@ include ActionView::Helpers::NumberHelper
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   CURRENCIES = ['USD', 'BRL']
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, 
-                  :source_url, :verified, :company_id, :investor_ids
+                  :source_url, :verified #, :company_id
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
 
   # Associations
   belongs_to :company
-  has_and_belongs_to_many :investors
+  has_many :offerings, :foreign_key => 'deal_id',
+                       :class_name => 'Dealing'
+  has_many :investors, :through => :offerings, :source => :buyer, :source_type => 'Investor'
+  has_many :corporates, :through => :offerings, :source => :buyer, :source_type => 'Company' 
 
   #Validations
   validates :close_date, :presence => true
@@ -25,10 +28,10 @@ include ActionView::Helpers::NumberHelper
   validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
   
   # Callbacks
-  after_initialize :init
+  after_initialize :init 
   
   def init
-    self.verified = false if self.verified.nil?
+    self.verified = false if self.verified.nil?  # Deal should be unverified by default
   end
 
   # Methods

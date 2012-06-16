@@ -5,11 +5,15 @@
   <%= f.input :linkedin %>
   <%= f.input :category, :collection => Investor::CATEGORIES, :selected => :first %>    
   <%= f.input :status, :collection => Investor::STATUSES, :selected => :first %>
-  <%= f.input :stage, :label => 'Stages', :collection => Investor::STAGES, :input_html => {multiple: true, 
-    :class => "chzn-select", "data-placeholder" => "Select one or more stages"} %>
-  <%= f.association :markets, :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more markets"} %>     
+  <%= f.input :stage, :label => 'Stages', :collection => Investor::STAGES, 
+        :input_html => {multiple: true, :class => "chzn-select", 
+                        "data-placeholder" => "Select one or more stages"} %>
+  <%= f.association :markets, 
+        :input_html => {:class => "chzn-select", 
+                        "data-placeholder" => "Select one or more markets"} %>     
   <%= f.association :locations, :placeholder => "Select one or more locations", :label_method => :full,
-    :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more cities"} %> 
+        :input_html => {:class => "chzn-select", 
+                        "data-placeholder" => "Select one or more cities"} %> 
   <br>   
   <%= f.button :submit %>  
 <% end %>

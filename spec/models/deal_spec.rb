@@ -38,7 +38,9 @@ describe Deal do
   # Associations
   context 'associations' do
     it { should belong_to(:company) }
-    it { should have_and_belong_to_many(:investors) }
+    it { should have_many(:offerings) }
+    it { should have_many(:investors).through(:offerings) } 
+    it { should have_many(:corporates).through(:offerings) }           
   end
 
   # Methods

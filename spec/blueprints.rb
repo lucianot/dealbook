@@ -63,6 +63,14 @@ Deal.blueprint(:full) do
   investors 2
 end
 
+Dealing.blueprint do
+  deal
+end
+
+Dealing.blueprint(:investor) do
+  investor
+end
+
 User.blueprint do
   email                   { "user#{sn}@example.com" }
   password                { 'password' }

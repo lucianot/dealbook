@@ -1,8 +1,10 @@
 class Company < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]  
-  attr_accessible :description, :linkedin, :name, :status, :website, :market_ids, :location_ids
+  attr_accessible :description, :linkedin, :name, :status, :website, 
+    :market_ids, :location_ids
   has_paper_trail
 
+  # Sunspot/Solr
   searchable do
     text :name, :boost => 3.0
     text :description
@@ -17,8 +19,20 @@ class Company < ActiveRecord::Base
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
-  has_many :deals #, :dependent => :delete_all
-  has_many :investors, :through => :deals
+  # as target
+  has_many :offers, :foreign_key => 'company_id',
+                    :class_name => 'Deal'
+  has_many :offerings, :through => :offers
+  has_many :investors, :through => :offerings, 
+                       :source => :investor,
+                       :conditions => "dealings.buyer_type = 'Investor'"
+  has_many :corporates, :through => :offerings, 
+                        :source => :corporate,
+                        :conditions => "dealings.buyer_type = 'Company'"   
+  # as buyer
+  has_many :dealings, :as => :buyer
+  has_many :deals, :through => :dealings
+  has_many :companies, :through => :deals                      
 
   #Validations
   validates :name, :length => { :in => 2..100 },
