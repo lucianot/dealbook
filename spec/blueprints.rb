@@ -64,10 +64,10 @@ Deal.blueprint(:full) do
 end
 
 Dealing.blueprint do
-  deal
 end
 
 Dealing.blueprint(:investor) do
+  deal
   investor
 end
 
