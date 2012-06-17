@@ -5,7 +5,7 @@
   <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %> 
   <%= f.input :round, :collection => Deal::ROUNDS, :selected => :first %>   
 
-  <!-- TODO: How to deal with the nested Participation? -->
+  <!-- TODO: How to deal with polymorphic? -->
   <%= f.association :investors, :input_html => {multiple: true, :class => "chzn-select", 
     "data-placeholder" => "Select one or more investors"} %>
 
