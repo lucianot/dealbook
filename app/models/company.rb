@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]  
-  attr_accessible :description, :linkedin, :name, :status, :website, 
-    :market_ids, :location_ids
+  attr_accessible :description, :linkedin, :name, :status, :website
+  attr_accessible :market_ids, :location_ids  # TODO: make safer
   has_paper_trail
 
   # Sunspot/Solr

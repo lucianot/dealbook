@@ -2,8 +2,8 @@ class Investor < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[Angel VC Accelerator Incubator Corporate]
   STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']     
-  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website, 
-    :market_ids, :location_ids
+  attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
+  attr_accessible :market_ids, :location_ids  # TODO: make safer
   serialize :stage
   has_paper_trail   
 

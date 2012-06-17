@@ -5,7 +5,8 @@ include ActionView::Helpers::NumberHelper
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   CURRENCIES = ['USD', 'BRL']
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, 
-                  :source_url, :verified #, :company_id
+                  :source_url, :verified
+  attr_accessible :company_id, :investor_ids, :corporate_ids  # TODO: make safer
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
 

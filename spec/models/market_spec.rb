@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Market do
-  before(:each) { @market = Market.make }
+  before { @market = Market.make }
   subject { @market }
 
   # Valid

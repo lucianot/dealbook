@@ -3,7 +3,11 @@ class Ability
 
   def initialize(user)
 
-    user ||= User.new(:role => 'guest')   # guest user (not logged in)
+    unless user
+      user = User.new
+      user.role = 'guest'
+    end
+    # user ||= User.new(:role => 'guest')    
 
     if user.role == 'admin'
       can :manage, [ Company, Investor, Deal, Market, Location ]

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Location do
-  before(:each) { @location = Location.make }
+  before { @location = Location.make }
   subject { @location }
 
   # Valid

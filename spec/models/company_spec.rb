@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Company do
-  before(:each) { @company = Company.make }
+  before { @company = Company.make }
   subject { @company }
 
   # Valid

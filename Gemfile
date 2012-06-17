@@ -50,6 +50,7 @@ group :development, :test do
   gem 'guard-rspec', '~> 0.7'
   gem 'spin', '~> 0.4'
   gem 'guard-spin', '~> 0.1'
+  gem 'pry'
 end 
 
 

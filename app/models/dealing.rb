@@ -1,5 +1,5 @@
 class Dealing < ActiveRecord::Base
-  attr_accessible :deal_id, :buyer_id, :buyer_type
+  attr_accessible :deal_id, :buyer_id, :buyer_type  # TODO: make safer
   has_paper_trail
 
   # Associations

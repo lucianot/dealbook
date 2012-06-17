@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  before(:each) { @user = User.make }
+  before { @user = User.make }
   subject { @user }
 
   # Valid

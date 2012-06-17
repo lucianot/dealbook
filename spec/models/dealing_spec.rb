@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Dealing do
-  before(:each) { @dealing = Dealing.make(:investor) }
+  before { @dealing = Dealing.make(:investor) }
   subject { @dealing }
 
   # Valid

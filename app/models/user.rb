@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin moderator normal banned guest]
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me
+  attr_accessible :role, :as => :admin
   # attr_accessible :username, :title, :body  
 
   # Include default devise modules. Others available are:
