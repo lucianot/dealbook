@@ -5,13 +5,8 @@
   <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %> 
   <%= f.input :round, :collection => Deal::ROUNDS, :selected => :first %>   
 
-  <!-- TODO: How to deal with polymorphic? -->
-  <!--  f.association :investors, :input_html => {multiple: true, :class => "chzn-select", 
-    "data-placeholder" => "Select one or more investors"} %> -->
-
   <%= f.simple_fields_for :offerings do |offerings_form| %>
-    <%= offerings_form.label :offering, 'Investors' %>
-    <% buyer_collection = Investor.all.map {|x| [x.name, "Investor:#{x.id}"]} + Company.all.map {|x| [x.name, "Company:#{x.id}"]} %> 
+    <%= offerings_form.label :offerings, 'Investors' %>
     <%= offerings_form.select :buyer, buyer_collection, {}, {multiple: true} %>
   <% end %>  
 
