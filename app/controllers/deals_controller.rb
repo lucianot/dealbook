@@ -38,16 +38,7 @@ class DealsController < ApplicationController
     @deal = Deal.new(params[:deal])
     authorize! :read, @deal # CanCan
     
-    # create offering for each selected buyer
-    buyers.each do |buyer|
-      unless buyer.blank?
-        buyer_type, buyer_id = buyer.split(":")
-        @offering = Dealing.new
-        @offering.buyer_type = buyer_type
-        @offering.buyer_id = buyer_id.to_i
-        @deal.offerings << @offering
-      end
-    end
+    create_offerings_for(buyers)
 
     if @deal.save
       flash[:notice] = 'Deal was successfully created.'
@@ -62,24 +53,14 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
 
-
     # TODO: correct approach to destroy all then rebuild selected?
     @deal = Deal.find(params[:id])
-    @deal.offerings.delete_all  # TODO: correct to destroy here?
     authorize! :read, @deal
 
-    # create offering for each selected buyer
-    buyers.each do |buyer|
-      unless buyer.blank?
-        buyer_type, buyer_id = buyer.split(":")
-        @offering = Dealing.new
-        @offering.buyer_type = buyer_type
-        @offering.buyer_id = buyer_id.to_i
-        @deal.offerings << @offering
-      end
-    end
-    @deal.verified = false
+    @deal.offerings.delete_all  # TODO: correct to destroy here?
+    create_offerings_for(buyers)
 
+    @deal.verified = false
     if @deal.update_attributes(params[:deal])
       flash[:notice] = 'Deal was successfully updated.'
     end
@@ -114,6 +95,19 @@ class DealsController < ApplicationController
       flash[:notice] = 'Deal was marked as unverified.'
     end
     respond_with(@deal)
+  end
+end
+
+private
+def create_offerings_for(buyers)
+    buyers.each do |buyer|
+    unless buyer.blank?
+      buyer_type, buyer_id = buyer.split(":")
+      offering = Dealing.new
+      offering.buyer_type = buyer_type
+      offering.buyer_id = buyer_id.to_i
+      @deal.offerings << offering
+    end
   end
 end
 
