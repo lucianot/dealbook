@@ -6,9 +6,13 @@
   <%= f.input :round, :collection => Deal::ROUNDS, :selected => :first %>   
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
-    <%= offerings_form.label :offerings, 'Investors' %>
-    <%= offerings_form.select :buyer, buyer_collection, {}, {multiple: true} %>
-  <% end %>  
+    <%= offerings_form.input :buyers, :as => :select,
+          :collection => buyer_collection,
+          :label => 'Investors', 
+          :required => false,
+          :selected => @buyers_for_selected,
+          :input_html => {multiple: true} %>
+  <% end %>
 
   <%= f.input :currency, :collection => Deal::CURRENCIES, :selected => :first %>       
   <%= f.input :amount, :label => 'Total Amount' %>  

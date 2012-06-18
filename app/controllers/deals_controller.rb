@@ -26,12 +26,13 @@ class DealsController < ApplicationController
   # GET /deals/1/edit
   def edit
     @deal = Deal.find(params[:id])
+    @buyers_for_selected = @deal.buyers.map { |b| "#{b.class.name}:#{b.id}" }
   end
 
   # POST /deals
   # POST /deals.json
   def create
-    buyers = params[:deal][:offerings][:buyer]
+    buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
     authorize! :read, @deal
@@ -55,7 +56,20 @@ class DealsController < ApplicationController
   # PUT /deals/1
   # PUT /deals/1.json
   def update
+    # buyers = params[:deal][:offerings][:buyer]
+    # params[:deal].delete(:offerings)
     @deal = Deal.find(params[:id])
+    authorize! :read, @deal
+
+    # buyers.each do |buyer|
+    #   unless buyer.blank?
+    #     buyer_type, buyer_id = buyer.split(":")
+    #     @offering = Dealing.new
+    #     @offering.buyer_type = buyer_type
+    #     @offering.buyer_id = buyer_id.to_i
+    #     @deal.offerings << @offering
+    #   end
+    # end
     @deal.verified = false
 
     if @deal.update_attributes(params[:deal])

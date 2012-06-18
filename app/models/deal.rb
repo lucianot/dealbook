@@ -50,6 +50,10 @@ include ActionView::Helpers::NumberHelper
     "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
   end
 
+  def buyers
+    self.investors + self.corporates
+  end
+
   private 
   def close_date_must_be_in_date_format
     unless close_date.is_a?(Date)
