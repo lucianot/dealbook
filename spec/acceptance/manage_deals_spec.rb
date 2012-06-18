@@ -29,7 +29,7 @@ feature 'manage deals' do
       select company.name, :from => 'Company'
       select deal.category, :from => 'Category'
       select deal.round, :from => 'Round'   
-      select investor.name, :from => 'Investors'      
+      select investor.name, :from => 'deal_offerings_buyer'      
       select deal.currency, :from => 'Currency'   
       fill_in 'Amount', :with => deal.amount
       fill_in 'Pre-money Valuation', :with => deal.pre_valuation

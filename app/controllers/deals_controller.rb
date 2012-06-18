@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   respond_to :html, :json
 
   # GET /deals
@@ -31,7 +31,20 @@ class DealsController < ApplicationController
   # POST /deals
   # POST /deals.json
   def create
+    buyers = params[:deal][:offerings][:buyer]
+    params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
+    
+    buyers.each do |buyer|
+      unless buyer.blank?
+        buyer_type, buyer_id = buyer.split(":")
+        @offering = Dealing.new
+        @offering.buyer_type = buyer_type
+        @offering.buyer_id = buyer_id.to_i
+        @deal.offerings << @offering
+      end
+    end
+
     if @deal.save
       flash[:notice] = 'Deal was successfully created.'
     end

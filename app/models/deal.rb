@@ -6,7 +6,7 @@ include ActionView::Helpers::NumberHelper
   CURRENCIES = ['USD', 'BRL']
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, 
                   :source_url, :verified
-  attr_accessible :company_id, :investor_ids
+  attr_accessible :company_id, :offerings, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
 
