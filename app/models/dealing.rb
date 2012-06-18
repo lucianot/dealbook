@@ -9,5 +9,6 @@ class Dealing < ActiveRecord::Base
   belongs_to :corporate, :class_name => 'Company', :foreign_key => 'buyer_id'
 
   # Validations
-  validates :deal_id, :uniqueness => { :scope => [ :buyer_id, :buyer_type ] } 
+  validates :deal_id, :uniqueness => { :scope => [ :buyer_id, :buyer_type ], 
+                                       :message => "Investor already participating in deal." } 
 end

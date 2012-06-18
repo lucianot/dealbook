@@ -13,7 +13,8 @@ include ActionView::Helpers::NumberHelper
   # Associations
   belongs_to :company
   has_many :offerings, :foreign_key => 'deal_id',
-                       :class_name => 'Dealing'
+                       :class_name => 'Dealing',
+                       :dependent => :destroy
   has_many :investors, :through => :offerings, :source => :buyer, :source_type => 'Investor'
   has_many :corporates, :through => :offerings, :source => :buyer, :source_type => 'Company' 
 
@@ -24,9 +25,12 @@ include ActionView::Helpers::NumberHelper
   validates :category, :inclusion => { :in => CATEGORIES }
   validates :round, :inclusion => { :in => ROUNDS }
   validates :currency, :inclusion => { :in => CURRENCIES }
-  validates :amount, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
-  validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0, :allow_nil => true }
-  validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
+  validates :amount, :numericality => { :only_integer => true, :greater_than => 0, 
+                                        :allow_nil => true }
+  validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0, 
+                                               :allow_nil => true }
+  validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, 
+                                      :allow_blank => true }
   
   # Callbacks
   after_initialize :init 
@@ -36,22 +40,22 @@ include ActionView::Helpers::NumberHelper
   end
 
   # Methods
-  def investor_name
-    investors.collect {|investor| investor.name}.join(', ')
+  def buyers
+    self.investors + self.corporates
+  end
+
+  def buyers_name
+    buyers.collect {|buyer| buyer.name}.join(', ')
   end  
 
   def summary
     result = "#{company_name} raised a #{round} round"
     result += " of #{full_amount}" if amount
-    result += " from #{investor_name}"
+    result += " from #{buyers_name}"
   end
 
   def full_amount
     "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
-  end
-
-  def buyers
-    self.investors + self.corporates
   end
 
   private 

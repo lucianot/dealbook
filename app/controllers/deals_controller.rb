@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  load_and_authorize_resource :except => :create
+  load_and_authorize_resource :except => [:create, :update]
   respond_to :html, :json
 
   # GET /deals
@@ -32,11 +32,13 @@ class DealsController < ApplicationController
   # POST /deals
   # POST /deals.json
   def create
+    # TODO: wrap in transaction
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
-    authorize! :read, @deal
+    authorize! :read, @deal # CanCan
     
+    # create offering for each selected buyer
     buyers.each do |buyer|
       unless buyer.blank?
         buyer_type, buyer_id = buyer.split(":")
@@ -56,26 +58,32 @@ class DealsController < ApplicationController
   # PUT /deals/1
   # PUT /deals/1.json
   def update
-    # buyers = params[:deal][:offerings][:buyer]
-    # params[:deal].delete(:offerings)
+    # TODO: wrap in transaction
+    buyers = params[:deal][:offerings][:buyers]
+    params[:deal].delete(:offerings)
+
+
+    # TODO: correct approach to destroy all then rebuild selected?
     @deal = Deal.find(params[:id])
+    @deal.offerings.delete_all  # TODO: correct to destroy here?
     authorize! :read, @deal
 
-    # buyers.each do |buyer|
-    #   unless buyer.blank?
-    #     buyer_type, buyer_id = buyer.split(":")
-    #     @offering = Dealing.new
-    #     @offering.buyer_type = buyer_type
-    #     @offering.buyer_id = buyer_id.to_i
-    #     @deal.offerings << @offering
-    #   end
-    # end
+    # create offering for each selected buyer
+    buyers.each do |buyer|
+      unless buyer.blank?
+        buyer_type, buyer_id = buyer.split(":")
+        @offering = Dealing.new
+        @offering.buyer_type = buyer_type
+        @offering.buyer_id = buyer_id.to_i
+        @deal.offerings << @offering
+      end
+    end
     @deal.verified = false
 
     if @deal.update_attributes(params[:deal])
       flash[:notice] = 'Deal was successfully updated.'
     end
-    respond_with(@deal)
+    respond_with(@deal, :location => deals_url)
   end
 
   # DELETE /deals/1

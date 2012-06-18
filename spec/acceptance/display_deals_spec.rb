@@ -26,7 +26,7 @@ feature 'display deals' do
       click_link deal.summary
       page.should have_content deal.close_date
       page.should have_content deal.company_name
-      page.should have_content deal.investor_name
+      page.should have_content deal.buyers_name
       page.should have_content deal.category
       page.should have_content deal.round        
       page.should_not have_link 'Edit'

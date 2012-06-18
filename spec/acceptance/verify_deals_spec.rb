@@ -58,6 +58,8 @@ feature 'verify deals' do
       click_link 'Edit'
       select '2009', :from => 'Close date'
       click_button 'Update Deal'
+      deal.reload
+      click_link deal.summary
       page.should have_content 'Not verified yet!'      
       page.should_not have_content 'Verified!'
     end

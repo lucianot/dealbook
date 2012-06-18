@@ -46,7 +46,7 @@ describe Deal do
   # Methods
   context '#summary' do
     it { @deal.summary.should == "#{@deal.company_name} raised a #{@deal.round} round"\
-      " of #{@deal.full_amount} from #{@deal.investor_name}" }
+      " of #{@deal.full_amount} from #{@deal.buyers_name}" }
   end
 
   context '#full_amount' do
