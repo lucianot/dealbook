@@ -7,17 +7,17 @@ class Investor < ActiveRecord::Base
   serialize :stage
   has_paper_trail   
 
-  # Sunspot/Solr
-  searchable do
-    text :name, :boost => 3.0
-    text :description
-    text :market_names do
-      markets.map(&:name)
-    end
-    text :location_names do
-      locations.map(&:full)
-    end  
-  end
+  # # Sunspot/Solr
+  # searchable do
+  #   text :name, :boost => 3.0
+  #   text :description
+  #   text :market_names do
+  #     markets.map(&:name)
+  #   end
+  #   text :location_names do
+  #     locations.map(&:full)
+  #   end  
+  # end
 
   # Associations
   has_and_belongs_to_many :locations

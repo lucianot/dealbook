@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource :except => :create
   respond_to :html, :json
 
   # GET /deals
@@ -34,6 +34,7 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyer]
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
+    authorize! :read, @deal
     
     buyers.each do |buyer|
       unless buyer.blank?
