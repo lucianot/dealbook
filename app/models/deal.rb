@@ -58,6 +58,11 @@ include ActionView::Helpers::NumberHelper
     "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
   end
 
+  def buyer_collection
+    filtered_companies = Company.all_but_this(self.company)
+    collection = (Investor.all + filtered_companies).map(&buyer_for_select)
+  end
+
   private 
   def close_date_must_be_in_date_format
     unless close_date.is_a?(Date)
@@ -69,5 +74,9 @@ include ActionView::Helpers::NumberHelper
     if close_date && close_date > Date.today
       errors.add(:close_date, "must be today or before")
     end
+  end
+
+  def buyer_for_select
+    lambda { |record| [record.name, "#{record.class.name}:#{record.id}"] }
   end
 end

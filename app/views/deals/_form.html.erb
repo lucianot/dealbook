@@ -7,7 +7,7 @@
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
     <%= offerings_form.input :buyers, :as => :select,
-          :collection => buyer_collection,
+          :collection => @buyers_for_options,
           :label => 'Investors', 
           :required => false,
           :selected => @buyers_for_selected,

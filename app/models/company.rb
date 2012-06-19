@@ -16,6 +16,9 @@ class Company < ActiveRecord::Base
   #   end  
   # end
 
+  # Scopes
+  scope :all_but_this, lambda {|id| id ? {conditions: ['id not in (?)', id]} : {} }
+
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets

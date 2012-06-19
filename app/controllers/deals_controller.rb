@@ -1,6 +1,7 @@
 class DealsController < ApplicationController
   load_and_authorize_resource :except => [:create, :update]
   respond_to :html, :json
+  helper_method :buyer_for_select
 
   # GET /deals
   # GET /deals.json
@@ -20,12 +21,14 @@ class DealsController < ApplicationController
   # GET /deals/new.json
   def new
     @deal = Deal.new
+    @buyers_for_options = @deal.buyer_collection
     respond_with(@deal)
   end
 
   # GET /deals/1/edit
   def edit
     @deal = Deal.find(params[:id])
+    @buyers_for_options = @deal.buyer_collection
     @buyers_for_selected = @deal.buyers.map { |b| "#{b.class.name}:#{b.id}" }
   end
 
