@@ -58,8 +58,8 @@ Deal.blueprint do
   source_url      { 'http://' + Faker::Internet.domain_name }
 end
 
-Deal.blueprint(:full) do
-  company
+Deal.blueprint(:complete) do
+  company         { Company.make! }
   investors 2
 end
 

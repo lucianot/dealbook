@@ -11,16 +11,16 @@ feature 'display deals' do
     end
     
     scenario 'one or more deals' do
-      deal = Deal.make!(:full)
+      deal = Deal.make!(:complete)
       visit '/'
       click_link 'Deals'
       page.should have_content deal.close_date
-      page.should have_content deal.summary
+      page.should have_link deal.summary
       page.should_not have_content 'No deals yet'
     end
 
     scenario 'show deal' do
-      deal = Deal.make!(:full)
+      deal = Deal.make!(:complete)
       visit '/'
       click_link 'Deals'
       click_link deal.summary

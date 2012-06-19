@@ -1,7 +1,6 @@
 class DealsController < ApplicationController
   load_and_authorize_resource :except => [:create, :update]
   respond_to :html, :json
-  helper_method :buyer_for_select
 
   # GET /deals
   # GET /deals.json

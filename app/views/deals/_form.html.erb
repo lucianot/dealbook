@@ -11,7 +11,8 @@
           :label => 'Investors', 
           :required => false,
           :selected => @buyers_for_selected,
-          :input_html => {multiple: true} %>
+          :input_html => {:multiple => true, :class => "chzn-select", 
+                          "data-placeholder" => "Select one or more investors"} %>
   <% end %>
 
   <%= f.input :currency, :collection => Deal::CURRENCIES, :selected => :first %>       

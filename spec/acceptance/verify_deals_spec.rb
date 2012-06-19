@@ -5,7 +5,7 @@ feature 'verify deals' do
   context 'normal user' do
 
     scenario 'cannot verify deals' do
-      deal = Deal.make!(:full)
+      deal = Deal.make!(:complete)
       normal = login_normal
       click_link 'Deals'
       click_link deal.summary
@@ -17,7 +17,7 @@ feature 'verify deals' do
   context 'moderator' do
 
     scenario 'cannot verify deal without source_url' do
-      deal = Deal.make!(:full, :source_url => nil)
+      deal = Deal.make!(:complete, :source_url => nil)
       login_mod
       click_link 'Deals'
       click_link deal.summary
@@ -26,7 +26,7 @@ feature 'verify deals' do
     end
 
     scenario 'can verify deal with source' do
-      deal = Deal.make!(:full)
+      deal = Deal.make!(:complete)
       login_mod
       click_link 'Deals'
       click_link deal.summary
@@ -37,7 +37,7 @@ feature 'verify deals' do
     end
 
     scenario 'can unverify deal with source' do
-      deal = Deal.make!(:full, :verified => true)
+      deal = Deal.make!(:complete, :verified => true)
       login_mod
       click_link 'Deals'
       click_link deal.summary
@@ -52,7 +52,7 @@ feature 'verify deals' do
   context 'when deal is updated' do
 
     scenario 'should become unverified' do
-      deal = Deal.make!(:full, :verified => true)
+      deal = Deal.make!(:complete, :verified => true)
       login_normal
       click_link 'Deals'
       click_link 'Edit'

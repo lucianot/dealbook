@@ -45,7 +45,7 @@ feature 'manage deals' do
     end
 
     scenario 'can edit deals' do
-      deal = Deal.make!(:full)
+      deal = Deal.make!(:complete)
       new_round = 'Series A'
       login_normal
       click_link 'Deals'
@@ -59,7 +59,7 @@ feature 'manage deals' do
     end
 
     scenario 'can delete deals' do
-      deal = Deal.make!
+      deal = Deal.make!(:complete)
       login_normal
       click_link 'Deals'
       expect do      

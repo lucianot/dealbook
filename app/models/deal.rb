@@ -31,6 +31,7 @@ include ActionView::Helpers::NumberHelper
                                                :allow_nil => true }
   validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, 
                                       :allow_blank => true }
+  validates :company_id, :presence => true, :allow_blank => false
   
   # Callbacks
   after_initialize :init 
@@ -45,13 +46,15 @@ include ActionView::Helpers::NumberHelper
   end
 
   def buyers_name
-    buyers.collect {|buyer| buyer.name}.join(', ')
+    buyers.collect {|buyer| buyer.name}.join(', ') unless buyers.empty?
   end  
 
   def summary
-    result = "#{company_name} raised a #{round} round"
+    result = "#{company_name}"
+    result += " raised a #{round} round" if round
     result += " of #{full_amount}" if amount
-    result += " from #{buyers_name}"
+    result += " from #{buyers_name}" if buyers_name
+    result
   end
 
   def full_amount
@@ -75,6 +78,9 @@ include ActionView::Helpers::NumberHelper
       errors.add(:close_date, "must be today or before")
     end
   end
+
+  # def investor_cannot_be_self
+  #   if
 
   def buyer_for_select
     lambda { |record| [record.name, "#{record.class.name}:#{record.id}"] }
