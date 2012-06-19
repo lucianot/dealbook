@@ -32,6 +32,7 @@ include ActionView::Helpers::NumberHelper
   validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, 
                                       :allow_blank => true }
   validates :company_id, :presence => true, :allow_blank => false
+  validate :corporates_cannot_include_target_company
   
   # Callbacks
   after_initialize :init 
@@ -79,9 +80,12 @@ include ActionView::Helpers::NumberHelper
     end
   end
 
-  # def investor_cannot_be_self
-  #   if
-
+  def corporates_cannot_include_target_company
+    corporates.each do |corporate|
+      errors.add(:corporates, "cannot include target company.") if corporate == company
+    end
+  end
+ 
   def buyer_for_select
     lambda { |record| [record.name, "#{record.class.name}:#{record.id}"] }
   end

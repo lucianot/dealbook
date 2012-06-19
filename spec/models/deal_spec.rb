@@ -32,8 +32,13 @@ describe Deal do
     it { should have_valid(:source_url).when('http://techcrunch.com', '', nil) }
     it { should_not have_valid(:source_url).when('http://invalid') }
 
-    it { should have_valid(:company_id).when(1) } 
+    it { should have_valid(:company_id).when(1000) } 
     it { should_not have_valid(:company_id).when('', nil) }    
+
+    it "should not include target company as investor" do
+      @deal.corporates << @deal.company
+      @deal.should_not be_valid
+    end 
   end
 
   # Associations
