@@ -1,5 +1,5 @@
 <%= simple_form_for @deal do |f| %>
-  <%= f.input :close_date, :label => 'Close date', :required => false %>
+  <%= f.input :close_date, :label => 'Close date' %>
   <%= f.association :company, :input_html => {:class => "chzn-select", 
     "data-placeholder" => "Select a company"} %>   
   <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %> 

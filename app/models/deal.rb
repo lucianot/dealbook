@@ -63,7 +63,8 @@ include ActionView::Helpers::NumberHelper
   end
 
   def buyer_collection
-    filtered_companies = Company.all_but_this(self.company)
+    # filtered_companies = Company.all_but_this(self.company)
+    filtered_companies = Company.all
     collection = (Investor.all + filtered_companies).map(&buyer_for_select)
   end
 
