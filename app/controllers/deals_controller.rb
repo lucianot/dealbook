@@ -28,7 +28,7 @@ class DealsController < ApplicationController
   def edit
     @deal = Deal.find(params[:id])
     @buyers_for_options = @deal.buyer_collection
-    @buyers_for_selected = @deal.buyers.map { |b| "#{b.class.name}:#{b.id}" }
+    @buyers_for_selected = @deal.buyers.map { |buyer| "#{buyer.class.name}:#{buyer.id}" }
   end
 
   # POST /deals
@@ -38,9 +38,9 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
-    authorize! :read, @deal # CanCan
+    authorize! :read, @deal # CanCan gem
     
-    create_offerings_for(buyers)
+    update_offerings_for(buyers)
 
     if @deal.save
       flash[:notice] = 'Deal was successfully created.'
@@ -55,12 +55,10 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
 
-    # TODO: correct approach to destroy all then rebuild selected?
     @deal = Deal.find(params[:id])
-    authorize! :read, @deal
+    authorize! :read, @deal # CanCan gem
 
-    @deal.offerings.delete_all  # TODO: correct to destroy here?
-    create_offerings_for(buyers)
+    update_offerings_for(buyers)
 
     @deal.verified = false
     if @deal.update_attributes(params[:deal])
@@ -101,17 +99,28 @@ class DealsController < ApplicationController
 end
 
 private
-def create_offerings_for(buyers)
-    buyers.each do |buyer|
+def update_offerings_for(buyers)
+  current_offerings = @deal.offerings(true)
+  current_offerings.each do |offering|
+    buyer = offering.buyer
     unless buyer.blank?
-      buyer_type, buyer_id = buyer.split(":")
-      offering = Dealing.new
-      offering.buyer_type = buyer_type
-      offering.buyer_id = buyer_id.to_i
-      @deal.offerings << offering
+      buyer_string = "#{buyer.class.name}:#{buyer.id}"
+      if buyers.include?(buyer_string)
+        buyers.delete(buyer_string)
+      else
+        current_offerings.delete(offering)
+      end
     end
   end
-end
+  buyers.each do |buyer| 
+    unless buyer.blank?
+      buyer_type, buyer_id = buyer.split(":")
+      new_offering = @deal.offerings.find_or_create_by_buyer_id_and_buyer_type(
+        :buyer_type => buyer_type,
+        :buyer_id => buyer_id.to_i)
+    end
+  end
+end 
 
 
 

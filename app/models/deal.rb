@@ -35,8 +35,7 @@ include ActionView::Helpers::NumberHelper
   validate :corporates_cannot_include_target_company
   
   # Callbacks
-  after_initialize :init 
-  
+  after_initialize :init  
   def init
     self.verified = false if self.verified.nil?  # Deal should be unverified by default
   end
@@ -64,8 +63,7 @@ include ActionView::Helpers::NumberHelper
 
   def buyer_collection
     # filtered_companies = Company.all_but_this(self.company)
-    filtered_companies = Company.all
-    collection = (Investor.all + filtered_companies).map(&buyer_for_select)
+    collection = (Investor.all + Company.all).map(&buyer_for_select)
   end
 
   private 

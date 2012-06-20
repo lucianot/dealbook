@@ -17,7 +17,7 @@ class Company < ActiveRecord::Base
   # end
 
   # Scopes
-  scope :all_but_this, lambda {|id| id ? {conditions: ['id not in (?)', id]} : {} }
+  # scope :all_but_this, lambda {|id| id ? {conditions: ['id not in (?)', id]} : {} }
 
   # Associations
   has_and_belongs_to_many :locations
@@ -53,4 +53,5 @@ class Company < ActiveRecord::Base
   def location_name
     locations.collect {|location| location.full}.join(', ')
   end
+  
 end

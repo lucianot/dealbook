@@ -49,7 +49,7 @@ class Investor < ActiveRecord::Base
   def location_name
     locations.collect {|location| location.full}.join(', ')
   end
-  
+
   private
   def all_stages_must_be_included_in_list
     if stage
@@ -58,7 +58,6 @@ class Investor < ActiveRecord::Base
       end
     end
   end
-  
 end
 
 
