@@ -35,6 +35,7 @@ parsed_data['estados'].each do |state|
 end
 
 # populate DB
+puts 'POPULATING LOCATIONS FOR BRAZIL'
 states.each do |state, cities|
   cities.each do |city|
     Location.create!(country: "Brazil",
@@ -42,5 +43,6 @@ states.each do |state, cities|
                      city: city)
   end
 end
+puts 'Locations populated!'
 
 
