@@ -50,7 +50,7 @@ end
 
 Deal.blueprint do
   close_date      { (1..500).to_a.sample.days.ago.to_date }
-  category        { 'financing round' } 
+  category        { 'raised funds from' } 
   round           { 'Series B' } 
   currency        { 'USD' }
   amount          { (10_000_000..10_001_000).to_a.sample } 

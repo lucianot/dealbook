@@ -5,7 +5,7 @@ namespace :import do
   desc "import data from Google Spreadsheet to database"
   task :google => :environment do
 
-    filename = "#{Rails.root}/db/Brazilian Startup DealBook - Full.csv"
+    filename = "#{Rails.root}/tmp/import/Brazilian Startup DealBook - Full.csv"
     CSV.foreach(filename) do |deal|
 
       date, company, deal_category, amount, investors_list, source_url, year = deal

@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.page(params[:page]).order("LOWER(name)")
     respond_with(@companies)
   end
 

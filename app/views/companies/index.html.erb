@@ -20,7 +20,9 @@
   </table>
 <% end %>
 
-  <br>
+<br>
+<%= will_paginate @companies %>
+<br>
 
 <% if can? :create, Company %>
   <%= link_to 'New Company', new_company_path %>

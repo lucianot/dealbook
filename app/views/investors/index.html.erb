@@ -20,6 +20,8 @@
   </table>
 <% end %>
 
-  <br>
+<br>
+<%= will_paginate @companies %>
+<br>
 
 <%= link_to('New Investor', new_investor_path) if can? :create, Investor %>

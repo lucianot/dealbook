@@ -5,7 +5,7 @@ class InvestorsController < ApplicationController
   # GET /investors
   # GET /investors.json
   def index
-    @investors = Investor.all
+    @investors = Investor.page(params[:page]).order("LOWER(name)")
     respond_with(@investors)
   end
 
