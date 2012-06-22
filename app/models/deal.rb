@@ -63,7 +63,8 @@ include ActionView::Helpers::NumberHelper
 
   def buyer_collection
     # filtered_companies = Company.all_but_this(self.company)
-    collection = (Investor.all + Company.all).map(&buyer_for_select)
+    collection = (Investor.all + Company.all).sort! {|a,b| a.name.downcase <=> b.name.downcase }
+    collection.map(&buyer_for_select)
   end
 
   private 

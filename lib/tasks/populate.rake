@@ -5,7 +5,7 @@ namespace :import do
   desc "import data from Google Spreadsheet to database"
   task :google => :environment do
 
-    # clean record
+    # clean records
     # Company.delete_all
     # Investor.delete_all
     # Deal.delete_all
@@ -19,7 +19,8 @@ namespace :import do
       unless date_str == "Date"  # check if is header
         # create companies
         if company_name
-          company = Company.find_by_name(company_name)
+          # TODO: refactor with find_or_create
+          company = Company.find_by_name(company_name)   
           company ||= Company.create!(name:company_name)
         end
 
@@ -32,7 +33,8 @@ namespace :import do
             if corporate
               buyers << ["Company", corporate.id]
             else
-              investor = Investor.find_by_name(buyer_name)
+              # TODO: refactor with find_or_create
+              investor = Investor.find_by_name(buyer_name)  
               investor ||= Investor.create(name:buyer_name)
               buyers << ["Investor", investor.id]
             end

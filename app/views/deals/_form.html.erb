@@ -1,7 +1,10 @@
 <%= simple_form_for @deal do |f| %>
-  <%= f.input :close_date, :label => 'Close date' %>
-  <%= f.association :company, :input_html => {:class => "chzn-select", 
-    "data-placeholder" => "Select a company"} %>   
+  <%= f.input :close_date, :label => 'Close date', 
+                           :start_year => 1990, 
+                           :end_year => Date.today.year %>
+  <%= f.association :company, :collection => Company.all(:order => :name), 
+                              :input_html => {:class => "chzn-select", 
+                                              "data-placeholder" => "Select a company"} %>   
   <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %> 
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
@@ -16,7 +19,7 @@
 
   <%= f.input :round, :collection => Deal::ROUNDS, :selected => :first %>   
   <%= f.input :currency, :collection => Deal::CURRENCIES, :selected => :first %>       
-  <%= f.input :amount, :label => 'Total Amount' %>  
+  <%= f.input :amount, :as => :string, :label => 'Total Amount' %>  
   <%= f.input :pre_valuation, :label => 'Pre-money Valuation' %>
   <%= f.input :source_url, :label => 'Source' %>  
   <br>   

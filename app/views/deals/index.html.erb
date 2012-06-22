@@ -22,7 +22,9 @@
   </table>
 <% end %>
 
-  <br>
+<br>
+<%= will_paginate @deals %>
+<br>
 
 <% if can? :create, Deal %>
   <%= link_to 'New deal', new_deal_path %>

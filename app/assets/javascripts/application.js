@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require chosen-jquery
+//= require autoNumeric-1.7.4
 //= require_tree .
