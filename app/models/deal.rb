@@ -1,7 +1,7 @@
 class Deal < ActiveRecord::Base
 include ActionView::Helpers::NumberHelper
 
-  CATEGORIES = ['raised funds from', 'merged with', 'acquired by', 'shut down']
+  CATEGORIES = ['raised funds from', 'incubated by', 'merged with', 'was acquired by', 'shut down']
   ROUNDS = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   CURRENCIES = ['USD', 'BRL']
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, 
@@ -23,8 +23,8 @@ include ActionView::Helpers::NumberHelper
   validate  :close_date_must_be_today_or_before
   validate  :close_date_must_be_in_date_format
   validates :category, :inclusion => { :in => CATEGORIES }
-  validates :round, :inclusion => { :in => ROUNDS }
-  validates :currency, :inclusion => { :in => CURRENCIES }
+  # validates :round, :inclusion => { :in => ROUNDS }
+  validates :currency, :inclusion => { :in => CURRENCIES, :allow_nil => true }
   validates :amount, :numericality => { :only_integer => true, :greater_than => 0, 
                                         :allow_nil => true }
   validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0, 
