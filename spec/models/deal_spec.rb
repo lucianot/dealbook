@@ -17,17 +17,17 @@ describe Deal do
     it { should have_valid(:category).when('raised funds from') }
     it { should_not have_valid(:category).when('invalid', '', nil) } 
 
-    it { should have_valid(:round).when('Series A') }
-    it { should_not have_valid(:round).when('invalid', '', nil) }
+    it { should have_valid(:round).when('Series A', '', nil) }
+    it { should_not have_valid(:round).when('invalid') }
 
-    it { should have_valid(:currency).when('USD', 'BRL') }
-    it { should_not have_valid(:currency).when('invalid', '', nil) }
+    it { should have_valid(:currency).when('USD', 'BRL', '', nil) }
+    it { should_not have_valid(:currency).when('invalid') }
 
-    it { should have_valid(:amount).when(1_000_000, nil) }
-    it { should_not have_valid(:amount).when(-1, 42.0) }  # TODO: test blank
+    it { should have_valid(:amount).when(1_000_000, '', nil) }
+    it { should_not have_valid(:amount).when(-1, 42.0) } 
 
-    it { should have_valid(:pre_valuation).when(10_000_000, nil) }
-    it { should_not have_valid(:pre_valuation).when(-1, 42.0) }  # TODO: test blank
+    it { should have_valid(:pre_valuation).when(10_000_000, '', nil) }
+    it { should_not have_valid(:pre_valuation).when(-1, 42.0) }
 
     it { should have_valid(:source_url).when('http://techcrunch.com', '', nil) }
     it { should_not have_valid(:source_url).when('http://invalid') }

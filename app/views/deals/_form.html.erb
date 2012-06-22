@@ -17,10 +17,10 @@
                           "data-placeholder" => "Select one or more investors"} %>
   <% end %>
 
-  <%= f.input :round, :collection => Deal::ROUNDS, :selected => :first %>   
-  <%= f.input :currency, :collection => Deal::CURRENCIES, :selected => :first %>       
+  <%= f.input :round, :collection => Deal::ROUNDS %>   
+  <%= f.input :currency, :collection => Deal::CURRENCIES %>       
   <%= f.input :amount, :as => :string, :label => 'Total Amount' %>  
-  <%= f.input :pre_valuation, :label => 'Pre-money Valuation' %>
+  <%= f.input :pre_valuation, :as => :string, :label => 'Pre-money Valuation' %>
   <%= f.input :source_url, :label => 'Source' %>  
   <br>   
   <%= f.button :submit %>  
