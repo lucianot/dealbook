@@ -13,6 +13,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
+    @company_offers = @company.offers.order(:close_date)
+    @company_deals = @company.deals.order(:close_date)
     respond_with(@company)
   end
 

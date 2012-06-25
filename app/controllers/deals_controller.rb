@@ -5,7 +5,7 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.page(params[:page]).order(:close_date)
+    @deals = Deal.page(params[:page]).order("close_date DESC")
     respond_with(@deals)
   end
 

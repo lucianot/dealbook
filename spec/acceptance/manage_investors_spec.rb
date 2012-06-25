@@ -38,8 +38,6 @@ feature 'manage investors' do
       page.should have_content investor.name
       click_link investor.name
       page.should have_content 'Series Seed, Series A'
-      page.should have_content "Markets: #{market.name}"
-      page.should have_content "Locations: #{location.full}"
     end
 
     scenario 'can edit investors' do

@@ -13,6 +13,7 @@ class InvestorsController < ApplicationController
   # GET /investors/1.json
   def show
     @investor = Investor.find(params[:id])
+    @investor_deals = @investor.deals.order(:close_date)
     respond_with(@investor)
   end
 

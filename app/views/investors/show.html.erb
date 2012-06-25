@@ -1,15 +1,31 @@
 <h3>Investors#show</h3>
 
-<p>Investor: <%= @investor.name %></p>
-<p>Description: <%= @investor.description %></p>
-<p>Website: <%= @investor.website %></p>
-<p>Linkedin: <%= @investor.linkedin %></p>
-<p>Category: <%= @investor.category %></p>
-<p>Status: <%= @investor.status %></p>
-<p>Stages: <%= @investor.stage.join(', ') unless @investor.stage.nil? %></p>
-<p>Markets: <%= @investor.market_name %></p>
-<p>Locations: <%= @investor.location_name %></p>
+<table>
+  <tr><td>Investor</td><td><%= @investor.name %></td></tr>
+  <tr><td>Description</td><td><%= @investor.description %></td></tr>
+  <tr><td>Website</td><td><%= @investor.website %></td></tr>
+  <tr><td>Linkedin</td><td><%= @investor.linkedin %></td></tr>
+  <tr><td>Status</td><td><%= @investor.status %></td></tr>
+  <tr><td>Category</td><td><%= @investor.category %></td></tr>  
+  <tr><td>Stages</td><td><%= @investor.stage.join(', ') unless @investor.stage.nil? %></td></tr>
+  <tr><td>Markets</td><td><%= @investor.market_name %></td></tr>
+  <tr><td>Locations</td><td><%= @investor.location_name %></td></tr>
+  <tr>
+    <td>Investments</td>
+    <td>
+      <table>
+      <% @investor_deals.each do |deal| %>
+        <tr>
+          <td><%= link_to deal.close_date.strftime("%Y-%m"), deal_path(deal) %></td>
+          <td><%= link_to deal.company_name, company_path(deal.company)  %></td>    
+        </tr>
+      <% end %>    
+      </table>
+    </td>       
+  </tr>                     
+</table>
 
+<br>
 <% if can? :edit, Investor %> 
   <%= link_to('Edit', edit_investor_path(@investor)) %> |
 <% end %>

@@ -36,8 +36,7 @@ feature 'manage companies' do
       page.should have_content 'Company was successfully created.'
       page.should have_content company.name
       click_link company.name
-      page.should have_content "Markets: #{market.name}"
-      page.should have_content "Locations: #{location.full}"
+      page.should have_content company.name
     end
 
     scenario 'can edit companies' do

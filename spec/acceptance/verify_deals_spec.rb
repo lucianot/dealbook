@@ -8,7 +8,7 @@ feature 'verify deals' do
       deal = Deal.make!(:complete)
       normal = login_normal
       click_link 'Deals'
-      click_link deal.summary
+      click_link deal.id.to_s
       page.should_not have_link 'Mark as verified?'
     end    
 
@@ -20,7 +20,7 @@ feature 'verify deals' do
       deal = Deal.make!(:complete, :source_url => nil)
       login_mod
       click_link 'Deals'
-      click_link deal.summary
+      click_link deal.id.to_s
       page.should_not have_content 'Verified!'
       page.should_not have_link 'Mark as verified?'
     end
@@ -29,8 +29,8 @@ feature 'verify deals' do
       deal = Deal.make!(:complete)
       login_mod
       click_link 'Deals'
-      click_link deal.summary
-      page.should have_content deal.source_url
+      click_link deal.id.to_s
+      page.should have_link 'Source', :href => deal.source_url
       page.should have_content 'Not verified yet!'
       click_link 'Mark as verified?'
       page.should have_content 'Verified!'
@@ -40,8 +40,8 @@ feature 'verify deals' do
       deal = Deal.make!(:complete, :verified => true)
       login_mod
       click_link 'Deals'
-      click_link deal.summary
-      page.should have_content deal.source_url
+      click_link deal.id.to_s
+      page.should have_link 'Source', :href => deal.source_url
       page.should have_content 'Verified'
       click_link 'Mark as unverified?'
       page.should have_content 'Not verified yet!'
@@ -59,7 +59,7 @@ feature 'verify deals' do
       select '2009', :from => 'Close date'
       click_button 'Update Deal'
       deal.reload
-      click_link deal.summary
+      click_link deal.id.to_s
       page.should have_content 'Not verified yet!'      
       page.should_not have_content 'Verified!'
     end

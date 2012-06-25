@@ -38,10 +38,10 @@ feature 'manage deals' do
         click_button 'Create Deal'
       end.to change {Deal.count}.by(1)
       page.should have_content 'Deal was successfully created.'
-      page.should have_content deal.summary
-      click_link deal.summary
-      page.should have_content "Company: #{company.name}"
-      page.should have_content "Investors: #{investor.name}"
+      page.should have_content company.name
+      click_link Deal.find_by_company_id(company).id.to_s
+      page.should have_link company.name
+      page.should have_content investor.name
     end
 
     scenario 'can edit deals' do
@@ -55,6 +55,7 @@ feature 'manage deals' do
         click_button 'Update Deal'
       end.to change {Deal.count}.by(0)
       page.should have_content 'Deal was successfully updated.'
+      click_link deal.id.to_s      
       page.should have_content new_round
     end
 

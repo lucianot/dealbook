@@ -9,6 +9,7 @@ include ActionView::Helpers::NumberHelper
   attr_accessible :company_id, :offerings, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
+  self.per_page = 10
 
   # Associations
   belongs_to :company
@@ -63,7 +64,7 @@ include ActionView::Helpers::NumberHelper
 
   def buyer_collection
     # filtered_companies = Company.all_but_this(self.company)
-    collection = (Investor.all + Company.all).sort! {|a,b| a.name.downcase <=> b.name.downcase }
+    collection = (Investor.all + Company.all).sort_by {|buyer| buyer.name.downcase }
     collection.map(&buyer_for_select)
   end
 
