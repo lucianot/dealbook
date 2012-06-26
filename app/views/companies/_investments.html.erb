@@ -1,0 +1,8 @@
+<table>
+  <% @company_deals.each do |deal| %>
+    <tr>
+      <td><%= link_to deal.close_date.strftime("%Y-%m"), deal_path(deal)  %></td>
+      <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
+    </tr>
+  <% end %>
+</table>

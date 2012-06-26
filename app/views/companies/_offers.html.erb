@@ -1,0 +1,19 @@
+<table>
+  <% @company_offers.each do |offer| %>
+    <tr>
+      <td><%= offer.close_date.strftime("%Y-%m") %></td>
+      <td><%= link_to offer.summary, deal_path(offer) %></td>
+      <td><ul>
+        <% offer.buyers.each do |buyer| %>
+          <li>
+          <% if buyer.class.name == "Company" %>
+            <%= link_to buyer.name, company_path(buyer) %>
+          <% else %>
+            <%= link_to buyer.name, investor_path(buyer) %>
+          <% end %>
+          </li>
+        <% end %>
+      </ul></td>
+    </tr>
+  <% end %>
+</table>
