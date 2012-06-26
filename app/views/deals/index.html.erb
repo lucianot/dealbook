@@ -16,24 +16,24 @@
 
   <% @deals.each do |deal| %>
     <tr>
-      <td><%= link_to(deal.close_date.strftime("%Y-%m"), deal, :id => deal.id) %></td>
-      <td><%= link_to(deal.company_name, company_path(deal.company))  %></td>
+      <td><%= link_to deal.close_date.strftime("%Y-%m"), deal, :id => deal.id %></td>
+      <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
       <td><%= deal.category  %></td>
       <td>
         <ul>
         <% deal.buyers.each do |buyer| %>
           <li>
           <% if buyer.class.name == "Investor" %>
-            <%= link_to(buyer.name, investor_path(buyer)) %>
+            <%= link_to buyer.name, investor_path(buyer) %>
           <% else %>
-            <%= link_to(buyer.name, company_path(buyer)) %>
+            <%= link_to buyer.name, company_path(buyer) %>
           <% end %>
           </li>
         <% end %>
         </ul>
       </td>
       <td><%= deal.full_amount  %></td>       
-      <td><%= link_to('Edit', edit_deal_path(deal)) if can? :edit, Deal %></td>
+      <td><%= link_to 'Edit', edit_deal_path(deal) if can? :edit, Deal %></td>
       <td><%= link_to('Destroy', deal, confirm: 'Are you sure?', method: :delete) if can? :destroy, Deal %></td>
     </tr>
   <% end %>

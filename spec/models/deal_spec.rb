@@ -51,8 +51,14 @@ describe Deal do
 
   # Methods
   context '#summary' do
-    it { @deal.summary.should == "#{@deal.company_name} raised a #{@deal.round} round"\
-      " of #{@deal.full_amount} from #{@deal.buyers_name}" }
+    context 'company raised funds' do
+      it { @deal.summary.should == "raised #{@deal.full_amount} in #{@deal.round} funding from" }
+    end
+
+    context 'company was acquired' do
+      before { @deal.category = 'was acquired by' }
+      it { @deal.summary.should == "was acquired by" }
+    end
   end
 
   context '#full_amount' do

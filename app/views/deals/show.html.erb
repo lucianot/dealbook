@@ -2,17 +2,17 @@
 
 <table>
   <tr><td>Close date</td><td><%= @deal.close_date.strftime("%Y-%m") %></td></tr>
-  <tr><td>Company</td><td><%= link_to(@deal.company_name, company_path(@deal.company)) %></td></tr>
+  <tr><td>Company</td><td><%= link_to @deal.company_name, company_path(@deal.company) %></td></tr>
   <tr><td>Deal type</td><td><%= @deal.category %></td></tr>
   <tr>
     <td>Investors</td>
     <td><ul>
       <% @deal.buyers.each do |buyer| %>
         <li>
-        <% if buyer.class.name == "Investor" %>
-          <%= link_to(buyer.name, investor_path(buyer)) %>
+        <% if buyer.class.name == "Company" %>
+          <%= link_to buyer.name, company_path(buyer) %>
         <% else %>
-          <%= link_to(buyer.name, company_path(buyer)) %>
+          <%= link_to buyer.name, investor_path(buyer) %>
         <% end %>
         </li>
       <% end %>
@@ -25,7 +25,6 @@
 
 <p><%= link_to("Source", @deal.source_url) %></p>
 <p><%= "#{@deal.verified ? 'Verified!' : 'Not verified yet!'}" %>
-
 <% if @deal.source_url && (can? :manage, Deal) %>
   <% if @deal.verified %>
     <%= link_to 'Mark as unverified?', unverify_deal_path, :method => :put, :id => 'deal_unverify' %>
@@ -35,6 +34,6 @@
 <% end %></p>
 
 <% if can? :edit, Deal %> 
-  <%= link_to('Edit', edit_deal_path(@deal)) %> |
+  <%= link_to 'Edit', edit_deal_path(@deal) %> |
 <% end %>
-<%= link_to 'Back', deals_path %>
+<%= link_to 'Back', :back %>

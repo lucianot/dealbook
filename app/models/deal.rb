@@ -9,7 +9,7 @@ include ActionView::Helpers::NumberHelper
   attr_accessible :company_id, :offerings, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
   has_paper_trail
-  self.per_page = 10
+  self.per_page = 12
 
   # Associations
   belongs_to :company
@@ -50,12 +50,18 @@ include ActionView::Helpers::NumberHelper
     buyers.collect {|buyer| buyer.name}.join(', ') unless buyers.empty?
   end  
 
+  # TODO move to presenter
   def summary
-    result = "#{company_name}"
-    result += " raised a #{round} round" if round
-    result += " of #{full_amount}" if amount
-    result += " from #{buyers_name}" if buyers_name
-    result
+    case category
+    when 'raised funds from'
+      result = "raised"
+      result += " #{full_amount} in" if amount
+      result += " #{round}" if round
+      result += " funding from"
+    else
+      result = category
+    end
+    return result
   end
 
   def full_amount

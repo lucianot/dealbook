@@ -5,7 +5,7 @@ class MarketsController < ApplicationController
   # GET /markets
   # GET /markets.json
   def index
-    @markets = Market.all  # TODO: sort alpha
+    @markets = Market.order(:name)
     respond_with(@markets)
   end
 

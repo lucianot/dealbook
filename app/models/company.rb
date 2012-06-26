@@ -53,5 +53,9 @@ class Company < ActiveRecord::Base
   def location_name
     locations.collect {|location| location.full}.join(', ')
   end
+
+  def buyers
+    self.investors + self.corporates
+  end
   
 end

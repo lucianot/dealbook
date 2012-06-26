@@ -32,7 +32,7 @@ jQuery ->
     company.chosen().change =>
 
       # remove company from options
-      companyId = company.find(":selected").val()
+      newCompanyId = company.find(":selected").val()
       $('#deal_offerings_buyers option[value="Company:'+companyId+'"]').remove()
 
       # add remaining

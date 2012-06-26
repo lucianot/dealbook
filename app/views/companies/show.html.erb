@@ -1,30 +1,40 @@
 <h3>Companies#show</h3>
 
 <table>
-  <tr><td>Company</td><td><%= @company.name %></td></tr>
+  <tr><td>Company</td>    <td><%= @company.name %></td></tr>
   <tr><td>Description</td><td><%= @company.description %></td></tr>
-  <tr><td>Website</td><td><%= @company.website %></td></tr>
-  <tr><td>Linkedin</td><td><%= @company.linkedin %></td></tr>
-  <tr><td>Status</td><td><%= @company.status %></td></tr>
-  <tr><td>Markets</td><td><%= @company.market_name %></td></tr>
-  <tr><td>Locations</td><td><%= @company.location_name %></td></tr>
-  <tr>
-    <td>Deals</td>
+  <tr><td>Website</td>    <td><%= @company.website %></td></tr>
+  <tr><td>Linkedin</td>   <td><%= @company.linkedin %></td></tr>
+  <tr><td>Status</td>     <td><%= @company.status %></td></tr>
+  <tr><td>Markets</td>    <td><%= @company.market_name %></td></tr>
+  <tr><td>Locations</td>  <td><%= @company.location_name %></td></tr>
+  <tr><td>Investors</td>
+    <td><ul>
+      <% @company.buyers.each do |buyer| %>
+        <li>
+        <% if buyer.class.name == "Company" %>
+          <%= link_to buyer.name, company_path(buyer) %>
+        <% else %>
+          <%= link_to buyer.name, investor_path(buyer) %>
+        <% end %>
+        </li>
+      <% end %>
+    </ul></td>
+  </tr>
+  <tr><td>Deals</td>
     <td>
-
       <table>
       <% @company_offers.each do |offer| %>
         <tr>
-          <td><%= link_to(offer.close_date.strftime("%Y-%m"), deal_path(offer)) %></td>   
-          <td><%= offer.full_amount %></td>   
-          <td><%= offer.category %></td>
+          <td><%= offer.close_date.strftime("%Y-%m") %></td>   
+          <td><%= link_to offer.summary, deal_path(offer) %></td>
           <td><ul>
             <% offer.buyers.each do |buyer| %>
               <li>
-              <% if buyer.class.name == "Investor" %>
-                <%= link_to(buyer.name, investor_path(buyer)) %>
+              <% if buyer.class.name == "Company" %>
+                <%= link_to buyer.name, company_path(buyer) %>
               <% else %>
-                <%= link_to(buyer.name, company_path(buyer)) %>
+                <%= link_to buyer.name, investor_path(buyer) %>
               <% end %>
               </li>
             <% end %>
@@ -32,17 +42,15 @@
         </tr>
       <% end %>
       </table>
-
     </td>       
   </tr>
-  <tr>
-    <td>Investments</td>
+  <tr><td>Investments</td>
     <td>
       <table>
       <% @company_deals.each do |deal| %>
         <tr>
-          <td><%= link_to(deal.close_date.strftime("%Y-%m"), deal_path(deal)) %></td>
-          <td><%= link_to(deal.company_name, company_path(deal.company)) %></td>    
+          <td><%= link_to deal.close_date.strftime("%Y-%m"), deal_path(deal)  %></td>
+          <td><%= link_to deal.company_name, company_path(deal.company)  %></td>    
         </tr>
       <% end %>    
       </table>
@@ -52,6 +60,6 @@
 
 <br>
 <% if can? :edit, Company %> 
-  <%= link_to('Edit', edit_company_path(@company)) %> |
+  <%= link_to 'Edit', edit_company_path(@company)  %> |
 <% end %>
-<%= link_to 'Back', companies_path %>
+<%= link_to 'Back', :back %>
