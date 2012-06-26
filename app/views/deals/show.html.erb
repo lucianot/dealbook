@@ -2,28 +2,15 @@
 
 <table>
   <tr><td>Close date</td><td><%= @deal.close_date.strftime("%Y-%m") %></td></tr>
-  <tr><td>Company</td><td><%= link_to @deal.company_name, company_path(@deal.company) %></td></tr>
-  <tr><td>Deal type</td><td><%= @deal.category %></td></tr>
-  <tr>
-    <td>Investors</td>
-    <td><ul>
-      <% @deal.buyers.each do |buyer| %>
-        <li>
-        <% if buyer.class.name == "Company" %>
-          <%= link_to buyer.name, company_path(buyer) %>
-        <% else %>
-          <%= link_to buyer.name, investor_path(buyer) %>
-        <% end %>
-        </li>
-      <% end %>
-    </ul></td>
-  </tr>
-  <tr><td>Round</td><td><%= @deal.round %></td></tr>
-  <tr><td>Amount</td><td><%= @deal.full_amount %></td></tr>
+  <tr><td>Company</td>   <td><%= link_to @deal.company_name, company_path(@deal.company) %></td></tr>
+  <tr><td>Deal type</td> <td><%= @deal.category %></td></tr>
+  <tr><td>Investors</td> <td><%= render 'buyers' %></td></tr>
+  <tr><td>Round</td>     <td><%= @deal.round %></td></tr>
+  <tr><td>Amount</td>    <td><%= @deal.full_amount %></td></tr>
   <tr><td>Pre-money valution</td><td><%= @deal.pre_valuation %></td></tr>
 </table>
 
-<p><%= link_to("Source", @deal.source_url) %></p>
+<p><%= link_to "Source", @deal.source_url %></p>
 <p><%= "#{@deal.verified ? 'Verified!' : 'Not verified yet!'}" %>
 <% if @deal.source_url && (can? :manage, Deal) %>
   <% if @deal.verified %>
@@ -33,7 +20,7 @@
   <% end %>
 <% end %></p>
 
-<% if can? :edit, Deal %> 
+<% if can? :edit, Deal %>
   <%= link_to 'Edit', edit_deal_path(@deal) %> |
 <% end %>
 <%= link_to 'Back', :back %>

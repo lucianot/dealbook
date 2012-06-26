@@ -1,0 +1,11 @@
+<ul>
+  <% @deal.buyers.each do |buyer| %>
+    <li>
+    <% if buyer.class.name == "Company" %>
+      <%= link_to buyer.name, company_path(buyer) %>
+    <% else %>
+      <%= link_to buyer.name, investor_path(buyer) %>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
