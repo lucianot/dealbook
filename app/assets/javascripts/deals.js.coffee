@@ -36,10 +36,9 @@ jQuery ->
       $('#deal_offerings_buyers option[value="Company:'+newCompanyId+'"]').remove()
 
       # add remaining
-      # TODO add in correct order
-      investorsCurrent = investors.find("option")
       investorsOriginal.each ->
-        unless this in investorsCurrent || this.value is "Company:#{newCompanyId}"
+        this.remove
+        unless this.value is "Company:#{newCompanyId}"
           investors.append(this)
       investors.trigger("liszt:updated")
 
