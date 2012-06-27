@@ -1,49 +1,43 @@
 <h3>Deals#index</h3>
+<br>
 
 <% if @deals.empty? %>
   No deals yet.<br>
 <% else %>
-  <table>
-    <tr>
-      <th>Close Date</th>
-      <th>Company</th>
-      <th>Deal type</th>
-      <th>Investors</th>
-      <th>Amount</th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @deals.each do |deal| %>
-    <tr>
-      <td><%= link_to deal.close_date.strftime("%Y-%m"), deal, :id => deal.id %></td>
-      <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
-      <td><%= deal.category  %></td>
-      <td>
-        <ul>
-        <% deal.buyers.each do |buyer| %>
-          <li>
-          <% if buyer.class.name == "Investor" %>
-            <%= link_to buyer.name, investor_path(buyer) %>
-          <% else %>
-            <%= link_to buyer.name, company_path(buyer) %>
-          <% end %>
-          </li>
-        <% end %>
-        </ul>
-      </td>
-      <td><%= deal.full_amount  %></td>       
-      <td><%= link_to 'Edit', edit_deal_path(deal) if can? :edit, Deal %></td>
-      <td><%= link_to('Destroy', deal, confirm: 'Are you sure?', method: :delete) if can? :destroy, Deal %></td>
-    </tr>
-  <% end %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Close Date</th>
+        <th>Company</th>
+        <th>Deal type</th>
+        <th>Investors</th>
+        <th class="values">Amount</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @deals.each do |deal| %>
+      <tr>
+        <td><%= link_to deal.close_date.strftime("%Y-%m"), deal, :id => deal.id %></td>
+        <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
+        <td><%= deal.category  %></td>
+        <td>
+          <ul class="unstyled">
+            <%= render :partial => 'buyers', :locals => { :deal => deal } %>
+          </ul>
+        </td>
+        <td class="values"><%= deal.full_amount %></td>
+        <td><%= link_to 'Edit', edit_deal_path(deal) if can? :edit, Deal %></td>
+        <td><%= link_to('Destroy', deal, confirm: 'Are you sure?', method: :delete) if can? :destroy, Deal %></td>
+      </tr>
+    <% end %>
+    </tbody>
   </table>
 <% end %>
 
-<br>
-<%= will_paginate @deals %>
-<br>
+<%= will_paginate @deals, :renderer => BootstrapPagination::Rails %>
 
 <% if can? :create, Deal %>
-  <%= link_to 'New deal', new_deal_path %>
+  <%= button_to 'New deal', new_deal_path, :method => :get, :class => "btn btn-primary" %>
 <% end %>

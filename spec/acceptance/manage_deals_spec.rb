@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'manage deals' do
-  
+
   context 'unauthenticated user' do
 
     scenario 'cannot manage deals' do
@@ -9,7 +9,7 @@ feature 'manage deals' do
       click_link 'Deals'
       page.should_not have_link 'New deal'
       page.should_not have_link 'Edit'
-      page.should_not have_link 'Destroy'    
+      page.should_not have_link 'Destroy'
     end
 
   end # context
@@ -22,18 +22,18 @@ feature 'manage deals' do
       investor = Investor.make!
       login_normal
       click_link 'Deals'
-      click_link 'New deal'
+      click_button 'New deal'
       select '2012', :from => 'Close date'
       select '12', :from => 'Close date'
-      select '20', :from => 'Close date'            
+      select '20', :from => 'Close date'
       select company.name, :from => 'Company'
       select deal.category, :from => 'Category'
-      select deal.round, :from => 'Round'   
-      select investor.name, :from => 'deal_offerings_buyers'      
-      select deal.currency, :from => 'Currency'   
+      select deal.round, :from => 'Round'
+      select investor.name, :from => 'deal_offerings_buyers'
+      select deal.currency, :from => 'Currency'
       fill_in 'Amount', :with => deal.amount
       fill_in 'Pre-money Valuation', :with => deal.pre_valuation
-      fill_in 'Source', :with => deal.source_url 
+      fill_in 'Source', :with => deal.source_url
       expect do
         click_button 'Create Deal'
       end.to change {Deal.count}.by(1)
@@ -50,12 +50,12 @@ feature 'manage deals' do
       login_normal
       click_link 'Deals'
       click_link 'Edit'
-      select new_round, :from => 'Round' 
+      select new_round, :from => 'Round'
       expect do
         click_button 'Update Deal'
       end.to change {Deal.count}.by(0)
       page.should have_content 'Deal was successfully updated.'
-      click_link deal.id.to_s      
+      click_link deal.id.to_s
       page.should have_content new_round
     end
 
@@ -63,13 +63,13 @@ feature 'manage deals' do
       deal = Deal.make!(:complete)
       login_normal
       click_link 'Deals'
-      expect do      
+      expect do
         click_link 'Destroy'
       end.to change {Deal.count}.by(-1)
       page.should have_content 'Deal was successfully deleted.'
-      page.should_not have_content deal.summary      
+      page.should_not have_content deal.summary
     end
 
-  end # context  
+  end # context
 
 end # feature

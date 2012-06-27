@@ -4,7 +4,7 @@ include ActionView::Helpers::NumberHelper
   CATEGORIES = ['raised funds from', 'incubated by', 'merged with', 'was acquired by', 'shut down']
   ROUNDS = ['Acceleration', 'Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   CURRENCIES = ['USD', 'BRL']
-  attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round, 
+  attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round,
                   :source_url, :verified
   attr_accessible :company_id, :offerings, :investor_ids
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
@@ -17,7 +17,7 @@ include ActionView::Helpers::NumberHelper
                        :class_name => 'Dealing',
                        :dependent => :destroy
   has_many :investors, :through => :offerings, :source => :buyer, :source_type => 'Investor'
-  has_many :corporates, :through => :offerings, :source => :buyer, :source_type => 'Company' 
+  has_many :corporates, :through => :offerings, :source => :buyer, :source_type => 'Company'
 
   #Validations
   validates :close_date, :presence => true
@@ -28,15 +28,15 @@ include ActionView::Helpers::NumberHelper
   validates :currency, :inclusion => { :in => CURRENCIES }, :allow_blank => true
   validates :amount, :numericality => { :only_integer => true, :greater_than => 0 },
                                         :allow_blank => true
-  validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0 }, 
+  validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0 },
                                                :allow_blank => true
-  validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true, 
+  validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true,
                                       :allow_blank => true }
   validates :company_id, :presence => true, :allow_blank => false
   validate :corporates_cannot_include_target_company
-  
+
   # Callbacks
-  after_initialize :init  
+  after_initialize :init
   def init
     self.verified = false if self.verified.nil?  # Deal should be unverified by default
   end
@@ -48,7 +48,7 @@ include ActionView::Helpers::NumberHelper
 
   def buyers_name
     buyers.collect {|buyer| buyer.name}.join(', ') unless buyers.empty?
-  end  
+  end
 
   # TODO move to presenter
   def summary
@@ -74,7 +74,7 @@ include ActionView::Helpers::NumberHelper
     collection.map(&buyer_for_select)
   end
 
-  private 
+  private
   def close_date_must_be_in_date_format
     unless close_date.is_a?(Date)
       errors.add(:close_date, "is missing or invalid")
@@ -92,7 +92,7 @@ include ActionView::Helpers::NumberHelper
       errors.add(:corporates, "cannot include target company.") if corporate == company
     end
   end
- 
+
   def buyer_for_select
     lambda { |record| [record.name, "#{record.class.name}:#{record.id}"] }
   end

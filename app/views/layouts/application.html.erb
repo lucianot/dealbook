@@ -5,14 +5,21 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <%= yield(:head) %>  
+  <%= yield(:head) %>
 </head>
 
 <body>
-  
-  <%= render 'layouts/navigation' %>
-  <%= render 'layouts/messages' %>
-  <%= yield %>
+  <div class="container">
 
+    <%= render 'layouts/navigation' %>
+    <%= render 'layouts/messages' %>
+
+    <div class="row">
+      <div class="span8 offset2">
+        <%= yield %>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>

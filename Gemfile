@@ -19,6 +19,8 @@ gem 'paper_trail', '~> 2.6'
 gem 'simple_form', '~> 2.0'
 gem 'country_select', '~> 1.0'
 gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-sass', '~> 2.0.4.0'
+gem 'will_paginate-bootstrap'
 
 # search
 gem 'sunspot_rails', '~> 1.3'
@@ -51,7 +53,7 @@ group :development, :test do
   gem 'spin', '~> 0.4'
   gem 'guard-spin', '~> 0.1'
   gem 'pry'
-end 
+end
 
 
 # To use ActiveModel has_secure_password
