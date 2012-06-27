@@ -22,7 +22,7 @@ feature 'manage deals' do
       investor = Investor.make!
       login_normal
       click_link 'Deals'
-      click_button 'New deal'
+      click_button 'New Deal'
       select '2012', :from => 'Close date'
       select '12', :from => 'Close date'
       select '20', :from => 'Close date'

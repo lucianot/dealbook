@@ -19,7 +19,8 @@ gem 'paper_trail', '~> 2.6'
 gem 'simple_form', '~> 2.0'
 gem 'country_select', '~> 1.0'
 gem 'will_paginate', '~> 3.0'
-gem 'bootstrap-sass', '~> 2.0.4.0'
+# gem 'bootstrap-sass', '~> 2.0.4.0'
+gem 'twitter-bootstrap-rails'
 gem 'will_paginate-bootstrap'
 
 # search

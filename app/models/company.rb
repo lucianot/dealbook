@@ -1,8 +1,9 @@
 class Company < ActiveRecord::Base
-  STATUSES = %w[active inactive acquired merged]  
+  STATUSES = %w[active inactive acquired merged]
   attr_accessible :description, :linkedin, :name, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
   has_paper_trail
+  self.per_page = 20
 
   # # Sunspot/Solr
   # searchable do
@@ -13,7 +14,7 @@ class Company < ActiveRecord::Base
   #   end
   #   text :location_names do
   #     locations.map(&:full)
-  #   end  
+  #   end
   # end
 
   # Scopes
@@ -26,22 +27,23 @@ class Company < ActiveRecord::Base
   has_many :offers, :foreign_key => 'company_id',
                     :class_name => 'Deal'
   has_many :offerings, :through => :offers
-  has_many :investors, :through => :offerings, 
+  has_many :investors, :through => :offerings,
                        :source => :investor,
                        :conditions => "dealings.buyer_type = 'Investor'"
-  has_many :corporates, :through => :offerings, 
+  has_many :corporates, :through => :offerings,
                         :source => :corporate,
-                        :conditions => "dealings.buyer_type = 'Company'"   
+                        :conditions => "dealings.buyer_type = 'Company'"
   # as buyer
   has_many :dealings, :as => :buyer
   has_many :deals, :through => :dealings
-  has_many :companies, :through => :deals                      
+  has_many :companies, :through => :deals
 
   #Validations
-  validates :name, :length => { :in => 2..100 },
+  validates :name, :presence => true,
+                   :length => { :in => 2..100 },
                    :uniqueness => true
   validates :description, :length => { :maximum => 600 }
-  validates :website, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true } 
+  validates :website, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true, :allow_blank => true }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
 
@@ -57,5 +59,5 @@ class Company < ActiveRecord::Base
   def buyers
     self.investors + self.corporates
   end
-  
+
 end

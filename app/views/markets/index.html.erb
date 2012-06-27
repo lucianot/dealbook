@@ -1,25 +1,30 @@
 <h3>Markets#index</h3>
+<br>
 
 <% if @markets.empty? %>
   No markets yet.<br>
 <% else %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @markets.each do |market| %>
-    <tr>
-      <td><%= market.name %></td> 
-      <td><%= link_to('Edit', edit_market_path(market)) if can? :edit, Market %></td>
-      <td><%= link_to('Destroy', market, confirm: 'Are you sure?', method: :delete) if can? :destroy, Market %></td>
-    </tr>
-  <% end %>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @markets.each do |market| %>
+      <tr>
+        <td><%= market.name %></td>
+        <td><%= link_to('Edit', edit_market_path(market)) if can? :edit, Market %></td>
+        <td><%= link_to('Destroy', market, confirm: 'Are you sure?', method: :delete) if can? :destroy, Market %></td>
+      </tr>
+    <% end %>
   </table>
 <% end %>
 
-  <br>
+<%= will_paginate @markets, :renderer => BootstrapPagination::Rails %>
 
-<%= link_to('New Market', new_market_path) if can? :create, Market %>
+<% if can? :create, Market %>
+  <%= button_to 'New Market', new_market_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>

@@ -1,27 +1,31 @@
 <h3>Investors#index</h3>
+<br>
 
 <% if @investors.empty? %>
   No investors yet.<br>
 <% else %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @investors.each do |investor| %>
-    <tr>
-      <td><%= link_to( investor.name, investor) if can? :show, Investor %></td> 
-      <td><%= link_to('Edit', edit_investor_path(investor)) if can? :edit, Investor %></td>
-      <td><%= link_to('Destroy', investor, confirm: 'Are you sure?', method: :delete) if can? :destroy, Investor %></td>
-    </tr>
-  <% end %>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @investors.each do |investor| %>
+      <tr>
+        <td><%= link_to( investor.name, investor) if can? :show, Investor %></td>
+        <td><%= link_to('Edit', edit_investor_path(investor)) if can? :edit, Investor %></td>
+        <td><%= link_to('Destroy', investor, confirm: 'Are you sure?', method: :delete) if can? :destroy, Investor %></td>
+      </tr>
+    <% end %>
+    </tbody>
   </table>
 <% end %>
 
-<br>
-<%= will_paginate @companies %>
-<br>
+<%= will_paginate @investors, :renderer => BootstrapPagination::Rails %>
 
-<%= link_to('New Investor', new_investor_path) if can? :create, Investor %>
+<% if can? :create, Investor %>
+  <%= button_to 'New Investor', new_investor_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>

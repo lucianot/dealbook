@@ -10,7 +10,7 @@ jQuery ->
 
     # store investors
     investorsOriginal = investors.find("option")
-    investors.chosen()  
+    investors.chosen()
     company.chosen()
 
     # on load, remove company from options
@@ -33,12 +33,13 @@ jQuery ->
 
       # remove company from options
       newCompanyId = company.find(":selected").val()
-      $('#deal_offerings_buyers option[value="Company:'+companyId+'"]').remove()
+      $('#deal_offerings_buyers option[value="Company:'+newCompanyId+'"]').remove()
 
       # add remaining
+      # TODO add in correct order
       investorsCurrent = investors.find("option")
       investorsOriginal.each ->
-        unless this in investorsCurrent || this.value is "Company:#{companyId}"
+        unless this in investorsCurrent || this.value is "Company:#{newCompanyId}"
           investors.append(this)
       investors.trigger("liszt:updated")
 
@@ -64,7 +65,7 @@ jQuery ->
           enableFields [investors]
         when 'shut down'
           enableFields []
-      investors.trigger("liszt:updated") 
+      investors.trigger("liszt:updated")
 
     # when form is submitted
     amount.closest('form').submit ->

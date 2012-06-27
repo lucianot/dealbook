@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'manage investors' do
-  
+
   context 'unauthenticated user' do
 
     scenario 'cannot manage investors' do
@@ -9,7 +9,7 @@ feature 'manage investors' do
       click_link 'Investors'
       page.should_not have_link 'New Investor'
       page.should_not have_link 'Edit'
-      page.should_not have_link 'Destroy'    
+      page.should_not have_link 'Destroy'
     end
 
   end # context
@@ -19,18 +19,18 @@ feature 'manage investors' do
     scenario 'can create new investor' do
       investor = Investor.make
       market = Market.make!
-      location = Location.make!      
+      location = Location.make!
       investor.stage = nil
       login_normal
       click_link 'Investors'
-      click_link 'New Investor'
+      click_button 'New Investor'
       fill_in 'Name', :with => investor.name
-      select 'VC', :from => 'Category'      
-      select 'active', :from => 'Status'     
-      select 'Series Seed', :from => 'Stages' 
+      select 'VC', :from => 'Category'
+      select 'active', :from => 'Status'
+      select 'Series Seed', :from => 'Stages'
       select 'Series A', :from => 'Stages'
       select market.name, :from => 'Markets'
-      select location.full, :from => 'Locations' 
+      select location.full, :from => 'Locations'
       expect do
         click_button 'Create Investor'
       end.to change {Investor.count}.by(1)
@@ -47,8 +47,8 @@ feature 'manage investors' do
       click_link 'Investors'
       click_link 'Edit'
       fill_in 'Name', :with => new_name
-      select 'Series Seed', :from => 'Stages' 
-      unselect 'Series A', :from => 'Stages'     
+      select 'Series Seed', :from => 'Stages'
+      unselect 'Series A', :from => 'Stages'
       expect do
         click_button 'Update Investor'
       end.to change {Investor.count}.by(0)
@@ -62,11 +62,11 @@ feature 'manage investors' do
       investor = Investor.make!
       login_normal
       click_link 'Investors'
-      expect do      
+      expect do
         click_link 'Destroy'
       end.to change {Investor.count}.by(-1)
       page.should have_content 'Investor was successfully deleted.'
-      page.should_not have_content investor.name      
+      page.should_not have_content investor.name
     end
 
   end # context

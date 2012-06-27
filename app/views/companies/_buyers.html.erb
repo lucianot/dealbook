@@ -1,5 +1,5 @@
 <ul class="unstyled">
-  <% @company.buyers.each do |buyer| %>
+  <% buyers.each do |buyer| %>
     <li>
     <% if buyer.class.name == "Company" %>
       <%= link_to buyer.name, company_path(buyer) %>

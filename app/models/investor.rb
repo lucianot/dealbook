@@ -1,11 +1,12 @@
 class Investor < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[Angel VC Accelerator Incubator Corporate]
-  STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']     
+  STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
   serialize :stage
-  has_paper_trail   
+  has_paper_trail
+  self.per_page = 20
 
   # # Sunspot/Solr
   # searchable do
@@ -16,7 +17,7 @@ class Investor < ActiveRecord::Base
   #   end
   #   text :location_names do
   #     locations.map(&:full)
-  #   end  
+  #   end
   # end
 
   # Associations
@@ -44,7 +45,7 @@ class Investor < ActiveRecord::Base
   # Methods
   def market_name
     markets.collect {|market| market.name}.join(', ')
-  end  
+  end
 
   def location_name
     locations.collect {|location| location.full}.join(', ')

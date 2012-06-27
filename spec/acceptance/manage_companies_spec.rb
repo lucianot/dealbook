@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'manage companies' do
-  
+
   context 'unauthenticated user' do
 
     scenario 'cannot manage companies' do
@@ -9,7 +9,7 @@ feature 'manage companies' do
       click_link 'Companies'
       page.should_not have_link 'New Company'
       page.should_not have_link 'Edit'
-      page.should_not have_link 'Destroy'    
+      page.should_not have_link 'Destroy'
     end
 
   end # context
@@ -22,11 +22,11 @@ feature 'manage companies' do
       location = Location.make!
       login_normal
       click_link 'Companies'
-      click_link 'New Company'
+      click_button 'New Company'
       fill_in 'Name', :with => company.name
       fill_in 'Description', :with => company.description
       fill_in 'Website', :with => company.website
-      fill_in 'Linkedin', :with => company.linkedin 
+      fill_in 'Linkedin', :with => company.linkedin
       select 'active', :from => 'Status'
       select market.name, :from => 'Markets'
       select location.full, :from => 'Locations'
@@ -57,11 +57,11 @@ feature 'manage companies' do
       company = Company.make!
       login_normal
       click_link 'Companies'
-      expect do      
+      expect do
         click_link 'Destroy'
       end.to change {Company.count}.by(-1)
       page.should have_content 'Company was successfully deleted.'
-      page.should_not have_content company.name      
+      page.should_not have_content company.name
     end
 
   end # context

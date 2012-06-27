@@ -5,7 +5,7 @@ class MarketsController < ApplicationController
   # GET /markets
   # GET /markets.json
   def index
-    @markets = Market.order(:name)
+    @markets = Market.page(params[:page]).order("LOWER(name)")
     respond_with(@markets)
   end
 
@@ -46,7 +46,7 @@ class MarketsController < ApplicationController
       flash[:notice] = 'Market was successfully updated.'
     end
     respond_with(@market, :location => markets_url)
-  end  
+  end
 
   # DELETE /markets/1
   # DELETE /markets/1.json

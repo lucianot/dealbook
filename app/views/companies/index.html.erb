@@ -1,29 +1,31 @@
 <h3>Companies#index</h3>
+<br>
 
 <% if @companies.empty? %>
   No companies yet.<br>
 <% else %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @companies.each do |company| %>
-    <tr>
-      <td><%= link_to(company.name, company) if can? :show, Company %></td>      
-      <td><%= link_to('Edit', edit_company_path(company)) if can? :edit, Company %></td>
-      <td><%= link_to('Destroy', company, confirm: 'Are you sure?', method: :delete) if can? :destroy, Company %></td>
-    </tr>
-  <% end %>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= link_to(company.name, company) if can? :show, Company %></td>
+        <td><%= link_to('Edit', edit_company_path(company)) if can? :edit, Company %></td>
+        <td><%= link_to('Destroy', company, confirm: 'Are you sure?', method: :delete) if can? :destroy, Company %></td>
+      </tr>
+    <% end %>
+    </tbody>
   </table>
 <% end %>
 
-<br>
-<%= will_paginate @companies %>
-<br>
+<%= will_paginate @companies, :renderer => BootstrapPagination::Rails %>
 
 <% if can? :create, Company %>
-  <%= link_to 'New Company', new_company_path %>
+  <%= button_to 'New Company', new_company_path, :method => :get, :class => "btn btn-primary" %>
 <% end %>
