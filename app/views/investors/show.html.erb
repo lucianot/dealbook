@@ -1,16 +1,19 @@
 <h3>Investors#show</h3>
+<br>
 
-<table>
-  <tr><td>Investor</td>   <td><%= @investor.name %></td></tr>
-  <tr><td>Description</td><td><%= @investor.description %></td></tr>
-  <tr><td>Website</td>    <td><%= @investor.website %></td></tr>
-  <tr><td>Linkedin</td>   <td><%= @investor.linkedin %></td></tr>
-  <tr><td>Status</td>     <td><%= @investor.status %></td></tr>
-  <tr><td>Category</td>   <td><%= @investor.category %></td></tr>
-  <tr><td>Stages</td>     <td><%= @investor.stage.join(', ') unless @investor.stage.nil? %></td></tr>
-  <tr><td>Markets</td>    <td><%= @investor.market_name %></td></tr>
-  <tr><td>Locations</td>  <td><%= @investor.location_name %></td></tr>
-  <tr><td>Investments</td><td><%= render "investments" %></td></tr>
+<table class="table table-bordered table-condensed">
+  <tbody>
+    <tr><td>Investor</td>   <td><%= @investor.name %></td></tr>
+    <tr><td>Description</td><td><%= @investor.description %></td></tr>
+    <tr><td>Website</td>    <td><%= @investor.website %></td></tr>
+    <tr><td>Linkedin</td>   <td><%= @investor.linkedin %></td></tr>
+    <tr><td>Status</td>     <td><%= @investor.status %></td></tr>
+    <tr><td>Category</td>   <td><%= @investor.category %></td></tr>
+    <tr><td>Stages</td>     <td><%= @investor.stage.join(', ') unless @investor.stage.nil? %></td></tr>
+    <tr><td>Markets</td>    <td><%= @investor.market_name %></td></tr>
+    <tr><td>Locations</td>  <td><%= @investor.location_name %></td></tr>
+    <tr><td>Investments</td><td><%= render "investments" %></td></tr>
+  </tbody>
 </table>
 
 <br>

@@ -68,7 +68,7 @@ jQuery ->
 
     # when form is submitted
     amount.closest('form').submit ->
-
+      alert('ok')
       # change amount value
       amount_value = amount.autoNumericGet()
       amount.val(amount_value) if amount_value && amount_value > 0
@@ -76,7 +76,6 @@ jQuery ->
       # change valuation value
       valuation_value = valuation.autoNumericGet()
       valuation.val(valuation_value) if valuation_value && valuation_value > 0
-
 
 
 

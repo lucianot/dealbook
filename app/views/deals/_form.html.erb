@@ -1,27 +1,28 @@
-<%= simple_form_for @deal do |f| %>
-  <%= f.input :close_date, :label => 'Close date', 
-                           :start_year => 1990, 
-                           :end_year => Date.today.year %>
-  <%= f.association :company, :collection => Company.all(:order => :name), 
-                              :input_html => {:class => "chzn-select", 
-                                              "data-placeholder" => "Select a company"} %>   
-  <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %> 
+<%= simple_form_for @deal, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :close_date, :label => 'Close date',
+                           :start_year => 1990,
+                           :end_year => Date.today.year,
+                           :input_html => { :class => 'span1' } %>
+  <%= f.association :company, :collection => Company.all(:order => :name),
+                              :input_html => {:class => "chzn-select",
+                                              "data-placeholder" => "Select a company"} %>
+  <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %>
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
     <%= offerings_form.input :buyers, :as => :select,
           :collection => @buyers_for_options,
-          :label => 'Investors', 
+          :label => 'Investors',
           :required => false,
           :selected => @buyers_for_selected,
-          :input_html => {:multiple => true, :class => "chzn-select", 
+          :input_html => {:multiple => true, :class => "chzn-select",
                           "data-placeholder" => "Select one or more investors"} %>
   <% end %>
-
-  <%= f.input :round, :collection => Deal::ROUNDS %>   
-  <%= f.input :currency, :collection => Deal::CURRENCIES %>       
-  <%= f.input :amount, :as => :string, :label => 'Total Amount' %>  
+  <%= f.input :round, :collection => Deal::ROUNDS %>
+  <%= f.input :currency, :collection => Deal::CURRENCIES, :input_html => { :class => 'span1' } %>
+  <%= f.input :amount, :as => :string, :label => 'Total Amount' %>
   <%= f.input :pre_valuation, :as => :string, :label => 'Pre-money Valuation' %>
-  <%= f.input :source_url, :label => 'Source' %>  
-  <br>   
-  <%= f.button :submit %>  
+  <%= f.input :source_url, :label => 'Source' %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
 <% end %>

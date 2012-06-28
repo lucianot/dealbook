@@ -28,7 +28,8 @@ class Investor < ActiveRecord::Base
   has_many :companies, :through => :deals
 
   #Validations
-  validates :name, :length => { :in => 2..100 },
+  validates :name, :presence => true,
+                   :length => { :in => 2..100 },
                    :uniqueness => true
   validates :description, :length => { :maximum => 600 }
   validates :website, :format => { :with => URL_REGEX }, :allow_nil => true, :allow_blank => true

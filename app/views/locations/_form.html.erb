@@ -1,7 +1,8 @@
-<%= simple_form_for @location do |f| %>
+<%= simple_form_for @location, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :country %>
   <%= f.input :region %>
   <%= f.input :city %>
-  <br>
-  <%= f.button :submit %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
 <% end %>
