@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'verify deals' do
-  
+
   context 'normal user' do
 
     scenario 'cannot verify deals' do
@@ -10,7 +10,7 @@ feature 'verify deals' do
       click_link 'Deals'
       click_link deal.id.to_s
       page.should_not have_link 'Mark as verified?'
-    end    
+    end
 
   end
 
@@ -30,7 +30,7 @@ feature 'verify deals' do
       login_mod
       click_link 'Deals'
       click_link deal.id.to_s
-      page.should have_link 'Source', :href => deal.source_url
+      page.should have_link deal.source_url
       page.should have_content 'Not verified yet!'
       click_link 'Mark as verified?'
       page.should have_content 'Verified!'
@@ -41,13 +41,13 @@ feature 'verify deals' do
       login_mod
       click_link 'Deals'
       click_link deal.id.to_s
-      page.should have_link 'Source', :href => deal.source_url
+      page.should have_link deal.source_url
       page.should have_content 'Verified'
       click_link 'Mark as unverified?'
       page.should have_content 'Not verified yet!'
     end
 
-  end # context  
+  end # context
 
   context 'when deal is updated' do
 
@@ -60,11 +60,11 @@ feature 'verify deals' do
       click_button 'Update Deal'
       deal.reload
       click_link deal.id.to_s
-      page.should have_content 'Not verified yet!'      
+      page.should have_content 'Not verified yet!'
       page.should_not have_content 'Verified!'
     end
 
-  end # context 
+  end # context
 
 end # feature
 

@@ -1,13 +1,16 @@
 <h3>Users#index</h3>
+<br>
 
-<table class="users">
-  <tr>
-    <th>User</th>
-    <th>Role</th>
-    <th>Since</th>
-    <th></th>
-  </tr>
-
+<table class="users table table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Role</th>
+      <th>Since</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.full_name, user %></td>
@@ -16,4 +19,5 @@
       <td><%= link_to('Edit', edit_user_path(user)) unless user.is?(:admin) || (cannot? :manage, User) %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>

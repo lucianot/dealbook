@@ -1,7 +1,13 @@
 <h3>Users#show</h3>
+<br>
 
-<p>User: <%= @user.full_name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<p>Role: <%= @user.role if @user.email %></p>
+<table class="table table-bordered table-condensed">
+  <tbody>
+    <tr><td>User</td> <td><%= @user.full_name %></td></tr>
+    <tr><td>Email</td><td><%= @user.email %></td></tr>
+    <tr><td>Role</td> <td><%= @user.role %></td></tr>
+  </tbody>
+</table>
 
-<%= link_to 'Back', users_path %>
+<br>
+<%= link_to 'Back', :back %>

@@ -1,19 +1,11 @@
-<%= form_for(@user) do |f| %>
-
-  <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name, :disabled => true %>
+<%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.input :full_name, :disabled => true %>
+    <%= f.input :email, :disabled => true %>
+    <%= f.input :role, :collection => User::ROLES-['admin', 'guest'],
+                       :value_method => :to_s,
+                       :label_method => :humanize,
+                       :input_html => {:class => "input-medium"} %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.collection_select :role, User::ROLES-['admin', 'guest'], :to_s, :humanize %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Submit' %>
-  </div>
-
 <% end %>
