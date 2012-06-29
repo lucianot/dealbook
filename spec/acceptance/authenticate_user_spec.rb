@@ -1,18 +1,18 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'authenticate' do
-  
+
   context 'sign up' do
     scenario 'valid' do
       sign_up_new_user
       page.should have_content "Welcome! You have signed up successfully"
     end
-  
+
     scenario 'invalid' do
       visit "/"
       click_link 'Sign up'
       click_button 'Sign up'
-      page.should have_content "prohibited this user from being saved"
+      page.should have_content "Please review the problems below"
     end
   end
 
@@ -30,7 +30,7 @@ feature 'authenticate' do
       page.should_not have_content "Signed in successfully"
     end
   end
-  
+
   context 'logout' do
     scenario 'successful' do
       sign_up_new_user

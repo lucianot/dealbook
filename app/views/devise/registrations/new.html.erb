@@ -1,10 +1,11 @@
 <h3>Sign up</h3>
 <br>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
+    <%= f.input :full_name %>
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>
