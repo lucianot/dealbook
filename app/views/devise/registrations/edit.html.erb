@@ -16,8 +16,10 @@
   </div>
 <% end %>
 
-<h4>Cancel my account</h4>
+<div class="bottom_links">
+<!--   <h4>Cancel my account</h4> -->
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+</div>
