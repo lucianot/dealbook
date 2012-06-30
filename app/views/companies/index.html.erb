@@ -17,8 +17,14 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= link_to(company.name, company) if can? :show, Company %></td>
-        <td><%= link_to('Edit', edit_company_path(company)) if can? :edit, Company %></td>
-        <td><%= link_to('Destroy', company, confirm: 'Are you sure?', method: :delete) if can? :destroy, Company %></td>
+        <td><%= link_to edit_company_path(company) do  %>
+              <i class="icon-pencil"></i>
+            <% end if can? :edit, Company %>
+        </td>
+        <td><%= link_to(company, confirm: 'Are you sure?', method: :delete) do %>
+              <i class="icon-remove"></i>
+            <% end if can? :destroy, Company %>
+        </td>
       </tr>
     <% end %>
     </tbody>

@@ -21,8 +21,14 @@
         <td><%= location.country %></td>
         <td><%= location.region %></td>
         <td><%= location.city %></td>
-        <td><%= link_to('Edit', edit_location_path(location)) if can? :edit, Location %></td>
-        <td><%= link_to('Destroy', location, confirm: 'Are you sure?', method: :delete) if can? :destroy, Location %></td>
+        <td><%= link_to edit_location_path(location) do  %>
+              <i class="icon-pencil"></i>
+            <% end if can? :edit, Location %>
+        </td>
+        <td><%= link_to(location, confirm: 'Are you sure?', method: :delete) do %>
+              <i class="icon-remove"></i>
+            <% end if can? :destroy, Location %>
+        </td>
       </tr>
     <% end %>
   </table>

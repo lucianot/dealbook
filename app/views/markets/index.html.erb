@@ -17,8 +17,14 @@
     <% @markets.each do |market| %>
       <tr>
         <td><%= market.name %></td>
-        <td><%= link_to('Edit', edit_market_path(market)) if can? :edit, Market %></td>
-        <td><%= link_to('Destroy', market, confirm: 'Are you sure?', method: :delete) if can? :destroy, Market %></td>
+        <td><%= link_to edit_market_path(market) do  %>
+              <i class="icon-pencil"></i>
+            <% end if can? :edit, Market %>
+        </td>
+        <td><%= link_to(market, confirm: 'Are you sure?', method: :delete) do %>
+              <i class="icon-remove"></i>
+            <% end if can? :destroy, Market %>
+        </td>
       </tr>
     <% end %>
   </table>

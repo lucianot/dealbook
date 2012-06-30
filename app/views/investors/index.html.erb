@@ -17,8 +17,14 @@
     <% @investors.each do |investor| %>
       <tr>
         <td><%= link_to( investor.name, investor) if can? :show, Investor %></td>
-        <td><%= link_to('Edit', edit_investor_path(investor)) if can? :edit, Investor %></td>
-        <td><%= link_to('Destroy', investor, confirm: 'Are you sure?', method: :delete) if can? :destroy, Investor %></td>
+        <td><%= link_to edit_investor_path(investor) do  %>
+              <i class="icon-pencil"></i>
+            <% end if can? :edit, Investor %>
+        </td>
+        <td><%= link_to(investor, confirm: 'Are you sure?', method: :delete) do %>
+              <i class="icon-remove"></i>
+            <% end if can? :destroy, Investor %>
+        </td>
       </tr>
     <% end %>
     </tbody>
