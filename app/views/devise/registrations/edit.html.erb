@@ -1,7 +1,8 @@
-<h3>Edit <%= resource_name.to_s.humanize %></h3>
-<br>
+<div class="title form_title">
+  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+</div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
