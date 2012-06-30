@@ -2,11 +2,11 @@
   <h3>Home</h3>
 </div>
 
-<%= form_tag home_index_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+<%= form_tag home_index_path, :method => :get, :class => 'form-inline' do %>
+  <div class="input-append">
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :class => 'btn' %>
+  </div>
 <% end %>
 
 <!-- <h4>Results</h4>
