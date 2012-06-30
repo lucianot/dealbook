@@ -1,0 +1,51 @@
+$iconSpritePath: image-path('glyphicons-halflings.png');
+$iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
+
+// Bootstrap variables overrides
+// tables
+$tableBackground: rgb(235,237,239);
+
+// navbar
+/*$navbarBackground:
+$navbarLinkColor:*/
+
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+
+// CSS overrides
+
+* {
+  font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: image-url("handmadepaper.png");
+}
+
+.bottom-links {
+  margin-left: 160px;
+}
+
+.navbar-title {
+  margin-left: 180px;
+  margin-right: 170px;
+}
+
+.table td.values {
+  text-align: right;
+}
+
+.table th.values {
+  text-align: right;
+}
+
+.title {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.form-title {
+  //margin-left: 160px;
+}
