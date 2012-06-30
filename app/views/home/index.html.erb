@@ -1,18 +1,19 @@
 <h3>Home</h3>
+<br>
 
 <%= form_tag home_index_path, :method => :get do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
-  </p><br>
+  </p>
 <% end %>
 
 <!-- <h4>Results</h4>
 <table>
 < @search.results.each do |result| %>
   <tr>
-    <td>< link_to result.name, result %></td>    
-    <td>< result.class %></td>      
+    <td>< link_to result.name, result %></td>
+    <td>< result.class %></td>
   </tr>
 < end %>
 </table> -->
