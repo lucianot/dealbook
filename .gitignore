@@ -16,3 +16,5 @@
 
 # Ignore all Solr data files
 /solr/data
+
+.DS_Store
