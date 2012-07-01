@@ -16,12 +16,12 @@
     <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= link_to(company.name, company) if can? :show, Company %></td>
-        <td><%= link_to edit_company_path(company), :id => "edit_#{company.id}" do  %>
+        <td class="first_col"><%= link_to(company.name, company) if can? :show, Company %></td>
+        <td class="edit_destroy"><%= link_to edit_company_path(company), :id => "edit_#{company.id}" do  %>
               <i class="icon-pencil"></i>
             <% end if can? :edit, Company %>
         </td>
-        <td><%= link_to(company, confirm: 'Are you sure?', method: :delete,
+        <td class="edit_destroy"><%= link_to(company, confirm: 'Are you sure?', method: :delete,
                         :id => "destroy_#{company.id}") do %>
               <i class="icon-remove"></i>
             <% end if can? :destroy, Company %>

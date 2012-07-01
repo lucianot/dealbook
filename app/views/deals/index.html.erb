@@ -8,7 +8,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="first_col">Close Date</th>
+        <th>Close Date</th>
         <th>Company</th>
         <th>Deal type</th>
         <th>Investors</th>
@@ -20,7 +20,7 @@
     <tbody>
     <% @deals.each do |deal| %>
       <tr class="deal_row">
-        <td class="first_col"><%= link_to deal.close_date.strftime("%Y-%m"), deal,
+        <td><%= link_to deal.close_date.strftime("%Y-%m"), deal,
             :id => "deal_#{deal.id}" %></td>
         <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
         <td><%= deal.category  %></td>
