@@ -199,7 +199,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 2.0.4)
+  bootstrap-sass (~> 2.0.4.0)
   cancan (~> 1.6)
   capybara (~> 1.1)
   chosen-rails (~> 0.9)
