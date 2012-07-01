@@ -21,7 +21,7 @@ feature 'verify deals' do
       login_mod
       click_link 'Deals'
       click_link deal.id.to_s
-      page.should_not have_content 'Verified!'
+      page.should_not have_content 'Verified'
       page.should_not have_link 'Mark as verified?'
     end
 
@@ -31,9 +31,9 @@ feature 'verify deals' do
       click_link 'Deals'
       click_link deal.id.to_s
       page.should have_link deal.source_url
-      page.should have_content 'Not verified yet!'
+      page.should have_content 'Unverified'
       click_link 'Mark as verified?'
-      page.should have_content 'Verified!'
+      page.should have_content 'Verified'
     end
 
     scenario 'can unverify deal with source' do
@@ -44,7 +44,7 @@ feature 'verify deals' do
       page.should have_link deal.source_url
       page.should have_content 'Verified'
       click_link 'Mark as unverified?'
-      page.should have_content 'Not verified yet!'
+      page.should have_content 'Unverified'
     end
 
   end # context
@@ -60,8 +60,8 @@ feature 'verify deals' do
       click_button 'Update Deal'
       deal.reload
       click_link deal.id.to_s
-      page.should have_content 'Not verified yet!'
-      page.should_not have_content 'Verified!'
+      page.should have_content 'Unverified'
+      page.should_not have_content 'Verified'
     end
 
   end # context
