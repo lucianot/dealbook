@@ -6,9 +6,9 @@ namespace :import do
   task :google => :environment do
 
     # clean records
-    # Company.delete_all
-    # Investor.delete_all
-    # Deal.delete_all
+    Company.delete_all
+    Investor.delete_all
+    Deal.delete_all
 
     # parse csv
     filename = "#{Rails.root}/tmp/import/Brazilian Startup DealBook - Full.csv"
@@ -20,8 +20,9 @@ namespace :import do
         # create companies
         if company_name
           # TODO: refactor with find_or_create
-          company = Company.find_by_name(company_name)   
+          company = Company.find_by_name(company_name)
           company ||= Company.create!(name:company_name)
+          puts "created company: #{company.name}"
         end
 
         # create investors
@@ -34,8 +35,9 @@ namespace :import do
               buyers << ["Company", corporate.id]
             else
               # TODO: refactor with find_or_create
-              investor = Investor.find_by_name(buyer_name)  
-              investor ||= Investor.create(name:buyer_name)
+              investor = Investor.find_by_name(buyer_name)
+              investor ||= Investor.create!(name:buyer_name)
+              puts "created investor: #{investor.name}"
               buyers << ["Investor", investor.id]
             end
           end
@@ -61,17 +63,20 @@ namespace :import do
         end
         begin
           deal.save!
-        rescue
+          puts "Inserted deal #{deal.id} for #{company.name}"
+        rescue Exception => e
+          puts e.message
+          puts e.backtrace.inspect
           binding.pry
         end
 
       end # unless
-    
+
     end # csv
 
   end # google
 
-  private 
+  private
   def convert_date(date_str)
     year, month, day = date_str.split('/')
     date = Date.new(year.to_i, month.to_i)
@@ -102,8 +107,8 @@ namespace :import do
       when 'b', 'B' then 1_000_000_000
       end
       amount = amount_num.to_i * multiplier
-    end  
-    return currency, amount  
+    end
+    return currency, amount
   end
 
 

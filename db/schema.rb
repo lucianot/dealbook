@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20120616182949) do
     t.string   "currency"
     t.integer  "amount"
     t.integer  "pre_valuation"
-    t.string   "source_url"
+    t.text     "source_url"
     t.integer  "company_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(:version => 20120616182949) do
   end
 
   add_index "deals", ["company_id"], :name => "index_deals_on_company_id"
-
-  create_table "deals_investors", :id => false, :force => true do |t|
-    t.integer "deal_id"
-    t.integer "investor_id"
-  end
-
-  add_index "deals_investors", ["deal_id", "investor_id"], :name => "index_deals_investors_on_deal_id_and_investor_id"
-  add_index "deals_investors", ["investor_id", "deal_id"], :name => "index_deals_investors_on_investor_id_and_deal_id"
 
   create_table "investors", :force => true do |t|
     t.string   "name",        :null => false

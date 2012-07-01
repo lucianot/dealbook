@@ -45,7 +45,7 @@ jQuery ->
     # when cateorgy is changed, disable relevant fields
     category.change =>
       # enables fields passed in array, disables others
-      # TODO: clear fields depending on whethen Create or Update
+      # TODO: clear fields depending on whether Create or Update
       enableFields = (enabled) ->
         fields = [investors, round, currency, amount, valuation]
         for field in fields
@@ -68,7 +68,6 @@ jQuery ->
 
     # when form is submitted
     amount.closest('form').submit ->
-      alert('ok')
       # change amount value
       amount_value = amount.autoNumericGet()
       amount.val(amount_value) if amount_value && amount_value > 0

@@ -7,7 +7,7 @@ class CreateDeals < ActiveRecord::Migration
       t.string :currency
       t.integer :amount
       t.integer :pre_valuation
-      t.string :source_url
+      t.text :source_url
       t.references :company
 
       t.timestamps

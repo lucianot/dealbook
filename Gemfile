@@ -6,6 +6,7 @@ gem 'json', '~> 1.7'
 gem 'thin'
 
 # db
+gem 'pg'
 gem 'foreigner', '~> 1.1'
 
 # users and roles
@@ -42,7 +43,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.10'
   gem 'capybara', '~> 1.1'
   gem 'machinist', '~> 2.0'
@@ -57,7 +57,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'heroku'
 end
 

@@ -21,7 +21,7 @@
   <%= f.input :currency, :collection => Deal::CURRENCIES, :input_html => { :class => 'span1' } %>
   <%= f.input :amount, :as => :string, :label => 'Total Amount' %>
   <%= f.input :pre_valuation, :as => :string, :label => 'Pre-money Valuation' %>
-  <%= f.input :source_url, :label => 'Source' %>
+  <%= f.input :source_url, :label => 'Source URL' %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
