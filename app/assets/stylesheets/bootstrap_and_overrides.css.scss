@@ -4,19 +4,10 @@ $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 // Bootstrap variables overrides
 //scaffolding and bottom-links
 $bodyBackground: image-url("handmadepaper.png");
-/*$linkColor: #08c;
-$linkColorHover: darken($linkColor, 15%);*/
 
 // typography
 $sansFontFamily: "Lucida Grande" !default;
 
-// tables
-$tableBackground: rgba(255,255,255,0.3);
-$tableBackgroundHover: rgba(255,255,255,0.4);
-
-// navbar
-/*$navbarBackground:
-$navbarLinkColor:*/
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -45,40 +36,49 @@ a {
 }
 
 .pagination ul {
-  background: $tableBackground;
+  background: rgba(255,255,255,0.4);
 }
 
-.table tbody td {
-  font-family: $sansFontFamily;
-  &.values {
-  font-family: $sansFontFamily;
-  text-align: right; }
-}
-
-.table tbody th.values {
-  text-align: right;
+.table {
+  margin-bottom: 30px;
+  td {
+    border-bottom: 1px solid $tableBorder;
+    font-family: $sansFontFamily;
+    &.values {
+      font-family: $sansFontFamily;
+      text-align: right; }
+  }
+  th.values {
+    text-align: right;
+  }
+  .edit_destroy {
+    border: none;
+    padding-right: 0;
+  }
+  td:not(.edit_destroy) {
+    background: rgba(255,255,255,0.4);
+  }
+  tr {
+    .edit_destroy {
+      a { opacity: 0.0; }
+    }
+    &:hover {
+      td {
+        background: rgba(255,255,255,0.7) !important;
+      }
+      .edit_destroy {
+        border-top: 1px solid $tableBorder;
+        border-bottom: 1px solid $tableBorder;
+        a {
+          opacity: 0.2;
+          &:hover { opacity: 0.9; }
+        }
+      }
+    }
+  }
 }
 
 .title {
   margin-top: 20px;
   margin-bottom: 30px;
 }
-
-.table tbody .button_edit {
-  padding-right: 0;
-  padding-left: 30px;
-  a {
-    opacity: 0.1;
-    &:hover { opacity: 0.9; }
-  }
-}
-
-.table tbody .button_destroy {
-  margin: 0;
-  a {
-    opacity: 0.1;
-    &:hover { opacity: 0.9; }
-  }
-}
-
-

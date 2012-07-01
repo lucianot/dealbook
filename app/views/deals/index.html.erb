@@ -8,7 +8,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Close Date</th>
+        <th class="first_col">Close Date</th>
         <th>Company</th>
         <th>Deal type</th>
         <th>Investors</th>
@@ -20,16 +20,17 @@
     <tbody>
     <% @deals.each do |deal| %>
       <tr class="deal_row">
-        <td><%= link_to deal.close_date.strftime("%Y-%m"), deal, :id => "deal_#{deal.id}" %></td>
+        <td class="first_col"><%= link_to deal.close_date.strftime("%Y-%m"), deal,
+            :id => "deal_#{deal.id}" %></td>
         <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
         <td><%= deal.category  %></td>
         <td><%= render :partial => 'buyers', :locals => { :deal => deal } %></td>
         <td class="values"><%= deal.full_amount %></td>
-        <td class="button_edit"><%= link_to edit_deal_path(deal), :id => "edit_#{deal.id}" do  %>
+        <td class="edit_destroy"><%= link_to edit_deal_path(deal), :id => "edit_#{deal.id}" do  %>
               <i class="icon-pencil"></i>
             <% end if can? :edit, Deal %>
         </td>
-        <td class="button_destroy"><%= link_to(deal, confirm: 'Are you sure?', method: :delete,
+        <td class="edit_destroy"><%= link_to(deal, confirm: 'Are you sure?', method: :delete,
                         :id => "destroy_#{deal.id}") do %>
               <i class="icon-remove"></i>
             <% end if can? :destroy, Deal %>
