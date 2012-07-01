@@ -6,12 +6,12 @@ namespace :import do
   task :google => :environment do
 
     # clean records
-    Company.delete_all
-    Investor.delete_all
-    Deal.delete_all
+    # Company.delete_all
+    # Investor.delete_all
+    # Deal.delete_all
 
     # parse csv
-    filename = "#{Rails.root}/tmp/import/Brazilian Startup DealBook - Full.csv"
+    filename = "#{Rails.root}/lib/tasks/Brazilian Startup DealBook - Full.csv"
     CSV.foreach(filename) do |deal|
 
       date_str, company_name, category_str, amount_str, buyers_names, source_url, year = deal
