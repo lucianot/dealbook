@@ -32,9 +32,23 @@ a {
   font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.navbar-inner {
+  box-shadow: 2px 3px 10px 6px #ccc;
+}
+
 .navbar-title {
   margin-left: 180px;
   margin-right: 170px;
+  .brand {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 140px;
+  }
+  .nav {
+    padding-top: 5px;
+  }
 }
 
 .pagination ul {
