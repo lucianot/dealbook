@@ -29,11 +29,12 @@
           </ul>
         </td>
         <td class="values"><%= deal.full_amount %></td>
-        <td><%= link_to edit_deal_path(deal) do  %>
+        <td><%= link_to edit_deal_path(deal), :id => "edit_#{deal.id}" do  %>
               <i class="icon-pencil"></i>
             <% end if can? :edit, Deal %>
         </td>
-        <td><%= link_to(deal, confirm: 'Are you sure?', method: :delete) do %>
+        <td><%= link_to(deal, confirm: 'Are you sure?', method: :delete,
+                        :id => "destroy_#{deal.id}") do %>
               <i class="icon-remove"></i>
             <% end if can? :destroy, Deal %>
         </td>

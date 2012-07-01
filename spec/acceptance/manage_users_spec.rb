@@ -7,9 +7,10 @@ feature 'manage users' do
     scenario 'edit user role' do
       user = User.make!
       admin = login_admin
-      click_link 'Admin'
-      click_link 'Edit'
-      page.should have_content 'Users#edit'
+      click_link user.full_name
+      click_link 'Manage users'
+      click_link "edit_#{user.id}"
+      page.should have_content 'Edit user'
       page.should have_field 'Full name', :with => user.full_name
       select 'Moderator', :from => 'Role'
       click_button 'Update User'

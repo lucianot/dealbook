@@ -45,7 +45,7 @@ feature 'manage investors' do
       new_name = "#{investor.name} Clone"
       login_normal
       click_link 'Investors'
-      click_link 'Edit'
+      click_link "edit_#{investor.id}"
       fill_in 'Name', :with => new_name
       select 'Series Seed', :from => 'Stages'
       unselect 'Series A', :from => 'Stages'
@@ -63,7 +63,7 @@ feature 'manage investors' do
       login_normal
       click_link 'Investors'
       expect do
-        click_link 'Destroy'
+        click_link "destroy_#{investor.id}"
       end.to change {Investor.count}.by(-1)
       page.should have_content 'Investor was successfully deleted.'
       page.should_not have_content investor.name

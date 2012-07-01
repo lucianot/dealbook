@@ -21,11 +21,12 @@
         <td><%= location.country %></td>
         <td><%= location.region %></td>
         <td><%= location.city %></td>
-        <td><%= link_to edit_location_path(location) do  %>
+        <td><%= link_to edit_location_path(location), :id => "edit_#{location.id}" do  %>
               <i class="icon-pencil"></i>
             <% end if can? :edit, Location %>
         </td>
-        <td><%= link_to(location, confirm: 'Are you sure?', method: :delete) do %>
+        <td><%= link_to(location, confirm: 'Are you sure?', method: :delete,
+                        :id => "destroy_#{location.id}") do %>
               <i class="icon-remove"></i>
             <% end if can? :destroy, Location %>
         </td>

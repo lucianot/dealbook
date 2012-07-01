@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'sqlite3'
 gem 'jquery-rails'
 gem 'json', '~> 1.7'
+gem 'thin'
 
 # db
 gem 'foreigner', '~> 1.1'
@@ -42,6 +42,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.10'
   gem 'capybara', '~> 1.1'
   gem 'machinist', '~> 2.0'
@@ -53,6 +54,11 @@ group :development, :test do
   gem 'spin', '~> 0.4'
   gem 'guard-spin', '~> 0.1'
   gem 'pry'
+end
+
+group :production do
+  gem 'pg'
+  gem 'heroku'
 end
 
 

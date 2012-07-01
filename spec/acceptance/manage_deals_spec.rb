@@ -49,7 +49,7 @@ feature 'manage deals' do
       new_round = 'Series A'
       login_normal
       click_link 'Deals'
-      click_link 'Edit'
+      click_link "edit_#{deal.id}"
       select new_round, :from => 'Round'
       expect do
         click_button 'Update Deal'
@@ -64,7 +64,7 @@ feature 'manage deals' do
       login_normal
       click_link 'Deals'
       expect do
-        click_link 'Destroy'
+        click_link "destroy_#{deal.id}"
       end.to change {Deal.count}.by(-1)
       page.should have_content 'Deal was successfully deleted.'
       page.should_not have_content deal.summary
