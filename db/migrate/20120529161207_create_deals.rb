@@ -13,7 +13,7 @@ class CreateDeals < ActiveRecord::Migration
       t.timestamps
     end
     add_index :deals, :company_id
-    add_foreign_key :deals, :companies, :dependent => :delete
+    # add_foreign_key :deals, :companies, :dependent => :delete
 
   end
 end
