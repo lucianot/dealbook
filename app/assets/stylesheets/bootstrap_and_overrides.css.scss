@@ -2,13 +2,21 @@ $iconSpritePath: image-url('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 
 // Bootstrap variables overrides
+//scaffolding and bottom-links
+$bodyBackground: image-url("handmadepaper.png");
+/*$linkColor: #08c;
+$linkColorHover: darken($linkColor, 15%);*/
+
+// typography
+$sansFontFamily: "Lucida Grande" !default;
+
 // tables
-$tableBackground: rgb(235,237,239);
+$tableBackground: rgba(255,255,255,0.3);
+$tableBackgroundHover: rgba(255,255,255,0.4);
 
 // navbar
 /*$navbarBackground:
 $navbarLinkColor:*/
-
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -16,12 +24,11 @@ $navbarLinkColor:*/
 
 // CSS overrides
 
-* {
-  font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-body {
-  background: image-url("handmadepaper.png");
+a {
+  &:hover { background-color: transparent; }
+  &:visited {
+  color: darken(#08c, 15%);
+  text-decoration: none; }
 }
 
 .bottom-links {
@@ -37,11 +44,18 @@ body {
   margin-right: 170px;
 }
 
-.table td.values {
-  text-align: right;
+.pagination ul {
+  background: $tableBackground;
 }
 
-.table th.values {
+.table tbody td {
+  font-family: $sansFontFamily;
+  &.values {
+  font-family: $sansFontFamily;
+  text-align: right; }
+}
+
+.table tbody th.values {
   text-align: right;
 }
 
@@ -50,6 +64,21 @@ body {
   margin-bottom: 30px;
 }
 
-.form-title {
-  //margin-left: 160px;
+.table tbody .button_edit {
+  padding-right: 0;
+  padding-left: 30px;
+  a {
+    opacity: 0.1;
+    &:hover { opacity: 0.9; }
+  }
 }
+
+.table tbody .button_destroy {
+  margin: 0;
+  a {
+    opacity: 0.1;
+    &:hover { opacity: 0.9; }
+  }
+}
+
+
