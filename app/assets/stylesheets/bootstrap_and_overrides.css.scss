@@ -2,8 +2,6 @@ $iconSpritePath: image-url('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 
 // Bootstrap variables overrides
-//scaffolding and bottom-links
-$bodyBackground: image-url("handmadepaper.png");
 
 // typography
 $sansFontFamily: "Lucida Grande" !default;
@@ -14,6 +12,10 @@ $sansFontFamily: "Lucida Grande" !default;
 
 
 // CSS overrides
+
+body {
+  background: image-url("handmadepaper.png");
+}
 
 a {
   &:hover { background-color: transparent; }
