@@ -1,5 +1,5 @@
 <%= simple_form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, :autofocus => true %>
   <%= f.input :description, :hint => "max 600 characters" %>
   <%= f.input :website %>
   <%= f.input :linkedin %>

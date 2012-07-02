@@ -4,6 +4,7 @@
                            :end_year => Date.today.year,
                            :input_html => { :class => 'span1' } %>
   <%= f.association :company, :collection => Company.all(:order => :name),
+                              :autofocus => true,
                               :input_html => {:class => "chzn-select",
                                               "data-placeholder" => "Select a company"} %>
   <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %>
