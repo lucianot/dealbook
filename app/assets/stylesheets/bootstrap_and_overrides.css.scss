@@ -64,6 +64,17 @@ a {
     &.values {
       font-family: $sansFontFamily;
       text-align: right; }
+    .imbedded {
+      tr { background: transparent; }
+      td {
+        background: transparent;
+        border-left: none;
+        border-right: none;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
   }
   th.values {
     text-align: right;
