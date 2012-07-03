@@ -53,6 +53,7 @@ a {
 
 .pagination ul {
   background: rgba(255,255,255,0.4);
+  li.active a { background: rgba(255,255,255,0.8); }
 }
 
 .table {
