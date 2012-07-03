@@ -21,7 +21,6 @@ gem 'simple_form', '~> 2.0'
 gem 'country_select', '~> 1.0'
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-sass', '~> 2.0.4.0'
-gem 'will_paginate-bootstrap', '~> 0.2'
 
 # search
 gem 'sunspot_rails', '~> 1.3'

@@ -32,7 +32,7 @@
   </table>
 <% end %>
 
-<%= will_paginate @investors, :renderer => BootstrapPagination::Rails %>
+<%= page_navigation_links @investors %>
 
 <% if can? :create, Investor %>
   <%= button_to 'New Investor', new_investor_path, :method => :get, :class => "btn btn-primary" %>

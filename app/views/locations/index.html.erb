@@ -35,7 +35,7 @@
   </table>
 <% end %>
 
-<%= will_paginate @locations, :renderer => BootstrapPagination::Rails %>
+<%= page_navigation_links @locations %>
 
 <% if can? :create, Company %>
   <%= button_to 'New Location', new_location_path, :method => :get, :class => "btn btn-primary" %>

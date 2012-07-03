@@ -31,7 +31,7 @@
   </table>
 <% end %>
 
-<%= will_paginate @markets, :renderer => BootstrapPagination::Rails %>
+<%= page_navigation_links @markets %>
 
 <% if can? :create, Market %>
   <%= button_to 'New Market', new_market_path, :method => :get, :class => "btn btn-primary" %>

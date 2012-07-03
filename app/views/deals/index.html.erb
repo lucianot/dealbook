@@ -41,7 +41,7 @@
   </table>
 <% end %>
 
-<%= will_paginate @deals, :renderer => BootstrapPagination::Rails %>
+<%= page_navigation_links @deals %>
 
 <% if can? :create, Deal %>
   <%= button_to 'New Deal', new_deal_path, :method => :get, :class => "btn btn-primary" %>
