@@ -26,15 +26,22 @@
         <td><%= deal.category  %></td>
         <td><%= render :partial => 'buyers', :locals => { :deal => deal } %></td>
         <td class="values"><%= deal.full_amount %></td>
-        <td class="edit_destroy"><%= link_to edit_deal_path(deal), :id => "edit_#{deal.id}" do  %>
-              <i class="icon-pencil"></i>
-            <% end if can? :edit, Deal %>
-        </td>
-        <td class="edit_destroy"><%= link_to(deal, confirm: 'Are you sure?', method: :delete,
-                        :id => "destroy_#{deal.id}") do %>
-              <i class="icon-remove"></i>
-            <% end if can? :destroy, Deal %>
-        </td>
+
+        <% if can? :edit, Deal %>
+          <td class="edit_destroy"><%= link_to edit_deal_path(deal), :id => "edit_#{deal.id}" do  %>
+            <i class="icon-pencil"></i>
+          <% end %>
+          </td>
+        <% end %>
+
+        <% if can? :edit, Deal %>
+          <td class="edit_destroy"><%= link_to(deal, confirm: 'Are you sure?',
+              :method => :delete, :id => "destroy_#{deal.id}") do %>
+            <i class="icon-remove"></i>
+          <% end %>
+          </td>
+        <% end %>
+
       </tr>
     <% end %>
     </tbody>
