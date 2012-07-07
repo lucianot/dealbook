@@ -68,10 +68,13 @@ include ActionView::Helpers::NumberHelper
     "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
   end
 
-  def buyer_collection
-    # filtered_companies = Company.all_but_this(self.company)
+  def buyers_for_options
     collection = (Investor.all + Company.all).sort_by {|buyer| buyer.name.downcase }
-    collection.map(&buyer_for_select)
+    collection.map { |record| [record.name, "#{record.class.name}:#{record.id}"] }
+  end
+
+  def buyers_for_selected
+    buyers.map { |buyer| "#{buyer.class.name}:#{buyer.id}" }
   end
 
   private
@@ -93,7 +96,4 @@ include ActionView::Helpers::NumberHelper
     end
   end
 
-  def buyer_for_select
-    lambda { |record| [record.name, "#{record.class.name}:#{record.id}"] }
-  end
 end

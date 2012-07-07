@@ -11,10 +11,10 @@
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
     <%= offerings_form.input :buyers, :as => :select,
-          :collection => @buyers_for_options,
+          :collection => @deal.buyers_for_options,
           :label => 'Investors',
           :required => false,
-          :selected => @buyers_for_selected,
+          :selected => @deal.buyers_for_selected,
           :input_html => {:multiple => true, :class => "chzn-select",
                           "data-placeholder" => "Select one or more investors"} %>
   <% end %>

@@ -20,15 +20,12 @@ class DealsController < ApplicationController
   # GET /deals/new.json
   def new
     @deal = Deal.new
-    @buyers_for_options = @deal.buyer_collection
     respond_with(@deal)
   end
 
   # GET /deals/1/edit
   def edit
     @deal = Deal.find(params[:id])
-    @buyers_for_options = @deal.buyer_collection
-    @buyers_for_selected = @deal.buyers.map { |buyer| "#{buyer.class.name}:#{buyer.id}" }
   end
 
   # POST /deals
@@ -39,7 +36,7 @@ class DealsController < ApplicationController
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
     authorize! :read, @deal # CanCan gem
-    
+
     update_offerings_for(buyers)
 
     if @deal.save
@@ -101,18 +98,18 @@ end
 private
 def update_offerings_for(buyers)
   current_offerings = @deal.offerings(true)
-  current_offerings.each do |offering|
-    buyer = offering.buyer
-    unless buyer.blank?
-      buyer_string = "#{buyer.class.name}:#{buyer.id}"
-      if buyers.include?(buyer_string)
-        buyers.delete(buyer_string)
+  current_offerings.each do |current_offering|
+    current_buyer = current_offering.buyer
+    unless current_buyer.blank?
+      current_buyer_string = "#{current_buyer.class.name}:#{current_buyer.id}"
+      if buyers.include?(current_buyer_string)
+        buyers.delete(current_buyer_string)
       else
-        current_offerings.delete(offering)
+        current_offerings.delete(current_offering)
       end
     end
   end
-  buyers.each do |buyer| 
+  buyers.each do |buyer|
     unless buyer.blank?
       buyer_type, buyer_id = buyer.split(":")
       new_offering = @deal.offerings.find_or_create_by_buyer_id_and_buyer_type(
@@ -120,7 +117,7 @@ def update_offerings_for(buyers)
         :buyer_id => buyer_id.to_i)
     end
   end
-end 
+end
 
 
 
