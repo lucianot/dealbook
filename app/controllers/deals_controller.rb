@@ -35,9 +35,9 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
-    authorize! :read, @deal # CanCan gem
+    authorize! :manage, @deal # CanCan gem
 
-    update_offerings_for(buyers)
+    update_offerings_for(@deal, buyers)
 
     if @deal.save
       flash[:notice] = 'Deal was successfully created.'
@@ -51,11 +51,10 @@ class DealsController < ApplicationController
     # TODO: wrap in transaction
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
-
     @deal = Deal.find(params[:id])
-    authorize! :read, @deal # CanCan gem
+    authorize! :manage, @deal # CanCan gem
 
-    update_offerings_for(buyers)
+    update_offerings_for(@deal, buyers)
 
     @deal.verified = false
     if @deal.update_attributes(params[:deal])
@@ -96,23 +95,24 @@ class DealsController < ApplicationController
 end
 
 private
-def update_offerings_for(buyers)
-  current_offerings = @deal.offerings(true)
+def update_offerings_for(deal, buyers)
+  current_offerings = deal.offerings(true)
+  # check if all current buyers are still selected
   current_offerings.each do |current_offering|
-    current_buyer = current_offering.buyer
-    unless current_buyer.blank?
-      current_buyer_string = "#{current_buyer.class.name}:#{current_buyer.id}"
-      if buyers.include?(current_buyer_string)
-        buyers.delete(current_buyer_string)
-      else
-        current_offerings.delete(current_offering)
-      end
+    current_buyer_string = "#{current_offering.buyer_type}:#{current_offering.buyer_id}"
+    if buyers.include?(current_buyer_string)
+      # if current buyer is still selected, simply remove it from control list
+      buyers.delete(current_buyer_string)
+    else
+      # if current buyer is no longer selected, destroy offering
+      current_offering.destroy
     end
   end
+  # create offerings for new buyers
   buyers.each do |buyer|
     unless buyer.blank?
       buyer_type, buyer_id = buyer.split(":")
-      new_offering = @deal.offerings.find_or_create_by_buyer_id_and_buyer_type(
+      new_offering = deal.offerings.find_or_create_by_buyer_id_and_buyer_type(
         :buyer_type => buyer_type,
         :buyer_id => buyer_id.to_i)
     end
