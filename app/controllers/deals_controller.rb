@@ -35,7 +35,7 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
     @deal = Deal.new(params[:deal])
-    authorize! :manage, @deal # CanCan gem
+    authorize! :create, @deal # CanCan gem
 
     update_offerings_for(@deal, buyers)
 
@@ -52,7 +52,7 @@ class DealsController < ApplicationController
     buyers = params[:deal][:offerings][:buyers]
     params[:deal].delete(:offerings)
     @deal = Deal.find(params[:id])
-    authorize! :manage, @deal # CanCan gem
+    authorize! :update, @deal # CanCan gem
 
     update_offerings_for(@deal, buyers)
 

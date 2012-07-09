@@ -32,6 +32,12 @@ a {
   font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.model {
+  color: grey;
+  font-size: 10px;
+  margin-left: 6px;
+}
+
 .navbar-inner {
   box-shadow: 0px 6px 12px 3px #ccc;
 }
@@ -54,6 +60,10 @@ a {
 .pagination ul {
   background: rgba(255,255,255,0.4);
   li.active a { background: rgba(255,255,255,0.8); }
+}
+
+.results {
+  margin-top: 14px;
 }
 
 .table {

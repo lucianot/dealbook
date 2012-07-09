@@ -4,18 +4,24 @@
 
 <%= form_tag home_index_path, :method => :get, :class => 'form-inline' do %>
   <div class="input-append">
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", :class => 'btn' %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :class => 'btn' %>
   </div>
 <% end %>
 
-<!-- <h4>Results</h4>
-<table>
-< @search.results.each do |result| %>
-  <tr>
-    <td>< link_to result.name, result %></td>
-    <td>< result.class %></td>
-  </tr>
-< end %>
-</table> -->
+<br>
+<h4>Results</h4>
+<table class="table table-condensed results">
+  <tbody>
+  <% @search.results.each do |result| %>
+    <tr>
+      <td>
+        <%= link_to(result.name, result) %>
+        <span class="model"><%= result.class %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
+<%= page_navigation_links @search.results %>

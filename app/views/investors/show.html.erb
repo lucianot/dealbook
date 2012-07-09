@@ -5,8 +5,8 @@
 <table class="table table-bordered table-condensed">
   <tbody>
     <tr><td>Description</td><td><%= @investor.description %></td></tr>
-    <tr><td>Website</td>    <td><%= link_to @investor.website, @investor.website %></td></tr>
-    <tr><td>Linkedin</td>   <td><%= link_to @investor.linkedin, @investor.linkedin %></td></tr>
+    <tr><td>Website</td>    <td><%= link_to "#{@investor.website}", @investor.website %></td></tr>
+    <tr><td>Linkedin</td>   <td><%= link_to "#{@investor.linkedin}", @investor.linkedin %></td></tr>
     <tr><td>Status</td>     <td><%= @investor.status %></td></tr>
     <tr><td>Category</td>   <td><%= @investor.category %></td></tr>
     <tr><td>Stages</td>     <td><%= @investor.stage.join(', ') unless @investor.stage.nil? %></td></tr>

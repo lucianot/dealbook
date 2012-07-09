@@ -8,18 +8,6 @@ class Investor < ActiveRecord::Base
   has_paper_trail
   self.per_page = 20
 
-  # # Sunspot/Solr
-  # searchable do
-  #   text :name, :boost => 3.0
-  #   text :description
-  #   text :market_names do
-  #     markets.map(&:name)
-  #   end
-  #   text :location_names do
-  #     locations.map(&:full)
-  #   end
-  # end
-
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
@@ -41,6 +29,21 @@ class Investor < ActiveRecord::Base
   # Callbacks
   before_validation do
     stage.reject!(&:blank?) if stage  # remove hidden field
+  end
+
+  # Sunspot/Solr
+  searchable do
+    text :name, :boost => 3.0
+    text :description
+    text :companies do
+      companies.map(&:name)
+    end
+    text :market_names do
+      markets.map(&:name)
+    end
+    text :location_names do
+      locations.map(&:full)
+    end
   end
 
   # Methods

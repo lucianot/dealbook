@@ -15,7 +15,8 @@ class Ability
     elsif user.role == 'moderator'
       can :manage, [ Company, Investor, Deal, Market, Location ]
     elsif user.role == 'normal'
-      can :manage, [ Company, Investor, Deal ]
+      can :manage, [ Company, Investor ]
+      can [:read, :create, :update, :destroy], [ Deal ]
     # elsif user.role == 'banned'
     #   cannot :manage, :all
     else

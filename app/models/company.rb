@@ -5,21 +5,6 @@ class Company < ActiveRecord::Base
   has_paper_trail
   self.per_page = 20
 
-  # # Sunspot/Solr
-  # searchable do
-  #   text :name, :boost => 3.0
-  #   text :description
-  #   text :market_names do
-  #     markets.map(&:name)
-  #   end
-  #   text :location_names do
-  #     locations.map(&:full)
-  #   end
-  # end
-
-  # Scopes
-  # scope :all_but_this, lambda {|id| id ? {conditions: ['id not in (?)', id]} : {} }
-
   # Associations
   has_and_belongs_to_many :locations
   has_and_belongs_to_many :markets
@@ -46,6 +31,21 @@ class Company < ActiveRecord::Base
   validates :website, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true, :allow_blank => true }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
+
+  # Sunspot/Solr
+  searchable do
+    text :name, :boost => 3.0
+    text :description
+    text :buyers do
+      buyers.map(&:name)
+    end
+    text :market_names do
+      markets.map(&:name)
+    end
+    text :location_names do
+      locations.map(&:full)
+    end
+  end
 
   # Methods
   def market_name
