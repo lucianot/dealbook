@@ -25,7 +25,10 @@ class Investor < ActiveRecord::Base
                                 },
                                 :ignoring => :accents,
                                 :using => {
-                                  :tsearch => {:dictionary => "english"}
+                                  :tsearch => {
+                                    :dictionary => "english",
+                                    :prefix => true
+                                  }
                                 }
 
   # Associations

@@ -10,7 +10,10 @@ class Company < ActiveRecord::Base
   pg_search_scope :exact, :against => { :name => 'A' },
                           :ignoring => :accents,
                           :using => {
-                            :tsearch => {:dictionary => "english"}
+                            :tsearch => {
+                              :dictionary => "english",
+                              :prefix => true
+                            }
                           }
   pg_search_scope :associated,  :associated_against => {
                                   :locations => [:city, :region, :country],

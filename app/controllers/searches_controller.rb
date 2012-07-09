@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  load_and_authorize_resource
   respond_to :html, :json
 
   # POST /searches
@@ -12,7 +13,7 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
-    @results = search_results(@search.keywords)
+    @results = search_results(@search.keywords).paginate(:page => params[:page], :per_page => 20)
     respond_with @search
   end
 
