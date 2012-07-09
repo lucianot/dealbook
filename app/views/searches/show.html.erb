@@ -1,0 +1,26 @@
+<%= simple_form_for :search, :url => url_for(:action => 'create', :controller => 'searches'),
+      :method => 'post', :html => { :class => 'form-search' } do |f| %>
+  <%= f.input_field :keywords, :label => false, :autofocus => true,
+      :class => "search-query" %>
+  <%= f.submit "Search", :class => 'btn' %>
+<% end %>
+
+<div class="title">
+  <span id="results_title"><%= "Search results" %></span>
+  <span id="results_count"><%= "(#{@search.results.count} found)" %><span>
+</div>
+
+<table class="table table-condensed results">
+  <tbody>
+  <% @search.results.each do |result| %>
+    <tr>
+      <td>
+        <%= link_to(result.name, result) %>
+        <span class="model"><%= result.class %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= page_navigation_links @search.results %>

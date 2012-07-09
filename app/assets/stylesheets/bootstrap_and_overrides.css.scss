@@ -32,6 +32,11 @@ a {
   font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.form-search {
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+
 .model {
   color: grey;
   font-size: 10px;
@@ -60,10 +65,6 @@ a {
 .pagination ul {
   background: rgba(255,255,255,0.4);
   li.active a { background: rgba(255,255,255,0.8); }
-}
-
-.results {
-  margin-top: 14px;
 }
 
 .table {

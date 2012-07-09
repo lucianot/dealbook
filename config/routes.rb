@@ -1,14 +1,15 @@
 Dealbook::Application.routes.draw do
   devise_for :users
-  resources :users, :only => [ :show, :index, :edit, :update ]
+  resources :users, :only => [:show, :index, :edit, :update]
   resources :deals do
       put :verify, :on => :member
       put :unverify, :on => :member
   end
   resources :companies
-  resources :investors 
+  resources :investors
   resources :markets, :except => :show
   resources :locations, :except => :show
+  resources :searches, :only => [:show, :create]
   resources :home, :only => :index
 
   authenticated :user do
@@ -16,7 +17,7 @@ Dealbook::Application.routes.draw do
   end
 
   root :to => "home#index"
-  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
