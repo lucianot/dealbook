@@ -7,7 +7,24 @@ class Company < ActiveRecord::Base
   has_paper_trail
   self.per_page = 20
   include PgSearch
-  multisearchable :against => [:name, :description]
+  pg_search_scope :exact, :against => { :name => 'A' },
+                          :ignoring => :accents,
+                          :using => {
+                            :tsearch => {:dictionary => "english"}
+                          }
+  pg_search_scope :associated,  :associated_against => {
+                                  :locations => [:city, :region, :country],
+                                  :markets => :name,
+                                  :investors => { :name => 'A' },
+                                  :corporates => { :name => 'A' }
+                                },
+                                :ignoring => :accents,
+                                :using => {
+                                  :tsearch => {
+                                    :dictionary => "english",
+                                    :prefix => true
+                                  }
+                                }
 
   # Associations
   has_and_belongs_to_many :locations
@@ -36,28 +53,13 @@ class Company < ActiveRecord::Base
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true, :allow_blank => true }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
 
-  # # Sunspot/Solr
-  # searchable do
-  #   text :name, :boost => 3.0
-  #   text :description
-  #   text :buyers do
-  #     buyers.map(&:name)
-  #   end
-  #   text :market_names do
-  #     markets.map(&:name)
-  #   end
-  #   text :location_names do
-  #     locations.map(&:full)
-  #   end
-  # end
-
   # Methods
-  def market_name
-    markets.collect {|market| market.name}.join(', ')
+  def markets_names
+    markets.map(&:name).join(', ')
   end
 
-  def location_name
-    locations.collect {|location| location.full}.join(', ')
+  def locations_names
+    locations.map(&:full).join(', ')
   end
 
   def buyers

@@ -1,9 +1,5 @@
 class Search < ActiveRecord::Base
   attr_accessible :keywords
-
-  def results
-    results = PgSearch.multisearch(keywords)
-    results.map(&:searchable)
-  end
+  self.per_page = 2
 
 end

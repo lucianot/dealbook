@@ -12,6 +12,13 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
+    @results = search_results(@search.keywords)
     respond_with @search
+  end
+
+  private
+  def search_results(query)
+    results = Company.exact(query) + Investor.exact(query)
+    results += Company.associated(query) + Investor.associated(query)
   end
 end

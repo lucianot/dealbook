@@ -10,7 +10,23 @@ class Investor < ActiveRecord::Base
   has_paper_trail
   self.per_page = 20
   include PgSearch
-  multisearchable :against => [:name, :description]
+  pg_search_scope :exact, :against => { :name => 'A' },
+                          :ignoring => :accents,
+                          :using => {
+                            :tsearch => {
+                              :dictionary => "english",
+                              :prefix => true
+                            }
+                          }
+  pg_search_scope :associated,  :associated_against => {
+                                  :locations => [:city, :region, :country],
+                                  :markets => :name,
+                                  :companies => { :name => 'A' }
+                                },
+                                :ignoring => :accents,
+                                :using => {
+                                  :tsearch => {:dictionary => "english"}
+                                }
 
   # Associations
   has_and_belongs_to_many :locations
@@ -35,28 +51,17 @@ class Investor < ActiveRecord::Base
     stage.reject!(&:blank?) if stage  # remove hidden field
   end
 
-  # # Sunspot/Solr
-  # searchable do
-  #   text :name, :boost => 3.0
-  #   text :description
-  #   text :companies do
-  #     companies.map(&:name)
-  #   end
-  #   text :market_names do
-  #     markets.map(&:name)
-  #   end
-  #   text :location_names do
-  #     locations.map(&:full)
-  #   end
-  # end
-
   # Methods
-  def market_name
-    markets.collect {|market| market.name}.join(', ')
+  def markets_names
+    markets.map(&:name).join(', ')
   end
 
-  def location_name
-    locations.collect {|location| location.full}.join(', ')
+  def locations_names
+    locations.map(&:full).join(', ')
+  end
+
+  def companies_names
+    companies.map(&:name).join(', ')
   end
 
   private

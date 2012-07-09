@@ -8,8 +8,8 @@
     <tr><td>Website</td>    <td><%= link_to "#{@company.website}", @company.website %></td></tr>
     <tr><td>Linkedin</td>   <td><%= link_to "#{@company.linkedin}", @company.linkedin %></td></tr>
     <tr><td>Status</td>     <td><%= @company.status %></td></tr>
-    <tr><td>Markets</td>    <td><%= @company.market_name %></td></tr>
-    <tr><td>Locations</td>  <td><%= @company.location_name %></td></tr>
+    <tr><td>Markets</td>    <td><%= @company.markets_names %></td></tr>
+    <tr><td>Locations</td>  <td><%= @company.locations_names %></td></tr>
     <tr><td>Investors</td>
         <td><%= render :partial => 'buyers', :locals => { :buyers => @company.buyers } %> </td>
     </tr>

@@ -7,12 +7,12 @@
 
 <div class="title">
   <span id="results_title"><%= "Search results" %></span>
-  <span id="results_count"><%= "(#{@search.results.count} found)" %><span>
+  <span id="results_count"><%= "(#{@results.count} found)" %><span>
 </div>
 
 <table class="table table-condensed results">
   <tbody>
-  <% @search.results.each do |result| %>
+  <% @results.each do |result| %>
     <tr>
       <td>
         <%= link_to(result.name, result) %>
@@ -24,5 +24,5 @@
 </table>
 
 <% if false %>
-<%= page_navigation_links @search.results %>
+<%= page_navigation_links @results %>
 <% end %>
