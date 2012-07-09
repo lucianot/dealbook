@@ -5,8 +5,12 @@ class Investor < ActiveRecord::Base
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
   serialize :stage
+
+  # Gems
   has_paper_trail
   self.per_page = 20
+  include PgSearch
+  multisearchable :against => [:name, :description], using: {tsearch: {dictionary: "english"}}
 
   # Associations
   has_and_belongs_to_many :locations
@@ -31,20 +35,20 @@ class Investor < ActiveRecord::Base
     stage.reject!(&:blank?) if stage  # remove hidden field
   end
 
-  # Sunspot/Solr
-  searchable do
-    text :name, :boost => 3.0
-    text :description
-    text :companies do
-      companies.map(&:name)
-    end
-    text :market_names do
-      markets.map(&:name)
-    end
-    text :location_names do
-      locations.map(&:full)
-    end
-  end
+  # # Sunspot/Solr
+  # searchable do
+  #   text :name, :boost => 3.0
+  #   text :description
+  #   text :companies do
+  #     companies.map(&:name)
+  #   end
+  #   text :market_names do
+  #     markets.map(&:name)
+  #   end
+  #   text :location_names do
+  #     locations.map(&:full)
+  #   end
+  # end
 
   # Methods
   def market_name

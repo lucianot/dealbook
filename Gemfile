@@ -23,8 +23,9 @@ gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-sass', '~> 2.0.4.0'
 
 # search
-gem 'sunspot_rails', '~> 1.3'
-gem 'sunspot_solr', '~> 1.3'
+gem 'pg_search'
+# gem 'sunspot_rails', '~> 1.3'
+# gem 'sunspot_solr', '~> 1.3'
 
 
 # Gems used only for assets and not required

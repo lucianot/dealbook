@@ -2,8 +2,12 @@ class Company < ActiveRecord::Base
   STATUSES = %w[active inactive acquired merged]
   attr_accessible :description, :linkedin, :name, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
+
+  # Gems
   has_paper_trail
   self.per_page = 20
+  include PgSearch
+  multisearchable :against => [:name, :description], using: {tsearch: {dictionary: "english"}}
 
   # Associations
   has_and_belongs_to_many :locations
@@ -32,20 +36,20 @@ class Company < ActiveRecord::Base
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true, :allow_blank => true }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
 
-  # Sunspot/Solr
-  searchable do
-    text :name, :boost => 3.0
-    text :description
-    text :buyers do
-      buyers.map(&:name)
-    end
-    text :market_names do
-      markets.map(&:name)
-    end
-    text :location_names do
-      locations.map(&:full)
-    end
-  end
+  # # Sunspot/Solr
+  # searchable do
+  #   text :name, :boost => 3.0
+  #   text :description
+  #   text :buyers do
+  #     buyers.map(&:name)
+  #   end
+  #   text :market_names do
+  #     markets.map(&:name)
+  #   end
+  #   text :location_names do
+  #     locations.map(&:full)
+  #   end
+  # end
 
   # Methods
   def market_name

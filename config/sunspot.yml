@@ -1,10 +1,10 @@
-production:
-  solr:
-    hostname: solrserver
-    port: 8080 #tomcat defaults to port 8080
-    path: '/solr-example'
-    log_level: WARNING
-    pid_dir: '/var/run'
+# production:
+#   solr:
+#     hostname: solrserver
+#     port: 8080 #tomcat defaults to port 8080
+#     path: '/solr-example'
+#     log_level: WARNING
+#     pid_dir: '/var/run'
 
 development:
   solr:
