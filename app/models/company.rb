@@ -7,7 +7,7 @@ class Company < ActiveRecord::Base
   has_paper_trail
   self.per_page = 20
   include PgSearch
-  multisearchable :against => [:name, :description], using: {tsearch: {dictionary: "english"}}
+  multisearchable :against => [:name, :description]
 
   # Associations
   has_and_belongs_to_many :locations
