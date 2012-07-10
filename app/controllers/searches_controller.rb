@@ -21,5 +21,6 @@ class SearchesController < ApplicationController
   def search_results(query)
     results = Company.exact(query) + Investor.exact(query)
     results += Company.associated(query) + Investor.associated(query)
+    results.uniq
   end
 end
