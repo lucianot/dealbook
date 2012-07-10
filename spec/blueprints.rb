@@ -11,6 +11,7 @@ end
 Company.blueprint(:complete) do
   markets 2
   locations 2
+  investors 2
 end
 
 Investor.blueprint do
@@ -61,7 +62,7 @@ end
 Deal.blueprint(:complete) do
   company         { Company.make! }
   investors 2
-  corporates 2
+  corporates     { [ Company.make! ] }
 end
 
 Dealing.blueprint do
