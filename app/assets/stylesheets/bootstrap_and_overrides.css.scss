@@ -68,10 +68,14 @@ a {
     left: 50%;
     margin-left: -140px;
     padding-top: 6px;
+    padding-right: 0;
+    margin-right: 0;
     position: absolute;
-    width: 280px;
+    width: 360px;
 
-/*    border: 1px solid red;*/
+    .btn {
+      display: none;
+    }
   }
 
   .nav {

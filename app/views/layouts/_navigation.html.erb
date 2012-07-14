@@ -5,9 +5,10 @@
       <%= link_to image_tag('dealbook_logo.png'), root_path, :class => 'brand' %>
 
       <%= simple_form_for :search, :url => url_for(:action => 'create', :controller => 'searches'),
-        :method => 'post', :html => { :class => 'navbar-search' } do |f| %>
-        <%= f.input_field :keywords, :label => false, :autofocus => true, :placeholder => 'Search',
+        :method => 'post', :html => { :class => 'navbar-search', :id => 'search_submit' } do |f| %>
+        <%= f.input_field :keywords, :label => false, :autofocus => true, :placeholder => 'Search...',
             :class =>  'search-query span3' %>
+        <%= f.submit :class => 'btn' %>
       <% end %>
 
       <ul class="nav pull-right">

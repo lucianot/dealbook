@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'search:' do
 
-  context 'unauthenticated user searches for' do
+  context 'guest searches for' do
 
     scenario 'name of existing company' do
       company = Company.make!(:name => 'Dabee')
