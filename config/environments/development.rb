@@ -47,10 +47,13 @@ Dealbook::Application.configure do
     enable_starttls_auto: true,
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
-  }  
+  }
   # change to false to prevent email from being sent during development
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
+
+  # config for Rack Livereload
+  config.middleware.insert_before(Rack::Lock, Rack::LiveReload)
 
 end

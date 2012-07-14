@@ -84,7 +84,7 @@ describe DealsController do
       @deal = Deal.make!(:complete)
       offering = @deal.offerings.first
       buyers = ["#{offering.buyer_type}:#{offering.buyer_id}"]
-      expect { update_offerings_for(@deal, buyers) }.to change{ @deal.offerings.count }.from(4).to(1)
+      expect { update_offerings_for(@deal, buyers) }.to change{ @deal.offerings.count }.from(3).to(1)
     end
   end
 end

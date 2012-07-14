@@ -4,15 +4,11 @@
 
       <%= link_to image_tag('dealbook_logo.png'), root_path, :class => 'brand' %>
 
-      <ul class="nav pull-left">
-        <li><%= link_to 'Deals', deals_path %></li>
-        <li><%= link_to 'Companies', companies_path %></li>
-        <li><%= link_to 'Investors', investors_path %></li>
-        <% if user_signed_in? %>
-          <li><%= link_to('Markets', markets_path) if can? :manage, Market %></li>
-          <li><%= link_to('Locations', locations_path) if can? :manage, Location %></li>
-        <% end %>
-      </ul>
+      <%= simple_form_for :search, :url => url_for(:action => 'create', :controller => 'searches'),
+        :method => 'post', :html => { :class => 'navbar-search' } do |f| %>
+        <%= f.input_field :keywords, :label => false, :autofocus => true, :placeholder => 'Search',
+            :class =>  'search-query span4' %>
+      <% end %>
 
       <ul class="nav pull-right">
         <% if user_signed_in? %>
@@ -38,4 +34,16 @@
 
     </div>
   </div>
+</div>
+
+<div>
+  <ul>
+    <li><%= link_to 'Deals', deals_path %></li>
+    <li><%= link_to 'Companies', companies_path %></li>
+    <li><%= link_to 'Investors', investors_path %></li>
+    <% if user_signed_in? %>
+      <li><%= link_to('Markets', markets_path) if can? :manage, Market %></li>
+      <li><%= link_to('Locations', locations_path) if can? :manage, Location %></li>
+    <% end %>
+  </ul>
 </div>

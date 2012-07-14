@@ -51,6 +51,9 @@ group :development, :test do
   gem 'spin', '~> 0.4'
   gem 'guard-spin', '~> 0.1'
   gem 'pry'
+
+  gem 'guard-livereload'
+  gem 'rack-livereload'
 end
 
 group :production do
