@@ -3,9 +3,8 @@ $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 
 // Bootstrap variables overrides
 
-// typography
 $sansFontFamily: "Lucida Grande" !default;
-
+$navbarHeight: 40px;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -44,7 +43,7 @@ a {
 }
 
 .navbar {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .navbar-inner {
@@ -56,21 +55,23 @@ a {
   /*box-shadow: 0px 6px 12px 3px #ccc;*/
 }
 
-.navbar .navbar-title {
+.navbar .container {
   .brand {
-    padding-top: 8px;
+    $elementHeight: 30px;
+    height: $elementHeight;
     width: 140px;
   }
-  .navbar-search {
-    padding-top: 8px;
 
-    position: absolute;
+  .navbar-search {
     left: 50%;
     margin-left: -190px;
+    padding-top: 6px;
+    position: absolute;
     width: 380px;
   }
+
   .nav {
-    padding-top: 8px;
+    margin-top: 8px;
   }
 }
 
