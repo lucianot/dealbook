@@ -55,12 +55,24 @@ include ActionView::Helpers::NumberHelper
     case category
     when 'raised funds from'
       result = "raised"
-      result += " #{full_amount} in" if amount
-      result += " #{round}" if round
-      result += " funding from"
+      if amount
+        result += " #{full_amount} in"
+        result += " #{round}" if round
+        result += " funding"
+      else
+        result += " funds"
+      end
+      result += " from" unless buyers.empty?
     else
       result = category
     end
+    return result
+  end
+
+  def headline
+    result = company_name
+    result += " #{summary}"
+    result += " #{buyers_name}"
     return result
   end
 
