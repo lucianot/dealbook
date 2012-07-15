@@ -1,6 +1,6 @@
 == Welcome to Dealbook
 
-The Brazil Startup Dealboook project started in 2011, when Diego Gomes (co-founder of Everwrite) created a public Google Spreadsheet where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data on deals.
+The Brazil Startup Dealboook project started in 2011, when Diego Gomes (co-founder of Everwrite) created a public Google Spreadsheet where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.
 
 I have been a contributor for Dealbook since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build Dealbook 2.0 as an online application, where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
 
