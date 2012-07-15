@@ -5,6 +5,7 @@
                            :input_html => { :class => 'span1' } %>
   <%= f.association :company, :collection => Company.all(:order => :name),
                               :autofocus => true,
+                              :hint => link_to("+ Create new company", new_company_path),
                               :input_html => {:class => "chzn-select",
                                               "data-placeholder" => "Select a company"} %>
   <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %>
@@ -15,6 +16,7 @@
           :label => 'Investors',
           :required => false,
           :selected => @deal.buyers_for_selected,
+          :hint => link_to("+ Create new investor", new_investor_path),
           :input_html => {:multiple => true, :class => "chzn-select",
                           "data-placeholder" => "Select one or more investors"} %>
   <% end %>
