@@ -10,7 +10,7 @@
 }
 
 .guest_home {
-  color: #444;
+  color: #555;
   font-size: 36px;
   font-weight: bold;
   line-height: 42px;
@@ -20,6 +20,7 @@
     border-bottom-style: solid;
     border-bottom-width: 2px;
     color: #08c;
+    font-weight: bold;
   }
   a:hover {
     text-decoration: none;
@@ -29,6 +30,7 @@
 
 .guest_blue {
   color: #005580;
+  font-weight: bold;
 }
 
 .guest_middle {
