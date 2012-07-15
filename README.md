@@ -3,7 +3,7 @@ Welcome to Dealbook
 
 The *Brazil Startup Dealboook project* started in 2011, when [Diego Gomes](https://twitter.com/dttg) (co-founder of Everwrite) created a public [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AtrBPNMQBfOIdEphV04yay1hTXdyZzNEYTQzTS1rRXc#gid=5) where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.
 
-I have been a contributor for *Dealbook* since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build *Dealbook 2.0* as an online application, where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
+I have been a contributor for **Dealbook** since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build *Dealbook 2.0* as an online application, where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
 
 So, here it is! I hope you enjoy it. And remember: this is an open project by and for the community, built 100% by the voluntary work of its members and with no commercial purpose. If you would like to contribute, read below about the different ways you can help.
 
@@ -37,13 +37,13 @@ General Guidelines
 Search
 ------
 
-*Dealbook* has full-text search capabilities. You may type one or more keywords on the search box and *Dealbook* will display all of the results that match your query. The most common ways to search are:
+**Dealbook** has full-text search capabilities. You may type one or more keywords on the search box and **Dealbook** will display all of the results that match your query. The most common ways to search are:
 
 1. Company name - returns all companies containing the keyword(s) in their name, as well as its investors.
 2. Investor name - returns all investors containing the keyword(s) in their name, as well as its invested companies.
-3. Markets - you may type a market segment (ex: "mobile"), and *Dealbook* will return all the companies and investors that participate in that market.
-4. Location - you may type in a city, state or country (ex: "São Paulo") and *Dealbook* will return all the companies and investors in that region.
-5. Partial words - if you don't know the full name of the record you are searching for, you may simply type the first few letter and *Dealbook* will look for the records that best match the query.
+3. Markets - you may type in a market segment (ex: "mobile"), and **Dealbook** will return all the companies and investors that participate in that market.
+4. Location - you may type in a city, state or country (ex: "São Paulo") and **Dealbook** will return all the companies and investors in that region.
+5. Partial words - if you don't know the full name of the record you are searching for, you may simply type the first few letters and **Dealbook** will look for the records that best match the query.
 
 The queries are case insensitive and also ignore accents. Typing "São Paulo" or "sao paulo" will yield the same results.
 
@@ -52,17 +52,17 @@ The queries are case insensitive and also ignore accents. Typing "São Paulo" or
 How to Take Part
 ----------------
 
-There are many ways you can contribute to *Dealbook*:
+There are many ways you can contribute to **Dealbook**:
 
 ### Edit information
 
-The simplest way to contribute is to create an account and start adding information to the database. You may want to keep *Dealbook* updated by adding new deals, or you may choose to add more details to existing companies or investors. You may also want to review existing information to make sure it is accurate.
+The simplest way to contribute is to create an account and start adding information to the database. You may want to keep **Dealbook** updated by adding new deals, or you may choose to add more details to existing companies or investors. You may also want to review existing information to make sure it is accurate.
 
 ### Become a moderator
 
-If you want to level up, you may want to become a moderator. Mods have the responsability to make sure users are following the guidelines and providing accurate information. Only mods may tag deals as verified, revert changes made by users, promote or ban users.
+If you want to level up, you may want to become a moderator. Mods have the responsability to make sure users are following the guidelines and providing accurate information. Only mods may tag deals as verified, revert changes made by users and promote or ban users.
 
-Moderator priviledges are reserved only to active members who have earned the trust of the community. If you feel you've earned it, contact a mod and make your case.
+Moderator priviledges are reserved only to active members who have earned the trust of the community. If you feel that is your case, contact a mod.
 
 ### Add new features
 
@@ -72,7 +72,7 @@ The simplest way to suggest new features or change existing code is to submit a 
 
 Active contributors may earn commit access to the Github repo.
 
-(Designers: the current design was done entirely by me. While I am proud of my creation, I have zero experience in design and would greatly appreciate some professional help. If you want to create a new design for *Dealbook*, contact [me](mailto:luciano@tavares.us). It will be a great way to showcase your skills to all founders and investors in the community. Plus, I will personally give you 1000 karma points.)
+(Designers: the current design was done entirely by me. While I am proud of my creation, I have zero experience in design and would greatly appreciate some professional help. If you want to create a new design for **Dealbook**, contact [me](mailto:luciano@tavares.us). It will be a great way to showcase your skills to all founders and investors in the community. Plus, I will personally give you 1000 karma points.)
 
 ### Make suggestions
 
@@ -80,11 +80,11 @@ Suggestions, feature requests and bug reports are welcome! Please use the Github
 
 ### Spread the word
 
-*Dealbook* is only as good as the contributions our users make. You can help by spreading the word on Twitter, Facebook, meetups, high school reunions and get more people onboard.
+**Dealbook** is only as good as the contributions our users make. You can help by spreading the word on Twitter, Facebook, meetups, high school reunions. Let's get everyone onboard.
 
 
 Maintainers
-===========
+-----------
 
 * Luciano Tavares ([https://github.com/lucianot](https://github.com/lucianot))
 * Diego Gomes ([https://github.com/dttg](https://github.com/dttg))
