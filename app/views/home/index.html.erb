@@ -1,23 +1,41 @@
-<div class="title">
-  <h3>Recent Updates</h3>
+<% if user_signed_in? %>
+
+  <div class="title">
+    <h3>Recent Updates</h3>
+  </div>
+
+  <% if @deals.empty? %>
+    <p>No updates.</p><br>
+  <% else %>
+    <table class="table">
+      <tbody>
+      <% @deals.each do |deal| %>
+        <tr class="update_row">
+          <td>
+            <%= link_to deal.headline, deal_path(deal)  %>
+            <span class="update_close_date"><%= "(#{deal.close_date.strftime("%b %y")})" %>
+            <div class="update_updated"><%= "Updated on #{deal.updated_at.strftime("%d %b %y")}" %></div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+<% else %>
+
+<div class="guest_home">
+  <p><span class="guest_blue">Dealbook</span> is the ultimate resource for tech deals in Brazil, fully <span class="guest_blue">crowdsourced</span> by the community.</p>
+
+  <div class="guest_middle">
+    <p>Our database currently includes <span class="guest_blue"><%= @company_count %> companies</span>, <span class="guest_blue"><%= @investor_count %> investors</span> and <span class="guest_blue"><%= @deal_count %> deals</span>, since 1999.</p>
+  </div>
+
+  <div class="guest_last">
+    <p>Feel free to browse as a guest or <%= link_to "sign up", new_user_registration_path %> to receive news updates and start contributing.</p>
+  </div>
 </div>
 
-<% if @deals.empty? %>
-  <p>No updates.</p><br>
-<% else %>
-  <table class="table">
-    <tbody>
-    <% @deals.each do |deal| %>
-      <tr class="update_row">
-        <td>
-          <%= link_to deal.headline, deal_path(deal)  %>
-          <span class="update_close_date"><%= "(#{deal.close_date.strftime("%b %y")})" %>
-          <div class="update_updated"><%= "Updated on #{deal.updated_at.strftime("%d %b %y")}" %></div>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
 <% end %>
 
 
