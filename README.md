@@ -11,7 +11,7 @@ So, here it is! I hope you enjoy it. And remember: this is an open project by an
 
 
 Getting Started
-===============
+---------------
 
 For read-only access to information on companies, investors or deals, simply:
 
@@ -24,7 +24,7 @@ Registered users also have access to the "Recent Updates" feed, which is a great
 
 
 General Guidelines
-=============
+------------------
 
 1. Please add and edit information carefully. Make sure all the information provided is accurate, preferably including a link to a reliable source.
 2. Sources should be reputable news publications or blogs (ex: Techcrunch), or the corporate website of the referred company or investor.
@@ -35,7 +35,7 @@ General Guidelines
 
 
 Search
-======
+------
 
 *Dealbook* has full-text search capabilities. You may type one or more keywords on the search box and *Dealbook* will display all of the results that match your query. The most common ways to search are:
 
@@ -48,18 +48,19 @@ Search
 The queries are case insensitive and also ignore accents. Typing "São Paulo" or "sao paulo" will yield the same results.
 
 
+
 How to Take Part
-================
+----------------
 
 There are many ways you can contribute to *Dealbook*:
 
 ### Edit information
 
-The simplest way is to create an account and start adding information to the database. You may want to keep *Dealbook* updated by adding new deals, or you may choose to add more information to existing companies or investors. You may also want to review existing information to make sure it is accurate.
+The simplest way to contribute is to create an account and start adding information to the database. You may want to keep *Dealbook* updated by adding new deals, or you may choose to add more details to existing companies or investors. You may also want to review existing information to make sure it is accurate.
 
 ### Become a moderator
 
-If you want to be more engaged, you may want to become a moderator. Mods have the responsability to make sure users are following the guidelines and providing accurate information. Only mods may tag deals as verified, revert changes made by users, promote or ban users.
+If you want to level up, you may want to become a moderator. Mods have the responsability to make sure users are following the guidelines and providing accurate information. Only mods may tag deals as verified, revert changes made by users, promote or ban users.
 
 Moderator priviledges are reserved only to active members who have earned the trust of the community. If you feel you've earned it, contact a mod and make your case.
 
@@ -67,7 +68,7 @@ Moderator priviledges are reserved only to active members who have earned the tr
 
 Developers and designers are very welcome to contribute!
 
-The simplest way to suggest new features or change existing code is to submit a pull request through Github. All requests will be analyzed and accepted if the change makes sense.
+The simplest way to suggest new features or change existing code is to submit a pull request through Github. To do this, simply follow the instructions [here](https://help.github.com/articles/using-pull-requests). All requests will be analyzed and accepted if the change makes sense.
 
 Active contributors may earn commit access to the Github repo.
 
