@@ -10,7 +10,7 @@ gem 'pg'
 gem 'foreigner', '~> 1.1'
 
 # users and roles
-gem 'devise', '~> 1.5'
+gem 'devise', '~> 2.1'
 gem 'cancan', '~> 1.6'
 
 # versions
