@@ -10,14 +10,15 @@
 </head>
 
 <body>
-
   <%= render 'layouts/navigation' %>
 
   <div class="container main">
-
     <%= render 'layouts/messages' %>
     <%= yield %>
+  </div>
 
+  <div class="footer">
+    <%= render 'layouts/footer' %>
   </div>
 </body>
 </html>

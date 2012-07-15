@@ -21,6 +21,11 @@ body {
     padding-left:  20%;
     padding-right: 20%;
     width: 60%;
+
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -43px;
   }
 }
 
@@ -37,6 +42,20 @@ a {
 
 .btn {
   font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.footer {
+  border-top: 1px solid #ccc;
+  margin: 200px 20% 100px 20%;
+  padding: 20px 0;
+  text-align: center;
+  .footer_links a {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+  .footer_by {
+    padding-top: 4px;
+  }
 }
 
 .form-search {

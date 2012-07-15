@@ -25,14 +25,14 @@
 <% else %>
 
 <div class="guest_home">
-  <p><span class="guest_blue">Dealbook</span> is the ultimate resource for tech deals in Brazil, fully <span class="guest_blue">crowdsourced</span> by the community.</p>
+  <p><span class="guest_blue">Dealbook</span> is the ultimate resource for tech deals in Brazil, <span class="guest_blue">100% crowdsourced</span> by the community.</p>
 
   <div class="guest_middle">
     <p>Our database currently includes <span class="guest_blue"><%= @company_count %> companies</span>, <span class="guest_blue"><%= @investor_count %> investors</span> and <span class="guest_blue"><%= @deal_count %> deals</span>, since 1999.</p>
   </div>
 
   <div class="guest_last">
-    <p>Feel free to browse as a guest or <%= link_to "sign up", new_user_registration_path %> to receive deals  updates and start contributing.</p>
+    <p>Feel free to browse as a guest or <%= link_to "sign up", new_user_registration_path %> to start contributing and receiving updates.</p>
   </div>
 </div>
 
