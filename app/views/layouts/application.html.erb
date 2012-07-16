@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'application' %>
   <%= yield(:head) %>
+  <%= render 'shared/ga' %>
 </head>
 
 <body class="<%=params[:controller].parameterize%>">
