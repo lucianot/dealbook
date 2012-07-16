@@ -9,7 +9,7 @@
   <%= yield(:head) %>
 </head>
 
-<body>
+<body class="<%=params[:controller].parameterize%>">
   <%= render 'layouts/navigation' %>
 
   <div class="container main">
