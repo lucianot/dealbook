@@ -40,8 +40,8 @@
 <div class="subnav subnav-fixed">
   <ul class="nav nav-pills">
       <%= nav_link 'Deals', deals_path, :id => 'deals_button' %>
-      <%= nav_link 'Companies', companies_path %>
-      <%= nav_link 'Investors', investors_path %>
+      <%= nav_link 'Companies', companies_path, :id => 'companies_button' %>
+      <%= nav_link 'Investors', investors_path, :id => 'investors_button' %>
       <% if user_signed_in? %>
         <%= nav_link('Markets', markets_path) if can? :manage, Market %>
         <%= nav_link('Locations', locations_path) if can? :manage, Location %>
