@@ -39,7 +39,7 @@
 
 <div class="subnav subnav-fixed">
   <ul class="nav nav-pills">
-      <%= nav_link 'Deals', deals_path %>
+      <%= nav_link 'Deals', deals_path, :id => 'deals_button' %>
       <%= nav_link 'Companies', companies_path %>
       <%= nav_link 'Investors', investors_path %>
       <% if user_signed_in? %>

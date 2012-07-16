@@ -1,14 +1,14 @@
 module ApplicationHelper
 
-  def nav_link(text, link)
+  def nav_link(text, link, html_options = {})
       recognized = Rails.application.routes.recognize_path(link)
       if recognized[:controller] == params[:controller]
           content_tag(:li, :class => "active") do
-              link_to( text, link)
+              link_to(text, link, html_options)
           end
       else
           content_tag(:li) do
-              link_to( text, link)
+              link_to(text, link, html_options)
           end
       end
   end
