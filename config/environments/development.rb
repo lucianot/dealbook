@@ -56,4 +56,6 @@ Dealbook::Application.configure do
   # config for Rack Livereload
   config.middleware.insert_before(Rack::Lock, Rack::LiveReload)
 
+  # Mixpanel token
+  MIXPANEL_TOKEN = "6bedf8cb9a575c42f8020fba93dfd234".freeze
 end

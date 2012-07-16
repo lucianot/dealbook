@@ -3,7 +3,7 @@ Welcome to Dealbook
 
 The *Brazil Startup Dealboook project* started in 2011, when [Diego Gomes](https://twitter.com/dttg) (co-founder of Everwrite) created a public [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AtrBPNMQBfOIdEphV04yay1hTXdyZzNEYTQzTS1rRXc#gid=5) where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.
 
-I have been a contributor for **Dealbook** since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build *Dealbook 2.0* as an online application, where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
+I have been a contributor for **Dealbook** since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the *Dealbook 2.0* into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
 
 So, here it is! I hope you enjoy it. And remember: this is an open project by and for the community, built 100% by the voluntary work of its members and with no commercial purpose. If you would like to contribute, read below about the different ways you can help.
 
@@ -60,7 +60,7 @@ The simplest way to contribute is to create an account and start adding informat
 
 ### Become a moderator
 
-If you want to level up, you may want to become a moderator. Mods have the responsability to make sure users are following the guidelines and providing accurate information. Only mods may tag deals as verified, revert changes made by users and promote or ban users.
+If you want to level up, you may want to become a moderator. Mods have the responsibility to make sure users are following the guidelines and providing accurate information. Only mods may tag deals as verified, revert changes made by users and promote or ban users.
 
 Moderator priviledges are reserved only to active members who have earned the trust of the community. If you feel that is your case, contact a mod.
 
@@ -72,7 +72,7 @@ The simplest way to suggest new features or change existing code is to submit a 
 
 Active contributors may earn commit access to the Github repo.
 
-(Designers: the current design was done entirely by me. While I am proud of my creation, I have zero experience in design and would greatly appreciate some professional help. If you want to create a new design for **Dealbook**, contact [me](mailto:luciano@tavares.us). It will be a great way to showcase your skills to all founders and investors in the community. Plus, I will personally give you 1000 karma points.)
+(Designers: I have zero experience in design and would greatly appreciate some professional help. If you want to create a new design for **Dealbook**, contact [me](mailto:luciano@tavares.us). It will be a great way to showcase your skills to all founders and investors in the community. Plus, I will personally hand you 1000 karma points.)
 
 ### Make suggestions
 

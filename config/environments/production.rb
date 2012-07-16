@@ -82,4 +82,6 @@ Dealbook::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
+
+  MIXPANEL_TOKEN = "55357d369a58cd356c7140c1633bb43a".freeze
 end
