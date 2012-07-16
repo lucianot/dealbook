@@ -6,10 +6,10 @@ class HomeController < ApplicationController
     @investor_count = Investor.count
     @company_count = Company.count
 
-    if user_signed_in?
-      @mixpanel.track_event("Home Page", {:user => "registered"})
-    else
-      @mixpanel.track_event("Home Page", {:user => "guest"})
-    end
+    # if user_signed_in?
+    #   @mixpanel.track_event("Home index", {:user => "registered"})
+    # else
+    #   @mixpanel.track_event("Home index", {:user => "guest"})
+    # end
   end
 end
