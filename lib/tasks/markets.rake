@@ -18,11 +18,12 @@ namespace :markets do
   task :import => :environment do
 
     filename = "#{Rails.root}/lib/tasks/markets.csv"
-    CSV.foreach(filename) do |name|
+    CSV.foreach(filename) do |line|
+      name = line[0]
       market = Market.new(name: name)
       begin
         market.save!
-        puts "Inserted #{name}"
+        puts "Inserted #{market.name}"
       rescue Exception => e
         puts e.message
         puts e.backtrace.inspect
