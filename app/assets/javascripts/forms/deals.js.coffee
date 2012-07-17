@@ -21,12 +21,12 @@ jQuery ->
     # autonumeric amount
     $amount.autoNumeric({vMin: '0', vMax: '999999999999', mDec: '0'})
     amountValue = $amount.autoNumericGet() if $amount
-    $amount.autoNumericSet(amount_value) if amountValue && amountValue > 0
+    $amount.autoNumericSet(amountValue) if amountValue && amountValue > 0
 
     # autonumeric valuation
     $valuation.autoNumeric({vMin: '0', vMax: '999999999999', mDec: '0'});
     valuationValue = $valuation.autoNumericGet()
-    $valuation.autoNumericSet(amount_value) if valuationValue && valuationValue > 0
+    $valuation.autoNumericSet(valuationValue) if valuationValue && valuationValue > 0
 
     # when company is changed, rebuilt investor options
     $company.chosen().change =>
@@ -69,12 +69,14 @@ jQuery ->
     # when form is submitted
     $amount.closest('form').submit ->
       # change amount value
+      alert('before')
       amountValue = $amount.autoNumericGet()
-      $amount.val(amount_value) if amountValue && amountValue > 0
+      $amount.val(amountValue) if amountValue && amountValue > 0
+      alert('after')
 
       # change valuation value
       valuationValue = $valuation.autoNumericGet()
-      $valuation.val(valuation_value) if valuationValue && valuationValue > 0
+      $valuation.val(valuationValue) if valuationValue && valuationValue > 0
 
 
 

@@ -1,0 +1,7 @@
+<% if Rails.env.staging? || Rails.env.production? %>
+  <script type="text/javascript">
+    var user = '<%= current_user.email %>';
+    alert(user);
+    # mixpanel.init('<%= MIXPANEL_TOKEN %>');
+  </script>
+<% end %>
