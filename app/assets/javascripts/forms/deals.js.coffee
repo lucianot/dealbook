@@ -69,10 +69,8 @@ jQuery ->
     # when form is submitted
     $amount.closest('form').submit ->
       # change amount value
-      alert('before')
       amountValue = $amount.autoNumericGet()
       $amount.val(amountValue) if amountValue && amountValue > 0
-      alert('after')
 
       # change valuation value
       valuationValue = $valuation.autoNumericGet()
