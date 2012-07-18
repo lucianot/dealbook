@@ -24,6 +24,7 @@ gem 'bootstrap-sass', '~> 2.0.4.0'
 
 # search
 gem 'pg_search'
+gem 'friendly_id'
 
 # analytics
 gem 'mixpanel'
