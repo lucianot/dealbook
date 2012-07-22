@@ -71,10 +71,10 @@ class Investor < ActiveRecord::Base
     companies.map(&:name).join(', ')
   end
 
-  # FriendlyId gem
-  def should_generate_new_friendly_id?
-    new_record?
-  end
+  # # FriendlyId gem
+  # def should_generate_new_friendly_id?
+  #   new_record?
+  # end
 
   private
   def all_stages_must_be_included_in_list
