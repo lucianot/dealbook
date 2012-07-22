@@ -39,13 +39,13 @@ Search
 
 **Dealbook** has full-text search capabilities. You may type one or more keywords on the search box and **Dealbook** will display all of the results that match your query. The most common ways to search are:
 
-1. Company name - returns all companies containing the keyword(s) in their name, as well as its investors.
-2. Investor name - returns all investors containing the keyword(s) in their name, as well as its invested companies.
-3. Markets - you may type in a market segment (ex: "mobile"), and **Dealbook** will return all the companies and investors that participate in that market.
-4. Location - you may type in a city, state or country (ex: "São Paulo") and **Dealbook** will return all the companies and investors in that region.
-5. Partial words - if you don't know the full name of the record you are searching for, you may simply type the first few letters and **Dealbook** will look for the records that best match the query.
+1. Company name: returns all companies containing the keyword(s) in their name, as well as its investors.
+2. Investor name: returns all investors containing the keyword(s) in their name, as well as its invested companies.
+3. Markets: you may type in a market segment (ex: "mobile"), and **Dealbook** will return all the companies and investors that participate in that market.
+4. Location: you may type in a city, state or country (ex: "São Paulo") and **Dealbook** will return all the companies and investors in that region.
+5. Partial words: if you don't know the full name of the record you are searching for, you may simply type the first few letters and **Dealbook** will look for the records that best match the query.
 
-The queries are case insensitive and also ignore accents. Typing "São Paulo" or "sao paulo" will yield the same results.
+The queries are case insensitive and also ignore accents. For example, typing "São Paulo" or "sao paulo" will yield the same results.
 
 
 

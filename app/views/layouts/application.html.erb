@@ -12,7 +12,8 @@
   <%= render 'shared/ga' %>
 </head>
 
-<body class="<%=params[:controller].parameterize%>">
+<body class="<%= params[:controller].parameterize %>">
+
   <%= render 'shared/mixpanel_user' %>
   <%= render 'layouts/navigation' %>
 
@@ -24,6 +25,7 @@
   <div class="footer">
     <%= render 'layouts/footer' %>
   </div>
+
 </body>
 </html>
 

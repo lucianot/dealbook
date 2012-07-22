@@ -1,7 +1,11 @@
 class Investor < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
+
   STATUSES = %w[active inactive acquired merged]
   CATEGORIES = %w[Angel VC Accelerator Incubator Corporate]
   STAGES = ['Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
+
   attr_accessible :category, :description, :linkedin, :name, :stage, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
   serialize :stage
@@ -65,6 +69,11 @@ class Investor < ActiveRecord::Base
 
   def companies_names
     companies.map(&:name).join(', ')
+  end
+
+  # FriendlyId gem
+  def should_generate_new_friendly_id?
+    new_record?
   end
 
   private

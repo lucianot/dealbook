@@ -54,7 +54,8 @@ CREATE TABLE companies (
     linkedin character varying(255),
     status character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -183,7 +184,8 @@ CREATE TABLE investors (
     category character varying(255),
     stage character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -626,6 +628,13 @@ CREATE INDEX index_investors_markets_on_market_id_and_investor_id ON investors_m
 
 
 --
+-- Name: index_investors_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_investors_on_slug ON investors USING btree (slug);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -688,3 +697,7 @@ INSERT INTO schema_migrations (version) VALUES ('20120616182949');
 INSERT INTO schema_migrations (version) VALUES ('20120709161613');
 
 INSERT INTO schema_migrations (version) VALUES ('20120709212003');
+
+INSERT INTO schema_migrations (version) VALUES ('20120722143007');
+
+INSERT INTO schema_migrations (version) VALUES ('20120722155830');

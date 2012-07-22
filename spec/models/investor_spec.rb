@@ -40,10 +40,15 @@ describe Investor do
   context 'associations' do
     it { should have_and_belong_to_many(:markets) }
     it { should have_and_belong_to_many(:locations) }
-    it { should have_many(:dealings) }   
+    it { should have_many(:dealings) }
     it { should have_many(:deals).through(:dealings) }
-    it { should have_many(:companies).through(:deals) } 
-  end 
+    it { should have_many(:companies).through(:deals) }
+  end
+
+  context 'friendly url' do
+    @slugged_investor = Investor.make!(:name => 'Napkn Ventures')
+    @slugged_investor.slug.should == 'napkn-ventures'
+  end
 
 end
 
