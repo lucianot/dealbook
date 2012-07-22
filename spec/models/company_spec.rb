@@ -42,11 +42,6 @@ describe Company do
     it { should have_many(:companies).through(:deals) }
   end
 
-  context 'friendly url' do
-    @slugged_company = Company.make!(:name => 'Dabee')
-    @slugged_company.slug.should == 'dabee'
-  end
-
 end
 
 

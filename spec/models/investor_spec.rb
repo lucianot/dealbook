@@ -45,11 +45,6 @@ describe Investor do
     it { should have_many(:companies).through(:deals) }
   end
 
-  context 'friendly url' do
-    @slugged_investor = Investor.make!(:name => 'Napkn Ventures')
-    @slugged_investor.slug.should == 'napkn-ventures'
-  end
-
 end
 
 

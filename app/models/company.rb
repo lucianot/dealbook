@@ -72,9 +72,9 @@ class Company < ActiveRecord::Base
     self.investors + self.corporates
   end
 
-  # # FriendlyId gem
-  # def should_generate_new_friendly_id?
-  #   new_record?
-  # end
+  # FriendlyId gem
+  def should_generate_new_friendly_id?
+    new_record?
+  end
 
 end
