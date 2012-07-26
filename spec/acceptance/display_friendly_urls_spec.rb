@@ -20,4 +20,13 @@ feature 'display friendly urls' do
       uri.path.should == '/companies/dabee'
     end
 
+    scenario 'for companies' do
+      investor = Investor.make!(:name => 'e.ventures')
+      visit '/'
+      fill_in 'search_keywords', :with => investor.name
+      click_button 'Search'
+      uri = URI.parse(current_url)
+      uri.path.should == '/searches/e-ventures'
+    end
+
 end

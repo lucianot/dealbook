@@ -309,7 +309,8 @@ CREATE TABLE searches (
     id integer NOT NULL,
     keywords character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -572,6 +573,13 @@ CREATE INDEX index_companies_markets_on_market_id_and_company_id ON companies_ma
 
 
 --
+-- Name: index_companies_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_companies_on_slug ON companies USING btree (slug);
+
+
+--
 -- Name: index_dealings_on_buyer_id_and_buyer_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -632,6 +640,13 @@ CREATE INDEX index_investors_markets_on_market_id_and_investor_id ON investors_m
 --
 
 CREATE UNIQUE INDEX index_investors_on_slug ON investors USING btree (slug);
+
+
+--
+-- Name: index_searches_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_searches_on_slug ON searches USING btree (slug);
 
 
 --
@@ -701,3 +716,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120709212003');
 INSERT INTO schema_migrations (version) VALUES ('20120722143007');
 
 INSERT INTO schema_migrations (version) VALUES ('20120722155830');
+
+INSERT INTO schema_migrations (version) VALUES ('20120726130457');

@@ -5,7 +5,7 @@ The *Brazil Startup Dealboook project* started in 2011, when [Diego Gomes](https
 
 I have been a contributor for **Dealbook** since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the *Dealbook 2.0* into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
 
-So, here it is! I hope you enjoy it. And remember: this is an open project by and for the community, built 100% by the voluntary work of its members and with no commercial purpose. If you would like to contribute, read below about the different ways you can help.
+So, here it is! I hope you enjoy it. And remember: this is an open project by and for the community, built 100% by the voluntary work of its members and with no commercial purpose. If you would like to contribute, read below about the different ways you can get involved.
 
 -- Luciano
 
@@ -28,10 +28,10 @@ General Guidelines
 
 1. Please add and edit information carefully. Make sure all the information provided is accurate, preferably including a link to a reliable source.
 2. Sources should be reputable news publications or blogs (ex: Techcrunch), or the corporate website of the referred company or investor.
-3. Make sure you include a permanent link, that will remain the same over the years. Broken links will be deleted.
+3. Make sure you include a permanent link that will remain the same over the years. Broken links will be deleted.
 4. All new insertions will be automatically marked as "unverified". Deals that include a reliable source will be reviewed by the moderators and marked as "verified" if the information provided matches the source.
 5. If inaccurate information is inserted, moderators may revert the changes at any moment without notice.
-6. If moderators identify innapropriate behavior by a specific user, they may ban the user, who will no longer have edit access to the application.
+6. If moderators identify innapropriate behavior by a specific user, they may ban the user who will no longer have edit access to **Dealbook**.
 
 
 Search
