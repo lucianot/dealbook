@@ -1,35 +1,23 @@
 ---
-!binary "ZGVhbGJvb2tfbG9nby5wbmc=": dealbook_logo-115442ccfed0496ee078d82cf5d337bd.png
-!binary "aGFuZG1hZGVwYXBlci5wbmc=": handmadepaper-37db22d2a8fdeea423225c0d14da9c9c.png
-!binary "cmFpbHMucG5n": rails-be8732dac73d845ac5b142c8fb5f9fb0.png
-!binary "YXBwbGljYXRpb24uanM=": application-d9c1bae1363fa4aabc79e2c0d3329ffa.js
-!binary "YXBwbGljYXRpb24uY3Nz": application-dec7fd46d37a544bc4aa37c7e07571dd.css
-? !binary |-
-  aW1hZ2VzL3VpLWJnX2RpYWdvbmFscy10aGlja18xOF9iODE5MDBfNDB4NDAu
-  cG5n
-: images/ui-bg_diagonals-thick_18_b81900_40x40-c0074c9cbf446e98bb0bb8359cb9a305.png
-? !binary |-
-  aW1hZ2VzL3VpLWJnX2RpYWdvbmFscy10aGlja18yMF82NjY2NjZfNDB4NDAu
-  cG5n
-: images/ui-bg_diagonals-thick_20_666666_40x40-f7a8f6efeb8ab26a26161942fd679b9e.png
-!binary "aW1hZ2VzL3VpLWJnX2ZsYXRfMTBfMDAwMDAwXzQweDEwMC5wbmc=": images/ui-bg_flat_10_000000_40x100-f42b3c756e6e975074e882bd4052bea3.png
-!binary "aW1hZ2VzL3VpLWJnX2dsYXNzXzEwMF9mNmY2ZjZfMXg0MDAucG5n": images/ui-bg_glass_100_f6f6f6_1x400-fc46298be15cb1f3815e1f64d5fc275c.png
-!binary "aW1hZ2VzL3VpLWJnX2dsYXNzXzEwMF9mZGY1Y2VfMXg0MDAucG5n": images/ui-bg_glass_100_fdf5ce_1x400-42abba67cfeba679045f91dd668ee791.png
-!binary "aW1hZ2VzL3VpLWJnX2dsYXNzXzY1X2ZmZmZmZl8xeDQwMC5wbmc=": images/ui-bg_glass_65_ffffff_1x400-a30aa544902182c133dbb46ac40a08d2.png
-!binary "aW1hZ2VzL3VpLWJnX2dsb3NzLXdhdmVfMzVfZjZhODI4XzUwMHgxMDAucG5n": images/ui-bg_gloss-wave_35_f6a828_500x100-a976084039ea385d42ef87b1c14a5d1b.png
-? !binary |-
-  aW1hZ2VzL3VpLWJnX2hpZ2hsaWdodC1zb2Z0XzEwMF9lZWVlZWVfMXgxMDAu
-  cG5n
-: images/ui-bg_highlight-soft_100_eeeeee_1x100-885dacbf3f2938b3e47052998afaff9f.png
-? !binary |-
-  aW1hZ2VzL3VpLWJnX2hpZ2hsaWdodC1zb2Z0Xzc1X2ZmZTQ1Y18xeDEwMC5w
-  bmc=
-: images/ui-bg_highlight-soft_75_ffe45c_1x100-85c119026ca059bee9f0b0eb5c525674.png
-!binary "aW1hZ2VzL3VpLWljb25zXzIyMjIyMl8yNTZ4MjQwLnBuZw==": images/ui-icons_222222_256x240-4ffd13be9750b79d62db5d2f9670150c.png
-!binary "aW1hZ2VzL3VpLWljb25zXzIyOGVmMV8yNTZ4MjQwLnBuZw==": images/ui-icons_228ef1_256x240-43a807452e6bab7fafc5365abe679204.png
-!binary "aW1hZ2VzL3VpLWljb25zX2VmOGMwOF8yNTZ4MjQwLnBuZw==": images/ui-icons_ef8c08_256x240-96fcd1b552e0f64a8be6a6bd2fe505de.png
-!binary "aW1hZ2VzL3VpLWljb25zX2ZmZDI3YV8yNTZ4MjQwLnBuZw==": images/ui-icons_ffd27a_256x240-71df93f9f3b4b1ef59c682d12fd3fc62.png
-!binary "aW1hZ2VzL3VpLWljb25zX2ZmZmZmZl8yNTZ4MjQwLnBuZw==": images/ui-icons_ffffff_256x240-e7f607ad8d0d95d861a641b804f9b430.png
-!binary "Y2hvc2VuLXNwcml0ZS5wbmc=": chosen-sprite-1593a190b0366a1905d06c361c20ea4a.png
-!binary "Z2x5cGhpY29ucy1oYWxmbGluZ3Mtd2hpdGUucG5n": glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
-!binary "Z2x5cGhpY29ucy1oYWxmbGluZ3MucG5n": glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
+dealbook_logo.png: dealbook_logo-115442ccfed0496ee078d82cf5d337bd.png
+handmadepaper.png: handmadepaper-37db22d2a8fdeea423225c0d14da9c9c.png
+rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
+application.js: application-d9c1bae1363fa4aabc79e2c0d3329ffa.js
+application.css: application-dec7fd46d37a544bc4aa37c7e07571dd.css
+images/ui-bg_diagonals-thick_18_b81900_40x40.png: images/ui-bg_diagonals-thick_18_b81900_40x40-c0074c9cbf446e98bb0bb8359cb9a305.png
+images/ui-bg_diagonals-thick_20_666666_40x40.png: images/ui-bg_diagonals-thick_20_666666_40x40-f7a8f6efeb8ab26a26161942fd679b9e.png
+images/ui-bg_flat_10_000000_40x100.png: images/ui-bg_flat_10_000000_40x100-f42b3c756e6e975074e882bd4052bea3.png
+images/ui-bg_glass_100_f6f6f6_1x400.png: images/ui-bg_glass_100_f6f6f6_1x400-fc46298be15cb1f3815e1f64d5fc275c.png
+images/ui-bg_glass_100_fdf5ce_1x400.png: images/ui-bg_glass_100_fdf5ce_1x400-42abba67cfeba679045f91dd668ee791.png
+images/ui-bg_glass_65_ffffff_1x400.png: images/ui-bg_glass_65_ffffff_1x400-a30aa544902182c133dbb46ac40a08d2.png
+images/ui-bg_gloss-wave_35_f6a828_500x100.png: images/ui-bg_gloss-wave_35_f6a828_500x100-a976084039ea385d42ef87b1c14a5d1b.png
+images/ui-bg_highlight-soft_100_eeeeee_1x100.png: images/ui-bg_highlight-soft_100_eeeeee_1x100-885dacbf3f2938b3e47052998afaff9f.png
+images/ui-bg_highlight-soft_75_ffe45c_1x100.png: images/ui-bg_highlight-soft_75_ffe45c_1x100-85c119026ca059bee9f0b0eb5c525674.png
+images/ui-icons_222222_256x240.png: images/ui-icons_222222_256x240-4ffd13be9750b79d62db5d2f9670150c.png
+images/ui-icons_228ef1_256x240.png: images/ui-icons_228ef1_256x240-43a807452e6bab7fafc5365abe679204.png
+images/ui-icons_ef8c08_256x240.png: images/ui-icons_ef8c08_256x240-96fcd1b552e0f64a8be6a6bd2fe505de.png
+images/ui-icons_ffd27a_256x240.png: images/ui-icons_ffd27a_256x240-71df93f9f3b4b1ef59c682d12fd3fc62.png
+images/ui-icons_ffffff_256x240.png: images/ui-icons_ffffff_256x240-e7f607ad8d0d95d861a641b804f9b430.png
+chosen-sprite.png: chosen-sprite-1593a190b0366a1905d06c361c20ea4a.png
+glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
+glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png

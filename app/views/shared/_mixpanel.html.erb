@@ -11,5 +11,8 @@
     'set_config','people.set','people.increment'];for(e=0;e<h.length;e++)d(g,h[e]);
     a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
     mixpanel.init('<%= MIXPANEL_TOKEN %>');
+    <% if (mixpanel_event = flash[:mixpanel_event]) %>
+      mixpanel.<%= mixpanel_event %>;
+    <% end %>
   </script>
 <% end %>
