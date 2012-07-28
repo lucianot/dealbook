@@ -89,12 +89,16 @@ a {
 
 .table {
   margin-bottom: 30px;
+  th.values { text-align: right; }  
+
   td {
+    background: rgba(255,255,255,0.4);
     border-bottom: 1px solid $tableBorder;
     font-family: $sansFontFamily;
     &.values {
       font-family: $sansFontFamily;
-      text-align: right; }
+      text-align: right; 
+    }
     .imbedded {
       tr { background: transparent; }
       td {
@@ -102,34 +106,23 @@ a {
         border-left: none;
         border-right: none;
       }
-      tr:last-child td {
-        border-bottom: none;
-      }
-    }
-  }
-  th.values {
-    text-align: right;
+    }    
   }
   .edit_destroy {
+    padding-right: 0;    
     width: 20px;
-    border: none;
-    padding-right: 0;
-  }
-  td:not(.edit_destroy) {
-    background: rgba(255,255,255,0.4);
-  }
+    a { 
+      opacity: 0.0; 
+    }    
+  }  
   tr {
-    .edit_destroy {
-      a { opacity: 0.0; }
-    }
     &:hover {
       td {
-        background: rgba(255,255,255,0.7) !important;
+        background: rgba(255,255,255,0.9) !important;
       }
       .edit_destroy {
-        border-top: 1px solid $tableBorder;
-        border-bottom: 1px solid $tableBorder;
         a {
+          color: red;
           opacity: 0.2;
           &:hover { opacity: 0.9; }
         }
