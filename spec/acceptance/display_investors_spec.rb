@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'display investors' do
   
-  context 'unauthenticated user' do
+  context 'guest' do
 
     scenario 'no investors' do
       visit '/'
@@ -32,8 +32,29 @@ feature 'display investors' do
       page.should have_content investor.status                  
       #TODO: include markets, locations
       page.should_not have_link 'Edit'
+      page.should_not have_link 'Destroy'         
       page.should have_link 'Back'
     end
-
   end
+
+  context 'user' do
+    scenario 'show investor' do
+      investor = Investor.make!
+      login_normal
+      click_link 'Investors'
+      click_link investor.name
+      page.should have_content investor.name
+      page.should have_content investor.description
+      page.should have_content investor.website
+      page.should have_content investor.linkedin
+      page.should have_content investor.category
+      #TODO: include stages
+      page.should have_content investor.status                  
+      #TODO: include markets, locations
+      page.should have_link 'Edit'
+      page.should have_link 'Destroy'         
+      page.should have_link 'Back'
+    end
+  end
+
 end
