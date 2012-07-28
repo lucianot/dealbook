@@ -36,10 +36,8 @@ include ActionView::Helpers::NumberHelper
   validate :corporates_cannot_include_target_company
 
   # Callbacks
-  after_initialize :init
-  def init
-    self.verified = false if self.verified.nil?  # Deal should be unverified by default
-  end
+  after_initialize :set_defaults
+  before_update :make_deal_unverified, :if => :attributes_changed?
 
   # Methods
   def buyers
@@ -106,6 +104,21 @@ include ActionView::Helpers::NumberHelper
     corporates.each do |corporate|
       errors.add(:corporates, "cannot include target company.") if corporate == company
     end
+  end
+
+  def set_defaults
+    self.verified = false if self.verified.nil?  # Deal should be unverified by default
+  end
+  
+  def make_deal_unverified
+    self.verified = false
+    return true
+  end
+
+  def attributes_changed?
+    changed = self.changed
+    changed.delete('source_url') if Rails.env.test?  # fix Capybara bug that alters url 
+    !(changed.empty? || changed.include?('verified'))
   end
 
 end
