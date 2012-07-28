@@ -44,7 +44,7 @@ class DealsController < ApplicationController
     if @deal.save
       flash[:notice] = 'Deal was successfully created.'
     end
-    respond_with(@deal, :location => deals_url)
+    respond_with(@deal)
     # @mixpanel.track_event("Deal create", {:deal => "#{@deal.id}"})
   end
 
@@ -63,7 +63,7 @@ class DealsController < ApplicationController
     if @deal.update_attributes(params[:deal])
       flash[:notice] = 'Deal was successfully updated.'
     end
-    respond_with(@deal, :location => deals_url)
+    respond_with(@deal)
     # @mixpanel.track_event("Deal update", {:deal => "#{@deal.id}"})
   end
 

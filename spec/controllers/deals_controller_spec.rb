@@ -29,7 +29,7 @@ describe DealsController do
       @deal.should_receive(:save).with().once.and_return(true)
       post :create, :deal => @attributes_with_offerings
       flash[:notice].should_not be_nil
-      response.should redirect_to(deals_path)
+      response.should redirect_to(@deal)
     end
 
   end
@@ -68,7 +68,7 @@ describe DealsController do
       @deal.should_receive(:update_attributes).with(@attributes).once.and_return(true)
       put :update, :id => @id, :deal => @attributes_with_offerings
       flash[:notice].should_not be_nil
-      response.should redirect_to(deals_path)
+      response.should redirect_to(@deal)
     end
 
   end

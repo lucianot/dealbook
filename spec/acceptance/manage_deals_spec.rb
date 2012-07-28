@@ -38,10 +38,10 @@ feature 'manage deals' do
         click_button 'Create Deal'
       end.to change {Deal.count}.by(1)
       page.should have_content 'Deal was successfully created.'
-      page.should have_content company.name
-      click_link "deal_#{Deal.find_by_company_id(company).id.to_s}"
       page.should have_link company.name
-      page.should have_content investor.name
+      page.should have_content 'Unverified'
+      uri = URI.parse(current_url)
+      uri.path.should == "/deals/#{Deal.first.id}"
     end
 
     scenario 'can edit deals' do
@@ -55,8 +55,11 @@ feature 'manage deals' do
         click_button 'Update Deal'
       end.to change {Deal.count}.by(0)
       page.should have_content 'Deal was successfully updated.'
-      click_link "deal_#{deal.id.to_s}"
       page.should have_content new_round
+      page.should have_content 'Unverified'
+      uri = URI.parse(current_url)
+      uri.path.should == "/deals/#{deal.id}"      
+
     end
 
     scenario 'can delete deals' do
@@ -67,7 +70,8 @@ feature 'manage deals' do
         click_link "destroy_#{deal.id}"
       end.to change {Deal.count}.by(-1)
       page.should have_content 'Deal was successfully deleted.'
-      page.should_not have_content deal.summary
+      uri = URI.parse(current_url)
+      uri.path.should == "/deals"      
     end
 
   end # context
