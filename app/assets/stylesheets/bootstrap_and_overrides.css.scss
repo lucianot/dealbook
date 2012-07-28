@@ -54,8 +54,15 @@ a {
     padding: 0 10px;
   }
   .footer_by {
-    font-size: 12px;
+    font-size: 14px;
     padding-top: 4px;
+  }
+  .footer_licenses {
+    font-size: 12px;
+    margin-top: 20px;
+    img {
+      margin-top: 10px;
+    }
   }
 }
 
