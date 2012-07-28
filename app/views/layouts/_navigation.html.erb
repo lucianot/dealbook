@@ -6,7 +6,7 @@
 
       <%= simple_form_for :search, :url => url_for(:action => 'create', :controller => '/searches'),
         :method => 'post', :html => { :class => 'navbar-search', :id => 'search_submit' } do |f| %>
-        <%= f.input_field :keywords, :label => false, :autofocus => true, :placeholder => 'Search...',
+        <%= f.input_field :keywords, :label => false, :placeholder => 'Search...',
             :class =>  'search-query span3' %>
         <%= f.submit "Search", :class => 'btn' %>
       <% end %>
@@ -39,9 +39,9 @@
 
 <div class="subnav subnav-fixed">
   <ul class="nav nav-pills">
-      <%= nav_link 'Deals', deals_path %>
-      <%= nav_link 'Companies', companies_path %>
-      <%= nav_link 'Investors', investors_path %>
+      <%= nav_link 'Deals', deals_path, :id => 'deals_button' %>
+      <%= nav_link 'Companies', companies_path, :id => 'companies_button' %>
+      <%= nav_link 'Investors', investors_path, :id => 'investors_button' %>
       <% if user_signed_in? %>
         <%= nav_link('Markets', markets_path) if can? :manage, Market %>
         <%= nav_link('Locations', locations_path) if can? :manage, Location %>

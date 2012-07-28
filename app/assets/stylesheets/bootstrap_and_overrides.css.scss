@@ -6,7 +6,7 @@ $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 $sansFontFamily: "Lucida Grande" !default;
 $navbarHeight: 40px;
 $navbarSearchPlaceholderColor: #aaa;
-
+$baseFontSize: 14px;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -47,7 +47,7 @@ a {
 .footer {
   border-top: 1px solid #ccc;
   margin: 200px 20% 100px 20%;
-  padding: 20px 0;
+  padding: 14px 0;
   text-align: center;
   .footer_links a {
     font-size: 14px;
@@ -203,6 +203,7 @@ a {
   margin-bottom: 0;
 }
 .subnav .nav > li > a {
+  color: darken(#08c, 15%);
   margin: 0;
   padding-top:    11px;
   padding-bottom: 11px;

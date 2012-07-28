@@ -12,8 +12,9 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @search = Search.find(params[:id])
-    @results = search_results(@search.keywords).paginate(:page => params[:page], :per_page => 20)
+    @search = Search.find_by_slug(params[:id])
+    query = @search ? @search.keywords : ""
+    @results = search_results(query).paginate(:page => params[:page], :per_page => 20)
     respond_with @search
   end
 

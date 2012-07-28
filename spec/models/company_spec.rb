@@ -33,15 +33,15 @@ describe Company do
   context 'associations' do
     it { should have_and_belong_to_many(:markets) }
     it { should have_and_belong_to_many(:locations) }
-    it { should have_many(:offers) } 
-    it { should have_many(:offerings).through(:offers) }   
-    it { should have_many(:investors).through(:offerings) }      
-    it { should have_many(:corporates).through(:offerings) }  
-    it { should have_many(:dealings) }   
-    it { should have_many(:deals).through(:dealings) }    
-    it { should have_many(:companies).through(:deals) }       
+    it { should have_many(:offers) }
+    it { should have_many(:offerings).through(:offers) }
+    it { should have_many(:investors).through(:offerings) }
+    it { should have_many(:corporates).through(:offerings) }
+    it { should have_many(:dealings) }
+    it { should have_many(:deals).through(:dealings) }
+    it { should have_many(:companies).through(:deals) }
   end
-  
+
 end
 
 

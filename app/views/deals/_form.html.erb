@@ -20,7 +20,7 @@
           :input_html => {:multiple => true, :class => "chzn-select",
                           "data-placeholder" => "Select one or more investors"} %>
   <% end %>
-  <%= f.input :round, :collection => Deal::ROUNDS %>
+  <%= f.input :round, :collection => Deal::ROUNDS, :input_html => { :class => 'span2' } %>
   <%= f.input :currency, :collection => Deal::CURRENCIES, :input_html => { :class => 'span1' } %>
   <%= f.input :amount, :as => :string, :label => 'Total Amount' %>
   <%= f.input :pre_valuation, :as => :string, :label => 'Pre-money Valuation' %>

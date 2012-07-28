@@ -7,9 +7,7 @@ class HomeController < ApplicationController
     @company_count = Company.count
 
     if user_signed_in?
-      @mixpanel.track_event("Home Page", {:user => "registered"})
-    else
-      @mixpanel.track_event("Home Page", {:user => "guest"})
+      flash[:mixpanel_event] = "name_tag('#{current_user.email}')"
     end
   end
 end

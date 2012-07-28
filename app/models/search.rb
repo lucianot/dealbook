@@ -1,4 +1,6 @@
 class Search < ActiveRecord::Base
-  attr_accessible :keywords
+  include FriendlyId
+  friendly_id :keywords, :use => :slugged
 
+  attr_accessible :keywords
 end

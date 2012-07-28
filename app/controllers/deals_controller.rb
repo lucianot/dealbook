@@ -7,6 +7,7 @@ class DealsController < ApplicationController
   def index
     @deals = Deal.page(params[:page]).order("close_date DESC")
     respond_with(@deals)
+    # @mixpanel.track_event("Deals index")
   end
 
   # GET /deals/1
@@ -14,6 +15,7 @@ class DealsController < ApplicationController
   def show
     @deal = Deal.find(params[:id])
     respond_with(@deal)
+    # @mixpanel.track_event("Deal show", {:deal => "#{@deal.id}"})
   end
 
   # GET /deals/new
@@ -42,7 +44,8 @@ class DealsController < ApplicationController
     if @deal.save
       flash[:notice] = 'Deal was successfully created.'
     end
-    respond_with(@deal, :location => deals_url)
+    respond_with(@deal)
+    # @mixpanel.track_event("Deal create", {:deal => "#{@deal.id}"})
   end
 
   # PUT /deals/1
@@ -60,7 +63,8 @@ class DealsController < ApplicationController
     if @deal.update_attributes(params[:deal])
       flash[:notice] = 'Deal was successfully updated.'
     end
-    respond_with(@deal, :location => deals_url)
+    respond_with(@deal)
+    # @mixpanel.track_event("Deal update", {:deal => "#{@deal.id}"})
   end
 
   # DELETE /deals/1
@@ -70,6 +74,7 @@ class DealsController < ApplicationController
     @deal.destroy
     flash[:notice] = 'Deal was successfully deleted.'
     respond_with(@deal)
+    # @mixpanel.track_event("Deal destroy", {:deal => "#{@deal.id}"})
   end
 
   # TODO: check if RESTful. Can refactor into update?

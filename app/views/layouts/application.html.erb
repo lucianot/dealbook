@@ -8,10 +8,12 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'application' %>
   <%= yield(:head) %>
+  <%= render 'shared/mixpanel' %>
   <%= render 'shared/ga' %>
 </head>
 
-<body class="<%=params[:controller].parameterize%>">
+<body class="<%= params[:controller].parameterize %>">
+
   <%= render 'layouts/navigation' %>
 
   <div class="container main">
@@ -22,5 +24,7 @@
   <div class="footer">
     <%= render 'layouts/footer' %>
   </div>
+
 </body>
 </html>
+
