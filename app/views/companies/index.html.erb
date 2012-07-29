@@ -27,7 +27,7 @@
         <% end %>
 
         <% if can? :destroy, Company %>
-          <td class="edit_destroy"><%= link_to(company, confirm: 'Are you sure?',
+          <td class="edit_destroy"><%= link_to(company, :data => { :confirm => 'Are you sure?' },
             :method => :delete, :id => "destroy_#{company.id}") do %>
             <i class="icon-remove"></i>
           <% end %>

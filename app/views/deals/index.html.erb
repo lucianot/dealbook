@@ -34,7 +34,7 @@
         <% end %>
 
         <% if can? :edit, Deal %>
-          <td class="edit_destroy"><%= link_to(deal, :confirm => 'Are you sure?',
+          <td class="edit_destroy"><%= link_to(deal, :data => { :confirm => 'Are you sure?' },
               :method => :delete, :id => "destroy_#{deal.id}") do %>
             <i class="icon-remove"></i>
           <% end %>

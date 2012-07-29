@@ -25,7 +25,7 @@
               <i class="icon-pencil"></i>
             <% end if can? :edit, Location %>
         </td>
-        <td class="edit_destroy"><%= link_to(location, confirm: 'Are you sure?', method: :delete,
+        <td class="edit_destroy"><%= link_to(location, :data => { :confirm => 'Are you sure?' }, method: :delete,
                         :id => "destroy_#{location.id}") do %>
               <i class="icon-remove"></i>
             <% end if can? :destroy, Location %>
