@@ -1,0 +1,11 @@
+id: 2a229370-bbf2-012f-ddf4-123139180c25
+setup:
+  commands:
+  - bundle install --without production
+  - bundle exec rake db:migrate --trace
+test:
+  commands:
+  - bundle exec rake
+deploy: {}
+ruby_versions:
+- 1.9.3
