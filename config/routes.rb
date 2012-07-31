@@ -4,7 +4,7 @@ Dealbook::Application.routes.draw do
   
   resources :authentications
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :users, :only => [:show, :index, :edit, :update]
   resources :deals do
       put :verify, :on => :member
