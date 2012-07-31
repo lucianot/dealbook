@@ -18,6 +18,9 @@
 
 <br>
 <% if can? :edit, Investor %>
-  <%= link_to('Edit', edit_investor_path(@investor)) %> |
+  <%= link_to('Edit', edit_investor_path) %> |
+<% end %>
+<% if can? :destroy, Investor %>
+  <%= link_to 'Destroy', @investor, :data => { :confirm => 'Are you sure?' }, :method => :delete %> |
 <% end %>
 <%= link_to 'Back', :back %>

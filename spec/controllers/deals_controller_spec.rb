@@ -59,11 +59,6 @@ describe DealsController do
       put :update, :id => @id, :deal => @attributes_with_offerings
     end
 
-    it "should make deal unverified" do
-      @deal.should_receive(:verified=).with(false).and_return(false)
-      put :update, :id => @id, :deal => @attributes_with_offerings
-    end
-
     it "should update deal" do
       @deal.should_receive(:update_attributes).with(@attributes).once.and_return(true)
       put :update, :id => @id, :deal => @attributes_with_offerings

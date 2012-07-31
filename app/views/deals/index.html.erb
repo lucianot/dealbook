@@ -20,10 +20,9 @@
     <tbody>
     <% @deals.each do |deal| %>
       <tr class="deal_row">
-        <td><%= link_to deal.close_date.strftime("%Y-%m"), deal,
-            :id => "deal_#{deal.id}" %></td>
+        <td><%= deal.close_date.strftime("%Y-%m") %></td>
         <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
-        <td><%= deal.category  %></td>
+        <td><%= link_to deal.category, deal, :id => "deal_#{deal.id}" %></td>
         <td><%= render :partial => 'buyers', :locals => { :deal => deal } %></td>
         <td class="values"><%= deal.full_amount %></td>
 
@@ -35,7 +34,7 @@
         <% end %>
 
         <% if can? :edit, Deal %>
-          <td class="edit_destroy"><%= link_to(deal, :confirm => 'Are you sure?',
+          <td class="edit_destroy"><%= link_to(deal, :data => { :confirm => 'Are you sure?' },
               :method => :delete, :id => "destroy_#{deal.id}") do %>
             <i class="icon-remove"></i>
           <% end %>

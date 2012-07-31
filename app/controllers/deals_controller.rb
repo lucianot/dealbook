@@ -59,7 +59,7 @@ class DealsController < ApplicationController
 
     update_offerings_for(@deal, buyers)
 
-    @deal.verified = false
+    # @deal.verified = false
     if @deal.update_attributes(params[:deal])
       flash[:notice] = 'Deal was successfully updated.'
     end

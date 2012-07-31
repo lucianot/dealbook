@@ -18,8 +18,13 @@
   </tbody>
 </table>
 
+<p><%= link_to("+ Add new deal", new_deal_path) if can? :create, Deal %></p>
 <br>
+
 <% if can? :edit, Company %>
   <%= link_to 'Edit', edit_company_path %> |
+<% end %>
+<% if can? :destroy, Company %>
+  <%= link_to 'Destroy', @company, :data => { :confirm => 'Are you sure?' }, :method => :delete %> |
 <% end %>
 <%= link_to 'Back', :back %>
