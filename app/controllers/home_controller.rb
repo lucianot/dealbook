@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @company_count = Company.count
 
     if user_signed_in?
-      flash[:mixpanel_event] = "name_tag('#{current_user.email}')"
+      flash[:mixpanel_event] = "name_tag('#{current_user.full_name} : #{current_user.email}')"
     end
   end
 end
