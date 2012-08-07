@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'manage users' do
 
-  context 'logged as admin' do
+  context 'admins' do
 
     scenario 'edit user role' do
       user = User.make!
@@ -19,7 +19,19 @@ feature 'manage users' do
     end
   end
 
-  context 'logged as normal' do
+  context 'mods' do
+
+    scenario 'see users, but cannot edit' do
+      user = User.make!
+      mod = login_mod
+      click_link user.full_name
+      click_link 'Manage users'
+      page.should have_link user.full_name
+      page.should_not have_link "edit_#{user.id}"
+    end
+  end
+
+  context 'users and guests' do
 
     scenario 'cannot access users' do
       normal = login_normal

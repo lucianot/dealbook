@@ -19,7 +19,7 @@
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <% if can? :manage, User %>
+              <% if can? :read, User %>
                 <li><%= link_to('Manage users', users_path) %></li>
                 <li class="divider"></li>
               <% end %>

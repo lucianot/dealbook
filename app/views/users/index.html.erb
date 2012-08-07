@@ -19,7 +19,7 @@
       <td><%= user.created_at.to_date %></td>
       <td class="edit_destroy"><%= link_to edit_user_path(user), :id => "edit_#{user.id}" do  %>
             <i class="icon-pencil"></i>
-          <% end unless user.is?(:admin) || (cannot? :manage, User) %>
+          <% end unless user.is?(:admin) || (cannot? :update, User) %>
       </td>
     </tr>
   <% end %>

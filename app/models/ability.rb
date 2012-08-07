@@ -14,6 +14,7 @@ class Ability
       can :manage, User, :role => User::ROLES-['admin']
     elsif user.role == 'moderator'
       can :manage, [ Company, Investor, Deal, Market, Location, Search ]
+      can :read, User
     elsif user.role == 'normal'
       can :manage, [ Company, Investor, Search ]
       can [:read, :create, :update, :destroy], [ Deal ]
