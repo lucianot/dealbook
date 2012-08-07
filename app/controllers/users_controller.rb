@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.page(params[:page]).order("created_at DESC")
   end
 
   # GET /users/1

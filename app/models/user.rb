@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #Gems
+  self.per_page = 20       
+
   # Validations
   validates :full_name, :presence => true, :length => { :in => (2..100) }
   validates :role, :inclusion => { :in => ROLES }
