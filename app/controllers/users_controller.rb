@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.page(params[:page]).order("created_at DESC")
+    @user_count = User.count
   end
 
   # GET /users/1
