@@ -15,6 +15,13 @@
     </tr>
     <tr><td>Deals</td>      <td><%= render "offers" %></td></tr>
     <tr><td>Investments</td><td><%= render "investments" %></td></tr>
+	<% if @company.website.present? %>
+	<tr><td>Alexa Traffic</td>
+			<td>
+				<img src="http://traffic.alexa.com/graph?w=400&h=220&o=f&c=1&y=r&b=ffffff&n=666666&r=2y&u=<%="#{@company.website}"%>"
+			</td>
+	</tr>
+	<% end %>
   </tbody>
 </table>
 

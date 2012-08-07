@@ -1,5 +1,10 @@
 Dealbook::Application.routes.draw do
-  devise_for :users
+
+  match '/auth/:provider/callback' => 'authentications#create'
+  
+  resources :authentications
+
+  devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :users, :only => [:show, :index, :edit, :update]
   resources :deals do
       put :verify, :on => :member
@@ -15,6 +20,5 @@ Dealbook::Application.routes.draw do
   authenticated :user do
     root :to => 'home#index'
   end
-
   root :to => "home#index"
 end

@@ -12,6 +12,7 @@ gem 'foreigner', '~> 1.1'
 # users and roles
 gem 'devise', '~> 2.1'
 gem 'cancan', '~> 1.6'
+gem 'nifty-generators'
 
 # versions
 gem 'paper_trail', '~> 2.6'
@@ -28,6 +29,11 @@ gem 'friendly_id'
 
 # analytics
 gem 'mixpanel'
+
+# 3rd party auth
+gem 'omniauth'
+gem 'omniauth-linkedin'
+gem 'omniauth-twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -78,3 +84,5 @@ end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem "mocha", :group => :test

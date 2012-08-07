@@ -43,6 +43,39 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: authentications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE authentications (
+    id integer NOT NULL,
+    user_id integer,
+    provider character varying(255),
+    uid character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: authentications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE authentications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: authentications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
+
+
+--
 -- Name: companies; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -340,7 +373,7 @@ ALTER SEQUENCE searches_id_seq OWNED BY searches.id;
 CREATE TABLE users (
     id integer NOT NULL,
     email character varying(255) DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
@@ -413,6 +446,13 @@ ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY authentications ALTER COLUMN id SET DEFAULT nextval('authentications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
 
 
@@ -470,6 +510,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq'::regclass);
+
+
+--
+-- Name: authentications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY authentications
+    ADD CONSTRAINT authentications_pkey PRIMARY KEY (id);
 
 
 --
@@ -718,3 +766,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120722143007');
 INSERT INTO schema_migrations (version) VALUES ('20120722155830');
 
 INSERT INTO schema_migrations (version) VALUES ('20120726130457');
+
+INSERT INTO schema_migrations (version) VALUES ('20120731034005');

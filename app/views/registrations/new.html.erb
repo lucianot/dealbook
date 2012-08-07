@@ -1,0 +1,35 @@
+<div class="title form-title">
+  <h3>Sign up</h3>
+</div>
+<div class=" span6">
+	<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name),
+	  :html => { :class => 'form-horizontal' } do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="inputs">
+	    <%= f.input :full_name %>
+	    <%= f.input :email, :required => true, :autofocus => true %>
+		<% if @user.password_required? %>
+	    <%= f.input :password, :required => true %>
+	    <%= f.input :password_confirmation, :required => true %>
+		<% end %>
+	  </div>
+
+	  <div class="form-actions">
+	    <%= f.button :submit, "Sign up", :class => 'btn-primary' %>
+	  </div>
+	<% end %>
+	<div class="bottom-links">
+	  <%= render :partial => "devise/shared/links" %>
+	</div>
+</div>
+<h3> Or use your social profiles: </h3>
+<a href="/auth/twitter" class="auth_provider">
+  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
+  Twitter
+</a>
+<a href="/auth/linkedin" class="auth_provider">
+  <%= image_tag "linkedin_64.png", :size => "64x64", :alt => "Linkedin" %>
+  Linkedin
+</a>
+
