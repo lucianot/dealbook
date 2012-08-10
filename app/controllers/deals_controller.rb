@@ -21,7 +21,7 @@ class DealsController < ApplicationController
   # GET /deals/new
   # GET /deals/new.json
   def new
-    @deal = Deal.new
+    @deal = Deal.new :company_id => params[:company_id]
     respond_with(@deal)
   end
 

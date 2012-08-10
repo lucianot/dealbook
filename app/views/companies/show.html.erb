@@ -18,7 +18,9 @@
   </tbody>
 </table>
 
-<p><%= link_to("+ Add new deal", new_deal_path) if can? :create, Deal %></p>
+<p>
+  <%= link_to("+ Add new deal", new_deal_path(:company_id => @company.id)) if can? :create, Deal %>
+</p>
 <br>
 
 <% if can? :edit, Company %>
