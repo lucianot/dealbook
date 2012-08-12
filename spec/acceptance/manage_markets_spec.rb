@@ -34,10 +34,9 @@ feature 'manage markets' do
       click_link 'Markets'
       page.should have_link "destroy_#{market.id}"
       expect do
-        # click_link "destroy_#{market.id}"
-        Capybara.current_session.driver.follow :delete, market_path(market)    
+        click_link "destroy_#{market.id}"  
+        # page.driver.browser.switch_to.alert.accept
       end.to change {Market.count}.by(-1)
-      page.should have_content 'Market'
       page.should have_content 'Market was successfully deleted.'
       page.should_not have_content market.name
       uri = URI.parse(current_url)
