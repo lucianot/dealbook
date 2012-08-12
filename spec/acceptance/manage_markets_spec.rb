@@ -21,7 +21,7 @@ feature 'manage markets' do
       market = Market.make!
       login_mod
       click_link 'Markets'
-      click_link "edit_#{market.id}"
+      click_button "edit_#{market.id}"
       fill_in 'Name', :with => 'mobile'
       click_button 'Update Market'
       page.should have_content 'Market was successfully updated.'

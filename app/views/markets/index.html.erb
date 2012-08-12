@@ -17,12 +17,13 @@
     <% @markets.each do |market| %>
       <tr>
         <td><%= market.name %></td>
-        <td class="edit_destroy"><%= link_to edit_market_path(market), :id => "edit_#{market.id}" do  %>
-              <i class="icon-pencil"></i>
-            <% end if can? :edit, Market %>
+        <td class="edit_button">
+          <%= button_to(" ", edit_market_path(market), 
+            :method => :get,
+            :id => "edit_#{market.id}") if can? :edit, Market %>
         </td>
-        <td class="edit_destroy">
-          <%= button_to("d", market, 
+        <td class="destroy_button">
+          <%= button_to(" ", market, 
             :data => { :confirm => 'Are you sure?' }, 
             :method => :delete,
             :id => "destroy_#{market.id}") if can? :destroy, Market %>
