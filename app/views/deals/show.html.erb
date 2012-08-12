@@ -23,7 +23,7 @@
   </tbody>
 </table>
 
-<p class="verify">
+<div class="verify">
   <% if @deal.verified %>
     <span class="label label-success"><i class="icon-ok icon-white"></i> Verified</span>
   <% else %>
@@ -39,7 +39,7 @@
       <% end %>
     <% end %>
   </span>
-</p>
+</div>
 <br>
 
 <% if can? :edit, Deal %>
