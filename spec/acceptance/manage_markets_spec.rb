@@ -32,11 +32,16 @@ feature 'manage markets' do
       market = Market.make!
       login_mod
       click_link 'Markets'
+      page.should have_link "destroy_#{market.id}"
       expect do
-        click_link "destroy_#{market.id}"
+        # click_link "destroy_#{market.id}"
+        Capybara.current_session.driver.follow :delete, market_path(market)    
       end.to change {Market.count}.by(-1)
+      page.should have_content 'Market'
       page.should have_content 'Market was successfully deleted.'
       page.should_not have_content market.name
+      uri = URI.parse(current_url)
+      uri.path.should == '/markets'
     end
 
   end # context mod/admin
