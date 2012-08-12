@@ -32,7 +32,7 @@ feature 'verify deals' do
       click_link "deal_#{deal.id.to_s}"
       page.should have_link deal.source_url
       page.should have_content 'Unverified'
-      click_link 'Mark as verified?'
+      click_button 'Mark as verified?'
       page.should have_content 'Verified'
     end
 
@@ -43,7 +43,7 @@ feature 'verify deals' do
       click_link "deal_#{deal.id.to_s}"
       page.should have_link deal.source_url
       page.should have_content 'Verified'
-      click_link 'Mark as unverified?'
+      click_button 'Mark as unverified?'
       page.should have_content 'Unverified'
     end
 

@@ -31,3 +31,22 @@
 #deal_close_date_2i {
   width: 120px;
 }
+
+.deals form.button_to {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  div { display: inline; }
+  input[type=submit] {
+    background: none;
+    border: none;  
+    color: #08C;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: caret;
+    text-decoration: none;
+  }
+}
