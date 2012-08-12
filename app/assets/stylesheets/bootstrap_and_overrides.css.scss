@@ -116,6 +116,23 @@ a {
     width: 20px;
     a { 
       opacity: 0.0; 
+    }
+    .button_to {
+      display: inline;
+      margin: 0;
+      opacity: 0.0;
+      padding: 0;
+      div { display: inline; }
+      input[type=submit] {
+        margin: 0;
+        padding: 0;
+        -webkit-appearance: caret;
+        background: none;
+        border: none;
+        font-size: inherit;
+        font-family: inherit;
+        cursor: pointer;
+      }
     }    
   }  
   tr {
@@ -124,8 +141,7 @@ a {
         background: rgba(255,255,255,0.9) !important;
       }
       .edit_destroy {
-        a {
-          color: red;
+        a, .button_to {
           opacity: 0.2;
           &:hover { opacity: 0.9; }
         }

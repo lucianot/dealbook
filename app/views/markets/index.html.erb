@@ -21,11 +21,11 @@
               <i class="icon-pencil"></i>
             <% end if can? :edit, Market %>
         </td>
-        <td class="edit_destroy"><%= link_to(market, :data => { :confirm => 'Are you sure?' }, 
-                                                     :method => :delete,
-                                                     :id => "destroy_#{market.id}") do %>
-              <i class="icon-remove"></i>
-            <% end if can? :destroy, Market %>
+        <td class="edit_destroy">
+          <%= button_to("d", market, 
+            :data => { :confirm => 'Are you sure?' }, 
+            :method => :delete,
+            :id => "destroy_#{market.id}") if can? :destroy, Market %>
         </td>
       </tr>
     <% end %>

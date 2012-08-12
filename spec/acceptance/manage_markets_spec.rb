@@ -32,9 +32,8 @@ feature 'manage markets' do
       market = Market.make!
       login_mod
       click_link 'Markets'
-      page.should have_link "destroy_#{market.id}"
       expect do
-        click_link "destroy_#{market.id}"  
+        click_button "destroy_#{market.id}"  
       end.to change {Market.count}.by(-1)
       page.should have_content 'Market was successfully deleted.'
       page.should_not have_content market.name
