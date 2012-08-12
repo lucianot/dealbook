@@ -23,12 +23,13 @@
   </tbody>
 </table>
 
-<p>
+<p class="verify">
   <% if @deal.verified %>
     <span class="label label-success"><i class="icon-ok icon-white"></i> Verified</span>
   <% else %>
     <span class="label label-important"><i class="icon-flag icon-white"></i> Unverified</span>
   <% end %>
+
   <span id="verify_link">
     <% if @deal.source_url && (can? :manage, Deal) %>
       <% if @deal.verified %>
