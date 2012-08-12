@@ -21,15 +21,24 @@
         <td><%= location.country %></td>
         <td><%= location.region %></td>
         <td><%= location.city %></td>
-        <td class="edit_destroy"><%= link_to edit_location_path(location), :id => "edit_#{location.id}" do  %>
-              <i class="icon-pencil"></i>
-            <% end if can? :edit, Location %>
+
+        <% if can? :edit, Location %>         
+        <td class="edit_button">
+          <%= button_to(" ", edit_location_path(location), 
+            :method => :get,
+            :id => "edit_#{location.id}") %>
         </td>
-        <td class="edit_destroy"><%= link_to(location, :data => { :confirm => 'Are you sure?' }, method: :delete,
-                        :id => "destroy_#{location.id}") do %>
-              <i class="icon-remove"></i>
-            <% end if can? :destroy, Location %>
-        </td>
+        <% end %>
+
+        <% if can? :destroy, Location %>          
+        <td class="destroy_button">
+          <%= button_to(" ", location, 
+            :data => { :confirm => 'Are you sure?' }, 
+            :method => :delete,
+            :id => "destroy_#{location.id}") %>
+        </td>   
+        <% end %>
+
       </tr>
     <% end %>
   </table>

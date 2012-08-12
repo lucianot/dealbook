@@ -17,17 +17,24 @@
     <% @markets.each do |market| %>
       <tr>
         <td><%= market.name %></td>
+
+        <% if can? :edit, Market %>        
         <td class="edit_button">
           <%= button_to(" ", edit_market_path(market), 
             :method => :get,
-            :id => "edit_#{market.id}") if can? :edit, Market %>
+            :id => "edit_#{market.id}") %>
         </td>
+        <% end %>
+
+        <% if can? :destroy, Market %>          
         <td class="destroy_button">
           <%= button_to(" ", market, 
             :data => { :confirm => 'Are you sure?' }, 
             :method => :delete,
-            :id => "destroy_#{market.id}") if can? :destroy, Market %>
+            :id => "destroy_#{market.id}") %>
         </td>
+        <% end %>
+
       </tr>
     <% end %>
   </table>

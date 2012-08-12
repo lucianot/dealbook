@@ -17,22 +17,23 @@
     <% @investors.each do |investor| %>
       <tr>
         <td><%= link_to( investor.name, investor) if can? :show, Investor %></td>
-
+        
         <% if can? :edit, Investor %>
-          <td class="edit_destroy"><%= link_to edit_investor_path(investor),
-            :id => "edit_#{investor.id}" do  %>
-            <i class="icon-pencil"></i>
-            <% end %>
-          </td>
+        <td class="edit_button">
+          <%= button_to(" ", edit_investor_path(investor), 
+            :method => :get,
+            :id => "edit_#{investor.id}") %>
+        </td>
         <% end %>
 
-        <% if can? :destroy, Investor %>
-          <td class="edit_destroy"><%= link_to(investor, :data => { :confirm => 'Are you sure?' },
-            :method => :delete, :id => "destroy_#{investor.id}") do %>
-            <i class="icon-remove"></i>
-            <% end %>
-          </td>
-        <% end %>
+        <% if can? :destroy, Investor %>        
+        <td class="destroy_button">
+          <%= button_to(" ", investor, 
+            :data => { :confirm => 'Are you sure?' }, 
+            :method => :delete,
+            :id => "destroy_#{investor.id}") %>
+        </td>
+        <% end %> 
 
       </tr>
     <% end %>
