@@ -55,7 +55,7 @@ feature 'verify deals' do
       deal = Deal.make!(:complete, :verified => true)
       login_normal
       click_link 'Deals'
-      click_link "edit_#{deal.id}"
+      click_button "edit_#{deal.id}"
       select '2009', :from => 'Close date'
       click_button 'Update Deal'
       deal.reload
@@ -67,7 +67,7 @@ feature 'verify deals' do
       deal = Deal.make!(:complete, :verified => true)
       login_normal
       click_link 'Deals'
-      click_link "edit_#{deal.id}"
+      click_button "edit_#{deal.id}"
       click_button 'Update Deal'
       deal.reload
       page.should have_content 'Verified'
