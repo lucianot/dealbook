@@ -24,18 +24,99 @@
 
 <% else %>
 
-<div class="guest_home">
-  <p><span class="guest_blue">Dealbook</span> is the ultimate resource for tech deals in Brazil, <span class="guest_blue">100% crowdsourced</span> by the community.</p>
-
-  <div class="guest_middle">
-    <p>Our database currently includes <span class="guest_blue"><%= @company_count %> companies</span>, <span class="guest_blue"><%= @investor_count %> investors</span> and <span class="guest_blue"><%= @deal_count %> deals</span>, since 1999.</p>
-  </div>
-
-  <div class="guest_last">
-    <p>Feel free to browse as a guest or <%= link_to "sign up", new_user_registration_path %> to start contributing and receiving updates.</p>
-  </div>
+<div class="span12 center-field">
+	<h1>The Ultimate Resource for Tech Deals in Brazil</h1>
+  	<h3 class="index-subs"><p>It's 100% crowdsourced by the community and we need your help!</h3>
+    <div class="wrapper">
+    	<p>
+				<a class="btn btn-info btn-large" href="" title="Sign Up!">Sign up now!</a>
+    	</p> 
+		</div>
 </div>
+<div class="row">
+	<div class="span4">
+		<div class="well well-index">
+			<h3>A few reasons to join:</h3>
+			<ul class="index-list">
+				<li><b>Full access to the latest information</b> about venture capital and M&A deals in the Brazilian internet startups market.</li>
+				<li>The most <b>complete database of brazilian tech startups and investors</b></li>
+				<li>Become part of a <b>vibrant community</b>, helping us crowdsource our database!</li>
+				<li>It's completely <b>FREE</b>!</li>
+			</ul>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="well well-index">
+			<h3>Statistics</h3>
+			<table class="table stats">
+			  <tbody>
+			    <tr class="update_row">
+			      <td>
+						<h3 class="counter"><%= @company_count %></h3>
+			      </td>
+						<td>
+							<h3>Companies</h3>
+						</td>
+			    </tr>
+					<tr class="update_row">
+			      <td>
+						<h3 class="counter"><%= @investor_count %></h3>
+			      </td>
+						<td>
+							<h3>Investors</h3>
+						</td>
+			    </tr>
+					<tr class="update_row">
+			      <td>
+						<h3 class="counter"><%= @deal_count %></h3>
+			      </td>
+						<td>
+							<h3>Deals</h3>
+						</td>
+			    </tr>
+					<tr class="update_row">
+			      <td>
+						<h3 class="counter"><%= @user_count %></h3>
+			      </td>
+						<td>
+							<h3>Collaborators</h3>
+						</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="well well-index">
+			<h3>Recent Updates</h3>
 
+			<% if @deals.empty? %>
+			<p>No updates.</p><br>
+			<% else %>
+			<table class="table">
+	  		<tbody>
+	  		<% @deals.take(2).each do |deal| %>
+	    	<tr class="update_row">
+	      	<td>
+	        	<%= link_to deal.headline, deal_path(deal)  %>
+	        	<span class="update_close_date"><%= "(#{deal.close_date.strftime("%b %y")})" %>
+	        		<div class="update_updated"><%= "Updated on #{deal.updated_at.strftime("%d %b %y")}" %></div>
+	      	</td>
+	    	</tr>
+	  		<% end %>
+				<tr>
+					<td>
+						Need more? Sign in or <%= link_to "Sign up now", new_user_registration_path %>!
+					</td>
+				</tr>
+	  		</tbody>
+			</table>
+			<% end %>
+		</div>
+	</div>
+</div>	
+<div class="clear">
+</div>
 <% end %>
 
 

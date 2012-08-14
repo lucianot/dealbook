@@ -1,48 +1,119 @@
-.update_close_date {
-  color: #444;
-  font-size: 12px;
+.center-field {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	.index-subs {
+		margin-top: 18px;
+		margin-bottom: 10px;
+		color: #0088CC;
+	}
 }
 
-.update_updated {
-  color: #999;
-  font-size: 10px;
-  margin-top: 2px;
+.well h3{
+	margin-bottom: 20px;
 }
 
-.guest_home {
-  color: #555;
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 40px;
-  margin-top: 100px;
-  text-align: justify;
-  a {
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    color: #08c;
-    font-weight: bold;
-  }
-  a:hover {
-    text-decoration: none;
-    color: rgb(6,169,229);
-  }
+.well-index {
+	height: 300px;
 }
 
-.guest_blue {
-  color: #005580;
-  font-weight: bold;
+.counter{
+	color: #08C;
 }
 
-.guest_middle {
-/*  font-size: 32px;
-  line-height: 34px;*/
-  margin-top: 60px;
+.index-list li{
+	font-size: 15px;
+	margin-bottom: 15px;
+	b {
+		color: #0088CC;
+	}
 }
 
-.guest_last {
-  font-size: 20px;
-  line-height: 24px;
-  margin-top: 60px;
+.update_close_date
+{
+	color: #444;
+	font-size: 12px;
+}
+.update_updated
+{
+	color: #999;
+	font-size: 10px;
+	margin-top: 2px;
 }
 
+
+/* Sharing Buttons */
+.share_buttons
+{
+	background: #E2E2E2;
+	border-radius: 4px;
+	margin: auto;
+	height: 38px;
+	margin-top: 0;
+	moz-border-radius: 4px;
+	padding-left: 1px;
+	padding-right: 10px;
+	padding-top: 10px;
+	webkit-border-radius: 4px;
+	width: 268px;
+}
+.share_buttons .facebook
+{
+	background: transparent url('/assets/tray_share_buttons.png') no-repeat 0 0;
+	display: block;
+	float: left;
+	height: 27px;
+	margin-left: 10px;
+	width: 79px;
+}
+.share_buttons .facebook:hover
+{
+	background-position: 0 -27px;
+}
+.share_buttons .facebook:active
+{
+	background-position: 0 0!important;
+	moz-box-shadow: 0 0 2px #bbb;
+	position: relative;
+	top: 2px;
+}
+.share_buttons .twitter
+{
+	background: transparent url('/assets/tray_share_buttons.png') no-repeat 0 -54px;
+	display: block;
+	float: left;
+	height: 27px;
+	margin-left: 10px;
+	width: 79px;
+}
+.share_buttons .twitter:hover
+{
+	background-position: 0 -81px;
+}
+.share_buttons .twitter:active
+{
+	background-position: 0 -54px!important;
+	moz-box-shadow: 0 0 2px #bbb;
+	position: relative;
+	top: 2px;
+}
+.share_buttons .google
+{
+	background: transparent url('/assets/tray_share_buttons.png') no-repeat 0 -108px;
+	float: left;
+	height: 27px;
+	margin-left: 10px;
+	width: 79px;
+}
+.share_buttons .google:hover
+{
+	background-position: 0 -135px;
+}
+.share_buttons .google:active
+{
+	background-position: 0 -108px!important;
+	moz-box-shadow: 0 0 2px #bbb;
+	position: relative;
+	top: 2px;
+}
 

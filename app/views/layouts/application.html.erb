@@ -16,14 +16,12 @@
 
   <%= render 'layouts/navigation' %>
 
-  <div class="container main">
+  <div class="container">
     <%= render 'layouts/messages' %>
     <%= yield %>
   </div>
 
-  <div class="footer">
-    <%= render 'layouts/footer' %>
-  </div>
+  <%= render 'layouts/footer' %>
 	<%= render 'shared/uservoice' %>
 </body>
 </html>
