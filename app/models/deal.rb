@@ -2,7 +2,8 @@ class Deal < ActiveRecord::Base
 include ActionView::Helpers::NumberHelper
 
   CATEGORIES = ['raised funds from', 'incubated by', 'merged with', 'was acquired by', 'shut down']
-  ROUNDS = ['Acceleration', 'Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
+  ROUNDS = ['Acceleration', 'Seed', 'Series Seed', 'Series A', 'Series B', 'Series C',
+            'Series D', 'Series E', 'IPO']
   CURRENCIES = ['USD', 'BRL']
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round,
                   :source_url, :verified
