@@ -9,5 +9,3 @@ test:
 deploy: {}
 ruby_versions:
 - 1.9.3
-env:
-  RAILS_ENV=railsonfire
