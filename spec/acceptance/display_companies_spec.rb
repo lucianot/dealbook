@@ -52,10 +52,20 @@ feature 'display companies' do
       page.should have_link 'Edit'
       page.should have_link 'Destroy'
       page.should have_link 'Back'
+    end
+
+    scenario 'add new deal for company' do
+      company = Company.make!
+      login_normal
+      click_link 'Companies'
+      click_link company.name
+      page.should have_content company.name    
+      page.should have_link 'Add new deal'
       click_link 'Add new deal'
       page.should have_content 'Create new deal'
       uri = URI.parse(current_url)
-      uri.path.should == "/deals/new"     
+      uri.path.should == "/deals/new"
+      page.has_select?('Company', :selected => company.name).should be_true    
     end
   end
 end

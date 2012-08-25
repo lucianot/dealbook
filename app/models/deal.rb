@@ -2,7 +2,8 @@ class Deal < ActiveRecord::Base
 include ActionView::Helpers::NumberHelper
 
   CATEGORIES = ['raised funds from', 'incubated by', 'merged with', 'was acquired by', 'shut down']
-  ROUNDS = ['Acceleration', 'Seed', 'Series Seed', 'Series A', 'Series B', 'Series C', 'IPO']
+  ROUNDS = ['Acceleration', 'Seed', 'Series Seed', 'Series A', 'Series B', 'Series C',
+            'Series D', 'Series E', 'IPO']
   CURRENCIES = ['USD', 'BRL']
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round,
                   :source_url, :verified
@@ -117,8 +118,19 @@ include ActionView::Helpers::NumberHelper
 
   def attributes_changed?
     changed = self.changed
-    changed.delete('source_url') if Rails.env.test?  # fix Capybara bug that alters url 
-    !(changed.empty? || changed.include?('verified'))
+
+    # Remove source_url from changed on tests, to fix Capybara bug that alters url 
+    changed.delete('source_url') if Rails.env.test? || ENV["RAILSONFIRE"].present?
+
+    # Check if no fields were changed
+    if changed.empty?
+      return false
+    # Check if the only change is on verified field
+    elsif changed.size == 1 && changed.include?('verified')
+      return false
+    else
+      return true
+    end
   end
 
 end

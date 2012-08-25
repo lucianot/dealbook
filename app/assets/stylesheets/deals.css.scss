@@ -23,3 +23,30 @@
   font-size: 12px;
   margin-left: 10px;
 }
+
+#deal_close_date_1i {
+  width: 80px;
+}
+
+#deal_close_date_2i {
+  width: 120px;
+}
+
+.verify .button_to {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  div { display: inline; }
+  input[type=submit] {
+    background: none;
+    border: none;  
+    color: #08C;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: caret;
+    text-decoration: none;
+  }
+}

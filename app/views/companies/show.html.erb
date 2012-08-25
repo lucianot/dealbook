@@ -9,16 +9,20 @@
     <tr><td>Linkedin</td>   <td><%= link_to "#{@company.linkedin}", @company.linkedin %></td></tr>
     <tr><td>Status</td>     <td><%= @company.status %></td></tr>
     <tr><td>Markets</td>    <td><%= @company.markets_names %></td></tr>
-    <tr><td>Locations</td>  <td><%= @company.locations_names %></td></tr>
+    <tr><td>Locations</td>  
+      <td><%= render :partial => 'shared/locations', :locals => { :locations => @company.locations } %> </td>
+    </tr>
     <tr><td>Investors</td>
-        <td><%= render :partial => 'buyers', :locals => { :buyers => @company.buyers } %> </td>
+      <td><%= render :partial => 'buyers', :locals => { :buyers => @company.buyers } %> </td>
     </tr>
     <tr><td>Deals</td>      <td><%= render "offers" %></td></tr>
     <tr><td>Investments</td><td><%= render "investments" %></td></tr>
   </tbody>
 </table>
 
-<p><%= link_to("+ Add new deal", new_deal_path) if can? :create, Deal %></p>
+<p>
+  <%= link_to("+ Add new deal", new_deal_path(:company_id => @company.id)) if can? :create, Deal %>
+</p>
 <br>
 
 <% if can? :edit, Company %>

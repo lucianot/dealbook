@@ -23,22 +23,23 @@
   </tbody>
 </table>
 
-<p>
+<div class="verify">
   <% if @deal.verified %>
     <span class="label label-success"><i class="icon-ok icon-white"></i> Verified</span>
   <% else %>
     <span class="label label-important"><i class="icon-flag icon-white"></i> Unverified</span>
   <% end %>
+
   <span id="verify_link">
     <% if @deal.source_url && (can? :manage, Deal) %>
       <% if @deal.verified %>
-        <%= link_to 'Mark as unverified?', unverify_deal_path, :method => :put, :id => 'deal_unverify' %>
+        <%= button_to 'Mark as unverified?', unverify_deal_path, :method => :put, :id => 'deal_unverify' %>
       <% else %>
-        <%= link_to 'Mark as verified?', verify_deal_path, :method => :put, :id => 'deal_verify' %>
+        <%= button_to 'Mark as verified?', verify_deal_path, :method => :put, :id => 'deal_verify' %>
       <% end %>
     <% end %>
   </span>
-</p>
+</div>
 <br>
 
 <% if can? :edit, Deal %>

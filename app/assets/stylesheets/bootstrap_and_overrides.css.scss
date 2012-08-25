@@ -59,21 +59,50 @@ body {
       }
     }    
   }
-  .edit_destroy {
+  .edit_button, .destroy_button {
     padding-right: 0;    
     width: 20px;
     a { 
       opacity: 0.0; 
+    }
+    .button_to {
+      display: inline;
+      margin: 0;
+      opacity: 0.0;
+      padding: 0;
+      div { display: inline; }
+      input[type=submit] {
+        border: none;
+        font-size: inherit;
+        font-family: inherit;
+        margin: 0;
+        padding: 0;
+        -webkit-appearance: caret; 
+        width: 20px;
+      }
     }    
   }  
+  .destroy_button .button_to {
+    input[type=submit] {
+      background: image-url("glyphicons_290_skull.png");
+      background-size: 14px 14px;
+      background-repeat: no-repeat;
+    }    
+  }  
+  .edit_button .button_to {
+    input[type=submit] {
+      background: image-url("glyphicons_030_pencil.png");
+      background-size: 14px 14px;
+      background-repeat: no-repeat;
+    }    
+  }
   tr {
     &:hover {
       td {
         background: rgba(255,255,255,0.9) !important;
       }
-      .edit_destroy {
-        a {
-          color: red;
+      .edit_button, .destroy_button {
+        a, .button_to {
           opacity: 0.2;
           &:hover { opacity: 0.9; }
         }

@@ -44,7 +44,7 @@ feature 'manage companies' do
       new_name = "#{company.name} Clone"
       login_normal
       click_link 'Companies'
-      click_link "edit_#{company.id}"
+      click_button "edit_#{company.id}"
       fill_in ' Name', :with => new_name
       expect do
         click_button 'Update Company'
@@ -58,10 +58,12 @@ feature 'manage companies' do
       login_normal
       click_link 'Companies'
       expect do
-        click_link "destroy_#{company.id}"
+        click_button "destroy_#{company.id}"
       end.to change {Company.count}.by(-1)
       page.should have_content 'Company was successfully deleted.'
       page.should_not have_content company.name
+      uri = URI.parse(current_url)
+      uri.path.should == '/companies'      
     end
 
   end # context

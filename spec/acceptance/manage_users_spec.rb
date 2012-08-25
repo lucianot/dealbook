@@ -9,7 +9,7 @@ feature 'manage users' do
       admin = login_admin
       click_link user.full_name
       click_link 'Manage users'
-      click_link "edit_#{user.id}"
+      click_button "edit_#{user.id}"
       page.should have_content 'Edit user'
       page.should have_field 'Full name', :with => user.full_name
       select 'Moderator', :from => 'Role'

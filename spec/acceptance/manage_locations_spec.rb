@@ -26,7 +26,7 @@ feature 'manage locations' do
       other_location = Location.make
       login_mod
       click_link 'Locations'
-      click_link "edit_#{location.id}"
+      click_button "edit_#{location.id}"
       select location.country, :from => 'Country'
       fill_in 'Region', :with => other_location.region
       fill_in 'City', :with => other_location.city
@@ -42,10 +42,12 @@ feature 'manage locations' do
       login_mod
       click_link 'Locations'
       expect do
-        click_link "destroy_#{location.id}"
+        click_button "destroy_#{location.id}"
       end.to change {Location.count}.by(-1)
       page.should have_content 'Location was successfully deleted.'
       page.should_not have_content location.country
+      uri = URI.parse(current_url)
+      uri.path.should == '/locations'      
     end
 
   end # context mod/admin

@@ -19,20 +19,21 @@
         <td><%= link_to(company.name, company) if can? :show, Company %></td>
 
         <% if can? :edit, Company %>
-          <td class="edit_destroy"><%= link_to edit_company_path(company),
-            :id => "edit_#{company.id}" do  %>
-            <i class="icon-pencil"></i>
-          <% end %>
-          </td>
+        <td class="edit_button">
+          <%= button_to(" ", edit_company_path(company), 
+            :method => :get,
+            :id => "edit_#{company.id}") %>
+        </td>
         <% end %>
 
-        <% if can? :destroy, Company %>
-          <td class="edit_destroy"><%= link_to(company, :data => { :confirm => 'Are you sure?' },
-            :method => :delete, :id => "destroy_#{company.id}") do %>
-            <i class="icon-remove"></i>
-          <% end %>
-          </td>
-        <% end %>
+        <% if can? :destroy, Company %>        
+        <td class="destroy_button">
+          <%= button_to(" ", company, 
+            :data => { :confirm => 'Are you sure?' }, 
+            :method => :delete,
+            :id => "destroy_#{company.id}") %>
+        </td>
+        <% end %>        
 
       </tr>
     <% end %>

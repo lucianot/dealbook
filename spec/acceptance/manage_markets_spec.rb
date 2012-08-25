@@ -21,7 +21,7 @@ feature 'manage markets' do
       market = Market.make!
       login_mod
       click_link 'Markets'
-      click_link "edit_#{market.id}"
+      click_button "edit_#{market.id}"
       fill_in 'Name', :with => 'mobile'
       click_button 'Update Market'
       page.should have_content 'Market was successfully updated.'
@@ -33,10 +33,12 @@ feature 'manage markets' do
       login_mod
       click_link 'Markets'
       expect do
-        click_link "destroy_#{market.id}"
+        click_button "destroy_#{market.id}"  
       end.to change {Market.count}.by(-1)
       page.should have_content 'Market was successfully deleted.'
       page.should_not have_content market.name
+      uri = URI.parse(current_url)
+      uri.path.should == '/markets'
     end
 
   end # context mod/admin
