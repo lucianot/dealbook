@@ -119,8 +119,8 @@ include ActionView::Helpers::NumberHelper
   def attributes_changed?
     changed = self.changed
 
-    # Remove source_url from changed list, to fix Capybara bug that alters url 
-    changed.delete('source_url') if Rails.env.test? || Rails.env.railsonfire?
+    # Remove source_url from changed on tests, to fix Capybara bug that alters url 
+    changed.delete('source_url') if Rails.env.test? || Rails.env == 'railsonfire'
 
     # Check if no fields were changed
     if changed.empty?
