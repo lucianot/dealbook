@@ -1,13 +1,13 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="container">
+    <div class="row-fluid">
 
       <%= link_to image_tag('dealbook_logo.png'), root_path, :class => 'brand' %>
 
       <%= simple_form_for :search, :url => url_for(:action => 'create', :controller => '/searches'),
         :method => 'post', :html => { :class => 'navbar-search', :id => 'search_submit' } do |f| %>
         <%= f.input_field :keywords, :label => false, :placeholder => 'Search...',
-            :class =>  'search-query span3' %>
+            :class =>  'search-query' %>
         <%= f.submit "Search", :class => 'btn' %>
       <% end %>
 
