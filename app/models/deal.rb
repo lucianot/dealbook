@@ -120,7 +120,7 @@ include ActionView::Helpers::NumberHelper
     changed = self.changed
 
     # Remove source_url from changed on tests, to fix Capybara bug that alters url 
-    changed.delete('source_url') unless Rails.env.development? || Rails.env.production?
+    changed.delete('source_url') #unless Rails.env.development? || Rails.env.production?
 
     # Check if no fields were changed
     if changed.empty?
