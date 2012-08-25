@@ -36,26 +36,15 @@
 <div class="row">
 	<div class="span4">
 		<div class="well well-index">
-			<h3>A few reasons to join:</h3>
-			<ul class="index-list">
-				<li><b>Full access to the latest information</b> about venture capital and M&A deals in the Brazilian internet startups market.</li>
-				<li>The most <b>complete database of brazilian tech startups and investors</b></li>
-				<li>Become part of a <b>vibrant community</b>, helping us crowdsource our database!</li>
-				<li>It's completely <b>FREE</b>!</li>
-			</ul>
-		</div>
-	</div>
-	<div class="span4">
-		<div class="well well-index">
 			<h3>Statistics</h3>
-			<table class="table stats">
+			<table class="table table-condensed stats">
 			  <tbody>
 			    <tr class="update_row">
 			      <td>
 						<h3 class="counter"><%= @company_count %></h3>
 			      </td>
 						<td>
-							<h3>Companies</h3>
+							<h3><%= link_to 'Companies', companies_path %></h3>
 						</td>
 			    </tr>
 					<tr class="update_row">
@@ -63,7 +52,7 @@
 						<h3 class="counter"><%= @investor_count %></h3>
 			      </td>
 						<td>
-							<h3>Investors</h3>
+							<h3><%= link_to 'Investors', investors_path %></h3>
 						</td>
 			    </tr>
 					<tr class="update_row">
@@ -71,7 +60,7 @@
 						<h3 class="counter"><%= @deal_count %></h3>
 			      </td>
 						<td>
-							<h3>Deals</h3>
+							<h3><%= link_to 'Deals', deals_path %></h3>
 						</td>
 			    </tr>
 					<tr class="update_row">
@@ -79,7 +68,7 @@
 						<h3 class="counter"><%= @user_count %></h3>
 			      </td>
 						<td>
-							<h3>Collaborators</h3>
+							<h3><a href="#">Collaborators</a></h3>
 						</td>
 			    </tr>
 			  </tbody>
@@ -106,12 +95,23 @@
 	  		<% end %>
 				<tr>
 					<td>
-						Need more? Sign in or <%= link_to "Sign up now", new_user_registration_path %>!
+						Need more? <%= link_to "Sign up now", new_user_registration_path %> !
 					</td>
 				</tr>
 	  		</tbody>
 			</table>
 			<% end %>
+		</div>
+	</div>
+	<div class="span4">
+		<div class="well well-index">
+			<h3>A few reasons to join:</h3>
+			<ul class="index-list">
+				<li><b>Full access to the latest information</b> about venture capital and M&A deals in the Brazilian internet startups market.</li>
+				<li>The most <b>complete database of brazilian tech startups and investors</b></li>
+				<li>Become part of a <b>vibrant community</b>, helping us crowdsource our database!</li>
+				<li>It's completely <b>FREE</b>!</li>
+			</ul>
 		</div>
 	</div>
 </div>	
