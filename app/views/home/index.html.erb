@@ -25,51 +25,35 @@
 <% else %>
 
 <div class="span12 center-field">
-	<h1>The Ultimate Resource for Tech Deals in Brazil</h1>
-  	<h3 class="index-subs"><p>It's 100% crowdsourced by the community and we need your help!</h3>
-    <div class="wrapper">
-    	<p>
-				<%= link_to('Sign up now!', new_user_registration_path, :id => 'signup_link', :class => 'btn btn-info btn-large') %>
-    	</p> 
-		</div>
+	<h1>The ultimate resource for tech deals in Brazil</h1>
+  <h3>100% crowdsourced by the community</h3>
+   <div class="signup_button">
+  	<p>
+			<%= link_to('Sign up now', new_user_registration_path, :id => 'signup_link', :class => 'btn btn-info btn-large') %>
+  	</p> 
+	</div>
 </div>
 <div class="row">
 	<div class="span4">
 		<div class="well well-index">
-			<h3>Statistics</h3>
+			<h3>Browse the full database</h3>
 			<table class="table table-condensed stats">
 			  <tbody>
 			    <tr class="update_row">
-			      <td>
-						<h3 class="counter"><%= @company_count %></h3>
-			      </td>
-						<td>
-							<h3><%= link_to 'Companies', companies_path %></h3>
-						</td>
+			      <td><h3 class="counter"><%= @company_count %></h3></td>
+						<td><h3><%= link_to 'Companies', companies_path %></h3></td>
 			    </tr>
 					<tr class="update_row">
-			      <td>
-						<h3 class="counter"><%= @investor_count %></h3>
-			      </td>
-						<td>
-							<h3><%= link_to 'Investors', investors_path %></h3>
-						</td>
+			      <td><h3 class="counter"><%= @investor_count %></h3></td>
+						<td><h3><%= link_to 'Investors', investors_path %></h3></td>
 			    </tr>
 					<tr class="update_row">
-			      <td>
-						<h3 class="counter"><%= @deal_count %></h3>
-			      </td>
-						<td>
-							<h3><%= link_to 'Deals', deals_path %></h3>
-						</td>
+			      <td><h3 class="counter"><%= @deal_count %></h3></td>
+						<td><h3><%= link_to 'Deals', deals_path %></h3></td>
 			    </tr>
 					<tr class="update_row">
-			      <td>
-						<h3 class="counter"><%= @user_count %></h3>
-			      </td>
-						<td>
-							<h3><a href="#">Collaborators</a></h3>
-						</td>
+			      <td><h3 class="counter"><%= @user_count %></h3></td>
+						<td><h3><a href="#">Collaborators</a></h3></td>
 			    </tr>
 			  </tbody>
 			</table>
@@ -77,7 +61,7 @@
 	</div>
 	<div class="span4">
 		<div class="well well-index">
-			<h3>Recent Updates</h3>
+			<h3>Get all the recent updates</h3>
 
 			<% if @deals.empty? %>
 			<p>No updates.</p><br>
@@ -88,16 +72,11 @@
 	    	<tr class="update_row">
 	      	<td>
 	        	<%= link_to deal.headline, deal_path(deal)  %>
-	        	<span class="update_close_date"><%= "(#{deal.close_date.strftime("%b %y")})" %>
-	        		<div class="update_updated"><%= "Updated on #{deal.updated_at.strftime("%d %b %y")}" %></div>
+	        	<span class="update_close_date"><%= "(#{deal.close_date.strftime("%b %y")})" %></span>
+	        	<div class="update_updated"><%= "Updated on #{deal.updated_at.strftime("%d %b %y")}" %></div>
 	      	</td>
 	    	</tr>
 	  		<% end %>
-				<tr>
-					<td>
-						Need more? <%= link_to "Sign up now", new_user_registration_path %> !
-					</td>
-				</tr>
 	  		</tbody>
 			</table>
 			<% end %>
@@ -105,13 +84,13 @@
 	</div>
 	<div class="span4">
 		<div class="well well-index">
-			<h3>A few reasons to join:</h3>
+			<h3>More reasons to sign up</h3>
 			<ul class="index-list">
-				<li><b>Full access to the latest information</b> about venture capital and M&A deals in the Brazilian internet startups market.</li>
-				<li>The most <b>complete database of brazilian tech startups and investors</b></li>
-				<li>Become part of a <b>vibrant community</b>, helping us crowdsource our database!</li>
-				<li>It's completely <b>FREE</b>!</li>
+				<li>Receive <b>all the latest updates</b> on tech venture capital and M&A deals</li>
+				<li>Become part of a <b>vibrant open-source community</b> that bringing more transparency and liquidity to the market</li>
+				<li>It's completely <b>free</b></li>
 			</ul>
+      <div class="reasons_signup"><%= link_to "Click here to sign up now!", new_user_registration_path %></div>
 		</div>
 	</div>
 </div>	

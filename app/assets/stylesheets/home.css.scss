@@ -1,48 +1,59 @@
 .center-field {
+	margin-top: 60px;
+	margin-bottom: 80px;
 	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 30px;
 	.index-subs {
 		margin-top: 18px;
 		margin-bottom: 10px;
 		color: #0088CC;
 	}
-}
-
-.well h3{
-	margin-bottom: 20px;
-}
-
-.well-index {
-	min-height: 310px;
-}
-
-.counter{
-	color: #08C;
-}
-
-.index-list li{
-	font-size: 15px;
-	margin-bottom: 15px;
-	b {
-		color: #0088CC;
+	.signup_button {
+		margin-top: 20px; 
+	}
+	h3 {
+		margin-top: 10px;
 	}
 }
 
-.update_close_date
-{
+
+
+.counter {
+	/*color: #08C;*/
+}
+
+.index-list li {
+	font-size: 15px;
+	margin-bottom: 15px;
+}
+
+.reasons_signup {
+	font-weight: bold;
+	margin-top: 30px;
+	padding-left: 24px;
+}
+
+.update_close_date {
 	color: #444;
 	font-size: 12px;
 }
-.update_updated
-{
+
+.update_updated {
 	color: #999;
 	font-size: 10px;
 	margin-top: 2px;
 }
-.update_row {
-	
+
+.well h3 {
+	margin-bottom: 10px;
 }
+
+.well-index {
+	min-height: 260px;
+	margin-bottom: 60px;
+	padding-bottom: 20px;
+	padding-top: 40px;
+}
+
 
 /* Sharing Buttons */
 .share_buttons

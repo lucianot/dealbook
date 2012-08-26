@@ -16,19 +16,28 @@ $baseFontSize: 14px;
 
 body {
   background: image-url("handmadepaper.png");
+  height: 100%;
 }
-/*.main-container{
-		margin-top:100px;
+
+.container {
+  min-height: 100%;
+  margin-bottom: -200px;
+  position: relative;
 }
-*/
-.menu-spacing{
-	height:100px;
-	width:100%;
+
+.clearfooter {
+  height: 200px;
+  clear: both;
 }
 
 .help-block {
   color: #888;
   font-size: 12px;
+}
+
+.menu-spacing {
+	height: 100px;
+	width: 100%;
 }
 
 .model {
@@ -66,6 +75,13 @@ body {
       }
     }    
   }
+  .destroy_button .button_to {
+    input[type=submit] {
+      background: image-url("glyphicons_290_skull.png");
+      background-size: 14px 14px;
+      background-repeat: no-repeat;
+    }    
+  }  
   .edit_button, .destroy_button {
     padding-right: 0;    
     width: 20px;
@@ -87,13 +103,6 @@ body {
         -webkit-appearance: caret; 
         width: 20px;
       }
-    }    
-  }  
-  .destroy_button .button_to {
-    input[type=submit] {
-      background: image-url("glyphicons_290_skull.png");
-      background-size: 14px 14px;
-      background-repeat: no-repeat;
     }    
   }  
   .edit_button .button_to {
@@ -120,7 +129,6 @@ body {
 
 
 
-
 /* Navbar */
 .navbar {
   margin-bottom: 0px;
@@ -137,28 +145,27 @@ body {
     $elementHeight: 30px;
     height: $elementHeight;
   }
-
-  .navbar-search {
-		margin-right:10px;
-    .btn {
-      display: none;
-    }
-  }
-	ul {
-		margin-top:5px;
-	}
   .nav {
     .dropdown-menu {
       z-index: 10000 !important;
     }
+  }
+  .navbar-search {
+    margin-right:10px;
+    .btn {
+      display: none;
+    }
+  }
+  ul {
+    margin-top:5px;
   }
 }
 
 /* Subnav */
 .subnav {
   width: 100%;
-  height: 36px;
-	top:50px;
+  height: 34px;
+	top: 50px;
 	z-index: 1 !important;
   background-color: #eeeeee; /* Old browsers */
   background-repeat: repeat-x; /* Repeat the gradient */
@@ -217,10 +224,17 @@ body {
   margin-bottom: 30px;
 }
 
+
+/* Footer */
 .footer {
-	clear: both;
-	border-top: 1px solid #CCC;
-	padding-top: 5px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+  /*clear: both;*/
+  height: 200px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  position: relative;
   text-align: center;
   .footer_links a {
     font-size: 14px;
@@ -238,6 +252,8 @@ body {
     }
   }
 }
-.auto{
-	margin:auto;
+
+.auto {
+	margin: auto;
 }
+

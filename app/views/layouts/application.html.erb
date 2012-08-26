@@ -14,12 +14,14 @@
 
 <body class="<%= params[:controller].parameterize %>">
 
-  <%= render 'layouts/navigation' %>
   <div class="container">
-		<div class="menu-spacing hidden-phone hidden-tablet">
-		</div>
+    <%= render 'layouts/navigation' %>
+		<div class="menu-spacing hidden-phone hidden-tablet"></div>
     <%= render 'layouts/messages' %>
+
     <%= yield %>
+
+    <div class="clearfooter"></div>
   </div>
 
   <%= render 'layouts/footer' %>
