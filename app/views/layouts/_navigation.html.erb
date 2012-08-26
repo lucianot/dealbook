@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
 
@@ -41,7 +41,9 @@
   </div>
 </div>
 
-<div class="subnav subnav-fixed">
+<div class="subnav navbar-fixed-top">
+	<div class="">
+    <div class="container">
   <ul class="nav nav-pills">
       <%= nav_link 'Deals', deals_path, :id => 'deals_button' %>
       <%= nav_link 'Companies', companies_path, :id => 'companies_button' %>
@@ -51,4 +53,6 @@
         <%= nav_link('Locations', locations_path) if can? :manage, Location %>
       <% end %>
   </ul>
+		</div>
+	</div>
 </div>
