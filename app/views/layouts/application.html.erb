@@ -15,7 +15,9 @@
 <body class="<%= params[:controller].parameterize %>">
 
   <%= render 'layouts/navigation' %>
-  <div class="container main-container">
+  <div class="container">
+		<div class="menu-spacing hidden-phone hidden-tablet">
+		</div>
     <%= render 'layouts/messages' %>
     <%= yield %>
   </div>
