@@ -2,6 +2,17 @@
 	margin-top: 60px;
 	margin-bottom: 80px;
 	text-align: center;
+	h1 {
+		font-size: 36px;
+		font-weight: bold;
+	  line-height: 40px;	
+	}
+	h3 {
+		color: #005580;
+		font-size: 26px;
+	  line-height: 32px;
+		margin-top: 16px;
+	}
 	.index-subs {
 		margin-top: 18px;
 		margin-bottom: 10px;
@@ -9,9 +20,6 @@
 	}
 	.signup_button {
 		margin-top: 20px; 
-	}
-	h3 {
-		margin-top: 10px;
 	}
 }
 
