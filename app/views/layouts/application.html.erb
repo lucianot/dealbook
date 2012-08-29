@@ -13,19 +13,20 @@
 </head>
 
 <body class="<%= params[:controller].parameterize %>">
+	<%= render 'layouts/navigation' %>
+  <div class="main">
+		<div class="container">
+			<div class="menu-spacing hidden-phone hidden-tablet"></div>
+	    <%= render 'layouts/messages' %>
 
-  <div class="container">
-    <%= render 'layouts/navigation' %>
-		<div class="menu-spacing hidden-phone hidden-tablet"></div>
-    <%= render 'layouts/messages' %>
+	    <%= yield %>
 
-    <%= yield %>
-
-    <div class="clearfooter"></div>
-  </div>
-
-  <%= render 'layouts/footer' %>
-	<%= render 'shared/uservoice' %>
+	    <div class="push">
+	    </div>
+	  </div>
+	</div>
+<%= render 'layouts/footer' %>
+<%= render 'shared/uservoice' %>
 </body>
 </html>
 

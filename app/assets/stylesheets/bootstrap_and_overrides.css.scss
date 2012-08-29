@@ -7,6 +7,7 @@ $sansFontFamily: "Lucida Grande" !default;
 $navbarHeight: 40px;
 $navbarSearchPlaceholderColor: #aaa;
 $baseFontSize: 14px;
+$footer-height: 170px;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -14,20 +15,9 @@ $baseFontSize: 14px;
 
 // CSS overrides
 
-body {
+html, body {
   background: image-url("handmadepaper.png");
-  height: 100%;
-}
-
-.container {
-  min-height: 100%;
-  margin-bottom: -200px;
-  position: relative;
-}
-
-.clearfooter {
-  height: 200px;
-  clear: both;
+	height: 100%;
 }
 
 .help-block {
@@ -144,6 +134,7 @@ body {
   .brand {
     $elementHeight: 30px;
     height: $elementHeight;
+		margin-bottom:4px;
   }
   .nav {
     .dropdown-menu {
@@ -232,9 +223,8 @@ body {
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
   /*clear: both;*/
-  height: 200px;
-  margin-top: 40px;
-  padding-bottom: 40px;
+  height: $footer-height;
+  padding-bottom: 20px;
   padding-top: 20px;
   position: relative;
   text-align: center;
@@ -259,3 +249,18 @@ body {
 	margin: auto;
 }
 
+/* footer fixed bottom */
+.main {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+   	margin: 0 auto -1*($navbarHeight + $footer-height - 10px);
+}
+
+footer.footer {
+    height: $footer-height;
+    background: #eee;
+}
+.push {
+    height: $footer-height + $navbarHeight;
+}
