@@ -142,7 +142,10 @@ html, body {
     }
   }
   .navbar-search {
-    margin-right:10px;
+		margin-top:12px;
+		@media (min-width: 768px){
+			left:20%;
+		}
     .btn {
       display: none;
     }
