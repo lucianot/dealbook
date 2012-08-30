@@ -39,22 +39,22 @@
 			<h3>Browse the full database</h3>
 			<table class="table table-condensed stats">
 			  <tbody>
-			    <tr class="update_row">
-			      <td><h3 class="counter"><%= @company_count %></h3></td>
-						<td><h3><%= link_to 'Companies', companies_path %></h3></td>
-			    </tr>
-					<tr class="update_row">
-			      <td><h3 class="counter"><%= @investor_count %></h3></td>
-						<td><h3><%= link_to 'Investors', investors_path %></h3></td>
-			    </tr>
-					<tr class="update_row">
-			      <td><h3 class="counter"><%= @user_count %></h3></td>
-						<td><h3><a href="#">Collaborators</a></h3></td>
-			    </tr>
 					<tr class="update_row">
 			      <td><h3 class="counter"><%= @deal_count %></h3></td>
 						<td><h3><%= link_to 'Deals', deals_path %></h3></td>
 			    </tr>
+          <tr class="update_row">
+            <td><h3 class="counter"><%= @company_count %></h3></td>
+            <td><h3><%= link_to 'Companies', companies_path %></h3></td>
+          </tr>
+          <tr class="update_row">
+            <td><h3 class="counter"><%= @investor_count %></h3></td>
+            <td><h3><%= link_to 'Investors', investors_path %></h3></td>
+          </tr>
+          <tr class="update_row">
+            <td><h3 class="counter"><%= @user_count %></h3></td>
+            <td><h3><a href="#">Collaborators</a></h3></td>
+          </tr>
 			  </tbody>
 			</table>
 		</div>
@@ -79,7 +79,7 @@
 	  		<% end %>
 				<tr>
 					<td>
-						Need more? <%= link_to "Sign up now", new_user_registration_path %> !
+						<%= link_to "More...", new_user_registration_path %>
 					</td>
 				</tr>
 	  		</tbody>
@@ -95,7 +95,7 @@
 				<li>Become part of a <b>vibrant open-source community</b> that bringing more transparency and liquidity to the market</li>
 				<li>It's completely <b>free</b></li>
 			</ul>
-			<div class="reasons_signup"><%= link_to "Click here to sign up now!", new_user_registration_path %>
+			<div class="reasons_signup"><%= link_to "Sign up now!", new_user_registration_path %>
 			</div>
 		</div>
 	</div>
