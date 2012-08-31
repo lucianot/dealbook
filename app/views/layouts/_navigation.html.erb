@@ -1,16 +1,15 @@
-<div class="navbar">
+<header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
 
-      <%= link_to image_tag('dealbook_logo.png'), root_path, :class => 'brand' %>
-
-      <%= simple_form_for :search, :url => url_for(:action => 'create', :controller => '/searches'),
-        :method => 'post', :html => { :class => 'navbar-search', :id => 'search_submit' } do |f| %>
+      <%= link_to image_tag('dealbook_logo.png'), root_path, :class => ' brand pull-left' %>
+			
+			<%= simple_form_for :search, :url => url_for(:action => 'create', :controller => '/searches'),
+        :method => 'post', :html => { :class => 'navbar-search hidden-phone', :id => 'search_submit' } do |f| %>
         <%= f.input_field :keywords, :label => false, :placeholder => 'Search...',
             :class =>  'search-query span3' %>
         <%= f.submit "Search", :class => 'btn' %>
       <% end %>
-
       <ul class="nav pull-right">
         <% if user_signed_in? %>
           <li class="dropdown" id="menu7">
@@ -37,9 +36,11 @@
 
     </div>
   </div>
-</div>
+</header>
 
-<div class="subnav subnav-fixed">
+<nav class="subnav navbar-fixed-top">
+	<div class="">
+    <div class="container">
   <ul class="nav nav-pills">
       <%= nav_link 'Deals', deals_path, :id => 'deals_button' %>
       <%= nav_link 'Companies', companies_path, :id => 'companies_button' %>
@@ -49,4 +50,6 @@
         <%= nav_link('Locations', locations_path) if can? :manage, Location %>
       <% end %>
   </ul>
-</div>
+		</div>
+	</div>
+</nav>
