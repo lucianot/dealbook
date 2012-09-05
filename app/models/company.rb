@@ -69,7 +69,7 @@ class Company < ActiveRecord::Base
   end
 
   def buyers
-    self.investors + self.corporates
+    (self.investors + self.corporates).uniq
   end
 
   # FriendlyId gem
