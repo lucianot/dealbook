@@ -4,7 +4,7 @@ feature 'authenticate' do
 
   context 'sign up' do
     scenario 'valid' do
-      sign_up_new_user
+      sign_up_new_user 
       page.should have_content "Welcome! You have signed up successfully"
     end
 

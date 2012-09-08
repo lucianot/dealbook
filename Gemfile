@@ -12,6 +12,7 @@ gem 'foreigner', '~> 1.1'
 # users and roles
 gem 'devise', '~> 2.1'
 gem 'cancan', '~> 1.6'
+gem 'omniauth-linkedin'
 
 # versions
 gem 'paper_trail', '~> 2.6'

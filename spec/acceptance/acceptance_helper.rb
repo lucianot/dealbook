@@ -10,7 +10,8 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 def sign_up_new_user
   user = User.make
   visit "/"
-  click_link 'Sign up'
+  click_link 'Join Now'
+  click_link 'Sign Up with Email'
   fill_in 'Full name', with: user.full_name
   fill_in 'Email', with: user.email
   fill_in 'Password', with: user.password
