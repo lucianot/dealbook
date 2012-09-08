@@ -30,7 +30,7 @@
           </li>
         <% else %>
           <li><%= link_to('Login', new_user_session_path, :id => 'login_link') %></li>
-          <li><%= link_to('Sign up', new_user_registration_path, :id => 'signup_link') %></li>
+          <li><%= link_to('Join Now', "#joinNow", :data => {:toggle => 'modal'}) %></li>
         <% end %>
       </ul>
 
@@ -53,3 +53,16 @@
 		</div>
 	</div>
 </nav>
+
+<div class="modal hide" id="joinNow" tabindex="-1" role="dialog" aria-labelledby="joinNowLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h3 id="joinNowLabel">Dealbook</h3>
+    <p>Get the latest updates on Brazilian tech startups!</p>
+  </div>
+  <div class="modal-body">
+    <%= link_to "Sign Up with Email", new_user_registration_path, :id => 'signup_link' %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

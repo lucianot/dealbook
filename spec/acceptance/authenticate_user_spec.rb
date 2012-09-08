@@ -7,10 +7,11 @@ feature 'authenticate' do
       sign_up_new_user 
       page.should have_content "Welcome! You have signed up successfully"
     end
-
+ 
     scenario 'invalid' do
       visit "/"
-      click_link 'Sign up'
+      click_link 'Join Now'
+      click_link 'Sign Up with Email'
       click_button 'Sign up'
       page.should have_content "Please review the problems below"
     end
