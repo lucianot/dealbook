@@ -18,7 +18,7 @@ feature 'authenticate with linkedin' do
   #   scenario 'valid' do
   #     visit "/"
   #     click_link 'Join Now'
-  #     click_link 'Sign Up with Linkein'
+  #     click_link 'Sign Up with Linkedin'
 
   #     page.should have_content "Welcome! You have signed up successfully"
   #   end
