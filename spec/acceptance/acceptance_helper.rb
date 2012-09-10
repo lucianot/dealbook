@@ -45,19 +45,3 @@ def login_mod
   mod
 end
 
-def login_linkedin
-  before do 
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:linkedin] = {
-      "uid" => '12345',
-      "provider" => 'linkedin',
-      "user_info" => {"nickname" => 'dude'},
-      "credentials" => {"token" => 'sweet'},
-      "extra" => {"user_hash" => LINKEDIN_HASH} 
-      }
-  end
-  after { OmniAuth.config.test_mode = false }
-  visit "/"
-  click_link 'Sign in with Linkedin'
-  
-end
