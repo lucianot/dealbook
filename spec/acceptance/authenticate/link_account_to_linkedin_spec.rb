@@ -2,17 +2,15 @@ require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
 feature 'link account to linkedin' do
 
-  # before do 
-  #   OmniAuth.config.test_mode = true
-  #   OmniAuth.config.mock_auth[:linkedin] = {
-  #     "uid" => '12345',
-  #     "provider" => 'linkedin',
-  #     "user_info" => {"nickname" => 'dude'},
-  #     "credentials" => {"token" => 'sweet'},
-  #     "extra" => {"user_hash" => LINKEDIN_HASH} 
-  #   }
-  # end
-  # after { OmniAuth.config.test_mode = false }
+  before do 
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:linkedin] = {
+      "uid" => '12345',
+      "provider" => 'linkedin',
+    }
+  end
+  
+  after { OmniAuth.config.test_mode = false }
   
   scenario 'valid linkedin credentials'
   #   login_normal

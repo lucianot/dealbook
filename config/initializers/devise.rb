@@ -196,7 +196,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :linkedin, '4h7odlmlcsi3', 'HCmhbtXLBchaJIez'
+  config.omniauth :linkedin, 'dm9dcmoiidbk', 'uQCqEdlJkZYN7NM1'
+  # TODO: move keys to constants
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -33,7 +33,6 @@ gem 'mixpanel'
 # social auth
 gem 'omniauth'
 gem 'omniauth-linkedin'
-gem 'omniauth-twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.
