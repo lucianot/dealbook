@@ -1,11 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
-feature 'authenticate with linkedin' do
-  context 'guest first login' do
-    scenario 'valid'
-    scenario 'invalid'
-  end
-
+feature 'login with linkedin' do
   context 'previously signed up with linkedin only' do
     scenario 'valid'
     scenario 'invalid'
@@ -16,7 +11,8 @@ feature 'authenticate with linkedin' do
     scenario 'invalid'
   end
 
-  context 'previously signed up with email only' do
+  # TODO: decide whether to just link or get user permission
+  context 'previously signed up with email only, same as linkedin' do
     scenario 'valid'
     scenario 'invalid'
   end
