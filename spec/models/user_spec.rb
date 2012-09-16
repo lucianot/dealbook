@@ -33,6 +33,14 @@ describe User do
     end
   end
 
+  context '.find_for_linkedin_oauth' do
+    it 'should create an user when it does not exist' do
+      auth = { :provider => 'linkedin', :uid => '12345' }
+      expect do
+        User.find_for_linkedin_oauth(auth)
+      end.to change {User.count}.by(1)
+    end
+  end
 end
 
 

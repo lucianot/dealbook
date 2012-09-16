@@ -262,7 +262,6 @@ DEPENDENCIES
   json (~> 1.7)
   machinist (~> 2.0)
   mixpanel
-  omniauth
   omniauth-linkedin
   paper_trail (~> 2.6)
   pg

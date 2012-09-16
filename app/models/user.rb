@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
 
   # Methods
   def self.find_for_linkedin_oauth(auth)
-    where(auth.slice('provider', 'uid')).first_or_create do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth[:provider]
+      user.uid = auth[:uid]
       # user.email = 'user@example.com'
       # user.full_name = auth.info.nickname
     end
