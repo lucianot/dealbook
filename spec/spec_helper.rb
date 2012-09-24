@@ -35,6 +35,14 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   # ActiveSupport::Dependencies.clear
+  
+	OmniAuth.config.test_mode = true
+
+		OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
+      :provider => 'linkedin',
+      :uid => '12345'
+    })
+
 end
 
 
