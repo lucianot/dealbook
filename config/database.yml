@@ -8,7 +8,7 @@ development:
   encoding: utf8
   database: dealbook_development
   pool: 5
-  username: luciano
+  username: dttg
   password:
 
 # Warning: The database defined as "test" will be erased and
@@ -19,7 +19,7 @@ test:
   encoding: utf8
   database: dealbook_test
   pool: 5
-  username: luciano
+  username: dttg
   password:
 
 # production:

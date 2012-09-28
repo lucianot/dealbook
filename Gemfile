@@ -12,6 +12,7 @@ gem 'foreigner', '~> 1.1'
 # users and roles
 gem 'devise', '~> 2.1'
 gem 'cancan', '~> 1.6'
+gem 'omniauth-linkedin'
 
 # versions
 gem 'paper_trail', '~> 2.6'
@@ -28,6 +29,10 @@ gem 'friendly_id'
 
 # analytics
 gem 'mixpanel'
+
+# social auth
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -9,9 +9,11 @@
   <div class="inputs">
     <%= f.input :full_name %>
     <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
+		<% if f.object.password_required? %>
+    	<%= f.input :password, :required => true %>
+    	<%= f.input :password_confirmation, :required => true %>
+  	<% end %>
+	</div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up", :class => 'btn-primary' %>
