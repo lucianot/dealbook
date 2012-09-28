@@ -3,11 +3,13 @@
     <h3>100% crowdsourced</h3>
      <div class="signup_button">
       <p>
-        <%= link_to('Sign up now', new_user_registration_path, :id => 'signup_link', :class => 'btn btn-info btn-large') %>
+        <%= link_to('Join Now', "#joinNow", :data => {:toggle => 'modal'}, :id => 'signup_link', :class => 'btn btn-info btn-large') %>
       </p> 
     </div>
 </div>
+
 <div class="row">
+
   <div class="span4">
     <div class="well well-index">
       <h3>Browse the full database</h3>
@@ -33,10 +35,10 @@
       </table>
     </div>
   </div>
+
   <div class="span4">
     <div class="well well-index">
       <h3>Get all the recent updates</h3>
-
       <% if @deals.empty? %>
       <p>No updates.</p><br>
       <% else %>
@@ -53,7 +55,7 @@
         <% end %>
         <tr>
           <td>
-            <%= link_to "More...", new_user_registration_path %>
+            <%= link_to "More...", new_user_session_path %>
           </td>
         </tr>
         </tbody>
@@ -61,6 +63,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="span4">
     <div class="well well-index">
       <h3>More reasons to sign up</h3>
@@ -69,10 +72,14 @@
         <li>Become part of a <b>vibrant open-source community</b> that bringing more transparency and liquidity to the market</li>
         <li>It's completely <b>free</b></li>
       </ul>
-      <div class="reasons_signup"><%= link_to "Sign up now!", new_user_registration_path %>
+      <div class="reasons_signup">
+        <%= link_to('Join Now!', "#joinNow", :data => {:toggle => 'modal'}) %>
       </div>
     </div>
   </div>
 </div>  
+
 <div class="clear">
 </div>
+
+
