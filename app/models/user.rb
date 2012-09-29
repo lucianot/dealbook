@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin moderator normal banned guest]
   # Setup accessible (or protected) attributes for your model
+
   attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, :provider, :uid
+
   attr_accessible :role, :as => :admin
   # attr_accessible :username, :title, :body
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable, :omniauthable
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable
+
   devise :database_authenticatable, :omniauthable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -24,7 +27,6 @@ class User < ActiveRecord::Base
     self.role ||= 'normal'
   end
 
-  # Class methods
   def is?(role)
     self.role == role.to_s.downcase
   end
@@ -62,5 +64,4 @@ class User < ActiveRecord::Base
       super
     end
   end
-
 end
