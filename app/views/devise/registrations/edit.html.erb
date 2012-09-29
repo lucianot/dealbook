@@ -14,9 +14,11 @@
 		<% if f.object.encrypted_password.present? %>
     	<%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
 		<% end %>
+
 		<% if f.object.provider == 'linkedin' %>
-			<%= image_tag('linkedin.png')%> <a href="#" id="unlink_linkedin">Unlink Linkedin account</a>
+				<%= image_tag('linkedin.png')%> <a href="#" id="unlink_linkedin">Unlink Linkedin account</a>
 		<% end %>
+		
 		<% if f.object.provider.blank? %>
 			<%= image_tag('linkedin.png')%> <%= link_to "Associate a Linkedin account", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %></p>
 		<% end %>
@@ -35,7 +37,7 @@
   <%= link_to "Back", :back %>
 </div>
 
-
+<!--
 <script>
 	$(document).ready(function() {                                                 
      $("#unlink_linkedin").click(function (){                                                      
@@ -47,3 +49,4 @@
      });
    }); 
 </script>
+-->
