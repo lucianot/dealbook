@@ -8,8 +8,6 @@
   <div class="inputs">
     <%= f.input :full_name, :required => true, :autofocus => true %>
     <%= f.input :email, :required => true %>
-		<%= f.input :uid %>
-		<%= f.input :provider %>
 		<%= f.input :password, :hint => "leave it blank if you don't want to change it", :required => false %>
 		
     	<%= f.input :password_confirmation, :required => false %>
@@ -17,9 +15,9 @@
     	<%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
 		<% end %>
 		<% if f.object.provider == 'linkedin' %>
-			<%= image_tag('linkedin.png')%> <a href="#">Unlink Linkedin account</a>
+			<%= image_tag('linkedin.png')%> <a href="#" id="unlink_linkedin">Unlink Linkedin account</a>
 		<% end %>
-		<% if f.object.provider == nil %>
+		<% if f.object.provider.blank? %>
 			<%= image_tag('linkedin.png')%> <%= link_to "Associate a Linkedin account", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %></p>
 		<% end %>
   </div>
@@ -36,3 +34,16 @@
 
   <%= link_to "Back", :back %>
 </div>
+
+
+<script>
+	$(document).ready(function() {                                                 
+     $("#unlink_linkedin").click(function (){                                                      
+       if (confirm("Are you sure ?")){
+         $('#user_provider').val("");
+         $('#user_uid').val("");
+         $('#edit_user').submit();
+       } 
+     });
+   }); 
+</script>
