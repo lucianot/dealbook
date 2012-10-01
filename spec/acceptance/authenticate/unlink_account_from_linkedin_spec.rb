@@ -1,12 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
 feature 'unlink account from linkedin' do
+
   context 'user has password' do
     scenario 'unlink successful'
     #   login_normal
     #   visit "/users/edit"
-    #   click_link 'Disconnect Linkedin account'
-    #   page.should have_content "Success! Your Linkedin account is linked."
+    #   click_link 'Unlink Linkedin account'
     #   page.should have_content "Link to your Linkedin account"
     # end
 

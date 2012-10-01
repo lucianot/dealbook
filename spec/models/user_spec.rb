@@ -20,27 +20,46 @@ describe User do
 
   # Class methods
   context '#is?' do
-    before do 
-      @admin = User.make!(:admin)
-    end
+    let(:admin) { User.make!(:admin) }
 
     it 'should be true if admin' do
-      @admin.is?(:admin).should be_true
+      admin.is?(:admin).should be_true
     end
 
     it 'should be false if admin' do
-      @admin.is?(:normal).should be_false
+      admin.is?(:normal).should be_false
     end
   end
 
-  context '.find_for_linkedin_oauth' do
+  context '.from_omniauth' do
     it 'should create an user when it does not exist' do
-      auth = { :provider => 'linkedin', :uid => '12345' }
+      auth = OmniAuth::AuthHash.new({
+        :provider => 'linkedin',
+        :uid => '12345',
+        :info => { :name => 'user', :email => "user@example.com" }
+      })
       expect do
-        User.find_for_linkedin_oauth(auth)
+        User.from_omniauth(auth)
       end.to change {User.count}.by(1)
+    end
+
+    it 'should simply get the user when it already exists' do
+      user = User.make!(:linkedin)
+      auth = OmniAuth::AuthHash.new({
+        :provider => 'linkedin',
+        :uid => '12345',
+        :info => { :name => user.full_name, :email => user.email }
+      })
+      expect do
+        user2 = User.from_omniauth(auth)
+        user2.should == user
+      end.to change {User.count}.by(0)
     end
   end
 end
+
+
+
+
 
 
