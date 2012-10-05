@@ -76,8 +76,8 @@ Dealbook::Application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["DEALBOOK_MAIL_USERNAME"],
+    password: ENV["DEALBOOK_MAIL_PASSWORD"]
   }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false

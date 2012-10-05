@@ -45,8 +45,8 @@ Dealbook::Application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["DEALBOOK_MAIL_USERNAME"],
+    password: ENV["DEALBOOK_MAIL_PASSWORD"]
   }
   # change to false to prevent email from being sent during development
   config.action_mailer.perform_deliveries = true
