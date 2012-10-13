@@ -66,18 +66,18 @@ Dealbook::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Devise configs
-  config.action_mailer.default_url_options = { :host => 'example.com' }  # TODO: change host
+  config.action_mailer.default_url_options = { :host => 'dealbook.co' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "example.com",
+    domain: "dealbook.co",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["DEALBOOK_MAIL_USERNAME"],
+    password: ENV["DEALBOOK_MAIL_PASSWORD"]
   }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
