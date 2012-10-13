@@ -10,7 +10,6 @@ feature 'signup with linkedin' do
       :info => { :name => 'user', :email => "user@example.com" }
     })
   end
-  
   after { OmniAuth.config.test_mode = false }
 
   scenario 'valid' do
@@ -18,7 +17,15 @@ feature 'signup with linkedin' do
     click_link 'Join Now'
     click_link 'Sign Up with Linkedin'
     page.should have_content 'Signed in!'
-  end
+  end 
+
+  scenario 'invalid' do
+    OmniAuth.config.mock_auth[:linkedin][:info][:email] = ''
+    visit "/"
+    click_link 'Join Now'
+    click_link 'Sign Up with Linkedin'
+    page.should have_content "can't be blank"
+  end    
   
 end
 
