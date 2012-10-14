@@ -70,18 +70,19 @@ Dealbook::Application.configure do
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
     domain: "dealbook.co",
-    authentication: "plain",
+    authentication: :plain,
     enable_starttls_auto: true,
     user_name: ENV["DEALBOOK_MAIL_USERNAME"],
     password: ENV["DEALBOOK_MAIL_PASSWORD"]
   }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
 
   MIXPANEL_TOKEN = "55357d369a58cd356c7140c1633bb43a".freeze
 end
