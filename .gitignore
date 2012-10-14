@@ -18,3 +18,4 @@
 /tmp
 
 .DS_Store
+config/heroku_env.rb
