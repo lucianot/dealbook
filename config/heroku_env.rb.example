@@ -1,0 +1,6 @@
+# Add a heroku_env.rb file with the following format
+
+if Rails.env.development?
+  ENV['DEALBOOK_MAIL_USERNAME'] = 'email@example.com'
+  ENV['DEALBOOK_MAIL_PASSWORD'] = 'password'
+end

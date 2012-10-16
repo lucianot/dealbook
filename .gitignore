@@ -19,3 +19,5 @@ db/structure.sql
 /tmp
 
 .DS_Store
+config/heroku_env.rb
+.rvmrc
