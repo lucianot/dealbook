@@ -39,19 +39,19 @@ Dealbook::Application.configure do
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
     domain: "dealbook.co",
-    authentication: "plain",
+    authentication: :plain,
     enable_starttls_auto: true,
-    user_name: ENV["DEALBOOK_MAIL_USERNAME"],
-    password: ENV["DEALBOOK_MAIL_PASSWORD"]
+    user_name: ENV['DEALBOOK_MAIL_USERNAME'],
+    password: ENV['DEALBOOK_MAIL_PASSWORD']
   }
-  # change to false to prevent email from being sent during development
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
 
   # config for Rack Livereload
   config.middleware.insert_before(Rack::Lock, Rack::LiveReload)
