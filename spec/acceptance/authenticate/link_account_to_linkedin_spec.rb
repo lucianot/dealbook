@@ -12,10 +12,7 @@ feature 'link account to linkedin' do
   scenario 'valid linkedin credentials' do
     user = User.make!
     login(user)
-    visit "/users/edit"
-    click_link 'Associate a Linkedin account'
-    page.should have_content "Sucessfully logged in with Linkedin!"
-    
+    link_linkedin
   end
 
   scenario 'invalid linkedin credentials' do
