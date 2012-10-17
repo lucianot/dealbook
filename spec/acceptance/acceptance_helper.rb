@@ -49,18 +49,15 @@ def login_linkedin
   visit "/"
   click_link 'Join Now'
   click_link 'Sign Up with Linkedin'
-  page.should have_content 'Sucessfully logged in with Linkedin!'
 end
 
 def sign_up_linkedin
   visit "/"
   click_link 'Join Now'
   click_link 'Sign Up with Linkedin'
-  page.should have_content 'Sucessfully logged in with Linkedin!'
 end
 
 def link_linkedin
   visit "/users/edit"
   click_link 'Associate a Linkedin account'
-  page.should have_content "Sucessfully logged in with Linkedin!"
 end
