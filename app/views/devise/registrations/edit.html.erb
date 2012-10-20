@@ -12,15 +12,13 @@
 		
     	<%= f.input :password_confirmation, :required => false %>
 		<% if f.object.encrypted_password.present? %>
-    	<%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+    	<%= f.input :current_password, :hint => "we need your current password to confirm your changes" %>
 		<% end %>
 
 		<% if f.object.provider == 'linkedin' %>
-				<%= image_tag('linkedin.png')%> <a href="#" id="unlink_linkedin">Unlink Linkedin account</a>
-		<% end %>
-		
-		<% if f.object.provider.blank? %>
-			<%= image_tag('linkedin.png')%> <%= link_to "Associate a Linkedin account", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %></p>
+				<%= image_tag('linkedin.png')%> <%= link_to "Unlink from your LinkedIn", unlink_path %>
+		<% else %>
+				<%= image_tag('linkedin.png')%> <%= link_to "Associate a Linkedin account", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %>
 		<% end %>
   </div>
 
@@ -36,17 +34,3 @@
 
   <%= link_to "Back", :back %>
 </div>
-
-<!--
-<script>
-	$(document).ready(function() {                                                 
-     $("#unlink_linkedin").click(function (){                                                      
-       if (confirm("Are you sure ?")){
-         $('#user_provider').val("");
-         $('#user_uid').val("");
-         $('#edit_user').submit();
-       } 
-     });
-   }); 
-</script>
--->
