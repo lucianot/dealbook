@@ -45,3 +45,19 @@ def login_mod
   mod
 end
 
+def login_linkedin
+  visit "/"
+  click_link 'Join Now'
+  click_link 'Sign Up with Linkedin'
+end
+
+def sign_up_linkedin
+  visit "/"
+  click_link 'Join Now'
+  click_link 'Sign Up with Linkedin'
+end
+
+def link_linkedin
+  visit "/users/edit"
+  click_link 'Associate a Linkedin account'
+end

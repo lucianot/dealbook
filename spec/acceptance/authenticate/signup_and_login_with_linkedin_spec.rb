@@ -16,7 +16,7 @@ feature 'signup with linkedin' do
     visit "/"
     click_link 'Join Now'
     click_link 'Sign Up with Linkedin'
-    page.should have_content 'Signed in!'
+    page.should have_content 'Sucessfully logged in with Linkedin!'
   end 
 
   scenario 'invalid' do
