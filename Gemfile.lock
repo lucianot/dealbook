@@ -269,6 +269,7 @@ DEPENDENCIES
   pry
   rack-livereload
   rails (>= 3.2.7)
+  rake
   rb-fsevent (~> 0.9)
   rspec-rails (~> 2.10)
   sass-rails (~> 3.2.3)
