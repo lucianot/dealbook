@@ -340,7 +340,7 @@ ALTER SEQUENCE searches_id_seq OWNED BY searches.id;
 CREATE TABLE users (
     id integer NOT NULL,
     email character varying(255) DEFAULT ''::character varying NOT NULL,
-    encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
@@ -722,5 +722,3 @@ INSERT INTO schema_migrations (version) VALUES ('20120722155830');
 INSERT INTO schema_migrations (version) VALUES ('20120726130457');
 
 INSERT INTO schema_migrations (version) VALUES ('20120915201401');
-
-INSERT INTO schema_migrations (version) VALUES ('20120916161951');
