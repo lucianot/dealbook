@@ -46,9 +46,7 @@ def login_mod
 end
 
 def login_linkedin
-  visit "/"
-  click_link 'Join Now'
-  click_link 'Sign Up with Linkedin'
+  visit "/users/auth/linkedin"
 end
 
 def sign_up_linkedin

@@ -13,6 +13,8 @@ feature 'link account to linkedin' do
     user = User.make!
     login(user)
     link_linkedin
+    visit "/users/edit"
+    page.should_not have_content "Unlink to your Linkedin account"
   end
 
   scenario 'invalid linkedin credentials' do
