@@ -24,12 +24,12 @@
               <% end %>
               <li><%= link_to('Edit my account', edit_user_registration_path, 
                       :id => 'edit_account') %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, :method => 'delete',
+              <li><%= link_to('Sign out', destroy_user_session_path, :method => 'delete',
                       :id => 'logout_link') %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to('Login', new_user_session_path, :id => 'login_link') %></li>
+          <li><%= link_to('Sign in', new_user_session_path, :id => 'login_link') %></li>
           <li><%= link_to('Join Now', "#joinNow", :data => {:toggle => 'modal'}) %></li>
         <% end %>
       </ul>
@@ -66,7 +66,7 @@
     </p>
     <br>
     <p><%= link_to "Sign up with Email", new_user_registration_path, :id => 'signup_link' %></p>
-    <p>Been here before? <%= link_to "Login", new_user_session_path, :id => 'login_link' %></p>
+    <p>Been here before? <%= link_to "Sign in", new_user_session_path, :id => 'login_link' %></p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

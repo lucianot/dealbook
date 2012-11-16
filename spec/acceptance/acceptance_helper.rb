@@ -21,7 +21,7 @@ end
 
 def login(user)
   visit "/"
-  click_link 'Login'
+  click_link 'Sign in'
   fill_in 'Email', :with => user.email
   fill_in 'Password', :with => user.password
   click_button 'Sign in'
@@ -50,7 +50,7 @@ def login_with_linkedin
 end
 
 def logout
-  click_link 'Logout'
+  click_link 'Sign out'
 end
 
 def sign_up_with_linkedin
