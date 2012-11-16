@@ -11,7 +11,7 @@ def sign_up_new_user
   user = User.make
   visit "/"
   click_link 'Join Now'
-  click_link 'Sign Up with Email'
+  click_link 'Sign up with Email'
   fill_in 'Full name', with: user.full_name
   fill_in 'Email', with: user.email
   fill_in 'Password', with: user.password
@@ -56,7 +56,7 @@ end
 def sign_up_with_linkedin
   visit "/"
   click_link 'Join Now'
-  click_link 'Sign Up with Linkedin'
+  click_link 'Sign up with Linkedin'
 end
 
 def link_to_linkedin
