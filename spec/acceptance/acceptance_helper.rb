@@ -61,10 +61,10 @@ end
 
 def link_to_linkedin
   visit "/users/edit"
-  click_link "Link to your Linkedin account"
+  click_link 'Link to your Linkedin account'
 end
 
 def unlink_from_linkedin
   visit "/users/edit"
-  click_link "Unlink from your Linkedin account"
+  click_link 'Unlink from your Linkedin account'
 end

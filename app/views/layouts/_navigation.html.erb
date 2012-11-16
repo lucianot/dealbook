@@ -60,10 +60,15 @@
     <p>Get the latest updates on Brazilian tech startups!</p>
   </div>
   <div class="modal-body">
-    <p><%= link_to "Sign Up with Linkedin", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %></p>
+    <p>
+      <%= image_tag('linkedin_64.png')%>
+      <%= link_to "Sign Up with Linkedin", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %>
+    </p>
     <p><%= link_to "Sign Up with Email", new_user_registration_path, :id => 'signup_link' %></p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
+
+
