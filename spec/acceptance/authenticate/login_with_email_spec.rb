@@ -19,7 +19,7 @@ feature 'login with email' do
   context 'logout' do
     scenario 'successful' do
       sign_up_new_user
-      click_link 'Logout'
+      logout
       page.should have_content "The ultimate resource for tech deals in Brazil"
     end
   end

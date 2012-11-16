@@ -16,9 +16,9 @@
 		<% end %>
 
 		<% if f.object.provider == 'linkedin' %>
-				<%= image_tag('linkedin.png')%> <%= link_to "Unlink from your LinkedIn", unlink_path %>
+				<%= image_tag('linkedin.png')%> <%= link_to "Unlink from your Linkedin account", unlink_path %>
 		<% else %>
-				<%= image_tag('linkedin.png')%> <%= link_to "Associate a Linkedin account", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %>
+				<%= image_tag('linkedin.png')%> <%= link_to "Link to your Linkedin account", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %>
 		<% end %>
   </div>
 

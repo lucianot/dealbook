@@ -45,17 +45,26 @@ def login_mod
   mod
 end
 
-def login_linkedin
+def login_with_linkedin
   visit "/users/auth/linkedin"
 end
 
-def sign_up_linkedin
+def logout
+  click_link 'Logout'
+end
+
+def sign_up_with_linkedin
   visit "/"
   click_link 'Join Now'
   click_link 'Sign Up with Linkedin'
 end
 
-def link_linkedin
+def link_to_linkedin
   visit "/users/edit"
-  click_link 'Associate a Linkedin account'
+  click_link "Link to your Linkedin account"
+end
+
+def unlink_from_linkedin
+  visit "/users/edit"
+  click_link "Unlink from your Linkedin account"
 end

@@ -9,22 +9,23 @@ feature 'link account to linkedin' do
       :info => { :name => 'user', :email => "user@example.com" }
     })
   end
+
   scenario 'valid linkedin credentials' do
     user = User.make!
     login(user)
-    link_linkedin
+    link_to_linkedin
     visit "/users/edit"
-    page.should_not have_content "Unlink to your Linkedin account"
+    page.should have_content "Unlink from your Linkedin account"
   end
 
   scenario 'invalid linkedin credentials' do
     OmniAuth.config.mock_auth[:linkedin][:info][:email] = ''
     user = User.make!
     login(user)
+    link_to_linkedin
     visit "/users/edit"
-    click_link 'Associate a Linkedin account'
-    page.should_not have_content "Unlink to your Linkedin account"
-  end 
+    page.should have_content "Link to your Linkedin account"
+  end
 end
 
 
