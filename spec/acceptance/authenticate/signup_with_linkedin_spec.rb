@@ -12,15 +12,23 @@ feature 'signup with linkedin' do
   end
   after { OmniAuth.config.test_mode = false }
 
-  scenario 'valid' do
+  scenario 'using valid data' do
     sign_up_with_linkedin
     page.should have_content 'Sucessfully logged in with Linkedin!'
-  end 
+  end
 
-  scenario 'invalid' do
+  scenario 'using blank email' do
     OmniAuth.config.mock_auth[:linkedin][:info][:email] = ''
     sign_up_with_linkedin
     page.should have_content "can't be blank"
+  end
+
+  scenario 'using existing email' do
+    user = sign_up_new_user
+    logout
+    OmniAuth.config.mock_auth[:linkedin][:info][:email] = user.email
+    sign_up_with_linkedin
+    page.should have_content "has already been taken"
   end    
   
 end

@@ -17,6 +17,7 @@ def sign_up_new_user
   fill_in 'Password', with: user.password
   fill_in 'Password confirmation', with: user.password
   click_button 'Sign up'
+  user
 end
 
 def login(user)
@@ -45,10 +46,6 @@ def login_mod
   mod
 end
 
-def login_with_linkedin
-  visit "/users/auth/linkedin"
-end
-
 def logout
   click_link 'Sign out'
 end
@@ -57,6 +54,12 @@ def sign_up_with_linkedin
   visit "/"
   click_link 'Join Now'
   click_link 'Sign up with Linkedin'
+end
+
+def login_with_linkedin
+  visit "/"
+  click_link 'Sign in'
+  click_link 'Sign in with Linkedin'
 end
 
 def link_to_linkedin
