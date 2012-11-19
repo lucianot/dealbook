@@ -19,7 +19,7 @@ feature 'login with linkedin' do
       page.should have_content 'Sucessfully logged in with Linkedin!'
     end
     
-    # scenario 'invalid' do
+    scenario 'invalid'
     #   sign_up_with_linkedin
     #   logout
     #   OmniAuth.config.mock_auth[:linkedin] = :invalid_credentials
@@ -40,21 +40,21 @@ feature 'login with linkedin' do
       page.should have_content "Sucessfully logged in with Linkedin!"
     end
     
-    # scenario 'invalid' do
-    #   user = User.make!
-    #   login(user)
-    #   link_to_linkedin
-    #   click_link 'Logout'
-    #   OmniAuth.config.mock_auth[:linkedin] = :invalid_credentials
-    #   login_with_linkedin
-    #   page.should_not have_content "Sucessfully logged in with Linkedin!"
+    scenario 'invalid'
+      # user = User.make!
+      # login(user)
+      # link_to_linkedin
+      # click_link 'Logout'
+      # OmniAuth.config.mock_auth[:linkedin] = :invalid_credentials
+      # login_with_linkedin
+      # page.should_not have_content "Sucessfully logged in with Linkedin!"
     # end
   end
 
-  # # TODO: get user permission & ask for account password or new email
-  # context 'previously signed up with email only, same as linkedin' do
-  #   scenario 'valid'
+  # TODO: get user permission & ask for account password or new email
+  context 'previously signed up with email only, same as linkedin' do
+    scenario 'valid'
     
-  #   scenario 'invalid'
-  # end
+    scenario 'invalid'
+  end
 end

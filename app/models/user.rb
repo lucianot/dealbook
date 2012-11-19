@@ -61,7 +61,12 @@ class User < ActiveRecord::Base
        super
      end
    end
-   
+  
+   # def link_to_linkedin
+   #   update_column(:uid, auth.slice(:uid))
+   #   update_column(:provider, auth.slice(:provider))
+   # end
+
    def unlink_from_linkedin
      update_column(:uid, nil)
      update_column(:provider, nil)

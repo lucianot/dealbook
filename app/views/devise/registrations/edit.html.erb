@@ -16,7 +16,7 @@
 
     <p class="link">
   		<% if f.object.provider == 'linkedin' %>
-  				<%= image_tag('linkedin_32.png')%> <%= link_to "Unlink from your Linkedin account", unlink_path, :method => :put %>
+  				<%= image_tag('linkedin_32.png')%> <%= link_to "Unlink from your Linkedin account", unlink_path %>
   		<% else %>
   				<%= image_tag('linkedin_32.png')%> <%= link_to "Link to your Linkedin account", user_omniauth_authorize_path(:linkedin) %>
   		<% end %>
