@@ -9,15 +9,14 @@
     <%= f.input :full_name, :required => false, :autofocus => true %>
     <%= f.input :email, :required => false %>
 		<%= f.input :password, :hint => "leave it blank if you don't want to change it", :required => false %>
-		
-    	<%= f.input :password_confirmation, :required => false %>
+    <%= f.input :password_confirmation, :required => false %>
 		<% if f.object.encrypted_password.present? %>
     	<%= f.input :current_password, :hint => "we need your current password to confirm your changes" %>
 		<% end %>
 
     <p class="link">
   		<% if f.object.provider == 'linkedin' %>
-  				<%= image_tag('linkedin_32.png')%> <%= link_to "Unlink from your Linkedin account", unlink_path %>
+  				<%= image_tag('linkedin_32.png')%> <%= link_to "Unlink from your Linkedin account", unlink_path, :method => :put %>
   		<% else %>
   				<%= image_tag('linkedin_32.png')%> <%= link_to "Link to your Linkedin account", user_omniauth_authorize_path(:linkedin) %>
   		<% end %>
