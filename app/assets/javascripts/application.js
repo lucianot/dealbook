@@ -14,6 +14,7 @@
 //= require bootstrap
 //= require bootstrap-alert
 //= require bootstrap-dropdown
+//= require bootstrap-modal
 //= require jquery_ujs
 //= require jquery-ui
 //= require chosen-jquery

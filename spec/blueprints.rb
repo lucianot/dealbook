@@ -89,6 +89,13 @@ User.blueprint(:mod) do
   role                    { 'moderator' }
 end
 
+User.blueprint(:linkedin) do
+  provider                { 'linkedin' }
+  uid                     { '12345' }
+  password                { '' }
+  password_confirmation   { password }  
+end
+
 
 
 

@@ -23,10 +23,6 @@
 	}
 }
 
-.counter {
-	/*color: #08C;*/
-}
-
 .index-list li {
 	font-size: 15px;
 	margin-bottom: 15px;
@@ -49,9 +45,7 @@
 	margin-top: 2px;
 }
 
-.well h3 {
-	margin-bottom: 10px;
-}
+.well h3 { margin-bottom: 10px; }
 
 .well-index {
 	min-height: 260px;
@@ -62,8 +56,7 @@
 
 
 /* Sharing Buttons */
-.share_buttons
-{
+.share_buttons {
 	background: #E2E2E2;
 	border-radius: 4px;
 	margin: auto;
@@ -76,8 +69,8 @@
 	webkit-border-radius: 4px;
 	width: 268px;
 }
-.share_buttons .facebook
-{
+
+.share_buttons .facebook {
 	background: transparent url('/assets/tray_share_buttons.png') no-repeat 0 0;
 	display: block;
 	float: left;
@@ -85,19 +78,17 @@
 	margin-left: 10px;
 	width: 79px;
 }
-.share_buttons .facebook:hover
-{
-	background-position: 0 -27px;
-}
-.share_buttons .facebook:active
-{
+
+.share_buttons .facebook:hover { background-position: 0 -27px; }
+
+.share_buttons .facebook:active {
 	background-position: 0 0!important;
 	moz-box-shadow: 0 0 2px #bbb;
 	position: relative;
 	top: 2px;
 }
-.share_buttons .twitter
-{
+
+.share_buttons .twitter {
 	background: transparent url('/assets/tray_share_buttons.png') no-repeat 0 -54px;
 	display: block;
 	float: left;
@@ -105,31 +96,27 @@
 	margin-left: 10px;
 	width: 79px;
 }
-.share_buttons .twitter:hover
-{
-	background-position: 0 -81px;
-}
-.share_buttons .twitter:active
-{
+
+.share_buttons .twitter:hover { background-position: 0 -81px; }
+
+.share_buttons .twitter:active {
 	background-position: 0 -54px!important;
 	moz-box-shadow: 0 0 2px #bbb;
 	position: relative;
 	top: 2px;
 }
-.share_buttons .google
-{
+
+.share_buttons .google {
 	background: transparent url('/assets/tray_share_buttons.png') no-repeat 0 -108px;
 	float: left;
 	height: 27px;
 	margin-left: 10px;
 	width: 79px;
 }
-.share_buttons .google:hover
-{
-	background-position: 0 -135px;
-}
-.share_buttons .google:active
-{
+
+.share_buttons .google:hover { background-position: 0 -135px; }
+
+.share_buttons .google:active {
 	background-position: 0 -108px!important;
 	moz-box-shadow: 0 0 2px #bbb;
 	position: relative;
