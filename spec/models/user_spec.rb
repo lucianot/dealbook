@@ -18,21 +18,60 @@ describe User do
     it { should_not have_valid(:role).when('invalid', '', nil) }
   end
 
-  # Class methods
-  context '#is?' do
-    before do 
-      @admin = User.make!(:admin)
+  # Methods
+  context '.from_omniauth' do
+    it 'creates an user when one does not exist' do
+      auth = OmniAuth::AuthHash.new({
+        :provider => 'linkedin',
+        :uid => '12345',
+        :info => { :name => 'user', :email => "user@example.com" }
+      })
+      expect do
+        User.from_omniauth(auth)
+      end.to change {User.count}.by(1)
     end
 
-    it 'should be true if admin' do
-      @admin.is?(:admin).should be_true
-    end
-
-    it 'should be false if admin' do
-      @admin.is?(:normal).should be_false
+    it 'finds the user when it already exists' do
+      user = User.make!(:linkedin)
+      auth = OmniAuth::AuthHash.new({
+        :provider => 'linkedin',
+        :uid => '12345',
+        :info => { :name => user.full_name, :email => user.email }
+      })
+      expect do
+        user2 = User.from_omniauth(auth)
+        user2.should == user
+      end.to change {User.count}.by(0)
     end
   end
 
+  context '#is?' do
+    let(:admin) { User.make!(:admin) }
+
+    it 'is true if admin' do
+      admin.is?(:admin).should be_true
+    end
+
+    it 'is false if admin' do
+      admin.is?(:normal).should be_false
+    end
+  end
+
+  context '#password_required?' do
+    it 'is true is when provider is blank' do
+      user = User.make
+      user.password_required?.should == true
+    end
+
+    it 'is false when provider is present' do
+      user = User.make(:linkedin)
+      user.password_required?.should == false
+    end      
+  end
 end
+
+
+
+
 
 

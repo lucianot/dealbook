@@ -12,6 +12,7 @@ gem 'foreigner', '~> 1.1'
 # users and roles
 gem 'devise', '~> 2.1'
 gem 'cancan', '~> 1.6'
+gem 'omniauth-linkedin'
 
 # versions
 gem 'paper_trail', '~> 2.6'
@@ -54,9 +55,12 @@ group :development, :test do
   gem 'spin', '~> 0.4'
   gem 'guard-spin', '~> 0.1'
   gem 'pry'
-
   gem 'guard-livereload'
   gem 'rack-livereload'
+end
+
+group :test do
+  gem 'rake'
 end
 
 group :production do
