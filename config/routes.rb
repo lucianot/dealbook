@@ -1,8 +1,7 @@
 Dealbook::Application.routes.draw do
   devise_for :users, path_names: { sign_in: "login", sign_out: "logout" },
                     controllers: { omniauth_callbacks: "omniauth_callbacks" }
-        
-  get "/users/link" => "authentications#link", as: "link"                    
+                                     
   get "/users/unlink" => "authentications#unlink", as: "unlink"
 
   resources :users, :only => [:show, :index, :edit, :update]
