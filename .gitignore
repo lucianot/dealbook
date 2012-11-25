@@ -12,6 +12,7 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+db/structure.sql
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -19,3 +20,4 @@
 
 .DS_Store
 config/heroku_env.rb
+.rvmrc

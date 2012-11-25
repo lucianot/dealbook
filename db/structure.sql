@@ -352,7 +352,9 @@ CREATE TABLE users (
     full_name character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    role character varying(255)
+    role character varying(255),
+    provider character varying(255),
+    uid character varying(255)
 );
 
 
@@ -718,3 +720,5 @@ INSERT INTO schema_migrations (version) VALUES ('20120722143007');
 INSERT INTO schema_migrations (version) VALUES ('20120722155830');
 
 INSERT INTO schema_migrations (version) VALUES ('20120726130457');
+
+INSERT INTO schema_migrations (version) VALUES ('20120915201401');

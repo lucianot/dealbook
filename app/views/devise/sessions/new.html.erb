@@ -2,12 +2,18 @@
   <h3>Sign in</h3>
 </div>
 
+<p id='login_linkedin'>
+  <%= link_to image_tag('linkedin_64.png'), user_omniauth_authorize_path(:linkedin), :id => 'login_link' %>
+  <%= link_to "Sign in with Linkedin", user_omniauth_authorize_path(:linkedin), :id => 'login_link' %>
+</p>
+
+<p id='login_email'>or Sign in with Email</p>
+<br>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name),
   :html => { :class => 'form-horizontal', :id => 'login_form' }) do |f| %>
   <div class="inputs">
     <%= f.input :email, :required => false, :autofocus => true %>
     <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
@@ -15,6 +21,6 @@
   </div>
 <% end %>
 
-<div class="bottom-links">
+<div class="bottom_links">
   <%= render :partial => "devise/shared/links" %>
 </div>
