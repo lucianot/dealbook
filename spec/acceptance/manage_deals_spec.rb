@@ -6,7 +6,7 @@ feature 'manage deals' do
 
     scenario 'cannot manage deals' do
       visit '/'
-      click_link 'Deals'
+      find('#deals_button').click
       page.should_not have_link 'New deal'
       page.should_not have_link 'Edit'
       page.should_not have_link 'Destroy'
@@ -23,9 +23,9 @@ feature 'manage deals' do
       login_normal
       click_link 'Deals'
       click_button 'New Deal'
-      select '2012', :from => 'Close date'
-      select '12', :from => 'Close date'
-      select '20', :from => 'Close date'
+      find('#deal_close_date_1i').select '2012'
+      find('#deal_close_date_2i').select 'June'
+      find('#deal_close_date_3i').select '10'
       select company.name, :from => 'Company'
       select deal.category, :from => 'Category'
       select deal.round, :from => 'Round'

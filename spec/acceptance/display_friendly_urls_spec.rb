@@ -5,7 +5,7 @@ feature 'display friendly urls' do
     scenario 'for investors' do
       investor = Investor.make!(:name => 'Napkn Ventures')
       visit '/'
-      click_link 'Investors'
+      find('#investors_button').click
       click_link investor.name
       uri = URI.parse(current_url)
       uri.path.should == '/investors/napkn-ventures'
@@ -14,7 +14,7 @@ feature 'display friendly urls' do
     scenario 'for companies' do
       company = Company.make!(:name => 'Dabee')
       visit '/'
-      click_link 'Companies'
+      find('#companies_button').click
       click_link company.name
       uri = URI.parse(current_url)
       uri.path.should == '/companies/dabee'

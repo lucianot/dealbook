@@ -6,14 +6,14 @@ feature 'display deals' do
 
     scenario 'no deals' do
       visit '/'
-      click_link 'Deals'
+      find('#deals_button').click
       page.should have_content 'No deals yet'
     end
 
     scenario 'one or more deals' do
       deal = Deal.make!(:complete)
       visit '/'
-      click_link 'Deals'
+      find('#deals_button').click
       page.should have_link "deal_#{deal.id.to_s}"
       page.should_not have_content 'No deals yet'
     end
@@ -21,7 +21,7 @@ feature 'display deals' do
     scenario 'show deal' do
       deal = Deal.make!(:complete)
       visit '/'
-      click_link 'Deals'
+      find('#deals_button').click
       click_link "deal_#{deal.id.to_s}"
       page.should have_content deal.company_name
       page.should have_content deal.category
@@ -36,7 +36,7 @@ feature 'display deals' do
     scenario 'show deal' do
       deal = Deal.make!(:complete)
       login_normal
-      click_link 'Deals'
+      find('#deals_button').click
       click_link "deal_#{deal.id.to_s}"
       page.should have_content deal.company_name
       page.should have_content deal.category

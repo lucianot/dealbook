@@ -70,9 +70,10 @@ describe DealsController do
 
   context "#update_offerings_for" do
     it "should create offerings for new buyers" do
-      @deal = Deal.make
-      buyers = ["Investor:10"]
-      expect { update_offerings_for(@deal, buyers) }.to change{ @deal.offerings.count }.by(1)
+      @deal = Deal.make!(:simple)
+      offering = @deal.offerings.first
+      buyers = ["#{offering.buyer_type}:#{offering.buyer_id}", "Investor:10"]
+      expect { update_offerings_for(@deal, buyers) }.to change{ @deal.offerings.count }.from(1).to(2)
     end
 
     it "should delete offerings if buyer was unselected" do
@@ -83,3 +84,4 @@ describe DealsController do
     end
   end
 end
+

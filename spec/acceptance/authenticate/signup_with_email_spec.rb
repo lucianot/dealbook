@@ -9,7 +9,7 @@ feature 'signup with email' do
  
     scenario 'invalid' do
       visit "/"
-      click_link 'Join Now'
+      find('#join_now_link').click
       click_link 'Sign up with Email'
       click_button 'Sign up'
       page.should have_content "Please review the problems below"

@@ -6,14 +6,14 @@ feature 'display investors' do
 
     scenario 'no investors' do
       visit '/'
-      click_link 'Investors'
+      find('#investors_button').click
       page.should have_content 'No investors yet'
     end
     
     scenario 'one or more investors' do
       investor = Investor.make!
       visit '/'
-      click_link 'Investors'
+      find('#investors_button').click
       page.should have_content investor.name
       page.should_not have_content 'No investors yet'
     end
@@ -21,7 +21,7 @@ feature 'display investors' do
     scenario 'show investor' do
       investor = Investor.make!
       visit '/'
-      click_link 'Investors'
+      find('#investors_button').click
       click_link investor.name
       page.should have_content investor.name
       page.should have_content investor.description
@@ -41,7 +41,7 @@ feature 'display investors' do
     scenario 'show investor' do
       investor = Investor.make!
       login_normal
-      click_link 'Investors'
+      find('#investors_button').click
       click_link investor.name
       page.should have_content investor.name
       page.should have_content investor.description

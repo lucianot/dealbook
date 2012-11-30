@@ -6,7 +6,7 @@ feature 'manage investors' do
 
     scenario 'cannot manage investors' do
       visit '/'
-      click_link 'Investors'
+      find('#investors_button').click
       page.should_not have_link 'New Investor'
       page.should_not have_link 'Edit'
       page.should_not have_link 'Destroy'

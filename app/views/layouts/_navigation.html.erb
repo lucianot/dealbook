@@ -30,7 +30,7 @@
           </li>
         <% else %>
           <li><%= link_to('Sign in', new_user_session_path, :id => 'login_link') %></li>
-          <li><%= link_to('Join Now', "#joinNow", :data => {:toggle => 'modal'}) %></li>
+          <li><%= link_to('Join Now', "#joinNow", :id => 'join_now_link', :data => {:toggle => 'modal'}) %></li>
         <% end %>
       </ul>
 

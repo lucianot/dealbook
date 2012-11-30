@@ -6,7 +6,7 @@ feature 'manage companies' do
 
     scenario 'cannot manage companies' do
       visit '/'
-      click_link 'Companies'
+      find('#companies_button').click
       page.should_not have_link 'New Company'
       page.should_not have_link 'Edit'
       page.should_not have_link 'Destroy'

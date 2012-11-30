@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
-gem 'rails', '>= 3.2.7'
+gem 'rails', '>= 3.2.9'
 gem 'jquery-rails'
 gem 'json', '~> 1.7'
 gem 'thin'
@@ -26,7 +26,7 @@ gem 'bootstrap-sass', '~> 2.0.4.0'
 
 # search
 gem 'pg_search'
-gem 'friendly_id'
+gem 'friendly_id', '~> 4.0'
 
 # analytics
 gem 'mixpanel'
@@ -45,10 +45,10 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.10'
-  gem 'capybara', '~> 1.1'
+  gem 'rspec-rails', '~> 2.12'
+  gem 'capybara', '~> 2.0'
   gem 'machinist', '~> 2.0'
-  gem 'faker', '~> 1.0'
+  gem 'faker', '~> 1.1'
   gem 'shoulda-matchers', '~> 1.1'
   gem 'valid_attribute', '~> 1.1'
   gem 'rb-fsevent', '~> 0.9' #, :require => false if RUBY_PLATFORM =~ /darwin/i
@@ -63,11 +63,6 @@ end
 group :test do
   gem 'rake'
 end
-
-group :production do
-  gem 'heroku'
-end
-
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

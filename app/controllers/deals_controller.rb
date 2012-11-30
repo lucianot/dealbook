@@ -102,6 +102,7 @@ end
 private
 def update_offerings_for(deal, buyers)
   current_offerings = deal.offerings(true)
+
   # check if all current buyers are still selected
   current_offerings.each do |current_offering|
     current_buyer_string = "#{current_offering.buyer_type}:#{current_offering.buyer_id}"
@@ -113,6 +114,7 @@ def update_offerings_for(deal, buyers)
       current_offering.destroy
     end
   end
+
   # create offerings for new buyers
   buyers.each do |buyer|
     unless buyer.blank?

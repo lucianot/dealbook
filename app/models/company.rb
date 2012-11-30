@@ -6,31 +6,6 @@ class Company < ActiveRecord::Base
   attr_accessible :description, :linkedin, :name, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
 
-  # Gems
-  has_paper_trail
-  self.per_page = 20
-  include PgSearch
-  pg_search_scope :exact, :against => { :name => 'A' },
-                          :ignoring => :accents,
-                          :using => {
-                            :tsearch => {
-                              :dictionary => "english",
-                              :prefix => true
-                            }
-                          }
-  pg_search_scope :associated,  :associated_against => {
-                                  :locations => [:city, :region, :country],
-                                  :markets => :name,
-                                  :investors => { :name => 'A' },
-                                  :corporates => { :name => 'A' }
-                                },
-                                :ignoring => :accents,
-                                :using => {
-                                  :tsearch => {
-                                    :dictionary => "english",
-                                    :prefix => true
-                                  }
-                                }
 
   # Associations
   has_and_belongs_to_many :locations
@@ -58,6 +33,32 @@ class Company < ActiveRecord::Base
   validates :website, :format => { :with => URL_REGEX, :allow_nil => true, :allow_blank => true }
   validates :linkedin, :format => { :with => LINKEDIN_COMPANY_REGEX, :allow_nil => true, :allow_blank => true }
   validates :status, :inclusion => { :in => STATUSES, :allow_nil => true }
+
+  # Gems
+  has_paper_trail
+  self.per_page = 20
+  include PgSearch
+  pg_search_scope :exact, :against => { :name => 'A' },
+                          :ignoring => :accents,
+                          :using => {
+                            :tsearch => {
+                              :dictionary => "english",
+                              :prefix => true
+                            }
+                          }
+  pg_search_scope :associated,  :associated_against => {
+                                  :locations => [:city, :region, :country],
+                                  :markets => :name,
+                                  :investors => { :name => 'A' },
+                                  :corporates => { :name => 'A' }
+                                },
+                                :ignoring => :accents,
+                                :using => {
+                                  :tsearch => {
+                                    :dictionary => "english",
+                                    :prefix => true
+                                  }
+                                }
 
   # Methods
   def markets_names

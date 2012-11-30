@@ -6,14 +6,14 @@ feature 'display companies' do
 
     scenario 'no companies' do
       visit '/'
-      click_link 'Companies'
+      find('#companies_button').click
       page.should have_content 'No companies yet'
     end
     
     scenario 'one or more companies' do
       company = Company.make!
       visit '/'
-      click_link 'Companies'
+      find('#companies_button').click
       page.should have_content company.name
       page.should_not have_content 'No companies yet'
     end
@@ -21,7 +21,7 @@ feature 'display companies' do
     scenario 'show company' do
       company = Company.make!
       visit '/'
-      click_link 'Companies'
+      find('#companies_button').click
       click_link company.name
       page.should have_content company.name
       page.should have_content company.description
@@ -40,7 +40,7 @@ feature 'display companies' do
     scenario 'show company' do
       company = Company.make!
       login_normal
-      click_link 'Companies'
+      find('#companies_button').click
       click_link company.name
       page.should have_content company.name
       page.should have_content company.description
@@ -57,7 +57,7 @@ feature 'display companies' do
     scenario 'add new deal for company' do
       company = Company.make!
       login_normal
-      click_link 'Companies'
+      find('#companies_button').click
       click_link company.name
       page.should have_content company.name    
       page.should have_link 'Add new deal'
