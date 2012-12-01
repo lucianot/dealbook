@@ -7,7 +7,6 @@ class CompaniesController < ApplicationController
   def index
     @companies = Company.page(params[:page]).order("LOWER(name)")
     respond_with(@companies)
-    # @mixpanel.track_event("Companies index")
   end
 
   # GET /companies/1
@@ -17,7 +16,6 @@ class CompaniesController < ApplicationController
     @company_offers = @company.offers.order(:close_date)
     @company_deals = @company.deals.order(:close_date)
     respond_with(@company)
-    # @mixpanel.track_event("Company show", {:company => "#{@company.name}"})
   end
 
   # GET /companies/new
@@ -41,7 +39,6 @@ class CompaniesController < ApplicationController
       flash[:notice] = 'Company was successfully created.'
     end
     respond_with(@company, :location => companies_url)
-    # @mixpanel.track_event("Company create", {:company => "#{@company.name}"})
   end
 
   # PUT /companies/1
@@ -52,7 +49,6 @@ class CompaniesController < ApplicationController
       flash[:notice] = 'Company was successfully updated.'
     end
     respond_with(@company)
-    # @mixpanel.track_event("Company update", {:company => "#{@company.name}"})
   end
 
   # DELETE /companies/1
@@ -62,7 +58,6 @@ class CompaniesController < ApplicationController
     @company.destroy
     flash[:notice] = 'Company was successfully deleted.'
     respond_with(@company)
-    # @mixpanel.track_event("Company destroy", {:company => "#{@company.name}"})
   end
 end
 
