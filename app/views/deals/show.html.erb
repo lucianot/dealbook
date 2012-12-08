@@ -4,22 +4,38 @@
 
 <table class="table table-bordered table-condensed">
   <tbody>
-    <tr><td>Close date</td>
-        <td><%= @deal.close_date.strftime("%Y-%m") %></td></tr>
-    <tr><td>Company</td>
-        <td><%= link_to @deal.company_name, company_path(@deal.company) %></td></tr>
-    <tr><td>Deal type</td>
-        <td><%= @deal.category %></td></tr>
-    <tr><td>Investors</td>
-        <td><%= render :partial => 'buyers', :locals => { :deal => @deal } %></td></tr>
-    <tr><td>Round</td>
-        <td><%= @deal.round %></td></tr>
-    <tr><td>Amount</td>
-        <td><%= @deal.full_amount %></td></tr>
-    <tr><td>Pre-money valution</td>
-        <td><%= @deal.pre_valuation %></td></tr>
-    <tr><td>Source URL</td>
-        <td><%= link_to "#{@deal.source_url}", @deal.source_url %></td></tr>
+    <tr>
+      <td>Close date</td>
+      <td><%= @deal.close_date.strftime("%Y-%m") %></td>
+    </tr>
+    <tr>
+      <td>Company</td>
+      <td><%= link_to @deal.company_name, company_path(@deal.company) %></td>
+    </tr>
+    <tr>
+      <td>Deal type</td>
+      <td><%= @deal.category %></td>
+    </tr>
+    <tr>
+      <td>Investors</td>
+      <td><%= render :partial => 'buyers', :locals => { :deal => @deal } %></td>
+    </tr>
+    <tr>
+      <td>Round</td>
+      <td><%= @deal.round %></td>
+    </tr>
+    <tr>
+      <td>Amount</td>
+      <td><%= @deal.full_amount %></td>
+    </tr>
+    <tr>
+      <td>Pre-money valution</td>
+      <td><%= @deal.pre_valuation %></td>
+    </tr>
+    <tr>
+      <td>Source URL</td>
+      <td><%= link_to "#{@deal.source_url}", @deal.source_url %></td>
+    </tr>
   </tbody>
 </table>
 
