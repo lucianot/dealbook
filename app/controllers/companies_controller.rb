@@ -38,7 +38,7 @@ class CompaniesController < ApplicationController
     if @company.save
       flash[:notice] = 'Company was successfully created.'
     end
-    respond_with(@company, :location => companies_url)
+    respond_with(@company)
   end
 
   # PUT /companies/1
