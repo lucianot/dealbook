@@ -17,7 +17,7 @@ feature 'manage companies' do
   context 'regular user' do
 
     scenario 'can create new company' do
-      company = Company.make
+      company = Company.make(:name => "Dabee")
       market = Market.make!
       location = Location.make!
       login_normal
@@ -35,8 +35,8 @@ feature 'manage companies' do
       end.to change {Company.count}.by(1)
       page.should have_content 'Company was successfully created.'
       page.should have_content company.name
-      click_link company.name
-      page.should have_content company.name
+      uri = URI.parse(current_url)
+      uri.path.should == "/companies/dabee"
     end
 
     scenario 'can edit companies' do
@@ -63,7 +63,7 @@ feature 'manage companies' do
       page.should have_content 'Company was successfully deleted.'
       page.should_not have_content company.name
       uri = URI.parse(current_url)
-      uri.path.should == '/companies'      
+      uri.path.should == '/companies'
     end
 
   end # context

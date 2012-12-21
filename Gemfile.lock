@@ -70,7 +70,6 @@ GEM
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
     erubis (2.7.0)
-    escape (0.0.4)
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -117,10 +116,6 @@ GEM
     metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.19)
-    mixpanel (3.1.0)
-      escape
-      json
-      rack
     mocha (0.10.5)
       metaclass (~> 0.0.1)
     multi_json (1.4.0)
@@ -256,7 +251,6 @@ DEPENDENCIES
   jquery_datepicker (~> 0.4)
   json
   machinist (~> 2.0)
-  mixpanel (~> 3.1)
   omniauth-linkedin (~> 0.0)
   paper_trail (~> 2.6)
   pg
