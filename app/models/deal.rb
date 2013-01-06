@@ -79,6 +79,10 @@ include ActionView::Helpers::NumberHelper
     "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
   end
 
+  def full_valuation
+    "#{currency} #{number_with_delimiter(pre_valuation, :delimiter => ",")}"
+  end
+
   def buyers_for_options
     collection = (Investor.all + Company.all).sort_by {|buyer| buyer.name.downcase }
     collection.map { |record| [record.name, "#{record.class.name}:#{record.id}"] }

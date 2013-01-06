@@ -69,6 +69,14 @@ describe Deal do
     its(:full_amount) { should == "BRL 1,000,000" }
   end
 
+  context '#full_valuation' do
+    before do
+      @deal.currency = 'BRL'
+      @deal.pre_valuation = 1_000_000
+    end
+    its(:full_valuation) { should == "BRL 1,000,000" }
+  end
+
   context '#buyers_for_options' do
     it 'should return array of buyers in polymorphic format' do
       investor = Investor.make!
