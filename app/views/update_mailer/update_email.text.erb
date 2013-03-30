@@ -1,4 +1,4 @@
 <%=h @header %>
 
-Name: <%=h @company.name %>
+Name: <%=h "#{@company.name} - #{@company_url}" %>
 By user: <%=h "#{@user.full_name} (#{@user.email})" %>

@@ -58,6 +58,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
+    UpdateMailer.update_email(@company, current_user, 'destroy').deliver
     flash[:notice] = 'Company was successfully deleted.'
     respond_with(@company)
   end

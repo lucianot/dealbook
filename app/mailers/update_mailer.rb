@@ -7,7 +7,7 @@ class UpdateMailer < ActionMailer::Base
     @user = user
     @action = action
 
-    @company_url = company_url(@company)
+    @company_url = action != 'destroy'? company_url(@company) : ''
     @subject = subject
     @header = header
     @name = name
@@ -39,10 +39,8 @@ class UpdateMailer < ActionMailer::Base
 
   def name
     case @action
-    when 'create'
-      link_to @company.name, @company_url
-    when 'update'
-      link_to @company.name, @company_url
+    when ['create', 'update']
+      ActionController::Base.helpers.link_to @company.name, @company_url
     when 'destroy'
       @company.name     
     end

@@ -48,5 +48,13 @@ describe UpdateMailer do
         mail.subject.should == 'Company updated'
       end
     end
+
+    context 'when company deleted' do
+      before { UpdateMailer.update_email(@company, user, 'destroy').deliver }
+
+      it 'renders the subject' do
+        mail.subject.should == 'Company deleted'
+      end
+    end
   end
 end
