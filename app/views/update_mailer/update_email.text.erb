@@ -1,4 +1,8 @@
 <%=h @header %>
 
-Name: <%=h "#{@company.name} - #{@company_url}" %>
+Name: <% if @action != 'destroy' %>
+        <%=h "#{@company.name} - #{@company_url}" %>
+      <% else %>
+        <%=h @company.name %>
+      <% end %>
 By user: <%=h "#{@user.full_name} (#{@user.email})" %>

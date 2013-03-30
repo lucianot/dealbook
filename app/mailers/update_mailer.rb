@@ -1,5 +1,4 @@
 class UpdateMailer < ActionMailer::Base
-  ActionView::Base.send(:include, Rails.application.routes.url_helpers)
   default from: 'admin@dealbook.co'
 
   def update_email(company, user, action)
@@ -10,7 +9,6 @@ class UpdateMailer < ActionMailer::Base
     @company_url = action != 'destroy'? company_url(@company) : ''
     @subject = subject
     @header = header
-    @name = name
 
     mail(:to => 'luciano@tavares.us', :subject => @subject)
   end
@@ -34,15 +32,6 @@ class UpdateMailer < ActionMailer::Base
       'A company has just been updated on Dealbook:'
     when 'destroy'
       'A company has just been deleted from Dealbook:'      
-    end
-  end
-
-  def name
-    case @action
-    when ['create', 'update']
-      ActionController::Base.helpers.link_to @company.name, @company_url
-    when 'destroy'
-      @company.name     
     end
   end
 end
