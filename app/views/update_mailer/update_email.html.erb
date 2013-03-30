@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>A new company has just been added to Dealbook:</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>Name:</td><td><%=h link_to @company.name, @company_url %></td>
+        </tr>
+        <tr>
+          <td>By user:</td><td><%=h "#{@user.full_name} (#{@user.email})" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
