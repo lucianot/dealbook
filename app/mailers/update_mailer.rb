@@ -1,30 +1,50 @@
 class UpdateMailer < ActionMailer::Base
+  ActionView::Base.send(:include, Rails.application.routes.url_helpers)
   default from: 'admin@dealbook.co'
 
   def update_email(company, user, action)
     @company = company
     @user = user
+    @action = action
 
     @company_url = company_url(@company)
-    @subject = subject(action)
-    @header = header(action)
+    @subject = subject
+    @header = header
+    @name = name
 
     mail(:to => 'luciano@tavares.us', :subject => @subject)
   end
 
-  def subject(action)
-    if action == 'create'
+  def subject
+    case @action
+    when 'create'
       'New company'
-    elsif action == 'update'
+    when 'update'
       'Company updated'
+    when 'destroy'
+      'Company deleted'      
     end
   end
 
-  def header(action)
-    if action == 'create'
+  def header
+    case @action
+    when 'create'
       'A new company has just been added to Dealbook:'
-    elsif action == 'update'
+    when 'update'
       'A company has just been updated on Dealbook:'
+    when 'destroy'
+      'A company has just been deleted from Dealbook:'      
+    end
+  end
+
+  def name
+    case @action
+    when 'create'
+      link_to @company.name, @company_url
+    when 'update'
+      link_to @company.name, @company_url
+    when 'destroy'
+      @company.name     
     end
   end
 end

@@ -16,7 +16,7 @@ describe CompaniesController do
     end
   end
 
-  describe "PUT create" do
+  describe "PUT update" do
     before do
       @attr = { 'name' => 'Something Else' }
       @company = Company.make!
@@ -29,6 +29,19 @@ describe CompaniesController do
       put :update, :id => @company.id, :company => @attr
     end
   end
+
+  describe "DELETE destroy" do
+    before do
+      @company = Company.make!
+      @user = stub_mod
+      Company.stub(:find).with(@company.id.to_s).and_return(@company)
+    end
+
+    it "sends update email" do
+      UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'destroy')
+      delete :destroy, :id => @company.id
+    end
+  end  
 end
 
 def stub_mod
