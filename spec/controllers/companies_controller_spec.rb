@@ -4,15 +4,29 @@ describe CompaniesController do
 
   describe "POST create" do
     before do
-      @attr = { 'name' => 'anything' }
+      @attr = { 'name' => 'Anything' }
       @company = Company.make
       @user = stub_mod
       Company.stub(:new).with(@attr).and_return(@company)
     end
 
     it "sends update email" do
-      UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user)
+      UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'create')
       post :create, :company => @attr
+    end
+  end
+
+  describe "PUT create" do
+    before do
+      @attr = { 'name' => 'Something Else' }
+      @company = Company.make!
+      @user = stub_mod
+      Company.stub(:find).with(@company.id.to_s).and_return(@company)
+    end
+
+    it "sends update email" do
+      UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'update')
+      put :update, :id => @company.id, :company => @attr
     end
   end
 end

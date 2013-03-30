@@ -36,7 +36,7 @@ class CompaniesController < ApplicationController
     # binding.pry
     @company = Company.new(params[:company])
     if @company.save
-      UpdateMailer.update_email(@company, current_user).deliver
+      UpdateMailer.update_email(@company, current_user, 'create').deliver
       flash[:notice] = 'Company was successfully created.'
     end
     respond_with(@company)
@@ -47,6 +47,7 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     if @company.update_attributes(params[:company])
+      UpdateMailer.update_email(@company, current_user, 'update').deliver
       flash[:notice] = 'Company was successfully updated.'
     end
     respond_with(@company)
