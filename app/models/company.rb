@@ -12,7 +12,8 @@ class Company < ActiveRecord::Base
   has_and_belongs_to_many :markets
   # as target
   has_many :offers, :foreign_key => 'company_id',
-                    :class_name => 'Deal'
+                    :class_name => 'Deal',
+                    :dependent => :destroy
   has_many :offerings, :through => :offers
   has_many :investors, :through => :offerings,
                        :source => :investor,
