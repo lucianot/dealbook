@@ -2,45 +2,57 @@ require 'spec_helper'
 
 describe DealsController do
 
-  context "#create" do
+  context "POST create" do
     before do
       @buyers = ['Investor:1']
       @attributes = { 'close_date' => '10/06/1974' }
       @attributes_with_offerings = @attributes.merge( {'offerings' => {'buyers' => @buyers}} )
-      @deal = mock_model(Deal)
+      @deal = Deal.make
       Deal.stub(:new).and_return(@deal)
       controller.stub(:update_offerings_for).and_return(true)
       controller.stub(:authorize!).and_return(true)
       @deal.stub(:save).and_return(true)
     end
 
-    it "should assign params without offerings" do
-      Deal.should_receive(:new).with(@attributes).once.and_return(@deal)
-      post :create, :deal => @attributes_with_offerings
-      assigns[:deal].should == @deal
+    context 'updates offerings' do
+      before { UpdateMailer.stub_chain(:update_email, :deliver) }
+
+      it "should assign params without offerings" do
+        Deal.should_receive(:new).with(@attributes).once.and_return(@deal)
+        post :create, :deal => @attributes_with_offerings
+        assigns[:deal].should == @deal
+      end
+
+      it "should update offerings based on buyers" do
+        controller.should_receive(:update_offerings_for).with(@deal, @buyers).once.and_return(true)
+        post :create, :deal => @attributes_with_offerings
+      end
+
+      it "should create a new deal" do
+        @deal.should_receive(:save).with().once.and_return(true)
+        post :create, :deal => @attributes_with_offerings
+        flash[:notice].should_not be_nil
+        response.should redirect_to(@deal)
+      end
     end
 
-    it "should update offerings based on buyers" do
-      controller.should_receive(:update_offerings_for).with(@deal, @buyers).once.and_return(true)
-      post :create, :deal => @attributes_with_offerings
-    end
+    context 'send update email' do
+      before { @user = stub_mod }
 
-    it "should create a new deal" do
-      @deal.should_receive(:save).with().once.and_return(true)
-      post :create, :deal => @attributes_with_offerings
-      flash[:notice].should_not be_nil
-      response.should redirect_to(@deal)
+      it "sends update email" do
+        UpdateMailer.any_instance.should_receive(:update_email).with(@deal, @user, 'create')
+        post :create, :deal => @attributes_with_offerings
+      end
     end
-
   end
 
-  context "#update" do
+  context "PUT update" do
     before do
-      @id = '1'
       @buyers = ['Investor:1']
       @attributes = { 'close_date' => '10/06/1974' }
       @attributes_with_offerings = @attributes.merge( {'offerings' => {'buyers' => @buyers}} )
-      @deal = mock_model(Deal)
+      @deal = Deal.make!(:simple)
+      @id = @deal.id.to_s
       Deal.stub(:find).and_return(@deal)
       controller.stub(:update_offerings_for).and_return(true)
       controller.stub(:authorize!).and_return(true)
@@ -48,24 +60,51 @@ describe DealsController do
       @deal.stub(:verified=)
     end
 
-    it "should find deal and assign it to instance variable" do
-      Deal.should_receive(:find).with(@id).once.and_return(@deal)
-      put :update, :id => @id, :deal => @attributes_with_offerings
-      assigns[:deal].should == @deal
+    context 'updates offerings' do
+      before { UpdateMailer.stub_chain(:update_email, :deliver) }
+
+      it "should find deal and assign it to instance variable" do
+        Deal.should_receive(:find).with(@id).once.and_return(@deal)
+        put :update, :id => @id, :deal => @attributes_with_offerings
+        assigns[:deal].should == @deal
+      end
+
+      it "should update offerings based on buyers" do
+        controller.should_receive(:update_offerings_for).with(@deal, @buyers).once.and_return(true)
+        put :update, :id => @id, :deal => @attributes_with_offerings
+      end
+
+      it "should update deal" do
+        @deal.should_receive(:update_attributes).with(@attributes).once.and_return(true)
+        put :update, :id => @id, :deal => @attributes_with_offerings
+        flash[:notice].should_not be_nil
+        response.should redirect_to(@deal)
+      end
     end
 
-    it "should update offerings based on buyers" do
-      controller.should_receive(:update_offerings_for).with(@deal, @buyers).once.and_return(true)
-      put :update, :id => @id, :deal => @attributes_with_offerings
+    context 'send update email' do
+      before do
+        @user = stub_mod
+      end
+
+      it "sends update email" do
+        UpdateMailer.any_instance.should_receive(:update_email).with(@deal, @user, 'update')
+        put :update, :id => @id, :deal => @attributes_with_offerings
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+    before do
+      @deal = Deal.make!(:simple)
+      @user = stub_mod
+      Deal.stub(:find).with(@deal.id.to_s).and_return(@deal)
     end
 
-    it "should update deal" do
-      @deal.should_receive(:update_attributes).with(@attributes).once.and_return(true)
-      put :update, :id => @id, :deal => @attributes_with_offerings
-      flash[:notice].should_not be_nil
-      response.should redirect_to(@deal)
+    it "sends update email" do
+      UpdateMailer.any_instance.should_receive(:update_email).with(@deal, @user, 'destroy')
+      delete :destroy, :id => @deal.id
     end
-
   end
 
   context "#update_offerings_for" do
@@ -85,3 +124,8 @@ describe DealsController do
   end
 end
 
+def stub_mod
+  user = User.make!(:mod)
+  controller.stub(:current_user).and_return(user)
+  user
+end

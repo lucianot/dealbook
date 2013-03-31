@@ -36,7 +36,7 @@ class CompaniesController < ApplicationController
     # binding.pry
     @company = Company.new(params[:company])
     if @company.save
-      UpdateMailer.update_email(@company, current_user, 'create').deliver
+      UpdateMailer.update_email(@company, current_user, action_name).deliver
       flash[:notice] = 'Company was successfully created.'
     end
     respond_with(@company)
@@ -47,7 +47,7 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     if @company.update_attributes(params[:company])
-      UpdateMailer.update_email(@company, current_user, 'update').deliver
+      UpdateMailer.update_email(@company, current_user, action_name).deliver
       flash[:notice] = 'Company was successfully updated.'
     end
     respond_with(@company)
@@ -58,14 +58,8 @@ class CompaniesController < ApplicationController
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
-    UpdateMailer.update_email(@company, current_user, 'destroy').deliver
+    UpdateMailer.update_email(@company, current_user, action_name).deliver
     flash[:notice] = 'Company was successfully deleted.'
     respond_with(@company)
   end
 end
-
-
-
-
-
-

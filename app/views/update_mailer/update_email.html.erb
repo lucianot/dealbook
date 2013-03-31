@@ -11,10 +11,10 @@
           <td>Name:</td>
           <td>
             <% if @action == 'destroy' %>
-              <%=h link_to @company.name, @company_url %>
+              <%=h link_to @object_title, @object_url %>
             <% else %>
-              <%=h @company.name %>
-            <% end %> 
+              <%=h @object_title %>
+            <% end %>
           </td>
         </tr>
         <tr>

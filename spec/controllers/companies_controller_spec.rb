@@ -41,7 +41,7 @@ describe CompaniesController do
       UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'destroy')
       delete :destroy, :id => @company.id
     end
-  end  
+  end
 end
 
 def stub_mod

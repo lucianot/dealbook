@@ -40,6 +40,7 @@ class DealsController < ApplicationController
     update_offerings_for(@deal, buyers)
 
     if @deal.save
+      UpdateMailer.update_email(@deal, current_user, action_name).deliver
       flash[:notice] = 'Deal was successfully created.'
     end
     respond_with(@deal)
@@ -58,6 +59,7 @@ class DealsController < ApplicationController
 
     # @deal.verified = false
     if @deal.update_attributes(params[:deal])
+      UpdateMailer.update_email(@deal, current_user, action_name).deliver
       flash[:notice] = 'Deal was successfully updated.'
     end
     respond_with(@deal)
@@ -68,6 +70,7 @@ class DealsController < ApplicationController
   def destroy
     @deal = Deal.find(params[:id])
     @deal.destroy
+    UpdateMailer.update_email(@deal, current_user, action_name).deliver
     flash[:notice] = 'Deal was successfully deleted.'
     respond_with(@deal)
   end
@@ -120,6 +123,3 @@ def update_offerings_for(deal, buyers)
     end
   end
 end
-
-
-

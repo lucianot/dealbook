@@ -34,6 +34,7 @@ class InvestorsController < ApplicationController
   def create
     @investor = Investor.new(params[:investor])
     if @investor.save
+      UpdateMailer.update_email(@investor, current_user, action_name).deliver
       flash[:notice] = 'Investor was successfully created.'
     end
     respond_with(@investor, :location => investors_url)
@@ -44,6 +45,7 @@ class InvestorsController < ApplicationController
   def update
     @investor = Investor.find(params[:id])
     if @investor.update_attributes(params[:investor])
+      UpdateMailer.update_email(@investor, current_user, action_name).deliver
       flash[:notice] = 'Investor was successfully updated.'
     end
     respond_with(@investor)
@@ -54,6 +56,7 @@ class InvestorsController < ApplicationController
   def destroy
     @investor = Investor.find(params[:id])
     @investor.destroy
+    UpdateMailer.update_email(@investor, current_user, action_name).deliver
     flash[:notice] = 'Investor was successfully deleted.'
     respond_with(@investor)
   end
