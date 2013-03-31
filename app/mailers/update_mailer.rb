@@ -44,18 +44,7 @@ class UpdateMailer < ActionMailer::Base
   end
 
   def url
-    if @action == 'destroy'
-      ''
-    else
-      case @model
-      when 'Company'
-        company_path(@object)
-      when 'Investor'
-        investor_path(@object)
-      when 'Deal'
-        deal_path(@object)
-      end
-    end
+    @action == 'destroy' ? '' : url_for(@object)
   end
 
   def preposition
