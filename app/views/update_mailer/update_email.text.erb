@@ -1,8 +1,8 @@
 <%=h @header %>
 
-Name: <% if @action != 'destroy' %>
-        <%=h "#{@object_title} - #{@object_url}" %>
-      <% else %>
+Name: <% if @action == 'destroy' %>
         <%=h @object_title %>
+      <% else %>
+        <%=h "#{@object_title} - #{@object_url}" %>
       <% end %>
 By user: <%=h "#{@user.full_name} (#{@user.email})" %>

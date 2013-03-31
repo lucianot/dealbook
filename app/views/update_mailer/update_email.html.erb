@@ -11,9 +11,9 @@
           <td>Name:</td>
           <td>
             <% if @action == 'destroy' %>
-              <%=h link_to @object_title, @object_url %>
-            <% else %>
               <%=h @object_title %>
+            <% else %>
+              <%=h link_to @object_title, @object_url %>
             <% end %>
           </td>
         </tr>
