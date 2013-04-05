@@ -21,7 +21,7 @@ describe UpdateMailer do
         end
 
         it 'renders the receiver email' do
-          mail.to.should == ['luciano@tavares.us']
+          mail.to.should == ['luciano@tavares.us', 'diego.ttg@gmail.com']
         end
 
         it 'renders the sender email' do
