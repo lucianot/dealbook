@@ -1,5 +1,5 @@
 class UpdateMailer < ActionMailer::Base
-  default from: 'admin@dealbook.co'
+  default from: 'Dealbook Admin <admin@dealbook.co>'
 
   def update_email(object, user, action)
     @object = object
@@ -12,7 +12,8 @@ class UpdateMailer < ActionMailer::Base
     @object_title = title
     @object_url = url
 
-    mail(:to => 'luciano@tavares.us', :subject => @subject)
+    mods = ['luciano@tavares.us', 'diego.ttg@gmail.com']
+    mail(:to => mods, :subject => @subject)
   end
 
   private
