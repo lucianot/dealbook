@@ -44,7 +44,7 @@ html, body {
 
 .table {
   margin-bottom: 30px;
-  th.values { text-align: right; }  
+  th.values { text-align: right; }
 
   td {
     background: rgba(255,255,255,0.4);
@@ -52,7 +52,7 @@ html, body {
     font-family: $sansFontFamily;
     &.values {
       font-family: $sansFontFamily;
-      text-align: right; 
+      text-align: right;
     }
     .imbedded {
       tr { background: transparent; }
@@ -62,17 +62,17 @@ html, body {
         border-right: none;
       }
       tr:last-child td { border-bottom: none; }
-    }    
+    }
   }
   .destroy_button .button_to {
     input[type=submit] {
       background: image-url("glyphicons_290_skull.png");
       background-size: 14px 14px;
       background-repeat: no-repeat;
-    }    
-  }  
+    }
+  }
   .edit_button, .destroy_button {
-    padding-right: 0;    
+    padding-right: 0;
     width: 20px;
     a { opacity: 0.0; }
     .button_to {
@@ -87,17 +87,17 @@ html, body {
         font-family: inherit;
         margin: 0;
         padding: 0;
-        -webkit-appearance: caret; 
+        -webkit-appearance: caret;
         width: 20px;
       }
-    }    
-  }  
+    }
+  }
   .edit_button .button_to {
     input[type=submit] {
       background: image-url("glyphicons_030_pencil.png");
       background-size: 14px 14px;
       background-repeat: no-repeat;
-    }    
+    }
   }
   tr {
     &:hover {

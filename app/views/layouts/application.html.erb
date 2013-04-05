@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Dealbook</title>
-  <%= csrf_meta_tags %>
-  <meta name="google-site-verification" content="eFzHwHZxstX437NOGUjFZApqyPs1jtkmTw888H6FWOQ" />
-  <%= favicon_link_tag %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag 'application' %>
-  <%= yield(:head) %>
-  <%= render 'shared/mixpanel' %>
-  <%= render 'shared/ga' %>
-</head>
+  <head>
+    <title>Dealbook</title>
+    <%= csrf_meta_tags %>
+    <meta name="google-site-verification" content="eFzHwHZxstX437NOGUjFZApqyPs1jtkmTw888H6FWOQ" />
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= yield(:head) %>
+    <%= render 'shared/mixpanel' %>
+    <%= render 'shared/ga' %>
+  </head>
 
-<body class="<%= params[:controller].parameterize %>">
-	<%= render 'layouts/navigation' %>
-  <div class="main">
-		<div class="container">
-			<div class="menu-spacing hidden-phone hidden-tablet"></div>
-	    <%= render 'layouts/messages' %>
+  <body class="<%= params[:controller].parameterize %>">
+    <%= render 'layouts/navigation' %>
+    <div class="main">
+      <div class="container">
+        <div class="menu-spacing hidden-phone hidden-tablet"></div>
+        <%= render 'layouts/messages' %>
 
-	    <%= yield %>
+        <%= yield %>
 
-	    <div class="push">
-	    </div>
-	  </div>
-	</div>
-<%= render 'layouts/footer' %>
-<%= render 'shared/uservoice' %>
-</body>
+        <div class="push">
+        </div>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+    <%= render 'shared/uservoice' %>
+    <%= javascript_include_tag 'application' %>
+  </body>
 </html>
