@@ -49,7 +49,7 @@ include ActionView::Helpers::NumberHelper
   end
 
   def buyers_name
-    buyers.collect {|buyer| buyer.name}.join(', ') unless buyers.empty?
+    buyers.collect { |buyer| buyer.name }.join(', ') unless buyers.empty?
   end
 
   # TODO move to presenter
@@ -87,7 +87,7 @@ include ActionView::Helpers::NumberHelper
   end
 
   def buyers_for_options
-    collection = (Investor.all + Company.all).sort_by {|buyer| buyer.name.downcase }
+    collection = (Investor.all + Company.all).sort_by { |buyer| buyer.name.downcase }
     collection.map { |record| [record.name, "#{record.class.name}:#{record.id}"] }
   end
 

@@ -28,20 +28,20 @@
 
         <% if can? :edit, Deal %>
         <td class="edit_button">
-          <%= button_to(" ", edit_deal_path(deal), 
+          <%= button_to(" ", edit_deal_path(deal),
             :method => :get,
             :id => "edit_#{deal.id}") %>
         </td>
         <% end %>
 
-        <% if can? :destroy, Deal %>        
+        <% if can? :destroy, Deal %>
         <td class="destroy_button">
-          <%= button_to(" ", deal, 
-            :data => { :confirm => 'Are you sure?' }, 
+          <%= button_to(" ", deal,
+            :data => { :confirm => 'Are you sure?' },
             :method => :delete,
             :id => "destroy_#{deal.id}") %>
         </td>
-        <% end %>  
+        <% end %>
 
       </tr>
     <% end %>

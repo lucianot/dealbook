@@ -38,6 +38,7 @@ class Company < ActiveRecord::Base
   # Gems
   has_paper_trail
   self.per_page = 20
+
   include PgSearch
   pg_search_scope :exact, :against => { :name => 'A' },
                           :ignoring => :accents,

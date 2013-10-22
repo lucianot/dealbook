@@ -5,7 +5,11 @@ class InvestorsController < ApplicationController
   # GET /investors
   # GET /investors.json
   def index
-    @investors = Investor.page(params[:page]).order("LOWER(name)")
+    if request.format.to_sym == :html
+      @investors = Investor.page(params[:page]).order("LOWER(name)")
+    else
+      @investors = Investor.all
+    end
     respond_with(@investors)
   end
 

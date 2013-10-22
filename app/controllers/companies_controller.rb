@@ -5,7 +5,11 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.page(params[:page]).order("LOWER(name)")
+    if request.format.to_sym == :html
+      @companies = Company.page(params[:page]).order("LOWER(name)")
+    else
+      @companies = Company.all
+    end
     respond_with(@companies)
   end
 

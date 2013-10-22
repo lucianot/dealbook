@@ -5,7 +5,11 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.page(params[:page]).order("close_date DESC")
+    if request.format.to_sym == :html
+      @deals = Deal.page(params[:page]).order("close_date DESC")
+    else
+      @deals = Deal.all
+    end
     respond_with(@deals)
   end
 
