@@ -5,10 +5,13 @@ include ActionView::Helpers::NumberHelper
   ROUNDS = ['Acceleration', 'Seed', 'Series Seed', 'Series A', 'Series B', 'Series C',
             'Series D', 'Series E', 'IPO']
   CURRENCIES = ['USD', 'BRL']
+
   attr_accessible :amount, :category, :close_date, :currency, :pre_valuation, :round,
                   :source_url, :verified
   attr_accessible :company_id, :offerings, :investor_ids
+
   delegate :name, :to => :company, :prefix => true, :allow_nil => true
+
   has_paper_trail
   self.per_page = 12
 
@@ -114,7 +117,7 @@ include ActionView::Helpers::NumberHelper
   def set_defaults
     self.verified = false if self.verified.nil?  # Deal should be unverified by default
   end
-  
+
   def make_deal_unverified
     self.verified = false
     return true
@@ -123,7 +126,7 @@ include ActionView::Helpers::NumberHelper
   def attributes_changed?
     changed = self.changed
 
-    # Remove source_url from changed on tests, to fix Capybara bug that alters url 
+    # Remove source_url from changed on tests, to fix Capybara bug that alters url
     changed.delete('source_url') if Rails.env.test? || ENV["RAILSONFIRE"].present?
 
     # Check if no fields were changed

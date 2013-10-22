@@ -3,9 +3,9 @@ class Company < ActiveRecord::Base
   friendly_id :name, :use => :slugged
 
   STATUSES = %w[active inactive acquired merged]
+
   attr_accessible :description, :linkedin, :name, :status, :website
   attr_accessible :market_ids, :location_ids  # TODO: make safer
-
 
   # Associations
   has_and_belongs_to_many :locations
