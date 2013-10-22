@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Investor do
-  before { @investor = Investor.make }
   subject { @investor }
+
+  before { @investor = Investor.make }
 
   # Valid
   context 'when has valid attributes' do

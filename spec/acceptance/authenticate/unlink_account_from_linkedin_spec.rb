@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
 feature 'unlink account from linkedin' do
-  before do 
+  before do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
       :provider => 'linkedin',
@@ -9,8 +9,9 @@ feature 'unlink account from linkedin' do
       :info => { :name => 'user', :email => "user@example.com" }
     })
   end
+
   after { OmniAuth.config.test_mode = false }
-  
+
   context 'user created account via email' do
     scenario 'unlink successful' do
       sign_up_new_user
@@ -21,7 +22,7 @@ feature 'unlink account from linkedin' do
       page.should have_content "Your Linkedin account has been unlinked from your profile"
     end
   end
-  
+
   # context 'user created account via linkedin' do
   #   scenario 'unlink successful' do
   #      sign_up_with_linkedin

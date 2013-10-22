@@ -41,7 +41,7 @@ describe InvestorsController do
       UpdateMailer.any_instance.should_receive(:update_email).with(@investor, @user, 'destroy')
       delete :destroy, :id => @investor.id
     end
-  end  
+  end
 end
 
 def stub_mod

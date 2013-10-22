@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe Dealing do
-  before { @dealing = Dealing.make(:investor) }
   subject { @dealing }
+
+  before { @dealing = Dealing.make(:investor) }
 
   # Valid
   context 'when has valid attributes' do
-    it { should be_valid } 
+    it { should be_valid }
   end
 
   # Validations
@@ -25,14 +26,14 @@ describe Dealing do
                               :buyer_type => @dealing.buyer_type ) }
       it { should_not be_valid }
     end
-  end    
+  end
 
   # Associations
   context 'associations' do
     it { should belong_to(:deal) }
     it { should belong_to(:buyer) }
-    it { should belong_to(:investor) }   
-    it { should belong_to(:corporate) } 
-  end 
+    it { should belong_to(:investor) }
+    it { should belong_to(:corporate) }
+  end
 
 end

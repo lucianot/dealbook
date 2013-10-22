@@ -10,7 +10,7 @@ describe User do
   end
 
   # Validations
-  context 'validations' do  
+  context 'validations' do
     it { should have_valid(:full_name).when('Lorem::Name.name') }
     it { should_not have_valid(:full_name).when('a', 'a'*101, '', nil) }
 
@@ -66,7 +66,7 @@ describe User do
     it 'is false when provider is present' do
       user = User.make(:linkedin)
       user.password_required?.should == false
-    end      
+    end
   end
 end
 

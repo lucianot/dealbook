@@ -3,10 +3,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 feature 'signup with email' do
   context 'sign up' do
     scenario 'valid' do
-      sign_up_new_user 
+      sign_up_new_user
       page.should have_content "Welcome! You have signed up successfully"
     end
- 
+
     scenario 'invalid' do
       visit "/"
       find('#join_now_link').click

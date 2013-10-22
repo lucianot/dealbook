@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'display companies' do
-  
+
   context 'guest' do
 
     scenario 'no companies' do
@@ -9,7 +9,7 @@ feature 'display companies' do
       find('#companies_button').click
       page.should have_content 'No companies yet'
     end
-    
+
     scenario 'one or more companies' do
       company = Company.make!
       visit '/'
@@ -27,11 +27,11 @@ feature 'display companies' do
       page.should have_content company.description
       page.should have_content company.website
       page.should have_content company.linkedin
-      page.should have_content company.status          
+      page.should have_content company.status
       #TODO: include markets, locations
       page.should_not have_link 'Add new deal'
       page.should_not have_link 'Edit'
-      page.should_not have_link 'Destroy'      
+      page.should_not have_link 'Destroy'
       page.should have_link 'Back'
     end
   end

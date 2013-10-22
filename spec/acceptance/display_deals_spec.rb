@@ -27,7 +27,7 @@ feature 'display deals' do
       page.should have_content deal.category
       page.should have_content deal.round
       page.should_not have_link 'Edit'
-      page.should_not have_link 'Destroy'            
+      page.should_not have_link 'Destroy'
       page.should have_link 'Back'
     end
   end

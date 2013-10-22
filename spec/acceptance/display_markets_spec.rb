@@ -6,14 +6,14 @@ feature 'display markets' do
     scenario 'cannot access markets' do
       visit '/'
       page.should_not have_link 'Markets'
-    end    
+    end
   end
-  
+
   context 'normal user' do
     scenario 'cannot access markets' do
       normal = login_normal
       page.should_not have_link 'Markets'
-    end    
+    end
   end
 
   context 'moderator' do
@@ -23,7 +23,7 @@ feature 'display markets' do
       click_link 'Markets'
       page.should have_content 'No markets yet'
     end
-    
+
     scenario 'one or more markets' do
       market = Market.make!
       login_mod

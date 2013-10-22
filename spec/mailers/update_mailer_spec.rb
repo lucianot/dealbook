@@ -7,8 +7,8 @@ describe UpdateMailer do
   describe '#update_email' do
     before { reset_mailer }
 
-    let(:mail)    { ActionMailer::Base.deliveries.first }
-    let(:user)    { User.make }
+    let(:mail) { ActionMailer::Base.deliveries.first }
+    let(:user) { User.make }
 
     context 'when object is company' do
       before { @company = Company.make! }

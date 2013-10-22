@@ -16,7 +16,7 @@ feature 'verify deals' do
 
   context 'moderator' do
 
-    scenario 'can verify deal with source' do  
+    scenario 'can verify deal with source' do
       deal = Deal.make!(:complete)
       login_mod
       click_link 'Deals'
@@ -27,7 +27,7 @@ feature 'verify deals' do
       page.should have_content 'Verified'
     end
 
-    scenario 'can unverify deal' do    
+    scenario 'can unverify deal' do
       deal = Deal.make!(:complete, :verified => true)
       login_mod
       click_link 'Deals'
@@ -46,7 +46,7 @@ feature 'verify deals' do
       page.should_not have_content 'Verified'
       page.should_not have_link 'Mark as verified?'
     end
-    
+
   end # context
 
   context 'when verified deal is updated' do

@@ -97,7 +97,7 @@ User.blueprint(:linkedin) do
   provider                { 'linkedin' }
   uid                     { '12345' }
   password                { '' }
-  password_confirmation   { password }  
+  password_confirmation   { password }
 end
 
 

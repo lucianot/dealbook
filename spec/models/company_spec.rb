@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Company do
-  before { @company = Company.make }
   subject { @company }
+
+  before { @company = Company.make }
 
   # Valid
   context 'when has valid attributes' do
@@ -12,6 +13,7 @@ describe Company do
   # Validations
   context 'validations' do
     before { Company.make!(:name => @company.name) }
+
     it { should have_valid(:name).when('a'*2, 'a'*100) }
     it { should_not have_valid(:name).when('a', 'a'*101, nil) }
     it { should validate_uniqueness_of(:name) }

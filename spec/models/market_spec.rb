@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Market do
-  before { @market = Market.make }
   subject { @market }
+
+  before { @market = Market.make }
 
   # Valid
   context 'when has valid attributes' do
@@ -17,10 +18,9 @@ describe Market do
 
   # Associations
   context 'associations' do
-    it { should have_and_belong_to_many(:companies) }    
-    it { should have_and_belong_to_many(:investors) }        
-  end 
-
+    it { should have_and_belong_to_many(:companies) }
+    it { should have_and_belong_to_many(:investors) }
+  end
 end
 
 

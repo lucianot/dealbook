@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin moderator normal banned guest]
 
-  attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me, 
+  attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me,
                   :provider, :uid
   attr_accessible :role, :as => :admin
 
@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #Gems
-  self.per_page = 20       
+  self.per_page = 20
 
   # Validations
   validates :full_name, :presence => true, :length => { :in => (2..100) }
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   def is?(role)
     self.role == role.to_s.downcase
   end
-  
+
   #OmniAuth
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
       # user.password = Devise.friendly_token[0,20]
     end
   end
-  
+
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
@@ -49,11 +49,11 @@ class User < ActiveRecord::Base
       super
     end
   end
-  
+
   def password_required?
     super && provider.blank?
   end
-  
+
    def update_with_password(params, *options)
      if encrypted_password.blank?
        update_attributes(params, *options)

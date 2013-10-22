@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Deal do
-  before { @deal = Deal.make!(:complete) }
   subject { @deal }
+
+  before { @deal = Deal.make!(:complete) }
 
   # Valid
   context 'when has valid attributes' do

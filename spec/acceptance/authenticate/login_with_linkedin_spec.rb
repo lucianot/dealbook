@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
 feature 'login with linkedin' do
-  before do 
+  before do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
       :provider => 'linkedin',
@@ -9,8 +9,9 @@ feature 'login with linkedin' do
       :info => { :name => 'user', :email => "user@example.com" }
     })
   end
+
   after { OmniAuth.config.test_mode = false }
-  
+
   context 'created account with linkedin' do
     scenario 'valid' do
       sign_up_with_linkedin
@@ -18,7 +19,7 @@ feature 'login with linkedin' do
       login_with_linkedin
       page.should have_content 'Sucessfully logged in with Linkedin!'
     end
-    
+
     scenario 'invalid'
     #   sign_up_with_linkedin
     #   logout
@@ -39,7 +40,7 @@ feature 'login with linkedin' do
       login_with_linkedin
       page.should have_content "Sucessfully logged in with Linkedin!"
     end
-    
+
     scenario 'invalid'
       # user = User.make!
       # login(user)
@@ -54,7 +55,7 @@ feature 'login with linkedin' do
   # TODO: get user permission & ask for account password or new email
   context 'previously signed up with email only, same as linkedin' do
     scenario 'valid'
-    
+
     scenario 'invalid'
   end
 end

@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe Location do
-  before { @location = Location.make }
   subject { @location }
+
+  before { @location = Location.make }
 
   # Valid
   context 'when has valid attributes' do
@@ -18,7 +19,7 @@ describe Location do
     it { should_not have_valid(:region).when('a', 'a'*101, nil) }
 
     it { should have_valid(:city).when('a'*2, 'a'*100) }
-    it { should_not have_valid(:city).when('a', 'a'*101, nil) }    
+    it { should_not have_valid(:city).when('a', 'a'*101, nil) }
 
     # Uniqueness of country + region + city
     context 'when location attributes are' do
@@ -35,7 +36,7 @@ describe Location do
                                  :city => @location.city ) }
         it { should_not be_valid }
       end
-    end    
+    end
   end
 
   # Associations

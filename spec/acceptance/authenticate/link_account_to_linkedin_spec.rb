@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
 feature 'link account to linkedin' do
-  before do 
+  before do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
       :provider => 'linkedin',

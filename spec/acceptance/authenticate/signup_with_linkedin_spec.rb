@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../acceptance_helper')
 
 feature 'signup with linkedin' do
 
-  before do 
+  before do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
       :provider => 'linkedin',
@@ -29,8 +29,8 @@ feature 'signup with linkedin' do
     OmniAuth.config.mock_auth[:linkedin][:info][:email] = user.email
     sign_up_with_linkedin
     page.should have_content "has already been taken"
-  end    
-  
+  end
+
 end
 
 

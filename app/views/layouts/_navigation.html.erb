@@ -3,7 +3,7 @@
     <div class="container">
 
       <%= link_to image_tag('dealbook_logo.png'), root_path, :class => ' brand pull-left' %>
-			
+
 			<%= simple_form_for :search, :url => url_for(:action => 'create', :controller => '/searches'),
         :method => 'post', :html => { :class => 'navbar-search hidden-phone', :id => 'search_submit' } do |f| %>
         <%= f.input_field :keywords, :label => false, :placeholder => 'Search...',
@@ -22,7 +22,7 @@
                 <li><%= link_to('Manage users', users_path) %></li>
                 <li class="divider"></li>
               <% end %>
-              <li><%= link_to('Edit my account', edit_user_registration_path, 
+              <li><%= link_to('Edit my account', edit_user_registration_path,
                       :id => 'edit_account') %></li>
               <li><%= link_to('Sign out', destroy_user_session_path, :method => 'delete',
                       :id => 'logout_link') %></li>

@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'display investors' do
-  
+
   context 'guest' do
 
     scenario 'no investors' do
@@ -9,7 +9,7 @@ feature 'display investors' do
       find('#investors_button').click
       page.should have_content 'No investors yet'
     end
-    
+
     scenario 'one or more investors' do
       investor = Investor.make!
       visit '/'
@@ -29,10 +29,10 @@ feature 'display investors' do
       page.should have_content investor.linkedin
       page.should have_content investor.category
       #TODO: include stages
-      page.should have_content investor.status                  
+      page.should have_content investor.status
       #TODO: include markets, locations
       page.should_not have_link 'Edit'
-      page.should_not have_link 'Destroy'         
+      page.should_not have_link 'Destroy'
       page.should have_link 'Back'
     end
   end
