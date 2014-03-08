@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/acceptance_helper')
 
 feature 'display uservoice' do
+  pending
 
   context 'user' do
     scenario 'can see uservoice' do
