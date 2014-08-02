@@ -1,0 +1,82 @@
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    #graph {
+      position: relative;
+      width: 100%;
+      height: 800px;
+    }
+  </style>
+
+<div id="graph"></div>
+<% content_for :page_scripts do %>
+<script>
+  // Let's first initialize sigma:
+  $(function(){
+    var s = new sigma({
+      container: 'graph',
+      settings: {
+        minNodeSize: 1,
+        maxNodeSize: 10,
+        minEdgeSize: 1,
+        maxEdgeSize: 10,
+        labelThreshold: 6,
+        defaultLabelColor: "#1da5d6",
+        defaultNodeColor: "#1da5d6",
+        defaultEdgeColor: "#1da5d6"
+      }
+    });
+    
+    
+    <% @graph[:nodes].each do |node| %>
+    s.graph.addNode({
+      // Main attributes:
+      id: '<%= node[:id] %>',
+      label: '<%= node[:label] %>',
+      x: Math.random() * 4,
+      y: Math.random(),
+      <% if node[:type] == "Investor" %>
+        color: "#000",
+      <% else %>
+        color: "#0088cc",
+      <% end %>
+      size: <%= node[:size] %>
+    });
+    <% end %>
+
+    <% @graph[:edges].each do |edge| %>
+    s.graph.addEdge({
+        id: 'deal-<%= edge[:id] %>',
+        source: '<%= edge[:source] %>',
+        target: '<%= edge[:target] %>',
+        size: <%= edge[:value] %>
+      }
+    );
+    <% end %>
+    //
+    // .addNode({
+    //   // Main attributes:
+    //   id: 'n1',
+    //   label: 'World !',
+    //   // Display attributes:
+    //   x: 1,
+    //   y: 1,
+    //   size: 1,
+    //   color: '#00f'
+    // }).addEdge({
+    //   id: 'e0',
+    //   // Reference extremities:
+    //   source: 'n0',
+    //   target: 'n1'
+    // });
+
+    // Finally, let's ask our sigma instance to refresh:
+    s.refresh();
+    s.startForceAtlas2({slowDown: 500});
+    setTimeout(function(){
+      s.stopForceAtlas2();
+    }, 10000);
+  });
+</script>
+<% end %>
