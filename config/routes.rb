@@ -4,6 +4,8 @@ Dealbook::Application.routes.draw do
 
   get "/users/unlink" => "authentications#unlink", as: "unlink"
 
+  get "deal_graph" => "deal_graph#index"
+
   resources :users, :only => [:show, :index, :edit, :update]
   resources :deals do
     put :verify, :on => :member
