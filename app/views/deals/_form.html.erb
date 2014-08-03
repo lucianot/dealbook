@@ -8,7 +8,7 @@
                               :hint => link_to("+ Create new company", new_company_path),
                               :input_html => {:class => "chzn-select",
                                               "data-placeholder" => "Select a company"} %>
-  <%= f.input :category, :collection => Deal::CATEGORIES, :selected => :first %>
+  <%= f.input :category, :collection => Deal::CATEGORIES %>
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
     <%= offerings_form.input :buyers, :as => :select,
