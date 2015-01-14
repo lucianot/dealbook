@@ -10,7 +10,7 @@ rvm:
 
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - bundle exec rake db:create db:structure:load db:test:prepare
+  - bundle exec rake db:create db:migrate db:test:prepare
 
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
