@@ -4,7 +4,7 @@ ruby '2.1.5'
 gem 'rails', '>= 3.2.13'
 gem 'jquery-rails'
 gem 'json'
-gem 'thin'
+gem 'puma'
 gem 'rake'
 
 # db
@@ -65,6 +65,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'thin'
 end
 
 group :test do
