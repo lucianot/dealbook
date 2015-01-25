@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/lucianot/dealbook.svg?branch=master)](https://travis-ci.org/lucianot/dealbook)
+
+[travis]: http://travis-ci.org/lucianot/dealbook
+
 Welcome to Dealbook
 ===================
 
