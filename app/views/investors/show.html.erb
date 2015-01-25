@@ -11,7 +11,7 @@
     <tr><td>Category</td>   <td><%= @investor.category %></td></tr>
     <tr><td>Stages</td>     <td><%= @investor.stage.join(', ') unless @investor.stage.nil? %></td></tr>
     <tr><td>Markets</td>    <td><%= @investor.markets_names %></td></tr>
-    <tr><td>Locations</td>  
+    <tr><td>Locations</td>
       <td><%= render :partial => 'shared/locations', :locals => { :locations => @investor.locations } %> </td>
     </tr>
     <tr><td>Investments</td><td><%= render "investments" %></td></tr>

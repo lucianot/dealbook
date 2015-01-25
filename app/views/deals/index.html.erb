@@ -2,6 +2,10 @@
   <h3>Deals</h3>
 </div>
 
+<% if can? :create, Deal %>
+  <%= button_to 'New Deal', new_deal_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>
+
 <% if @deals.empty? %>
   <p>No deals yet.</p><br>
 <% else %>
@@ -50,7 +54,3 @@
 <% end %>
 
 <%= page_navigation_links @deals %>
-
-<% if can? :create, Deal %>
-  <%= button_to 'New Deal', new_deal_path, :method => :get, :class => "btn btn-primary" %>
-<% end %>

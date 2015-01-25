@@ -2,6 +2,10 @@
   <h3>Companies</h3>
 </div>
 
+<% if can? :create, Company %>
+  <%= button_to 'New Company', new_company_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>
+
 <% if @companies.empty? %>
   <p>No companies yet.</p><br>
 <% else %>
@@ -20,20 +24,20 @@
 
         <% if can? :edit, Company %>
         <td class="edit_button">
-          <%= button_to(" ", edit_company_path(company), 
+          <%= button_to(" ", edit_company_path(company),
             :method => :get,
             :id => "edit_#{company.id}") %>
         </td>
         <% end %>
 
-        <% if can? :destroy, Company %>        
+        <% if can? :destroy, Company %>
         <td class="destroy_button">
-          <%= button_to(" ", company, 
-            :data => { :confirm => 'Are you sure?' }, 
+          <%= button_to(" ", company,
+            :data => { :confirm => 'Are you sure?' },
             :method => :delete,
             :id => "destroy_#{company.id}") %>
         </td>
-        <% end %>        
+        <% end %>
 
       </tr>
     <% end %>
@@ -42,7 +46,3 @@
 <% end %>
 
 <%= page_navigation_links @companies %>
-
-<% if can? :create, Company %>
-  <%= button_to 'New Company', new_company_path, :method => :get, :class => "btn btn-primary" %>
-<% end %>

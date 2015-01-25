@@ -2,6 +2,10 @@
   <h3>Investors</h3>
 </div>
 
+<% if can? :create, Investor %>
+  <%= button_to 'New Investor', new_investor_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>
+
 <% if @investors.empty? %>
   <p>No investors yet.</p><br>
 <% else %>
@@ -17,23 +21,23 @@
     <% @investors.each do |investor| %>
       <tr>
         <td><%= link_to( investor.name, investor) if can? :show, Investor %></td>
-        
+
         <% if can? :edit, Investor %>
         <td class="edit_button">
-          <%= button_to(" ", edit_investor_path(investor), 
+          <%= button_to(" ", edit_investor_path(investor),
             :method => :get,
             :id => "edit_#{investor.id}") %>
         </td>
         <% end %>
 
-        <% if can? :destroy, Investor %>        
+        <% if can? :destroy, Investor %>
         <td class="destroy_button">
-          <%= button_to(" ", investor, 
-            :data => { :confirm => 'Are you sure?' }, 
+          <%= button_to(" ", investor,
+            :data => { :confirm => 'Are you sure?' },
             :method => :delete,
             :id => "destroy_#{investor.id}") %>
         </td>
-        <% end %> 
+        <% end %>
 
       </tr>
     <% end %>
@@ -42,7 +46,3 @@
 <% end %>
 
 <%= page_navigation_links @investors %>
-
-<% if can? :create, Investor %>
-  <%= button_to 'New Investor', new_investor_path, :method => :get, :class => "btn btn-primary" %>
-<% end %>

@@ -2,6 +2,10 @@
   <h3>Markets</h3>
 </div>
 
+<% if can? :create, Market %>
+  <%= button_to 'New Market', new_market_path, :method => :get, :class => "btn btn-primary" %>
+<% end %>
+
 <% if @markets.empty? %>
   <p>No markets yet.</p><br>
 <% else %>
@@ -18,18 +22,18 @@
       <tr>
         <td><%= market.name %></td>
 
-        <% if can? :edit, Market %>        
+        <% if can? :edit, Market %>
         <td class="edit_button">
-          <%= button_to(" ", edit_market_path(market), 
+          <%= button_to(" ", edit_market_path(market),
             :method => :get,
             :id => "edit_#{market.id}") %>
         </td>
         <% end %>
 
-        <% if can? :destroy, Market %>          
+        <% if can? :destroy, Market %>
         <td class="destroy_button">
-          <%= button_to(" ", market, 
-            :data => { :confirm => 'Are you sure?' }, 
+          <%= button_to(" ", market,
+            :data => { :confirm => 'Are you sure?' },
             :method => :delete,
             :id => "destroy_#{market.id}") %>
         </td>
@@ -41,7 +45,3 @@
 <% end %>
 
 <%= page_navigation_links @markets %>
-
-<% if can? :create, Market %>
-  <%= button_to 'New Market', new_market_path, :method => :get, :class => "btn btn-primary" %>
-<% end %>
