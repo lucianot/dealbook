@@ -77,5 +77,3 @@ feature 'verify deals' do
   end # context
 
 end # feature
-
-

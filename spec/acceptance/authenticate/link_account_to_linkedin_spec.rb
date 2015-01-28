@@ -39,5 +39,3 @@ feature 'link account to linkedin' do
     scenario 'invalid'
   end
 end
-
-

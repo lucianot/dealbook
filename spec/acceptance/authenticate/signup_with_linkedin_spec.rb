@@ -32,6 +32,3 @@ feature 'signup with linkedin' do
   end
 
 end
-
-
-

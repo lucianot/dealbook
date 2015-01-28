@@ -51,10 +51,3 @@ describe Location do
   end
 
 end
-
-
-
-
-
-
-

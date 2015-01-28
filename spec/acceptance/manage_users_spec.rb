@@ -39,7 +39,3 @@ feature 'manage users' do
   end
 
 end
-
-
-
-

@@ -85,10 +85,3 @@ class Investor < ActiveRecord::Base
     end
   end
 end
-
-
-
-
-
-
-

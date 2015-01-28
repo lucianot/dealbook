@@ -69,6 +69,3 @@ feature 'display companies' do
     end
   end
 end
-
-
-

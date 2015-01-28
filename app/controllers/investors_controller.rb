@@ -65,4 +65,3 @@ class InvestorsController < ApplicationController
     respond_with(@investor)
   end
 end
-

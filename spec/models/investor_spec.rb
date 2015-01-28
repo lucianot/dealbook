@@ -47,7 +47,3 @@ describe Investor do
   end
 
 end
-
-
-
-
