@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td>Investors</td>
-      <td><%= render :partial => 'buyers', :locals => { :deal => @deal } %></td>
+      <td><%= render partial: 'buyers', locals: { deal: @deal } %></td>
     </tr>
     <tr>
       <td>Round</td>
@@ -49,9 +49,9 @@
   <span id="verify_link">
     <% if @deal.source_url && (can? :manage, Deal) %>
       <% if @deal.verified %>
-        <%= button_to 'Mark as unverified?', unverify_deal_path, :method => :put, :id => 'deal_unverify' %>
+        <%= button_to 'Mark as unverified?', unverify_deal_path, method: :put, id: 'deal_unverify' %>
       <% else %>
-        <%= button_to 'Mark as verified?', verify_deal_path, :method => :put, :id => 'deal_verify' %>
+        <%= button_to 'Mark as verified?', verify_deal_path, method: :put, id: 'deal_verify' %>
       <% end %>
     <% end %>
   </span>
@@ -62,6 +62,6 @@
   <%= link_to 'Edit', edit_deal_path %> |
 <% end %>
 <% if can? :destroy, Deal %>
-  <%= link_to 'Destroy', @company, :data => { :confirm => 'Are you sure?' }, :method => :delete %> |
+  <%= link_to 'Destroy', @company, data: { confirm: 'Are you sure?' }, method: :delete %> |
 <% end %>
 <%= link_to 'Back', :back %>

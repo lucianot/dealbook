@@ -2,13 +2,13 @@
   <div class="navbar-inner">
     <div class="container">
 
-      <%= link_to image_tag('dealbook_logo.png'), root_path, :class => ' brand pull-left' %>
+      <%= link_to image_tag('dealbook_logo.png'), root_path, class: 'brand pull-left' %>
 
-			<%= simple_form_for :search, :url => url_for(:action => 'create', :controller => '/searches'),
-        :method => 'post', :html => { :class => 'navbar-search hidden-phone', :id => 'search_submit' } do |f| %>
-        <%= f.input_field :keywords, :label => false, :placeholder => 'Search...',
-            :class =>  'search-query span3' %>
-        <%= f.submit "Search", :class => 'btn' %>
+			<%= simple_form_for :search, url: url_for(action: 'create', controller: '/searches'),
+        method: 'post', html: { class: 'navbar-search hidden-phone', id: 'search_submit' } do |f| %>
+        <%= f.input_field :keywords, label: false, placeholder: 'Search...',
+            class:  'search-query span3' %>
+        <%= f.submit "Search", class: 'btn' %>
       <% end %>
       <ul class="nav pull-right">
         <% if user_signed_in? %>
@@ -23,14 +23,14 @@
                 <li class="divider"></li>
               <% end %>
               <li><%= link_to('Edit my account', edit_user_registration_path,
-                      :id => 'edit_account') %></li>
-              <li><%= link_to('Sign out', destroy_user_session_path, :method => 'delete',
-                      :id => 'logout_link') %></li>
+                      id: 'edit_account') %></li>
+              <li><%= link_to('Sign out', destroy_user_session_path, method: 'delete',
+                      id: 'logout_link') %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to('Sign in', new_user_session_path, :id => 'login_link') %></li>
-          <li><%= link_to('Join Now', "#joinNow", :id => 'join_now_link', :data => {:toggle => 'modal'}) %></li>
+          <li><%= link_to('Sign in', new_user_session_path, id: 'login_link') %></li>
+          <li><%= link_to('Join Now', "#joinNow", id: 'join_now_link', data: { toggle: 'modal'} ) %></li>
         <% end %>
       </ul>
 
@@ -42,9 +42,9 @@
 	<div class="">
     <div class="container">
   <ul class="nav nav-pills">
-      <%= nav_link 'Deals', deals_path, :id => 'deals_button' %>
-      <%= nav_link 'Companies', companies_path, :id => 'companies_button' %>
-      <%= nav_link 'Investors', investors_path, :id => 'investors_button' %>
+      <%= nav_link 'Deals', deals_path, id: 'deals_button' %>
+      <%= nav_link 'Companies', companies_path, id: 'companies_button' %>
+      <%= nav_link 'Investors', investors_path, id: 'investors_button' %>
       <% if user_signed_in? %>
         <%= nav_link('Markets', markets_path) if can? :manage, Market %>
         <%= nav_link('Locations', locations_path) if can? :manage, Location %>
@@ -61,12 +61,12 @@
   </div>
   <div class="modal-body">
     <p id="signup_linkedin">
-      <%= link_to image_tag('linkedin_64.png'), user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %>
-      <%= link_to "Sign up with Linkedin", user_omniauth_authorize_path(:linkedin), :id => 'signup_link' %>
+      <%= link_to image_tag('linkedin_64.png'), user_omniauth_authorize_path(:linkedin), id: 'signup_link' %>
+      <%= link_to "Sign up with Linkedin", user_omniauth_authorize_path(:linkedin), id: 'signup_link' %>
     </p>
     <br>
-    <p><%= link_to "Sign up with Email", new_user_registration_path, :id => 'signup_link' %></p>
-    <p>Been here before? <%= link_to "Sign in", new_user_session_path, :id => 'login_link' %></p>
+    <p><%= link_to "Sign up with Email", new_user_registration_path, id: 'signup_link' %></p>
+    <p>Been here before? <%= link_to "Sign in", new_user_session_path, id: 'login_link' %></p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>

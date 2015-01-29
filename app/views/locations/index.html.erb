@@ -3,7 +3,7 @@
 </div>
 
 <% if can? :create, Company %>
-  <%= button_to 'New Location', new_location_path, :method => :get, :class => "btn btn-primary" %>
+  <%= button_to 'New Location', new_location_path, method: :get, class: "btn btn-primary" %>
 <% end %>
 
 <% if @locations.empty? %>
@@ -29,17 +29,17 @@
         <% if can? :edit, Location %>
         <td class="edit_button">
           <%= button_to(" ", edit_location_path(location),
-            :method => :get,
-            :id => "edit_#{location.id}") %>
+            method: :get,
+            id: "edit_#{location.id}") %>
         </td>
         <% end %>
 
         <% if can? :destroy, Location %>
         <td class="destroy_button">
           <%= button_to(" ", location,
-            :data => { :confirm => 'Are you sure?' },
-            :method => :delete,
-            :id => "destroy_#{location.id}") %>
+            data: { confirm: 'Are you sure?' },
+            method: :delete,
+            id: "destroy_#{location.id}") %>
         </td>
         <% end %>
 

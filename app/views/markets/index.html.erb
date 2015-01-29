@@ -3,7 +3,7 @@
 </div>
 
 <% if can? :create, Market %>
-  <%= button_to 'New Market', new_market_path, :method => :get, :class => "btn btn-primary" %>
+  <%= button_to 'New Market', new_market_path, method: :get, class: "btn btn-primary" %>
 <% end %>
 
 <% if @markets.empty? %>
@@ -25,17 +25,17 @@
         <% if can? :edit, Market %>
         <td class="edit_button">
           <%= button_to(" ", edit_market_path(market),
-            :method => :get,
-            :id => "edit_#{market.id}") %>
+            method: :get,
+            id: "edit_#{market.id}") %>
         </td>
         <% end %>
 
         <% if can? :destroy, Market %>
         <td class="destroy_button">
           <%= button_to(" ", market,
-            :data => { :confirm => 'Are you sure?' },
-            :method => :delete,
-            :id => "destroy_#{market.id}") %>
+            data: { confirm: 'Are you sure?' },
+            method: :delete,
+            id: "destroy_#{market.id}") %>
         </td>
         <% end %>
 

@@ -3,7 +3,7 @@
 </div>
 
 <% if can? :create, Investor %>
-  <%= button_to 'New Investor', new_investor_path, :method => :get, :class => "btn btn-primary" %>
+  <%= button_to 'New Investor', new_investor_path, method: :get, class: "btn btn-primary" %>
 <% end %>
 
 <% if @investors.empty? %>
@@ -25,17 +25,17 @@
         <% if can? :edit, Investor %>
         <td class="edit_button">
           <%= button_to(" ", edit_investor_path(investor),
-            :method => :get,
-            :id => "edit_#{investor.id}") %>
+            method: :get,
+            id: "edit_#{investor.id}") %>
         </td>
         <% end %>
 
         <% if can? :destroy, Investor %>
         <td class="destroy_button">
           <%= button_to(" ", investor,
-            :data => { :confirm => 'Are you sure?' },
-            :method => :delete,
-            :id => "destroy_#{investor.id}") %>
+            data: { confirm: 'Are you sure?' },
+            method: :delete,
+            id: "destroy_#{investor.id}") %>
         </td>
         <% end %>
 

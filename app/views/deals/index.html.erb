@@ -3,7 +3,7 @@
 </div>
 
 <% if can? :create, Deal %>
-  <%= button_to 'New Deal', new_deal_path, :method => :get, :class => "btn btn-primary" %>
+  <%= button_to 'New Deal', new_deal_path, method: :get, class: "btn btn-primary" %>
 <% end %>
 
 <% if @deals.empty? %>
@@ -26,24 +26,24 @@
       <tr class="deal_row">
         <td><%= deal.close_date.strftime("%Y-%m") %></td>
         <td><%= link_to deal.company_name, company_path(deal.company)  %></td>
-        <td><%= link_to deal.category, deal, :id => "deal_#{deal.id}" %></td>
-        <td><%= render :partial => 'buyers', :locals => { :deal => deal } %></td>
+        <td><%= link_to deal.category, deal, id: "deal_#{deal.id}" %></td>
+        <td><%= render partial: 'buyers', locals: { deal: deal } %></td>
         <td class="values"><%= deal.full_amount %></td>
 
         <% if can? :edit, Deal %>
         <td class="edit_button">
           <%= button_to(" ", edit_deal_path(deal),
-            :method => :get,
-            :id => "edit_#{deal.id}") %>
+            method: :get,
+            id: "edit_#{deal.id}") %>
         </td>
         <% end %>
 
         <% if can? :destroy, Deal %>
         <td class="destroy_button">
           <%= button_to(" ", deal,
-            :data => { :confirm => 'Are you sure?' },
-            :method => :delete,
-            :id => "destroy_#{deal.id}") %>
+            data: { confirm: 'Are you sure?' },
+            method: :delete,
+            id: "destroy_#{deal.id}") %>
         </td>
         <% end %>
 
