@@ -9,7 +9,7 @@ feature 'manage markets' do
       login_mod
       click_link 'Markets'
       click_button 'New Market'
-      fill_in 'Name', :with => market.name
+      fill_in 'Name', with: market.name
       expect do
         click_button 'Create Market'
       end.to change {Market.count}.by(1)
@@ -22,7 +22,7 @@ feature 'manage markets' do
       login_mod
       click_link 'Markets'
       click_button "edit_#{market.id}"
-      fill_in 'Name', :with => 'mobile'
+      fill_in 'Name', with: 'mobile'
       click_button 'Update Market'
       page.should have_content 'Market was successfully updated.'
       page.should have_content 'mobile'

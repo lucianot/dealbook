@@ -17,19 +17,19 @@ feature 'manage companies' do
   context 'regular user' do
 
     scenario 'can create new company' do
-      company = Company.make(:name => "Dabee")
+      company = Company.make(name: "Dabee")
       market = Market.make!
       location = Location.make!
       login_normal
       click_link 'Companies'
       click_button 'New Company'
-      fill_in 'Name', :with => company.name
-      fill_in 'Description', :with => company.description
-      fill_in 'Website', :with => company.website
-      fill_in 'Linkedin', :with => company.linkedin
-      select 'active', :from => 'Status'
-      select market.name, :from => 'Markets'
-      select location.full, :from => 'Locations'
+      fill_in 'Name', with: company.name
+      fill_in 'Description', with: company.description
+      fill_in 'Website', with: company.website
+      fill_in 'Linkedin', with: company.linkedin
+      select 'active', from: 'Status'
+      select market.name, from: 'Markets'
+      select location.full, from: 'Locations'
       expect do
         click_button 'Create Company'
       end.to change {Company.count}.by(1)
@@ -45,7 +45,7 @@ feature 'manage companies' do
       login_normal
       click_link 'Companies'
       click_button "edit_#{company.id}"
-      fill_in ' Name', :with => new_name
+      fill_in ' Name', with: new_name
       expect do
         click_button 'Update Company'
       end.to change {Company.count}.by(0)

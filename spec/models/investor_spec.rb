@@ -12,7 +12,7 @@ describe Investor do
 
   # Validations
   context 'validations' do
-    before { Investor.make!(:name => @investor.name) }
+    before { Investor.make!(name: @investor.name) }
     it { should have_valid(:name).when('a'*2, 'a'*100) }
     it { should_not have_valid(:name).when('a', 'a'*101,'',  nil) }
     it { should validate_uniqueness_of(:name) }

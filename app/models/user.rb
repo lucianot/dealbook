@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :full_name, :password, :password_confirmation, :remember_me,
                   :provider, :uid
-  attr_accessible :role, :as => :admin
+  attr_accessible :role, as: :admin
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable
@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   self.per_page = 20
 
   # Validations
-  validates :full_name, :presence => true, :length => { :in => (2..100) }
-  validates :role, :inclusion => { :in => ROLES }
+  validates :full_name, presence: true, length: { in: (2..100) }
+  validates :role, inclusion: { in: ROLES }
 
   # Callbacks
   after_initialize :init

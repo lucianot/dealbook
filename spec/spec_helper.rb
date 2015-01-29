@@ -37,5 +37,5 @@ RSpec.configure do |config|
 
   # ActiveSupport::Dependencies.clear
 
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, type: :controller
 end

@@ -41,7 +41,7 @@ class InvestorsController < ApplicationController
       UpdateMailer.update_email(@investor, current_user, action_name).deliver
       flash[:notice] = 'Investor was successfully created.'
     end
-    respond_with(@investor, :location => investors_url)
+    respond_with(@investor, location: investors_url)
   end
 
   # PUT /investors/1

@@ -1,6 +1,6 @@
 class CreateCompaniesLocations < ActiveRecord::Migration
   def up
-    create_table :companies_locations, :id => false do |t|
+    create_table :companies_locations, id: false do |t|
       t.references :company
       t.references :location
     end

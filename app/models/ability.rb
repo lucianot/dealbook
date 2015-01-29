@@ -7,11 +7,11 @@ class Ability
       user = User.new
       user.role = 'guest'
     end
-    # user ||= User.new(:role => 'guest')
+    # user ||= User.new(role: 'guest')
 
     if user.role == 'admin'
       can :manage, [ Company, Investor, Deal, Market, Location, Search ]
-      can :manage, User, :role => User::ROLES-['admin']
+      can :manage, User, role: User::ROLES-['admin']
     elsif user.role == 'moderator'
       can :manage, [ Company, Investor, Deal, Market, Location, Search ]
       can :read, User

@@ -35,7 +35,7 @@ class LocationsController < ApplicationController
     if @location.save
       flash[:notice] = 'Location was successfully created.'
     end
-    respond_with(@location, :location => locations_url)    
+    respond_with(@location, location: locations_url)    
   end
 
   # PUT /locations/1
@@ -45,7 +45,7 @@ class LocationsController < ApplicationController
     if @location.update_attributes(params[:location])
       flash[:notice] = 'Location was successfully updated.'
     end
-    respond_with(@location, :location => locations_url)    
+    respond_with(@location, location: locations_url)    
   end  
 
   # DELETE /locations/1

@@ -65,7 +65,7 @@ feature 'display companies' do
       page.should have_content 'Create new deal'
       uri = URI.parse(current_url)
       uri.path.should == "/deals/new"
-      page.has_select?('Company', :selected => company.name).should be_true    
+      page.has_select?('Company', selected: company.name).should be_true    
     end
   end
 end

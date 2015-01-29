@@ -12,7 +12,7 @@ describe InvestorsController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@investor, @user, 'create')
-      post :create, :investor => @attr
+      post :create, investor: @attr
     end
   end
 
@@ -26,7 +26,7 @@ describe InvestorsController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@investor, @user, 'update')
-      put :update, :id => @investor.id, :investor => @attr
+      put :update, id: @investor.id, investor: @attr
     end
   end
 
@@ -39,7 +39,7 @@ describe InvestorsController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@investor, @user, 'destroy')
-      delete :destroy, :id => @investor.id
+      delete :destroy, id: @investor.id
     end
   end
 end

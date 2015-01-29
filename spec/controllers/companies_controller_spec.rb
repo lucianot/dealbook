@@ -12,7 +12,7 @@ describe CompaniesController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'create')
-      post :create, :company => @attr
+      post :create, company: @attr
     end
   end
 
@@ -26,7 +26,7 @@ describe CompaniesController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'update')
-      put :update, :id => @company.id, :company => @attr
+      put :update, id: @company.id, company: @attr
     end
   end
 
@@ -39,7 +39,7 @@ describe CompaniesController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@company, @user, 'destroy')
-      delete :destroy, :id => @company.id
+      delete :destroy, id: @company.id
     end
   end
 end

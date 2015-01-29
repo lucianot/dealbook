@@ -3,7 +3,7 @@ require 'csv'
 namespace :import do
 
   desc "import data from Google Spreadsheet to database"
-  task :google => :environment do
+  task google: :environment do
 
     # clean records
     # Company.delete_all
@@ -58,8 +58,8 @@ namespace :import do
                         verified: true)
         buyers.each do |buyer|
           deal.offerings.find_or_create_by_buyer_id_and_buyer_type(
-            :buyer_type => buyer[0],
-            :buyer_id => buyer[1])
+            buyer_type: buyer[0],
+            buyer_id: buyer[1])
         end
         begin
           deal.save!

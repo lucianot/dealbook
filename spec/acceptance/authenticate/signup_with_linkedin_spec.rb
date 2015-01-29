@@ -5,9 +5,9 @@ feature 'signup with linkedin' do
   before do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({
-      :provider => 'linkedin',
-      :uid => '12345',
-      :info => { :name => 'user', :email => "user@example.com" }
+      provider: 'linkedin',
+      uid: '12345',
+      info: { name: 'user', email: "user@example.com" }
     })
   end
   after { OmniAuth.config.test_mode = false }

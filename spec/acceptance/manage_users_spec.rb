@@ -10,7 +10,7 @@ feature 'manage users' do
       click_link user.full_name
       click_link 'Manage users'
       click_button "edit_#{user.id}"
-      select 'Moderator', :from => 'Role'
+      select 'Moderator', from: 'Role'
       click_button 'Update User'
       page.should have_content 'User was successfully updated.'
       page.should have_content 'moderator'

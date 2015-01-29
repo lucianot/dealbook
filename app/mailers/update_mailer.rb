@@ -13,7 +13,7 @@ class UpdateMailer < ActionMailer::Base
     @object_url = url
 
     mods = ['luciano@tavares.us', 'diego.ttg@gmail.com']
-    mail(:to => mods, :subject => @subject)
+    mail(to: mods, subject: @subject)
   end
 
   private

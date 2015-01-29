@@ -1,6 +1,6 @@
 class CreateInvestorsLocations < ActiveRecord::Migration
   def up
-    create_table :investors_locations, :id => false do |t|
+    create_table :investors_locations, id: false do |t|
       t.references :investor
       t.references :location
     end

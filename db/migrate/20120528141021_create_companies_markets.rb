@@ -1,6 +1,6 @@
 class CreateCompaniesMarkets < ActiveRecord::Migration
   def up
-    create_table :companies_markets, :id => false do |t|
+    create_table :companies_markets, id: false do |t|
       t.references :company
       t.references :market
     end
