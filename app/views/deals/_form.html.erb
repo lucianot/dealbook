@@ -7,7 +7,7 @@
                               :autofocus => true,
                               :hint => link_to("+ Create new company", new_company_path),
                               :input_html => {:class => "chzn-select",
-                                              "data-placeholder" => "Select a company"} %>
+                                              :data => { :placeholder => "Select a company" } } %>
   <%= f.input :category, :collection => Deal::CATEGORIES %>
 
   <%= f.simple_fields_for :offerings do |offerings_form| %>
@@ -18,7 +18,7 @@
           :selected => @deal.buyers_for_selected,
           :hint => link_to("+ Create new investor", new_investor_path),
           :input_html => {:multiple => true, :class => "chzn-select",
-                          "data-placeholder" => "Select one or more investors"} %>
+                          :data => { :placeholder => "Select one or more investors" } } %>
   <% end %>
   <%= f.input :round, :collection => Deal::ROUNDS, :input_html => { :class => 'span2' } %>
   <%= f.input :currency, :collection => Deal::CURRENCIES, :input_html => { :class => 'span1' } %>

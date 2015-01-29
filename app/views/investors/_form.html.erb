@@ -9,13 +9,13 @@
         :input_html => {:class => "input-small"} %>
   <%= f.input :stage, :label => 'Stages', :collection => Investor::STAGES,
         :input_html => {multiple: true, :class => "chzn-select",
-        "data-placeholder" => "Select one or more stages"} %>
+        :data => { :placeholder => "Select one or more stages" } } %>
   <%= f.association :markets, :collection => Market.all(:order => "LOWER(name)"),
-    :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more markets"} %>
+    :input_html => {:class => "chzn-select", :data => { :placeholder => "Select one or more markets" } } %>
   <%= f.association :locations, :placeholder => "Select one or more locations",
         :label_method => :full,
         :input_html => {:class => "chzn-select",
-                        "data-placeholder" => "Select one or more cities"} %>
+                        :data => { :placeholder => "Select one or more cities" } } %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
