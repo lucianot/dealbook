@@ -4,7 +4,7 @@
       <tr>
         <td><%= offer.close_date.strftime("%Y-%m") %></td>
         <td><%= link_to offer.summary, deal_path(offer) %></td>
-        <td><%= render :partial => 'buyers', :locals => { :buyers => offer.buyers } %></td>
+        <td><%= render partial: 'buyers', locals: { buyers: offer.buyers } %></td>
       </tr>
     <% end %>
   </tbody>

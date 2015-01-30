@@ -1,18 +1,15 @@
-<%= simple_form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :description, :hint => "max 600 characters" %>
+<%= simple_form_for @company, html: { class: 'form-horizontal' } do |f| %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :description, hint: "max 600 characters" %>
   <%= f.input :website %>
   <%= f.input :linkedin %>
-  <%= f.input :status, :collection => Company::STATUSES, :selected => :first,
-    :input_html => {:class => "input-small"} %>
-  <%= f.association :markets, :collection => Market.all(:order => "LOWER(name)"),
-    :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more markets"} %>
-  <%= f.association :locations, :label_method => :full,
-    :input_html => {:class => "chzn-select", "data-placeholder" => "Select one or more cities"} %>
+  <%= f.input :status, collection: Company::STATUSES, selected: :first,
+    input_html: { class: "input-small" } %>
+  <%= f.association :markets, collection: Market.all(order: "LOWER(name)"),
+    input_html: { class: "chzn-select", data: { placeholder: "Select one or more markets" } } %>
+  <%= f.association :locations, label_method: :full,
+    input_html: { class: "chzn-select", data: { placeholder: "Select one or more cities" } } %>
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.button :submit, class: 'btn-primary' %>
   </div>
 <% end %>
-
-
-

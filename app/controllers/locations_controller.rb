@@ -9,13 +9,6 @@ class LocationsController < ApplicationController
     respond_with(@locations)
   end
 
-  # # GET /locations/1
-  # # GET /locations/1.json
-  # def show
-  #   @location = Location.find(params[:id])
-  #   respond_with(@location)
-  # end
-
   # GET /locations/new
   # GET /locations/new.json
   def new
@@ -35,7 +28,7 @@ class LocationsController < ApplicationController
     if @location.save
       flash[:notice] = 'Location was successfully created.'
     end
-    respond_with(@location, :location => locations_url)    
+    respond_with(@location, location: locations_url)    
   end
 
   # PUT /locations/1
@@ -45,7 +38,7 @@ class LocationsController < ApplicationController
     if @location.update_attributes(params[:location])
       flash[:notice] = 'Location was successfully updated.'
     end
-    respond_with(@location, :location => locations_url)    
+    respond_with(@location, location: locations_url)    
   end  
 
   # DELETE /locations/1

@@ -22,9 +22,9 @@ describe User do
   context '.from_omniauth' do
     it 'creates an user when one does not exist' do
       auth = OmniAuth::AuthHash.new({
-        :provider => 'linkedin',
-        :uid => '12345',
-        :info => { :name => 'user', :email => "user@example.com" }
+        provider: 'linkedin',
+        uid: '12345',
+        info: { name: 'user', email: "user@example.com" }
       })
       expect do
         User.from_omniauth(auth)
@@ -34,9 +34,9 @@ describe User do
     it 'finds the user when it already exists' do
       user = User.make!(:linkedin)
       auth = OmniAuth::AuthHash.new({
-        :provider => 'linkedin',
-        :uid => '12345',
-        :info => { :name => user.full_name, :email => user.email }
+        provider: 'linkedin',
+        uid: '12345',
+        info: { name: user.full_name, email: user.email }
       })
       expect do
         user2 = User.from_omniauth(auth)
@@ -69,9 +69,3 @@ describe User do
     end
   end
 end
-
-
-
-
-
-

@@ -6,7 +6,7 @@ describe DealsController do
     before do
       @buyers = ['Investor:1']
       @attributes = { 'close_date' => '10/06/1974' }
-      @attributes_with_offerings = @attributes.merge( {'offerings' => {'buyers' => @buyers}} )
+      @attributes_with_offerings = @attributes.merge( {offerings: {buyers: @buyers}} )
       @deal = Deal.make
       Deal.stub(:new).and_return(@deal)
       controller.stub(:update_offerings_for).and_return(true)
@@ -19,18 +19,18 @@ describe DealsController do
 
       it "should assign params without offerings" do
         Deal.should_receive(:new).with(@attributes).once.and_return(@deal)
-        post :create, :deal => @attributes_with_offerings
+        post :create, deal: @attributes_with_offerings
         assigns[:deal].should == @deal
       end
 
       it "should update offerings based on buyers" do
         controller.should_receive(:update_offerings_for).with(@deal, @buyers).once.and_return(true)
-        post :create, :deal => @attributes_with_offerings
+        post :create, deal: @attributes_with_offerings
       end
 
       it "should create a new deal" do
         @deal.should_receive(:save).with().once.and_return(true)
-        post :create, :deal => @attributes_with_offerings
+        post :create, deal: @attributes_with_offerings
         flash[:notice].should_not be_nil
         response.should redirect_to(@deal)
       end
@@ -41,7 +41,7 @@ describe DealsController do
 
       it "sends update email" do
         UpdateMailer.any_instance.should_receive(:update_email).with(@deal, @user, 'create')
-        post :create, :deal => @attributes_with_offerings
+        post :create, deal: @attributes_with_offerings
       end
     end
   end
@@ -50,7 +50,7 @@ describe DealsController do
     before do
       @buyers = ['Investor:1']
       @attributes = { 'close_date' => '10/06/1974' }
-      @attributes_with_offerings = @attributes.merge( {'offerings' => {'buyers' => @buyers}} )
+      @attributes_with_offerings = @attributes.merge( {offerings: {buyers: @buyers}} )
       @deal = Deal.make!(:simple)
       @id = @deal.id.to_s
       Deal.stub(:find).and_return(@deal)
@@ -65,18 +65,18 @@ describe DealsController do
 
       it "should find deal and assign it to instance variable" do
         Deal.should_receive(:find).with(@id).once.and_return(@deal)
-        put :update, :id => @id, :deal => @attributes_with_offerings
+        put :update, id: @id, deal: @attributes_with_offerings
         assigns[:deal].should == @deal
       end
 
       it "should update offerings based on buyers" do
         controller.should_receive(:update_offerings_for).with(@deal, @buyers).once.and_return(true)
-        put :update, :id => @id, :deal => @attributes_with_offerings
+        put :update, id: @id, deal: @attributes_with_offerings
       end
 
       it "should update deal" do
         @deal.should_receive(:update_attributes).with(@attributes).once.and_return(true)
-        put :update, :id => @id, :deal => @attributes_with_offerings
+        put :update, id: @id, deal: @attributes_with_offerings
         flash[:notice].should_not be_nil
         response.should redirect_to(@deal)
       end
@@ -89,7 +89,7 @@ describe DealsController do
 
       it "sends update email" do
         UpdateMailer.any_instance.should_receive(:update_email).with(@deal, @user, 'update')
-        put :update, :id => @id, :deal => @attributes_with_offerings
+        put :update, id: @id, deal: @attributes_with_offerings
       end
     end
   end
@@ -103,7 +103,7 @@ describe DealsController do
 
     it "sends update email" do
       UpdateMailer.any_instance.should_receive(:update_email).with(@deal, @user, 'destroy')
-      delete :destroy, :id => @deal.id
+      delete :destroy, id: @deal.id
     end
   end
 

@@ -108,14 +108,3 @@ describe Deal do
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-

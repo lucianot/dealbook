@@ -10,38 +10,38 @@ include ActionView::Helpers::NumberHelper
                   :source_url, :verified
   attr_accessible :company_id, :offerings, :investor_ids
 
-  delegate :name, :to => :company, :prefix => true, :allow_nil => true
+  delegate :name, to: :company, prefix: true, allow_nil: true
 
   has_paper_trail
   self.per_page = 12
 
   # Associations
   belongs_to :company
-  has_many :offerings, :foreign_key => 'deal_id',
-                       :class_name => 'Dealing',
-                       :dependent => :destroy
-  has_many :investors, :through => :offerings, :source => :buyer, :source_type => 'Investor'
-  has_many :corporates, :through => :offerings, :source => :buyer, :source_type => 'Company'
+  has_many :offerings, foreign_key: 'deal_id',
+                       class_name: 'Dealing',
+                       dependent: :destroy
+  has_many :investors, through: :offerings, source: :buyer, source_type: 'Investor'
+  has_many :corporates, through: :offerings, source: :buyer, source_type: 'Company'
 
   #Validations
-  validates :close_date, :presence => true
+  validates :close_date, presence: true
   validate  :close_date_must_be_today_or_before
   validate  :close_date_must_be_in_date_format
-  validates :category, :inclusion => { :in => CATEGORIES }
-  validates :round, :inclusion => { :in => ROUNDS }, :allow_blank => true
-  validates :currency, :inclusion => { :in => CURRENCIES }, :allow_blank => true
-  validates :amount, :numericality => { :only_integer => true, :greater_than => 0 },
-                                        :allow_blank => true
-  validates :pre_valuation, :numericality => { :only_integer => true, :greater_than => 0 },
-                                               :allow_blank => true
-  validates :source_url, :format => { :with => URL_REGEX, :allow_nil => true,
-                                      :allow_blank => true }
-  validates :company_id, :presence => true, :allow_blank => false
+  validates :category, inclusion: { in: CATEGORIES }
+  validates :round, inclusion: { in: ROUNDS }, allow_blank: true
+  validates :currency, inclusion: { in: CURRENCIES }, allow_blank: true
+  validates :amount, numericality: { only_integer: true, greater_than: 0 },
+                                        allow_blank: true
+  validates :pre_valuation, numericality: { only_integer: true, greater_than: 0 },
+                                               allow_blank: true
+  validates :source_url, format: { with: URL_REGEX, allow_nil: true,
+                                      allow_blank: true }
+  validates :company_id, presence: true, allow_blank: false
   validate :corporates_cannot_include_target_company
 
   # Callbacks
   after_initialize :set_defaults
-  before_update :make_deal_unverified, :if => :attributes_changed?
+  before_update :make_deal_unverified, if: :attributes_changed?
 
   # Methods
   def buyers
@@ -79,11 +79,11 @@ include ActionView::Helpers::NumberHelper
   end
 
   def full_amount
-    "#{currency} #{number_with_delimiter(amount, :delimiter => ",")}"
+    "#{currency} #{number_with_delimiter(amount, delimiter: ",")}"
   end
 
   def full_valuation
-    "#{currency} #{number_with_delimiter(pre_valuation, :delimiter => ",")}"
+    "#{currency} #{number_with_delimiter(pre_valuation, delimiter: ",")}"
   end
 
   def buyers_for_options

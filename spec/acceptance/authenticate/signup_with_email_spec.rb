@@ -16,6 +16,3 @@ feature 'signup with email' do
     end
   end
 end
-
-
-

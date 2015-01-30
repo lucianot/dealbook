@@ -1,5 +1,5 @@
 class DealingsController < ApplicationController
-  load_and_authorize_resource :except => [:index]
+  load_and_authorize_resource except: [:index]
   respond_to :json
 
   # GET /dealings.json

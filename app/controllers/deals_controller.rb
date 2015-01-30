@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  load_and_authorize_resource :except => [:create, :update]
+  load_and_authorize_resource except: [:create, :update]
   respond_to :html, :json
 
   # GET /deals
@@ -23,7 +23,7 @@ class DealsController < ApplicationController
   # GET /deals/new
   # GET /deals/new.json
   def new
-    @deal = Deal.new :company_id => params[:company_id]
+    @deal = Deal.new company_id: params[:company_id]
     respond_with(@deal)
   end
 
@@ -122,8 +122,8 @@ def update_offerings_for(deal, buyers)
     unless buyer.blank?
       buyer_type, buyer_id = buyer.split(":")
       new_offering = deal.offerings.find_or_create_by_buyer_id_and_buyer_type(
-        :buyer_type => buyer_type,
-        :buyer_id => buyer_id.to_i)
+        buyer_type: buyer_type,
+        buyer_id: buyer_id.to_i)
     end
   end
 end

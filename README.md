@@ -92,17 +92,3 @@ Maintainers
 
 * Luciano Tavares ([https://github.com/lucianot](https://github.com/lucianot))
 * Diego Gomes ([https://github.com/dttg](https://github.com/dttg))
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -24,13 +24,13 @@ feature 'manage investors' do
       login_normal
       click_link 'Investors'
       click_button 'New Investor'
-      fill_in 'Name', :with => investor.name
-      select 'VC', :from => 'Category'
-      select 'active', :from => 'Status'
-      select 'Series Seed', :from => 'Stages'
-      select 'Series A', :from => 'Stages'
-      select market.name, :from => 'Markets'
-      select location.full, :from => 'Locations'
+      fill_in 'Name', with: investor.name
+      select 'VC', from: 'Category'
+      select 'active', from: 'Status'
+      select 'Series Seed', from: 'Stages'
+      select 'Series A', from: 'Stages'
+      select market.name, from: 'Markets'
+      select location.full, from: 'Locations'
       expect do
         click_button 'Create Investor'
       end.to change {Investor.count}.by(1)
@@ -46,9 +46,9 @@ feature 'manage investors' do
       login_normal
       click_link 'Investors'
       click_button "edit_#{investor.id}"
-      fill_in 'Name', :with => new_name
-      select 'Series Seed', :from => 'Stages'
-      unselect 'Series A', :from => 'Stages'
+      fill_in 'Name', with: new_name
+      select 'Series Seed', from: 'Stages'
+      unselect 'Series A', from: 'Stages'
       expect do
         click_button 'Update Investor'
       end.to change {Investor.count}.by(0)

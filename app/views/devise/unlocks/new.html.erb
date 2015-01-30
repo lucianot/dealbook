@@ -2,11 +2,11 @@
   <h3>Resend unlock instructions</h3>
 </div>
 
-<%= simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :email, :required => true %>
+    <%= f.input :email, required: true %>
   </div>
 
   <div class="form-actions">
@@ -15,5 +15,5 @@
 <% end %>
 
 <div class="bottom-links">
-  <%= render :partial => "devise/shared/links" %>
+  <%= render partial: "devise/shared/links" %>
 </div>

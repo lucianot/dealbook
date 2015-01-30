@@ -26,14 +26,14 @@ feature 'manage deals' do
       find('#deal_close_date_1i').select '2012'
       find('#deal_close_date_2i').select 'June'
       find('#deal_close_date_3i').select '10'
-      select company.name, :from => 'Company'
-      select deal.category, :from => 'Category'
-      select deal.round, :from => 'Round'
-      select investor.name, :from => 'deal_offerings_buyers'
-      select deal.currency, :from => 'Currency'
-      fill_in 'Amount', :with => deal.amount
-      fill_in 'Pre-money Valuation', :with => deal.pre_valuation
-      fill_in 'Source', :with => deal.source_url
+      select company.name, from: 'Company'
+      select deal.category, from: 'Category'
+      select deal.round, from: 'Round'
+      select investor.name, from: 'deal_offerings_buyers'
+      select deal.currency, from: 'Currency'
+      fill_in 'Amount', with: deal.amount
+      fill_in 'Pre-money Valuation', with: deal.pre_valuation
+      fill_in 'Source', with: deal.source_url
       expect do
         click_button 'Create Deal'
       end.to change {Deal.count}.by(1)
@@ -50,7 +50,7 @@ feature 'manage deals' do
       login_normal
       click_link 'Deals'
       click_button "edit_#{deal.id}"
-      select new_round, :from => 'Round'
+      select new_round, from: 'Round'
       expect do
         click_button 'Update Deal'
       end.to change {Deal.count}.by(0)

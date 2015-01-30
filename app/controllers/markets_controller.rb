@@ -9,13 +9,6 @@ class MarketsController < ApplicationController
     respond_with(@markets)
   end
 
-  # # GET /markets/1
-  # # GET /markets/1.json
-  # def show
-  #   @market = Market.find(params[:id])
-  #   respond_with(@market)
-  # end
-
   # GET /markets/new
   # GET /markets/new.json
   def new
@@ -35,7 +28,7 @@ class MarketsController < ApplicationController
     if @market.save
       flash[:notice] = 'Market was successfully created.'
     end
-    respond_with(@market, :location => markets_url)
+    respond_with(@market, location: markets_url)
   end
 
   # PUT /markets/1
@@ -45,7 +38,7 @@ class MarketsController < ApplicationController
     if @market.update_attributes(params[:market])
       flash[:notice] = 'Market was successfully updated.'
     end
-    respond_with(@market, :location => markets_url)
+    respond_with(@market, location: markets_url)
   end
 
   # DELETE /markets/1

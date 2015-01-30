@@ -12,7 +12,7 @@ describe Company do
 
   # Validations
   context 'validations' do
-    before { Company.make!(:name => @company.name) }
+    before { Company.make!(name: @company.name) }
 
     it { should have_valid(:name).when('a'*2, 'a'*100) }
     it { should_not have_valid(:name).when('a', 'a'*101, nil) }
@@ -45,29 +45,3 @@ describe Company do
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

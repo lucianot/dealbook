@@ -99,14 +99,3 @@ User.blueprint(:linkedin) do
   password                { '' }
   password_confirmation   { password }
 end
-
-
-
-
-
-
-
-
-
-
-

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
-gem 'rails', '>= 3.2.13'
+gem 'rails'
 gem 'jquery-rails'
 gem 'json'
 gem 'puma'
@@ -66,6 +66,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'thin'
+  gem 'quiet_assets'
 end
 
 group :test do

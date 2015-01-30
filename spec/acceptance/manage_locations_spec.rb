@@ -9,9 +9,9 @@ feature 'manage locations' do
       login_mod
       click_link 'Locations'
       click_button 'New Location'
-      select location.country, :from => 'Country'
-      fill_in 'Region', :with => location.region
-      fill_in 'City', :with => location.city
+      select location.country, from: 'Country'
+      fill_in 'Region', with: location.region
+      fill_in 'City', with: location.city
       expect do
         click_button 'Create Location'
       end.to change {Location.count}.by(1)
@@ -27,9 +27,9 @@ feature 'manage locations' do
       login_mod
       click_link 'Locations'
       click_button "edit_#{location.id}"
-      select location.country, :from => 'Country'
-      fill_in 'Region', :with => other_location.region
-      fill_in 'City', :with => other_location.city
+      select location.country, from: 'Country'
+      fill_in 'Region', with: other_location.region
+      fill_in 'City', with: other_location.city
       click_button 'Update Location'
       page.should have_content 'Location was successfully updated.'
       page.should have_content other_location.country

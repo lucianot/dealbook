@@ -28,7 +28,7 @@ feature 'verify deals' do
     end
 
     scenario 'can unverify deal' do
-      deal = Deal.make!(:complete, :verified => true)
+      deal = Deal.make!(:complete, verified: true)
       login_mod
       click_link 'Deals'
       click_link "deal_#{deal.id.to_s}"
@@ -39,7 +39,7 @@ feature 'verify deals' do
     end
 
     scenario 'cannot verify deal without source_url' do
-      deal = Deal.make!(:complete, :source_url => nil)
+      deal = Deal.make!(:complete, source_url: nil)
       login_mod
       click_link 'Deals'
       click_link "deal_#{deal.id.to_s}"
@@ -52,11 +52,11 @@ feature 'verify deals' do
   context 'when verified deal is updated' do
 
     scenario 'should become unverified if something changes' do
-      deal = Deal.make!(:complete, :verified => true)
+      deal = Deal.make!(:complete, verified: true)
       login_normal
       click_link 'Deals'
       click_button "edit_#{deal.id}"
-      select '2009', :from => 'Close date'
+      select '2009', from: 'Close date'
       click_button 'Update Deal'
       deal.reload
       page.should have_content 'Unverified'
@@ -64,7 +64,7 @@ feature 'verify deals' do
     end
 
     scenario 'should remain verified if nothing changes' do
-      deal = Deal.make!(:complete, :verified => true)
+      deal = Deal.make!(:complete, verified: true)
       login_normal
       click_link 'Deals'
       click_button "edit_#{deal.id}"
@@ -77,5 +77,3 @@ feature 'verify deals' do
   end # context
 
 end # feature
-
-

@@ -2,26 +2,26 @@ require 'json'
 
 # set users
 puts 'SETTING UP DEFAULT USER LOGIN'
-admin = User.create! :full_name => 'The Admin',
-                     :email => 'admin@example.com',
-                     :password => 'please',
-                     :password_confirmation => 'please'
+admin = User.create! full_name: 'The Admin',
+                     email: 'admin@example.com',
+                     password: 'please',
+                     password_confirmation: 'please'
 admin.role = 'admin'
 admin.save!
 puts 'New user created: ' << admin.full_name
 
-mod = User.create!  :full_name => 'The Moderator',
-                    :email => 'mod@example.com',
-                    :password => 'please',
-                    :password_confirmation => 'please'
+mod = User.create!  full_name: 'The Moderator',
+                    email: 'mod@example.com',
+                    password: 'please',
+                    password_confirmation: 'please'
 mod.role = 'moderator'
 mod.save!
 puts 'New user created: ' << mod.full_name
 
-user = User.create! :full_name => 'Normal User',
-                    :email => 'normal@example.com',
-                    :password => 'please',
-                    :password_confirmation => 'please'
+user = User.create! full_name: 'Normal User',
+                    email: 'normal@example.com',
+                    password: 'please',
+                    password_confirmation: 'please'
 user.role = 'normal'
 user.save!
 puts 'New user created: ' << user.full_name

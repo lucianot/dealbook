@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
   def show
     @search = Search.find_by_slug(params[:id])
     query = @search ? @search.keywords : ""
-    @results = search_results(query).paginate(:page => params[:page], :per_page => 20)
+    @results = search_results(query).paginate(page: params[:page], per_page: 20)
     respond_with @search
   end
 
