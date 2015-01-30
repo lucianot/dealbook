@@ -9,13 +9,6 @@ class LocationsController < ApplicationController
     respond_with(@locations)
   end
 
-  # # GET /locations/1
-  # # GET /locations/1.json
-  # def show
-  #   @location = Location.find(params[:id])
-  #   respond_with(@location)
-  # end
-
   # GET /locations/new
   # GET /locations/new.json
   def new

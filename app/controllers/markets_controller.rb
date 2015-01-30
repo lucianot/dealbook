@@ -9,13 +9,6 @@ class MarketsController < ApplicationController
     respond_with(@markets)
   end
 
-  # # GET /markets/1
-  # # GET /markets/1.json
-  # def show
-  #   @market = Market.find(params[:id])
-  #   respond_with(@market)
-  # end
-
   # GET /markets/new
   # GET /markets/new.json
   def new
