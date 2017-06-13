@@ -5,7 +5,7 @@
 Welcome to Dealbook
 ===================
 
-The *Brazil Startup Dealboook project* started in 2011, when [Diego Gomes](https://twitter.com/dttg) (co-founder of Everwrite) created a public [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AtrBPNMQBfOIdEphV04yay1hTXdyZzNEYTQzTS1rRXc#gid=5) where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.
+The *Brazil Startup Dealboook project* started in 2011, when [Diego Gomes](https://twitter.com/dttg) (co-founder of Rock Content) created a public [Google Spreadsheet](https://docs.google.com/spreadsheet/ccc?key=0AtrBPNMQBfOIdEphV04yay1hTXdyZzNEYTQzTS1rRXc#gid=5) where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.
 
 I have been a contributor for **Dealbook** since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the *Dealbook 2.0* into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity.
 
