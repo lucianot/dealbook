@@ -1,5 +1,24 @@
 module ApplicationHelper
 
+  def application_title
+    controller_name = params[:controller]
+    action_name = params[:action]
+
+    if action_name == 'show'
+      if controller_name == 'companies'
+        "#{@company.name} Funding, Investors - Dealbook"
+      elsif controller_name == 'deals'
+        "#{@deal.company_name} raised funds from #{@deal.buyers_name} #{@deal.full_amount}"
+      elsif controller_name == 'investors'
+        investments = @investor.deals.count
+        companies = @investor.deals.map { |d| d.company_name }.uniq.count
+        "#{@investor.name} #{investments} investments in #{companies} companies"
+      end
+    else
+      'Dealbook - The ultimate resource for tech startups and VCs in Brazil'
+    end
+  end
+
   def nav_link(text, link, html_options = {})
     recognized = Rails.application.routes.recognize_path(link)
     if recognized[:controller] == params[:controller]
