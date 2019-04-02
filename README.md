@@ -2,6 +2,12 @@
 
 [travis]: http://travis-ci.org/lucianot/dealbook
 
+
+This project has been migrated!
+---------------
+
+The success of the project made us invest more time and effort to bring a modernized version to the community. The new repository containing the currently maintained code is placed in [https://github.com/BossaBox/dealbook](https://github.com/BossaBox/dealbook)
+
 Welcome to Dealbook
 ===================
 
@@ -80,7 +86,7 @@ Active contributors may earn commit access to the Github repo.
 
 ### Make suggestions
 
-Suggestions, feature requests and bug reports are welcome! Please use the Github issues interface: [https://github.com/lucianot/dealbook/issues] (https://github.com/lucianot/dealbook/issues)
+Suggestions, feature requests and bug reports are welcome! Please use the Github issues interface: [https://github.com/lucianot/dealbook/issues](https://github.com/lucianot/dealbook/issues)
 
 ### Spread the word
 
